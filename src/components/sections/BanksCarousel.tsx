@@ -1,13 +1,18 @@
 import Image from "next/image";
 
 const banks = [
-  { name: "בנק לאומי", logo: "/images/Monobank-un-logo.png" },
-  { name: "בנק הפועלים", logo: "/images/Monobank-un-logo.png" },
-  { name: "בנק דיסקונט", logo: "/images/Monobank-un-logo.png" },
-  { name: "בנק מזרחי", logo: "/images/Monobank-un-logo.png" },
-  { name: "בנק הבינלאומי", logo: "/images/Monobank-un-logo.png" },
-  { name: "בנק ירושלים", logo: "/images/Monobank-un-logo.png" },
-  { name: "בנק מרכנתיל", logo: "/images/Monobank-un-logo.png" },
+  { name: "בנק לאומי", logo: "/images/bank1.png" },
+  { name: "בנק הפועלים", logo: "/images/bank2.png" },
+  { name: "בנק דיסקונט", logo: "/images/bank3.png" },
+  { name: "בנק מזרחי", logo: "/images/bank4.png" },
+  { name: "בנק ירושלים", logo: "/images/bank5.png" },
+  { name: "בנק מרכנתיל", logo: "/images/bank6.png" },
+  { name: "בנק מרכנתיל", logo: "/images/bank7.png" },
+  { name: "בנק מרכנתיל", logo: "/images/bank8.png" },
+  { name: "בנק מרכנתיל", logo: "/images/bank9.png" },
+  { name: "בנק מרכנתיל", logo: "/images/bank10.png" },
+  { name: "בנק מרכנתיל", logo: "/images/bank11.png" },
+  { name: "בנק מרכנתיל", logo: "/images/bank12.png" },
 ];
 
 export default function BanksCarousel() {

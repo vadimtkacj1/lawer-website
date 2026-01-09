@@ -10,8 +10,7 @@ const services = [
         <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.707l.547.547 1.17-1.951a.5.5 0 1 1 .858.514Z" />
       </svg>
     ),
-    title: "משכנתא לדירה ראשונה",
-    description: "ליווי אישי לרוכשים בתחילת הדרך להשגת התנאים האופטימליים.",
+    title: "משכנתא לדירה ראשונה"
   },
   {
     href: "/services/refinance",
@@ -24,8 +23,7 @@ const services = [
         <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
       </svg>
     ),
-    title: "מחזור משכנתא",
-    description: "בדיקה ושיפור של משכנתא קיימת לחיסכון של מאות אלפי שקלים.",
+    title: "מחזור משכנתא"
   },
   {
     href: "/services/all-purpose",
@@ -34,8 +32,7 @@ const services = [
         <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
       </svg>
     ),
-    title: "משכנתא לכל מטרה",
-    description: "גיוס כספים על חשבון נכס קיים לכל צורך אישי או עסקי.",
+    title: "משכנתא לכל מטרה"
   },
   {
     href: "/services/investors",
@@ -47,8 +44,7 @@ const services = [
         />
       </svg>
     ),
-    title: "משכנתא למשקיעים",
-    description: "תכנון פיננסי חכם לבניית פורטפוליו נכסים מניב ורווחי.",
+    title: "משכנתא למשקיעים"
   },
   {
     href: "/services/commercial",
@@ -59,9 +55,7 @@ const services = [
         <path d="M4.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z" />
       </svg>
     ),
-    title: "ליווי עסקאות מורכבות",
-    description:
-      "פתרונות יצירתיים למקרים מורכבים ואישורים חריגים מול הבנקים.",
+    title: "ליווי עסקאות מורכבות"
   },
 ];
 
@@ -71,26 +65,18 @@ export default function Services() {
       <div className="container mx-auto px-4">
         <h2 className="section-title">השירותים שלנו</h2>
 
-        <div className="max-w-[1500px] mx-auto">
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5
-                          gap-0 divide-x divide-blue-dk/10 divide-x-reverse"
-          >
-            {services.map((service, index) => (
+        <div className="max-w-[1400px] mx-auto">
+          <div className="flex flex-col xl:flex-row xl:items-start gap-8 xl:gap-12">
+            {services.map((service) => (
               <Link
                 key={service.href}
                 href={service.href}
-                className="group block"
+                className="group block flex-1"
               >
                 <article
-                  className={`relative p-8 xl:p-10 text-center h-full min-h-[280px]
-                              flex flex-col justify-center items-center
-                              transition-all duration-300 hover:-translate-y-1
-                              ${
-                                index < services.length - 1
-                                  ? "border-b sm:border-b lg:border-b xl:border-b-0 border-blue-dk/10"
-                                  : ""
-                              }`}
+                  className="relative py-8 xl:py-10 px-4 text-center
+                              flex flex-col items-center
+                              transition-all duration-300 hover:-translate-y-1"
                 >
                   {/* Icon */}
                   <div
@@ -102,15 +88,10 @@ export default function Services() {
 
                   {/* Title */}
                   <h3
-                    className="text-2xl font-black text-blue-dk mb-3 leading-relaxed"
+                    className="text-xl xl:text-2xl font-black text-blue-dk leading-tight min-h-[3.5rem] flex items-center justify-center"
                   >
                     {service.title}
                   </h3>
-
-                  {/* Description */}
-                  <p className="text-lg font-bold text-blue-dk/80 leading-relaxed">
-                    {service.description}
-                  </p>
                 </article>
               </Link>
             ))}

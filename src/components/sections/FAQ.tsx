@@ -95,7 +95,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-20" style={{ backgroundColor: "#f9f7f4" }}>
+    <section id="faq" className="pt-20 pb-48" style={{ backgroundColor: "#f9f7f4" }}>
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">

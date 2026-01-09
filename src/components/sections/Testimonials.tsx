@@ -141,10 +141,10 @@ export default function Testimonials() {
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute top-1/2 -translate-y-1/2 right-0 z-10
-                       w-12 h-12 rounded-full bg-white shadow-lg
+            className="absolute top-1/2 -translate-y-1/2 right-4 z-10
+                       w-12 h-12 rounded-full bg-blue-dk shadow-lg
                        flex items-center justify-center
-                       text-blue-dk hover:bg-orange hover:text-white
+                       text-white hover:bg-orange
                        transition-all duration-300"
             aria-label="הקודם"
           >
@@ -155,12 +155,11 @@ export default function Testimonials() {
 
           <button
             onClick={nextSlide}
-            className="absolute top-1/2 -translate-y-1/2 left-0 z-10
-                       w-12 h-12 rounded-full bg-white shadow-lg
+            className="absolute top-1/2 -translate-y-1/2 left-4 z-10
+                       w-12 h-12 rounded-full bg-blue-dk shadow-lg
                        flex items-center justify-center
-                       text-blue-dk hover:bg-orange hover:text-white
-                       transition-all duration-300
-                       -ml-4 md:-ml-6"
+                       text-white hover:bg-orange
+                       transition-all duration-300"
             aria-label="הבא"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

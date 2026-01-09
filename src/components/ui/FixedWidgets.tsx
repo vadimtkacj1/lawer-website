@@ -22,9 +22,9 @@ export default function FixedWidgets() {
 
       {/* Accessibility Widget */}
       <button
-        className="fixed bottom-8 left-8 z-50 w-16 h-16 rounded-xl bg-blue-dk
+        className="fixed bottom-8 left-8 z-50 w-16 h-16 rounded-xl bg-[#2563eb]
                    flex items-center justify-center shadow-lg
-                   transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                   transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-[#1d4ed8]"
         aria-label="נגישות"
         title="נגישות"
       >
