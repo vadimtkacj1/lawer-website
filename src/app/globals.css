@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  html {
+    direction: rtl;
+  }
+
+  body {
+    @apply text-blue-dk overflow-x-hidden;
+    background-color: #f9f7f4;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heebo font-black tracking-tight;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  .btn-primary {
+    @apply bg-orange text-white font-extrabold px-8 py-3 rounded-lg
+           shadow-lg transition-all duration-300 hover:bg-orange-hover
+           hover:-translate-y-0.5 hover:shadow-xl;
+  }
+
+  .btn-outline {
+    @apply border-2 border-blue-dk text-blue-dk font-extrabold px-6 py-2
+           rounded-lg transition-all duration-300 hover:bg-blue-dk hover:text-white;
+  }
+
+  .section-title {
+    @apply text-5xl md:text-6xl lg:text-7xl font-black text-blue-dk text-center mb-12;
+  }
+
+  /* Hero section noise overlay */
+  .hero-noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
