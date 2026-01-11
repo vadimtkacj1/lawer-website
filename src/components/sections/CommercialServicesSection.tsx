@@ -81,9 +81,11 @@ const services: ServiceItem[] = [
 
 export default function CommercialServicesSection() {
   return (
-    <section className="relative bg-[#FCFBF8] py-24 lg:py-40 overflow-hidden text-right" dir="rtl">
-      {/* Background Decorative Element */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-blue-dk/[0.02] -skew-x-12 transform origin-top shadow-inner pointer-events-none" />
+    /* Changed background to #f9f7f4 (cream) */
+    <section className="relative bg-[#f9f7f4] py-24 lg:py-40 overflow-hidden text-right" dir="rtl">
+      
+      {/* Background Decorative Element - Adjusted opacity for the new cream background */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-blue-dk/[0.015] -skew-x-12 transform origin-top shadow-inner pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -113,7 +115,7 @@ export default function CommercialServicesSection() {
                   variants={staggerItem}
                   className="flex flex-col items-center text-center"
                 >
-                  {/* 1. Text Side (Now on Top) */}
+                  {/* 1. Text Side */}
                   <div className="w-full mb-12 space-y-6">
                     <h3 className="text-3xl lg:text-5xl font-bold text-blue-dk leading-tight">
                       {service.title}
@@ -124,9 +126,9 @@ export default function CommercialServicesSection() {
                     </p>
                   </div>
 
-                  {/* 2. Art Component Side (Now Below) */}
+                  {/* 2. Art Component Side */}
                   <div className="w-full flex justify-center items-center relative">
-                    {/* Large Background Number */}
+                    {/* Large Background Number - Subtle opacity */}
                     <span className="absolute text-[10rem] lg:text-[15rem] font-black text-blue-dk/[0.03] select-none pointer-events-none -z-10">
                       0{index + 1}
                     </span>
