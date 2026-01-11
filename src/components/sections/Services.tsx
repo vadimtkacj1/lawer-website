@@ -8,6 +8,7 @@ import {
   staggerItem,
   viewportOptions,
 } from "@/lib/animations";
+import DecorativeShapes from "@/components/ui/DecorativeShapes";
 
 const services = [
   {
@@ -69,10 +70,29 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="relative py-12 md:py-16 lg:py-20 z-0 bg-cream">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="services" className="relative py-10 sm:py-12 md:py-16 lg:py-20 z-0 bg-cream overflow-hidden">
+      {/* Simplified city skyline background - optimized for performance */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none z-0">
+        <svg
+          className="w-full h-full"
+          viewBox="0 0 1600 600"
+          preserveAspectRatio="xMidYMid slice"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Simplified city silhouette - reduced complexity for better performance */}
+          <g fill="#1c3664" opacity="0.6">
+            <path d="M0 600 L0 450 L40 450 L40 400 L80 400 L80 350 L120 350 L120 320 L160 320 L160 380 L200 380 L200 330 L240 330 L240 420 L280 420 L280 360 L320 360 L320 480 Z" />
+            <path d="M320 600 L320 150 L380 150 L380 120 L440 120 L440 140 L500 140 L500 100 L560 100 L560 160 L620 160 L620 80 L680 80 L680 120 L740 120 L740 140 L800 140 L800 100 L860 100 L860 140 L920 140 L920 180 L980 180 L980 120 L1040 120 L1040 160 L1100 160 L1100 200 L1160 200 L1160 140 L1220 140 L1220 180 L1280 180 L1280 220 L1340 220 L1340 160 L1400 160 L1400 200 L1460 200 L1460 240 L1520 240 L1520 200 L1580 200 L1580 600 Z" />
+            <path d="M1600 600 L1600 360 L1640 360 L1640 400 L1680 400 L1680 340 L1720 340 L1720 420 L1760 420 L1760 380 L1800 380 L1800 480 L1840 480 L1840 600 Z" />
+          </g>
+        </svg>
+      </div>
+      
+      <DecorativeShapes variant="services" />
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10">
         <motion.h2
-          className="section-title text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl"
+          className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl mb-6 sm:mb-8 md:mb-10 lg:mb-12"
           initial="hidden"
           whileInView="visible"
           viewport={viewportOptions}
@@ -82,10 +102,9 @@ export default function Services() {
         </motion.h2>
 
         <div className="max-w-[1200px] mx-auto">
-          {/* Unified block container */}
+          {/* Unified block container with visual separation */}
           <motion.nav
-            className="flex flex-col md:flex-row"
-            style={{ perspective: "2000px" }}
+            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0 overflow-hidden rounded-xl md:rounded-2xl shadow-md border border-blue-dk/10"
             initial="hidden"
             whileInView="visible"
             viewport={viewportOptions}
@@ -94,76 +113,60 @@ export default function Services() {
             {services.map((service, index) => (
               <motion.div
                 key={service.href}
-                className="flex-1 relative"
+                className="relative"
                 variants={staggerItem}
               >
                 <Link
                   href={service.href}
-                  className="group block h-full"
+                  className="group block h-full relative overflow-hidden"
                 >
-                {/* Background shadow that appears when card lifts */}
-                <div
-                  className="absolute inset-0 bg-gradient-to-br from-blue-dk/20 to-orange/10
-                             opacity-0 group-hover:opacity-100
-                             transition-opacity duration-700
-                             rounded-lg blur-xl"
-                  style={{ transform: "translateZ(-20px)" }}
-                />
-
-                {/* The flipping card */}
-                <div
-                  className="relative h-[150px]
-                             transition-all duration-700 ease-out
-                             [transform-style:preserve-3d]
-                             group-hover:[transform:translateY(-12px)_translateZ(40px)_rotateY(180deg)]
-                             shadow-[0_2px_8px_rgba(28,54,100,0.08)]
-                             group-hover:shadow-[0_25px_50px_rgba(28,54,100,0.3)]"
-                >
-                  {/* Front side */}
+                  {/* Unified card with better visual separation */}
                   <div
-                    className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-5
-                               [backface-visibility:hidden]
-                               bg-cream
-                               transition-all duration-700"
+                    className="relative h-[100px] sm:h-[120px] md:h-[140px] lg:h-[150px]
+                               bg-white/80 md:bg-white/70
+                               transition-all duration-200 ease-out
+                               hover:bg-white/90 hover:shadow-lg
+                               hover:scale-[1.02] hover:z-10
+                               hover:shadow-xl hover:shadow-orange/15
+                               group-hover:rounded-xl
+                               cursor-pointer"
                   >
-                    {/* Divider line - only between cards */}
-                    {index !== 0 && (
-                      <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-3/4 w-[1px] bg-gradient-to-b from-transparent via-blue-dk/20 to-transparent" />
+                    {/* Четкий разделитель справа (для RTL) - всегда видимый */}
+                    {index < services.length - 1 && (
+                      <div className="absolute left-0 top-0 bottom-0 w-[1.5px] bg-gradient-to-b from-blue-dk/15 via-blue-dk/25 to-blue-dk/15" />
                     )}
-                    {index !== services.length - 1 && (
-                      <div className="md:hidden absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-blue-dk/20 to-transparent" />
-                    )}
+                    {/* Подчеркивание снизу для указания что это ссылка */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-orange group-hover:w-3/4 transition-all duration-300" />
+                    
+                    {/* Hover glow effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange/0 to-orange/0 group-hover:from-orange/15 group-hover:to-transparent transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:rounded-xl" />
+                    
+                    {/* Card content */}
+                    <div
+                      className="absolute inset-0 flex flex-col items-center justify-center gap-1.5 sm:gap-2 md:gap-3 p-2 sm:p-3 md:p-4 lg:p-5 z-10"
+                    >
+                      <span className="text-orange drop-shadow-md relative">
+                        <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10" fill="currentColor" viewBox="0 0 16 16">
+                          {service.icon.props.children}
+                        </svg>
+                      </span>
+                      <span className="text-blue-dk font-black text-[11px] sm:text-xs md:text-sm lg:text-[15px] text-center leading-tight transition-colors duration-300 group-hover:text-orange relative">
+                        {service.title}
+                        {/* Стрелка справа от текста (для RTL слева) для указания ссылки */}
+                        <span className="absolute -left-4 top-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-orange">
+                          ←
+                        </span>
+                      </span>
+                      {/* Description visible on hover for larger screens */}
+                      <p className="hidden lg:block text-blue-dk/80 font-semibold text-[10px] xl:text-xs text-center leading-snug opacity-0 group-hover:opacity-100 transition-all duration-300 absolute bottom-2 left-2 right-2 transform translate-y-2 group-hover:translate-y-0">
+                        {service.description}
+                      </p>
+                    </div>
 
-                    <span className="text-orange drop-shadow-md transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
-                      {service.icon}
-                    </span>
-                    <span className="text-blue-dk font-black text-[15px] text-center leading-tight">
-                      {service.title}
-                    </span>
+                    {/* Animated border on hover */}
+                    <div className="absolute inset-0 border-2 border-orange/0 group-hover:border-orange/40 transition-all duration-300 group-hover:rounded-xl" />
                   </div>
-
-                  {/* Back side */}
-                  <div
-                    className="absolute inset-0 flex items-center justify-center p-5
-                               [backface-visibility:hidden]
-                               [transform:rotateY(180deg)]
-                               bg-gradient-to-br from-blue-dk to-[#0d1f3c]
-                               transition-all duration-700"
-                  >
-                    {/* Divider line - only between cards */}
-                    {index !== 0 && (
-                      <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-3/4 w-[1px] bg-gradient-to-b from-transparent via-orange/30 to-transparent" />
-                    )}
-                    {index !== services.length - 1 && (
-                      <div className="md:hidden absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-orange/30 to-transparent" />
-                    )}
-
-                    <p className="text-white font-bold text-[14px] text-center leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
-                </div>
-              </Link>
+                </Link>
               </motion.div>
             ))}
           </motion.nav>

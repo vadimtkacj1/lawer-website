@@ -1,50 +1,63 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CursorFollower() {
   const [isHovering, setIsHovering] = useState(false);
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
+  const rafRef = useRef<number | null>(null);
+  const lastPointRef = useRef<{ x: number; y: number }>({ x: -100, y: -100 });
+  const lastHoverCheckAtRef = useRef<number>(0);
 
   // Instant tracking for inner dot
   const innerX = cursorX;
   const innerY = cursorY;
 
-  // Smooth spring animation for outer circle (with lag)
-  const springConfig = { damping: 30, stiffness: 200 };
+  // Smooth spring animation for outer circle (with lag) - оптимізована конфігурація
+  const springConfig = { damping: 35, stiffness: 150 };
   const outerX = useSpring(cursorX, springConfig);
   const outerY = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
+    const update = () => {
+      rafRef.current = null;
+      cursorX.set(lastPointRef.current.x);
+      cursorY.set(lastPointRef.current.y);
     };
 
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      // Check if hovering over interactive elements
-      if (
+    const onPointerMove = (e: PointerEvent) => {
+      lastPointRef.current = { x: e.clientX, y: e.clientY };
+      if (rafRef.current == null) {
+        rafRef.current = requestAnimationFrame(update);
+      }
+
+      // Hover detection is expensive if done too often; check at most ~10x/sec
+      const now = performance.now();
+      if (now - lastHoverCheckAtRef.current < 100) return;
+      lastHoverCheckAtRef.current = now;
+
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+
+      const interactive =
         target.tagName === "A" ||
         target.tagName === "BUTTON" ||
-        target.closest("a") ||
-        target.closest("button") ||
-        target.style.cursor === "pointer"
-      ) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
-      }
+        !!target.closest("a") ||
+        !!target.closest("button") ||
+        target.getAttribute("role") === "button";
+
+      setIsHovering(interactive);
     };
 
-    window.addEventListener("mousemove", moveCursor);
-    window.addEventListener("mouseover", handleMouseOver);
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
 
     return () => {
-      window.removeEventListener("mousemove", moveCursor);
-      window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("pointermove", onPointerMove);
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+      }
     };
   }, [cursorX, cursorY]);
 
@@ -58,6 +71,7 @@ export default function CursorFollower() {
           y: outerY,
           translateX: "-50%",
           translateY: "-50%",
+          willChange: "transform",
         }}
       >
         <motion.div
@@ -70,8 +84,8 @@ export default function CursorFollower() {
           }}
           transition={{
             type: "spring",
-            damping: 20,
-            stiffness: 300,
+            damping: 25,
+            stiffness: 250,
           }}
         />
       </motion.div>
@@ -84,6 +98,7 @@ export default function CursorFollower() {
           y: innerY,
           translateX: "-50%",
           translateY: "-50%",
+          willChange: "transform",
         }}
       >
         <motion.div
@@ -95,8 +110,8 @@ export default function CursorFollower() {
           }}
           transition={{
             type: "spring",
-            damping: 25,
-            stiffness: 400,
+            damping: 30,
+            stiffness: 350,
           }}
         />
       </motion.div>

@@ -4,35 +4,32 @@ import { useEffect } from "react";
 
 export default function SmoothScrollProvider() {
   useEffect(() => {
-    // Enhanced smooth scroll behavior
-    document.documentElement.style.scrollBehavior = "smooth";
-    
-    // Add smooth scroll with custom easing
-    const style = document.createElement("style");
-    style.textContent = `
-      * {
-        scroll-behavior: smooth !important;
-      }
+    // Оптимізований smooth scroll - тільки для anchor links, не для всіх скролів
+    // Це значно покращує продуктивність
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a[href^="#"]') as HTMLAnchorElement;
       
-      html {
-        scroll-behavior: smooth !important;
-        -webkit-overflow-scrolling: touch;
-      }
-      
-      @media (prefers-reduced-motion: no-preference) {
-        html {
-          scroll-behavior: smooth !important;
-        }
-        
-        * {
-          scroll-behavior: smooth !important;
+      if (anchor && anchor.getAttribute('href') !== '#') {
+        const href = anchor.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          const id = href.slice(1);
+          const element = document.getElementById(id);
+          
+          if (element) {
+            e.preventDefault();
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         }
       }
-    `;
-    document.head.appendChild(style);
+    };
+
+    // Використовуємо smooth scroll тільки для anchor links через JS
+    // Видалили глобальний CSS scroll-behavior який викликав лаги
+    document.addEventListener('click', handleClick);
 
     return () => {
-      document.head.removeChild(style);
+      document.removeEventListener('click', handleClick);
     };
   }, []);
 

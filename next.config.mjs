@@ -27,10 +27,8 @@ const nextConfig = {
   // Compiler options
   swcMinify: true,
 
-  // Experimental features for performance
-  experimental: {
-    optimizeCss: true,
-  },
+  // Output configuration for Docker
+  output: 'standalone',
 
   // Headers for caching and security
   async headers() {

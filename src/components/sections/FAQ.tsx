@@ -1,32 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import DecorativeShapes from "@/components/ui/DecorativeShapes";
 
 const faqItems = [
   {
-    question: "למה אני צריך יועץ משכנתאות?",
+    question: "איחוד הלוואות",
     answer:
-      "יועץ הבנק עובד עבור הבנק. אני עובד עבורכם - מוריד ריביות, בונה תמהיל חסכוני ומגן על האינטרסים שלכם בכל שלב.",
+      "ממנפים את הנכס הקיים כדי לאחד הלוואות (רכב, אשראי, מינוס) למשכנתא אחת בריבית נמוכה. המטרה: להקטין את ההחזר החודשי באלפי שקלים.",
   },
   {
-    question: "כמה כסף אפשר לחסוך?",
+    question: "מיחזור משכנתא",
     answer:
-      "בממוצע, הלקוחות שלי חוסכים בין 120,000 ל-250,000 ש״ח לאורך חיי המשכנתא בזכות תכנון נכון ומשא ומתן מקצועי.",
+      "בדיקת כדאיות למיחזור (ללא עלות) יכולה לחסוך הון לאורך חיי המשכנתא. אידיאלי אם הריביות השתנו או הסטטוס הכלכלי השתפר.",
   },
   {
-    question: "כמה זמן לוקח התהליך?",
+    question: "משכנתא לזוגות צעירים וציבור חרדי",
     answer:
-      "מרגע קבלת המסמכים ועד אישור עקרוני - כ-10 ימי עבודה. אני מטפל בכל הבירוקרטיה מולכם ומול הבנק.",
+      "מתמחים בהשגת אחוזי מימון מקסימליים ומכירים לעומק את צרכי הציבור החרדי. הליווי כולל תוכניות \"מחיר למשתכן\" ומשכנתא ראשונה.",
   },
   {
-    question: "מה ההבדל בין משכנתא רגילה למחזור?",
+    question: "פתרונות למסורבי בנקים",
     answer:
-      "מחזור משכנתא זה לשפר משכנתא קיימת - להוריד ריבית, לקצר תקופה או להוריד החזר חודשי. זה תהליך פשוט שחוסך המון כסף.",
-  },
-  {
-    question: "עוזרים גם למסורבי בנק?",
-    answer:
-      "בהחלט. כמשפטן פיננסי, יש לי כלים מקצועיים לטפל במקרים מורכבים ולמצוא פתרונות יצירתיים לקבלת אישור.",
+      "בעלי ניסיון בבניית תיקים מחדש למסורבי בנק ובעלי BDI שלילי. מוצאים את גורמי המימון הנכונים כדי להפוך סירוב לאישור.",
   },
 ];
 
@@ -51,23 +47,23 @@ function AccordionItem({
     >
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between py-6 text-right
-                   transition-colors hover:text-orange focus:outline-none"
+        className="w-full flex items-center justify-between gap-3 sm:gap-4 py-4 sm:py-5 md:py-6 text-right
+                   transition-colors hover:text-orange focus:outline-none active:text-orange"
         aria-expanded={isOpen}
       >
-        <span className="flex-grow text-2xl font-black text-blue-dk pe-4">
+        <span className="flex-grow text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-black text-blue-dk pe-2 sm:pe-3 md:pe-4 leading-tight sm:leading-normal">
           {index + 1}. {question}
         </span>
         <span
-          className="flex-shrink-0 w-10 h-10 rounded-full bg-orange text-white
-                      flex items-center justify-center transition-all duration-300"
+          className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-orange text-white
+                      flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
         >
           {isOpen ? (
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 16 16">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 16 16">
               <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
             </svg>
           ) : (
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 16 16">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 16 16">
               <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
             </svg>
           )}
@@ -76,16 +72,15 @@ function AccordionItem({
 
       <div
         className={`overflow-hidden transition-all duration-300 ease-out
-                    ${isOpen ? "max-h-96 pb-6" : "max-h-0"}`}
+                    ${isOpen ? "max-h-96 pb-4 sm:pb-5 md:pb-6" : "max-h-0"}`}
       >
-        <p className="text-xl font-bold text-blue-dk/85 leading-relaxed pe-12">
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-blue-dk/85 leading-relaxed pe-2 sm:pe-4 md:pe-8 lg:pe-12">
           {answer}
         </p>
       </div>
     </div>
   );
 }
-
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -94,49 +89,51 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="pt-12 md:pt-16 lg:pt-20 pb-24 md:pb-32 lg:pb-48" style={{ backgroundColor: "#f9f7f4" }}>
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="faq" className="relative py-12 md:py-16 lg:py-20 min-h-screen" style={{ backgroundColor: "#f9f7f4" }}>
+      <DecorativeShapes variant="default" />
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-16">
-          {/* Left Side - Title */}
-          <div className="lg:w-1/3 lg:sticky lg:top-28 h-fit">
-            <div className="flex items-center gap-2 mb-4">
-              <svg
-                className="w-6 h-6 text-orange"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434l.071-.286zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5zm0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78h4.723zM5.048 3.967c-.03.021-.058.043-.087.065l.087-.065zm-.431.355A4.995 4.995 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8 4.617 4.322zm.344 7.646.087.065-.087-.065z" />
-              </svg>
-              <span className="text-sm font-semibold text-orange uppercase tracking-wider">
-                השאלות שלנו
-              </span>
+
+          {/* FAQ Section */}
+          <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-10 items-start">
+
+            {/* Левая колонка - Заголовок - Sticky на всех экранах */}
+            <div className="w-full lg:w-1/3 sticky top-16 sm:top-20 md:top-24 lg:top-28 self-start z-30 bg-[#f9f7f4] pb-4 sm:pb-6 lg:pb-0 shadow-sm lg:shadow-none">
+              <div className="h-fit text-center lg:text-right">
+                <div className="flex items-center gap-2 mb-3 md:mb-4 justify-center lg:justify-start">
+                  <svg className="w-5 h-5 md:w-6 md:h-6 text-orange" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434l.071-.286zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5zm0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78h4.723zM5.048 3.967c-.03.021-.058.043-.087.065l.087-.065zm-.431.355A4.995 4.995 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8 4.617 4.322zm.344 7.646.087.065-.087-.065z" />
+                  </svg>
+                  <span className="text-xs md:text-sm font-semibold text-orange uppercase tracking-wider">
+                    השאלות שלנו
+                  </span>
+                </div>
+
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black text-blue-dk mb-3 sm:mb-4 md:mb-6">
+                  FAQ
+                </h2>
+
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-blue-dk/80 mb-0 sm:mb-2 md:mb-4 lg:mb-6 leading-relaxed max-w-md mx-auto lg:mx-0 px-2 sm:px-0">
+                  אנחנו צוות ייעוץ משכנתאות המתמקד בתוצאות ועוזר למשפחות לפתוח יעילות.
+                </p>
+              </div>
             </div>
 
-            <h2 className="text-7xl md:text-8xl font-black text-blue-dk mb-6">
-              FAQ
-            </h2>
+            {/* Правая колонка - Аккордеон */}
+            <div className="w-full lg:w-2/3 order-2 lg:order-2">
+              {faqItems.map((item, index) => (
+                <AccordionItem
+                  key={index}
+                  question={item.question}
+                  answer={item.answer}
+                  index={index}
+                  isOpen={openIndex === index}
+                  onToggle={() => toggleItem(index)}
+                />
+              ))}
+            </div>
 
-            <p className="text-xl md:text-2xl font-bold text-blue-dk/80 mb-6 leading-relaxed">
-              אנחנו צוות ייעוץ משכנתאות המתמקד בתוצאות ועוזר למשפחות לפתוח
-              יעילות.
-            </p>
           </div>
-
-          {/* Right Side - Accordion */}
-          <div className="lg:w-2/3">
-            {faqItems.map((item, index) => (
-              <AccordionItem
-                key={index}
-                question={item.question}
-                answer={item.answer}
-                index={index}
-                isOpen={openIndex === index}
-                onToggle={() => toggleItem(index)}
-              />
-            ))}
-          </div>
-        </div>
         </div>
       </div>
     </section>

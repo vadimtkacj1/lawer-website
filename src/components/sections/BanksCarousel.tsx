@@ -28,7 +28,6 @@ export default function BanksCarousel() {
       variants={fadeInUp}
     >
       <div className="max-w-6xl mx-auto px-4">
-        {/* Градиентные маски для плавного исчезновения по бокам */}
         <div className="relative overflow-hidden 
           before:absolute before:left-0 before:top-0 before:z-20 before:h-full before:w-24 before:bg-gradient-to-r before:from-[#f9f7f4] before:to-transparent 
           after:absolute after:right-0 after:top-0 after:z-20 after:h-full after:w-24 after:bg-gradient-to-l after:from-[#f9f7f4] after:to-transparent">

@@ -33,35 +33,35 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-blue-dk text-white py-16" dir="rtl">
-      <div className="container mx-auto px-4">
+    <footer className="bg-blue-dk text-white py-10 sm:py-12 md:py-14 lg:py-16" dir="rtl">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 items-start"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-start"
           initial="hidden"
           whileInView="visible"
           viewport={viewportOptions}
           variants={staggerContainer}
         >
           {/* About */}
-          <motion.div variants={staggerItem} className="flex flex-col items-start lg:items-center text-right lg:text-center">
-            <h3 className="text-orange font-black text-xl mb-4">
+          <motion.div variants={staggerItem} className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
+            <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">
               אבי - הבית למשכנתאות
             </h3>
-            <p className="text-white/70 text-lg font-semibold leading-relaxed max-w-sm">
+            <p className="text-white/70 text-sm sm:text-base md:text-lg font-semibold leading-relaxed max-w-sm">
               ליווי מקצועי ואובייקטיבי בתהליך לקיחת המשכנתא. אנחנו עובדים
               בשבילכם, לא בשביל הבנק, כדי להבטיח את התנאים המשתלמים ביותר.
             </p>
           </motion.div>
 
           {/* Services */}
-          <motion.div variants={staggerItem} className="flex flex-col items-start lg:items-center text-right lg:text-center">
-            <h3 className="text-orange font-black text-xl mb-4">השירותים שלנו</h3>
-            <nav className="flex flex-col space-y-2 w-full">
+          <motion.div variants={staggerItem} className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
+            <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">השירותים שלנו</h3>
+            <nav className="flex flex-col space-y-1.5 sm:space-y-2 w-full">
               {serviceLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-white/70 text-lg font-semibold hover:text-white transition-colors"
+                  className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -70,11 +70,11 @@ export default function Footer() {
           </motion.div>
 
           {/* Contact */}
-          <motion.div variants={staggerItem} className="flex flex-col items-start lg:items-center text-right lg:text-center">
-            <h3 className="text-orange font-black text-xl mb-4">צרו קשר</h3>
-            <address className="not-italic space-y-2 text-white/70 text-lg font-semibold w-full">
-              <p className="flex items-center gap-2 justify-start lg:justify-center">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
+          <motion.div variants={staggerItem} className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center sm:col-span-2 lg:col-span-1">
+            <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">צרו קשר</h3>
+            <address className="not-italic space-y-1.5 sm:space-y-2 text-white/70 text-sm sm:text-base md:text-lg font-semibold w-full">
+              <p className="flex items-center gap-2 justify-center sm:justify-start lg:justify-center">
+                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 16 16">
                   <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
                   <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                 </svg>
@@ -83,7 +83,7 @@ export default function Footer() {
             </address>
 
             {/* Social Links */}
-            <div className="flex gap-4 mt-6 justify-start lg:justify-center w-full">
+            <div className="flex gap-3 sm:gap-4 mt-4 sm:mt-5 md:mt-6 justify-center sm:justify-start lg:justify-center w-full">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
@@ -93,7 +93,9 @@ export default function Footer() {
                   className="text-white hover:text-orange transition-colors"
                   aria-label={social.label}
                 >
-                  {social.icon}
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 16 16">
+                    {social.icon.props.children}
+                  </svg>
                 </a>
               ))}
             </div>
@@ -102,12 +104,12 @@ export default function Footer() {
 
         {/* Copyright */}
         <motion.div
-          className="border-t border-white/20 mt-12 pt-8 text-center"
+          className="border-t border-white/20 mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-7 md:pt-8 text-center"
           whileInView="visible"
           viewport={viewportOptions}
           variants={fadeInUp}
         >
-          <p className="text-white/70 text-lg font-semibold">
+          <p className="text-white/70 text-xs sm:text-sm md:text-base lg:text-lg font-semibold px-2">
             © {new Date().getFullYear()} אבי - הבית למשכנתאות. כל הזכויות
             שמורות. תכנון נכון שחוסך לכם כסף.
           </p>

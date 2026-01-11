@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Heebo } from "next/font/google";
 import "./globals.css";
-import CursorFollower from "@/components/ui/CursorFollower";
-import SmoothScrollProvider from "@/components/ui/SmoothScrollProvider";
 import FullScreenLoader from "@/components/ui/FullScreenLoader";
+import ClientEffects from "@/components/ui/ClientEffects";
 
 // Hebrew-friendly font with next/font for optimal loading
 const heebo = Heebo({
@@ -103,12 +102,11 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.instagram.com" />
         <link rel="dns-prefetch" href="https://wa.me" />
       </head>
-            <body className="font-heebo antialiased">
-              <FullScreenLoader />
-              <SmoothScrollProvider />
-              <CursorFollower />
-              {children}
-            </body>
+      <body className="font-heebo antialiased">
+        <FullScreenLoader />
+        <ClientEffects />
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,19 +1,7 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
-
-// Lazy load components below the fold for better performance
-const BanksCarousel = dynamic(() => import("@/components/sections/BanksCarousel"), {
-  loading: () => <div className="h-32 bg-cream" />,
-});
-const ExpertBio = dynamic(() => import("@/components/sections/ExpertBio"));
-const Services = dynamic(() => import("@/components/sections/Services"));
-const Testimonials = dynamic(() => import("@/components/sections/Testimonials"));
-const Contact = dynamic(() => import("@/components/sections/Contact"));
-const FAQ = dynamic(() => import("@/components/sections/FAQ"));
-const Footer = dynamic(() => import("@/components/sections/Footer"));
-const Widgets = dynamic(() => import("@/components/ui/Widgets"));
+import HomeLazySections from "@/components/pages/HomeLazySections";
 
 // Page-specific metadata with enhanced SEO
 export const metadata: Metadata = {
@@ -99,7 +87,7 @@ function JsonLd() {
           "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז",
         url: "https://avi-home.co.il",
         telephone: "+972-50-000-0000",
-        email: "office@avi-home.co.il",
+        email: "assistant@avi-mashkanta.com",
         address: {
           "@type": "PostalAddress",
           addressLocality: "חולון",
@@ -208,15 +196,8 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
-        <BanksCarousel />
-        <ExpertBio />
-        <Services />
-        <Testimonials />
-        <Contact />
-        <FAQ />
+        <HomeLazySections />
       </main>
-      <Footer />
-      <Widgets />
     </>
   );
 }

@@ -8,13 +8,14 @@ export default function Widgets() {
         href="https://wa.me/972500000000"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 w-14 h-14 md:w-16 md:h-16 rounded-xl bg-[#25d366]
-                   flex items-center justify-center shadow-lg
+        className="fixed bottom-6 right-6 lg:bottom-8 lg:right-8 z-50 
+                   w-14 h-14 lg:w-16 lg:h-16 rounded-2xl bg-[#25d366]
+                   flex items-center justify-center shadow-lg shadow-[#25d366]/30
                    transition-all duration-300 hover:-translate-y-1 hover:shadow-xl active:scale-95"
         aria-label="WhatsApp"
       >
         <svg
-          className="w-8 h-8 md:w-9 md:h-9 text-white"
+          className="w-7 h-7 lg:w-8 lg:h-8 text-white"
           fill="currentColor"
           viewBox="0 0 16 16"
         >
@@ -24,14 +25,15 @@ export default function Widgets() {
 
       {/* Accessibility Widget */}
       <button
-        className="fixed bottom-4 left-4 md:bottom-8 md:left-8 z-50 w-14 h-14 md:w-16 md:h-16 rounded-xl bg-[#2563eb]
-                   flex items-center justify-center shadow-lg
-                   transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-[#1d4ed8] active:scale-95"
+        className="fixed bottom-6 left-6 lg:bottom-8 lg:left-8 z-50 
+                   w-14 h-14 lg:w-16 lg:h-16 rounded-2xl bg-blue-dk
+                   flex items-center justify-center shadow-lg shadow-blue-dk/30
+                   transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-blue-dk/90 active:scale-95"
         aria-label="נגישות"
         title="נגישות"
       >
         <svg
-          className="w-7 h-7 md:w-8 md:h-8 text-white"
+          className="w-6 h-6 lg:w-7 lg:h-7 text-white"
           fill="currentColor"
           viewBox="0 0 16 16"
         >

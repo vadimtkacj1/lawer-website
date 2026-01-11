@@ -18,7 +18,7 @@
   }
 
   body {
-    @apply text-blue-dk overflow-x-hidden;
+    @apply text-blue-dk;
     background-color: #f9f7f4;
   }
 
@@ -43,8 +43,8 @@
     }
   }
 
-  /* Enhanced smooth scrolling for all elements */
-  * {
+  /* Enhanced smooth scrolling for anchor links only (optimized) */
+  html {
     scroll-behavior: smooth;
   }
 
@@ -56,7 +56,6 @@
 
   /* Performance optimizations for smooth scrolling */
   html, body {
-    will-change: scroll-position;
     overscroll-behavior-y: none;
   }
 
@@ -119,7 +118,7 @@
   }
 
   .section-title {
-    @apply text-5xl md:text-6xl lg:text-7xl font-black text-blue-dk text-center mb-12;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black text-blue-dk text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12;
   }
 
   /* Hero section noise overlay */
@@ -141,36 +140,75 @@
   }
 }
 
-/* Hero button pulse animation */
+/* Hero button pulse animation - Enhanced with glow */
 @keyframes button-pulse {
   0%, 100% {
-    box-shadow: 0 12px 30px rgba(242, 103, 34, 0.4),
-                0 0 0 0 rgba(242, 103, 34, 0.5),
-                0 0 0 0 rgba(242, 103, 34, 0.3);
-  }
-  50% {
-    box-shadow: 0 15px 45px rgba(242, 103, 34, 0.6),
-                0 0 0 10px rgba(242, 103, 34, 0),
-                0 0 0 20px rgba(242, 103, 34, 0);
-  }
-}
-
-@keyframes pulse-slow {
-  0%, 100% {
+    box-shadow: 0 12px 30px rgba(242, 103, 34, 0.5),
+                0 0 20px rgba(242, 103, 34, 0.3),
+                0 0 40px rgba(242, 103, 34, 0.2);
     transform: scale(1);
   }
   50% {
-    transform: scale(1.02);
+    box-shadow: 0 15px 50px rgba(242, 103, 34, 0.8),
+                0 0 40px rgba(242, 103, 34, 0.6),
+                0 0 80px rgba(242, 103, 34, 0.4);
+    transform: scale(1.03);
+  }
+}
+
+@keyframes button-glow {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 5px rgba(242, 103, 34, 0.5));
+  }
+  50% {
+    filter: brightness(1.1) drop-shadow(0 0 20px rgba(242, 103, 34, 0.8));
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(242, 103, 34, 0.7),
+                0 0 0 0 rgba(242, 103, 34, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(242, 103, 34, 0),
+                0 0 0 30px rgba(242, 103, 34, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 15px rgba(242, 103, 34, 0),
+                0 0 0 30px rgba(242, 103, 34, 0);
   }
 }
 
 .hero-cta-button {
-  animation: button-pulse 2s ease-in-out infinite;
-  will-change: box-shadow, transform;
+  animation: button-pulse 2s ease-in-out infinite,
+             button-glow 2s ease-in-out infinite,
+             pulse-ring 2s ease-in-out infinite;
+  will-change: box-shadow, transform, filter;
+  position: relative;
 }
 
 .animate-pulse-slow {
   animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* Banks carousel scroll animation (RTL) */
+@keyframes scroll-rtl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-rtl {
+  animation: scroll-rtl 30s linear infinite;
+  will-change: transform;
+}
+
+.animate-scroll-rtl:hover {
+  animation-play-state: paused;
 }
 
 /* Banks marquee styles - let library handle styling */
@@ -200,6 +238,37 @@
 
 .loader-float-dot {
   animation: float-dots ease-in-out infinite;
+}
+
+/* Button shimmer animation - оптимізовано */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-12deg);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+  animation-delay: 1s;
+  animation-play-state: paused;
+  will-change: transform;
+}
+
+/* Run shimmer only on hover to avoid constant repainting */
+.group:hover .animate-shimmer {
+  animation-play-state: running;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shimmer {
+    animation: none !important;
+  }
+  .loader-float-dot {
+    animation: none !important;
+  }
 }
 
 

@@ -1,64 +1,98 @@
 "use client";
-
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useMemo, memo } from "react";
 
 interface MarqueeProps {
   dataArray: string[];
   dataType?: "image" | "text";
-  speed?: number;
+  speed?: number; // Чим більше число, тим повільніше (секунди на повне коло)
   direction?: "left" | "right";
   className?: string;
+  pauseOnHover?: boolean;
 }
 
-export default function InfiniteMarquee({
+function InfiniteMarquee({
   dataArray,
   dataType = "image",
-  speed = 30,
-  direction = "right",
+  speed = 20,
+  direction = "left",
   className = "",
+  pauseOnHover = true,
 }: MarqueeProps) {
-  // Увеличиваем количество повторений, чтобы заполнить любой экран без дырок
-  const items = [...dataArray, ...dataArray, ...dataArray, ...dataArray];
+  // Подвоюємо масив для нескінченної анімації
+  const duplicatedData = useMemo(() => [...dataArray, ...dataArray], [dataArray]);
   
-  // Состояние для паузы
-  const [isPaused, setIsPaused] = useState(false);
+  // Використовуємо CSS анімацію замість framer-motion для кращої продуктивності
+  const animationName = direction === "left" ? "marquee-left" : "marquee-right";
+  const animationClass = `marquee-${direction}`;
 
   return (
-    <div 
-      className={`flex overflow-hidden ${className}`}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      <motion.div
-        className="flex flex-nowrap shrink-0 items-center gap-12"
-        initial={{ x: direction === "right" ? "-50%" : "0%" }}
-        animate={{ x: direction === "right" ? "0%" : "-50%" }}
-        transition={{
-          duration: speed,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-        // Эта строка заставляет анимацию замирать при наведении
-        style={{ animationPlayState: isPaused ? "paused" : "running" }}
-      >
-        {items.map((item, index) => (
-          <div
-            key={index}
-            className="flex shrink-0 items-center justify-center px-4"
-          >
-            {dataType === "image" ? (
-              <img
-                src={item}
-                alt={`logo-${index}`}
-                className="h-10 w-auto max-w-[130px] object-contain opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
-              />
-            ) : (
-              <span className="text-xl font-bold">{item}</span>
-            )}
-          </div>
-        ))}
-      </motion.div>
-    </div>
+    <>
+      <style jsx>{`
+        @keyframes marquee-left {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        @keyframes marquee-right {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+        
+        .marquee-container {
+          animation: ${animationName} ${speed}s linear infinite;
+          will-change: transform;
+        }
+        
+        .marquee-container:hover {
+          animation-play-state: ${pauseOnHover ? "paused" : "running"};
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-container {
+            animation: none !important;
+            transform: translateX(0) !important;
+          }
+        }
+      `}</style>
+      
+      <div className={`relative w-full overflow-hidden bg-transparent py-6 ${className}`}>
+        {/* Градієнтне затінення по краях */}
+        <div className="absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+
+        <div className={`flex w-max gap-12 px-6 marquee-container ${animationClass}`}>
+          {duplicatedData.map((item, index) => (
+            <div
+              key={index}
+              className="flex shrink-0 items-center justify-center"
+            >
+              {dataType === "image" ? (
+                <img
+                  src={item}
+                  alt={`logo-${index}`}
+                  className="h-12 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <span className="text-2xl font-bold whitespace-nowrap text-gray-800">
+                  {item}
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
+
+export default memo(InfiniteMarquee);
