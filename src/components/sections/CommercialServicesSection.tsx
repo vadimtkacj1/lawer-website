@@ -18,88 +18,72 @@ interface ServiceItem {
 }
 
 /**
- * --- SOLID & BOLD ART COMPONENTS ---
- * Thicker lines (strokeWidth 3-4) for maximum visibility.
+ * --- Artistic Line Art Components ---
  */
 
-const ArtConsolidation: React.FC<IconProps> = ({ className }) => (
-  <svg viewBox="0 0 200 200" className={className || "w-full h-full text-blue-dk"}>
-    <rect x="40" y="150" width="120" height="10" fill="currentColor" opacity="0.2" />
-    <motion.path 
-      d="M100 30 L160 80 V150 H40 V80 L100 30Z" 
-      stroke="currentColor" 
-      strokeWidth="3" 
-      fill="none" 
-    />
-    <motion.path 
-      d="M70 110 H130" 
-      stroke="currentColor" 
-      strokeWidth="4" 
-      className="text-orange" 
-    />
-    <circle cx="100" cy="75" r="15" fill="currentColor" className="text-orange" />
+const LegalStabilityArt: React.FC<IconProps> = ({ className }) => (
+  <svg viewBox="0 0 200 200" fill="none" className={className}>
+    <path d="M100 20V180M60 40H140M70 180H130" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M40 80C60 60 140 60 160 80C180 100 120 140 100 140C80 140 20 100 40 80Z" stroke="currentColor" strokeWidth="1" opacity="0.4" />
+    <circle cx="100" cy="80" r="15" stroke="currentColor" strokeWidth="1" className="text-orange" />
   </svg>
 );
 
-const ArtRecycle: React.FC<IconProps> = ({ className }) => (
-  <svg viewBox="0 0 200 200" className={className || "w-full h-full text-blue-dk"}>
-    <path d="M160 100 A60 60 0 1 1 40 100 A60 60 0 1 1 160 100" stroke="currentColor" strokeWidth="3" strokeDasharray="10 5" />
-    <path d="M100 60 V140 M60 100 H140" stroke="currentColor" strokeWidth="2" opacity="0.3" />
-    <motion.path 
-      d="M130 50 L160 50 V80" 
-      stroke="currentColor" 
-      strokeWidth="4" 
-      className="text-orange" 
-      strokeLinecap="round" 
-    />
+const BalanceArt: React.FC<IconProps> = ({ className }) => (
+  <svg viewBox="0 0 200 200" fill="none" className={className}>
+    <path d="M100 40L100 160M40 100L160 100" stroke="currentColor" strokeWidth="1" opacity="0.3"/>
+    <path d="M160 100C160 133.137 133.137 160 100 160C66.8629 160 40 133.137 40 100C40 66.8629 66.8629 40 100 40" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M100 40L120 20M100 40L80 20" stroke="currentColor" strokeWidth="2" className="text-orange" />
+    <circle cx="100" cy="100" r="4" fill="currentColor" className="text-orange" />
   </svg>
 );
 
-const ArtTreeHouse: React.FC<IconProps> = ({ className }) => (
-  <svg viewBox="0 0 200 200" className={className || "w-full h-full text-blue-dk"}>
-    <path d="M100 170 V100" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-    <path d="M50 100 L100 50 L150 100" stroke="currentColor" strokeWidth="4" className="text-orange" />
-    <path d="M100 50 C140 10, 180 60, 150 100" stroke="currentColor" strokeWidth="2" opacity="0.4" />
-    <path d="M100 50 C60 10, 20 60, 50 100" stroke="currentColor" strokeWidth="2" opacity="0.4" />
+const TreeHouseArt: React.FC<IconProps> = ({ className }) => (
+  <svg viewBox="0 0 200 200" fill="none" className={className}>
+    <path d="M100 170V110M100 170L80 185M100 170L120 185" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M60 110L100 70L140 110H60Z" stroke="currentColor" strokeWidth="1.5" className="text-orange" />
+    <circle cx="100" cy="70" r="50" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" opacity="0.3" />
+    <path d="M70 60C50 40 100 20 130 50" stroke="currentColor" strokeWidth="1" />
   </svg>
 );
 
-const ArtRefusal: React.FC<IconProps> = ({ className }) => (
-  <svg viewBox="0 0 200 200" className={className || "w-full h-full text-blue-dk"}>
-    <rect x="50" y="40" width="100" height="130" stroke="currentColor" strokeWidth="3" fill="none" />
-    <circle cx="100" cy="105" r="25" stroke="currentColor" strokeWidth="4" className="text-orange" />
-    <path d="M100 105 L120 125" stroke="currentColor" strokeWidth="4" className="text-orange" strokeLinecap="round" />
+const OpportunityArt: React.FC<IconProps> = ({ className }) => (
+  <svg viewBox="0 0 200 200" fill="none" className={className}>
+    <rect x="60" y="40" width="80" height="120" rx="2" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M140 100H170M170 100L155 85M170 100L155 115" stroke="currentColor" strokeWidth="2" className="text-orange" />
+    <circle cx="90" cy="100" r="10" stroke="currentColor" strokeWidth="1" />
+    <line x1="60" y1="160" x2="140" y2="160" stroke="currentColor" strokeWidth="4" opacity="0.2" />
   </svg>
 );
 
 const services: ServiceItem[] = [
   {
     title: "איחוד הלוואות – להחזיר את האוויר לנשימה",
-    description: "אנחנו מומחים במינוף הנכס הקיים כדי לאחד את כל ההלוואות היקרות למשכנתא אחת מסודרת. המטרה שלנו היא להקטין את ההחזר החודשי באלפי שקלים ולהעניק לכם שקט נפשי.",
-    Art: ArtConsolidation,
+    description: "אנחנו מתמחים במינוף הנכס הקיים כדי לאחד את כל ההלוואות הקטנות והיקרות למשכנתא אחת מסודרת, בפריסה ארוכה ובריבית נמוכה משמעותית. המטרה: להקטין את החזר החודשי באלפי שקלים.",
+    Art: LegalStabilityArt,
   },
   {
     title: "מיחזור משכנתא – למה שתשלמו יותר?",
-    description: "בדיקת כדאיות מקיפה ללא עלות. אנחנו בוחנים את הסטטוס הכלכלי העדכני שלכם ומתאימים את תנאי המשכנתא לריביות האופטימליים בשוק כיום כדי לחסוך לכם הון.",
-    Art: ArtRecycle,
+    description: "בדיקת כדאיות למיחזור שאנו מבצעים ללא עלות יכולה לחסוך לכם הון לאורך חיי המשכנתא. אנחנו בודקים את הסטטוס הכלכלי ומתאימים את התנאים להיום.",
+    Art: BalanceArt,
   },
   {
     title: "משכנתא לזוגות צעירים ולציבור החרדי",
-    description: "השגת אחוזי מימון מקסימליים וטיפול בתוכניות 'מחיר למשתכן'. מומחיות ייחודית בליווי המגזר החרדי וזוגות בתחילת דרכם להשגת הבית הראשון.",
-    Art: ArtTreeHouse,
+    description: "אנו מתמחים בהשגת אחוזי מימון מקסימליים ומכירים לעומק את צרכי המגזרים השונים, כולל טיפול בתוכניות 'מחיר למשתכן' וסיוע בקבלת משכנתא ראשונה.",
+    Art: TreeHouseArt,
   },
   {
     title: "פתרונות למסורבי בנקים (BDI שלילי)",
-    description: "אל תוותרו על החלום. בזכות היכרות עמוקה עם המערכת המשפטית והבנקאית, אנו בונים את התיק מחדש בצורה מקצועית כדי להפוך סירוב לאישור.",
-    Art: ArtRefusal,
+    description: "קיבלתם סירוב מהבנק? בזכות ההיכרות המעמיקה עם המערכת המשפטית והבנקאית, אנו יודעים איך לבנות את התיק מחדש ולהפוך את ה'לא' ל'כן'.",
+    Art: OpportunityArt,
   },
 ];
 
 export default function CommercialServicesSection() {
   return (
-    <section className="relative bg-white py-24 lg:py-48 text-right overflow-hidden" dir="rtl">
-      {/* Structural divider line for Desktop */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-blue-dk/10 hidden lg:block" />
+    <section className="relative bg-[#FCFBF8] py-24 lg:py-40 overflow-hidden text-right" dir="rtl">
+      {/* Background Decorative Element */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-blue-dk/[0.02] -skew-x-12 transform origin-top shadow-inner pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -107,56 +91,49 @@ export default function CommercialServicesSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={staggerContainer}
-          className="max-w-7xl mx-auto"
+          className="max-w-4xl mx-auto"
         >
-          {/* Main Header */}
-          <motion.div className="mb-32 lg:mb-56 border-b-4 border-blue-dk pb-12" variants={staggerItem}>
-            <div className="flex flex-col lg:flex-row justify-between items-baseline gap-8">
-              <h2 className="text-6xl lg:text-[140px] font-black text-blue-dk leading-none tracking-tighter">
-                SERVICES
-              </h2>
-              <p className="text-2xl lg:text-4xl font-bold text-orange italic">
-                הכוח הפיננסי בידיים שלכם
-              </p>
-            </div>
+          {/* Section Header */}
+          <motion.div className="mb-24 lg:mb-32 text-center" variants={staggerItem}>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-heebo font-black text-blue-dk mb-8 leading-tight">
+              השירותים שלנו: <br />
+              <span className="text-orange">דיוק פיננסי</span> וליווי משפטי
+            </h2>
+            <p className="text-xl md:text-2xl text-blue-dk/70 max-w-2xl mx-auto font-medium leading-relaxed">
+              אנחנו לא רק יועצים, אנחנו השותפים שלכם לדרך לביטחון כלכלי ושקט נפשי.
+            </p>
           </motion.div>
 
-          {/* Service Items */}
-          <div className="space-y-32 lg:space-y-0">
-            {services.map((item, index) => {
-              const isEven = index % 2 === 0;
-              const ServiceArt = item.Art;
+          {/* Services Content - Vertical Stack */}
+          <div className="space-y-32 lg:space-y-48">
+            {services.map((service, index) => {
               return (
-                <motion.div 
+                <motion.div
                   key={index}
                   variants={staggerItem}
-                  className={`flex flex-col lg:flex-row items-stretch min-h-[500px] border-b border-blue-dk/10 last:border-0 ${isEven ? '' : 'lg:flex-row-reverse'}`}
+                  className="flex flex-col items-center text-center"
                 >
-                  {/* Visual Column */}
-                  <div className="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col items-center justify-center relative bg-[#fafafa]">
-                    {/* Number - Clearly visible */}
-                    <div className="absolute top-10 left-10">
-                      <span className="text-8xl lg:text-[180px] font-black text-blue-dk/10 leading-none select-none">
-                        0{index + 1}
-                      </span>
-                    </div>
-                    
-                    <div className="w-64 h-64 lg:w-96 lg:h-96 relative z-10">
-                      <ServiceArt />
-                    </div>
+                  {/* 1. Text Side (Now on Top) */}
+                  <div className="w-full mb-12 space-y-6">
+                    <h3 className="text-3xl lg:text-5xl font-bold text-blue-dk leading-tight">
+                      {service.title}
+                    </h3>
+                    <div className="w-16 h-1 bg-orange mx-auto" />
+                    <p className="text-lg lg:text-xl text-blue-dk/80 leading-relaxed font-medium max-w-3xl mx-auto">
+                      {service.description}
+                    </p>
                   </div>
 
-                  {/* Content Column */}
-                  <div className="w-full lg:w-1/2 p-12 lg:p-24 space-y-8 flex flex-col justify-center">
-                    <div className="space-y-4">
-                      <h3 className="text-4xl lg:text-6xl font-black text-blue-dk leading-tight">
-                        {item.title}
-                      </h3>
-                      <div className="w-20 h-2 bg-orange rounded-full" />
+                  {/* 2. Art Component Side (Now Below) */}
+                  <div className="w-full flex justify-center items-center relative">
+                    {/* Large Background Number */}
+                    <span className="absolute text-[10rem] lg:text-[15rem] font-black text-blue-dk/[0.03] select-none pointer-events-none -z-10">
+                      0{index + 1}
+                    </span>
+                    
+                    <div className="w-64 h-64 lg:w-80 lg:h-80 text-blue-dk drop-shadow-2xl">
+                       <service.Art className="w-full h-full transform hover:scale-105 transition-transform duration-500" />
                     </div>
-                    <p className="text-xl lg:text-3xl text-blue-dk/70 leading-relaxed font-medium">
-                      {item.description}
-                    </p>
                   </div>
                 </motion.div>
               );
