@@ -3,7 +3,7 @@ import Image from "next/image";
 const banks = [
   { name: "בנק לאומי", logo: "/images/bank1.png" },
   { name: "בנק הפועלים", logo: "/images/bank2.png" },
-  { name: "בנק דיסקונט", logo: "/images/bank3.png" },
+  { name: "בנק דיסקונט", logo: "/images/bank3.svg" },
   { name: "בנק מזרחי", logo: "/images/bank4.png" },
   { name: "בנק ירושלים", logo: "/images/bank5.png" },
   { name: "בנק מרכנתיל", logo: "/images/bank6.png" },
@@ -20,7 +20,7 @@ export default function BanksCarousel() {
   const duplicatedBanks = [...banks, ...banks];
 
   return (
-    <section className="py-12 md:py-16" style={{ backgroundColor: "#f9f7f4" }}>
+    <section className="relative py-12 md:py-16 z-0" style={{ backgroundColor: "#f9f7f4" }}>
       <div className="container mx-auto px-4">
         {/* Constrained carousel window */}
         <div className="relative max-w-4xl mx-auto overflow-hidden">

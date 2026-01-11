@@ -2,12 +2,33 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[80vh] pt-32 pb-16 overflow-hidden bg-cream">
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-6">
-          {/* Text Content */}
-          <div className="flex-1 order-2 lg:order-1">
-            <div className="flex flex-col items-start text-right lg:pr-4">
+    <section className="relative min-h-[80vh] overflow-hidden bg-cream z-10">
+      <div className="container mx-auto px-4 relative z-10 h-full">
+        <div className="flex flex-col lg:flex-row h-full min-h-[80vh]">
+          {/* Expert Image - Left Side */}
+          <div className="w-full lg:w-1/2 relative order-2 lg:order-2">
+            <div className="relative h-full min-h-[80vh] flex items-end">
+              {/* Expert Image with next/image optimization */}
+              <Image
+                src="/images/expert.jpeg"
+                alt="אבי - יועץ משכנתאות מומחה"
+                width={600}
+                height={800}
+                priority
+                className="w-full h-full object-cover object-center"
+                style={{
+                  objectPosition: 'center top',
+                  maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%)',
+                  WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%), linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%)',
+                  maskComposite: 'intersect',
+                  WebkitMaskComposite: 'source-in',
+                }}
+              />
+            </div>
+          </div>
+          {/* Text Content - Right Side */}
+          <div className="w-full lg:w-1/2 flex items-center pt-32 pb-16 order-1 lg:order-1">
+            <div className="flex flex-col items-start text-right w-full lg:pr-8">
 
               {/* Main Heading */}
               <h1
@@ -52,26 +73,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Expert Image */}
-          <div className="flex-1 order-1 lg:order-2">
-            <div className="relative text-center">
-              {/* Expert Image with next/image optimization */}
-              <Image
-                src="/images/expert.png"
-                alt="אבי - יועץ משכנתאות מומחה"
-                width={600}
-                height={620}
-                priority
-                className="max-h-[620px] w-auto mx-auto drop-shadow-2xl"
-                style={{
-                  maskImage:
-                    "linear-gradient(to bottom, black 82%, transparent 100%)",
-                  WebkitMaskImage:
-                    "linear-gradient(to bottom, black 82%, transparent 100%)",
-                }}
-              />
-            </div>
-          </div>
         </div>
       </div>
     </section>
