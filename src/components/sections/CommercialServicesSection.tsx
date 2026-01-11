@@ -5,84 +5,103 @@ import { motion } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 /**
- * Custom hook for SVG drawing animation
+ * TypeScript Interfaces
  */
-const draw = {
-  hidden: { pathLength: 0, opacity: 0 },
-  visible: {
-    pathLength: 1,
-    opacity: 1,
-    transition: {
-      pathLength: { type: "spring", duration: 2.5, bounce: 0 },
-      opacity: { duration: 0.5 }
-    }
-  }
-};
+interface IconProps {
+  className?: string;
+}
+
+interface ServiceItem {
+  title: string;
+  description: string;
+  Art: React.FC<IconProps>;
+}
 
 /**
- * --- Premium Abstract Legal Art ---
+ * --- SOLID & BOLD ART COMPONENTS ---
+ * Thicker lines (strokeWidth 3-4) for maximum visibility.
  */
 
-const ArtConsolidation = () => (
-  <svg viewBox="0 0 200 200" className="w-full h-full text-blue-dk">
-    <motion.path d="M40 100 L100 40 L160 100 L100 160 Z" stroke="currentColor" strokeWidth="1" fill="none" variants={draw} />
-    <motion.path d="M40 100 H160" stroke="currentColor" strokeWidth="0.5" opacity="0.3" variants={draw} />
-    <motion.path d="M100 40 V160" stroke="currentColor" strokeWidth="0.5" opacity="0.3" variants={draw} />
-    <motion.circle cx="100" cy="100" r="10" fill="currentColor" className="text-orange" initial={{ scale: 0 }} whileInView={{ scale: 1 }} />
+const ArtConsolidation: React.FC<IconProps> = ({ className }) => (
+  <svg viewBox="0 0 200 200" className={className || "w-full h-full text-blue-dk"}>
+    <rect x="40" y="150" width="120" height="10" fill="currentColor" opacity="0.2" />
+    <motion.path 
+      d="M100 30 L160 80 V150 H40 V80 L100 30Z" 
+      stroke="currentColor" 
+      strokeWidth="3" 
+      fill="none" 
+    />
+    <motion.path 
+      d="M70 110 H130" 
+      stroke="currentColor" 
+      strokeWidth="4" 
+      className="text-orange" 
+    />
+    <circle cx="100" cy="75" r="15" fill="currentColor" className="text-orange" />
   </svg>
 );
 
-const ArtRecycle = () => (
-  <svg viewBox="0 0 200 200" className="w-full h-full text-blue-dk">
-    <motion.circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" variants={draw} />
-    <motion.path d="M100 40 V160 M40 100 H160" stroke="currentColor" strokeWidth="1" variants={draw} />
-    <motion.path d="M140 60 L160 40 M160 40 H130 M160 40 V70" stroke="currentColor" strokeWidth="2" className="text-orange" variants={draw} />
+const ArtRecycle: React.FC<IconProps> = ({ className }) => (
+  <svg viewBox="0 0 200 200" className={className || "w-full h-full text-blue-dk"}>
+    <path d="M160 100 A60 60 0 1 1 40 100 A60 60 0 1 1 160 100" stroke="currentColor" strokeWidth="3" strokeDasharray="10 5" />
+    <path d="M100 60 V140 M60 100 H140" stroke="currentColor" strokeWidth="2" opacity="0.3" />
+    <motion.path 
+      d="M130 50 L160 50 V80" 
+      stroke="currentColor" 
+      strokeWidth="4" 
+      className="text-orange" 
+      strokeLinecap="round" 
+    />
   </svg>
 );
 
-const ArtTreeHouse = () => (
-  <svg viewBox="0 0 200 200" className="w-full h-full text-blue-dk">
-    <motion.path d="M100 160 V100 M70 130 L100 100 L130 130" stroke="currentColor" strokeWidth="1.5" variants={draw} />
-    <motion.path d="M60 100 C60 60, 140 60, 140 100" stroke="currentColor" strokeWidth="1" className="text-orange" variants={draw} />
-    <motion.path d="M100 60 V40" stroke="currentColor" strokeWidth="1" variants={draw} />
+const ArtTreeHouse: React.FC<IconProps> = ({ className }) => (
+  <svg viewBox="0 0 200 200" className={className || "w-full h-full text-blue-dk"}>
+    <path d="M100 170 V100" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+    <path d="M50 100 L100 50 L150 100" stroke="currentColor" strokeWidth="4" className="text-orange" />
+    <path d="M100 50 C140 10, 180 60, 150 100" stroke="currentColor" strokeWidth="2" opacity="0.4" />
+    <path d="M100 50 C60 10, 20 60, 50 100" stroke="currentColor" strokeWidth="2" opacity="0.4" />
   </svg>
 );
 
-const ArtRefusal = () => (
-  <svg viewBox="0 0 200 200" className="w-full h-full text-blue-dk">
-    <motion.rect x="60" y="60" width="80" height="80" stroke="currentColor" strokeWidth="1" variants={draw} />
-    <motion.path d="M140 100 H180 M165 85 L180 100 L165 115" stroke="currentColor" strokeWidth="2" className="text-orange" variants={draw} />
-    <motion.circle cx="100" cy="100" r="20" stroke="currentColor" strokeWidth="0.5" opacity="0.4" variants={draw} />
+const ArtRefusal: React.FC<IconProps> = ({ className }) => (
+  <svg viewBox="0 0 200 200" className={className || "w-full h-full text-blue-dk"}>
+    <rect x="50" y="40" width="100" height="130" stroke="currentColor" strokeWidth="3" fill="none" />
+    <circle cx="100" cy="105" r="25" stroke="currentColor" strokeWidth="4" className="text-orange" />
+    <path d="M100 105 L120 125" stroke="currentColor" strokeWidth="4" className="text-orange" strokeLinecap="round" />
   </svg>
 );
 
-const services = [
+const services: ServiceItem[] = [
   {
     title: "איחוד הלוואות – להחזיר את האוויר לנשימה",
-    description: "מינוף נכס קיים לאיחוד הלוואות יקרות למשכנתא אחת מסודרת בפריסה ארוכה. אנחנו מקטינים את ההחזר החודשי באלפי שקלים ומחזירים לכם את השקט הכלכלי.",
+    description: "אנחנו מומחים במינוף הנכס הקיים כדי לאחד את כל ההלוואות היקרות למשכנתא אחת מסודרת. המטרה שלנו היא להקטין את ההחזר החודשי באלפי שקלים ולהעניק לכם שקט נפשי.",
     Art: ArtConsolidation,
   },
   {
     title: "מיחזור משכנתא – למה שתשלמו יותר?",
-    description: "בדיקת כדאיות מקיפה ללא עלות. אנחנו בוחנים את הסטטוס הכלכלי העדכני שלכם ומתאימים את תנאי המשכנתא לריביות האופטימליות בשוק כיום.",
+    description: "בדיקת כדאיות מקיפה ללא עלות. אנחנו בוחנים את הסטטוס הכלכלי העדכני שלכם ומתאימים את תנאי המשכנתא לריביות האופטימליים בשוק כיום כדי לחסוך לכם הון.",
     Art: ArtRecycle,
   },
   {
     title: "משכנתא לזוגות צעירים ולציבור החרדי",
-    description: "השגת אחוזי מימון מקסימליים וטיפול בתוכניות 'מחיר למשתכן'. מומחיות ייחודית בליווי המגזר החרדי וזוגות בתחילת דרכם.",
+    description: "השגת אחוזי מימון מקסימליים וטיפול בתוכניות 'מחיר למשתכן'. מומחיות ייחודית בליווי המגזר החרדי וזוגות בתחילת דרכם להשגת הבית הראשון.",
     Art: ArtTreeHouse,
   },
   {
     title: "פתרונות למסורבי בנקים (BDI שלילי)",
-    description: "גם אם קיבלתם סירוב - זה לא סוף הדרך. בזכות היכרות עמוקה עם המערכת המשפטית והבנקאית, אנו בונים את התיק מחדש כדי להשיג אישור.",
+    description: "אל תוותרו על החלום. בזכות היכרות עמוקה עם המערכת המשפטית והבנקאית, אנו בונים את התיק מחדש בצורה מקצועית כדי להפוך סירוב לאישור.",
     Art: ArtRefusal,
   },
 ];
 
 export default function CommercialServicesSection() {
   return (
-    <section className="relative bg-[#F9F8F6] py-24 lg:py-48 overflow-hidden" dir="rtl">
-      <div className="container mx-auto px-6">
+    <section className="relative bg-white py-24 lg:py-48 text-right overflow-hidden" dir="rtl">
+      {/* Structural divider line for Desktop */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-blue-dk/10 hidden lg:block" />
+
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -90,60 +109,56 @@ export default function CommercialServicesSection() {
           variants={staggerContainer}
           className="max-w-7xl mx-auto"
         >
-          {/* Header Area */}
-          <motion.div className="mb-32 text-right" variants={staggerItem}>
-            <span className="text-orange font-bold tracking-[0.2em] text-sm uppercase block mb-4">Our Expertise</span>
-            <h2 className="text-5xl lg:text-8xl font-black text-blue-dk leading-none tracking-tighter">
-              השירותים <br /> <span className="text-orange">שלנו</span>
-            </h2>
+          {/* Main Header */}
+          <motion.div className="mb-32 lg:mb-56 border-b-4 border-blue-dk pb-12" variants={staggerItem}>
+            <div className="flex flex-col lg:flex-row justify-between items-baseline gap-8">
+              <h2 className="text-6xl lg:text-[140px] font-black text-blue-dk leading-none tracking-tighter">
+                SERVICES
+              </h2>
+              <p className="text-2xl lg:text-4xl font-bold text-orange italic">
+                הכוח הפיננסי בידיים שלכם
+              </p>
+            </div>
           </motion.div>
 
-          {/* List Area */}
-          <div className="space-y-40 lg:space-y-64">
+          {/* Service Items */}
+          <div className="space-y-32 lg:space-y-0">
             {services.map((item, index) => {
               const isEven = index % 2 === 0;
+              const ServiceArt = item.Art;
               return (
-                <div 
+                <motion.div 
                   key={index}
-                  className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-16 lg:gap-32`}
+                  variants={staggerItem}
+                  className={`flex flex-col lg:flex-row items-stretch min-h-[500px] border-b border-blue-dk/10 last:border-0 ${isEven ? '' : 'lg:flex-row-reverse'}`}
                 >
-                  {/* Art side with large Outlined Number */}
-                  <div className="w-full lg:w-1/2 relative group">
-                    {/* The Number - Now with high-end Outline style */}
-                    <motion.div 
-                      initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 1, delay: 0.2 }}
-                      className={`absolute -top-16 ${isEven ? '-right-10' : '-left-10'} select-none z-0`}
-                    >
-                      <span className="text-[12rem] lg:text-[20rem] font-black leading-none text-transparent stroke-blue-dk stroke-1 opacity-[0.07]" style={{ WebkitTextStroke: '1px var(--blue-dk)' }}>
+                  {/* Visual Column */}
+                  <div className="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col items-center justify-center relative bg-[#fafafa]">
+                    {/* Number - Clearly visible */}
+                    <div className="absolute top-10 left-10">
+                      <span className="text-8xl lg:text-[180px] font-black text-blue-dk/10 leading-none select-none">
                         0{index + 1}
                       </span>
-                    </motion.div>
-
-                    {/* SVG Holder */}
-                    <motion.div 
-                      className="relative z-10 w-64 h-64 lg:w-[400px] lg:h-[400px] mx-auto"
-                      animate={{ y: [0, -10, 0] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <item.Art />
-                    </motion.div>
+                    </div>
+                    
+                    <div className="w-64 h-64 lg:w-96 lg:h-96 relative z-10">
+                      <ServiceArt />
+                    </div>
                   </div>
 
-                  {/* Content side */}
-                  <div className="w-full lg:w-1/2 text-right space-y-6">
-                    <motion.div variants={staggerItem}>
-                       <h3 className="text-3xl lg:text-6xl font-black text-blue-dk leading-tight mb-6">
+                  {/* Content Column */}
+                  <div className="w-full lg:w-1/2 p-12 lg:p-24 space-y-8 flex flex-col justify-center">
+                    <div className="space-y-4">
+                      <h3 className="text-4xl lg:text-6xl font-black text-blue-dk leading-tight">
                         {item.title}
                       </h3>
-                      <div className="w-20 h-1 bg-orange mb-8" />
-                      <p className="text-xl lg:text-2xl text-blue-dk/70 leading-relaxed font-medium">
-                        {item.description}
-                      </p>
-                    </motion.div>
+                      <div className="w-20 h-2 bg-orange rounded-full" />
+                    </div>
+                    <p className="text-xl lg:text-3xl text-blue-dk/70 leading-relaxed font-medium">
+                      {item.description}
+                    </p>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
