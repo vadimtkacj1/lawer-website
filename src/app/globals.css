@@ -6,6 +6,15 @@
 @layer base {
   html {
     direction: rtl;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
@@ -13,22 +22,100 @@
     background-color: #f9f7f4;
   }
 
+  /* Header height variable for spacing */
+  :root {
+    --header-height: 80px;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --header-height: 90px;
+    }
+  }
+
+  /* Ultra-smooth scrolling with custom timing */
+  @supports (scroll-behavior: smooth) {
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--header-height);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+
+  /* Enhanced smooth scrolling for all elements */
+  * {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* Performance optimizations for smooth scrolling */
+  html, body {
+    will-change: scroll-position;
+    overscroll-behavior-y: none;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-heebo font-black tracking-tight;
   }
+
+  /* Custom Scrollbar - Premium Design */
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f9f7f4;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #1c3664 0%, #0d1f3c 100%);
+    border-radius: 10px;
+    border: 3px solid #f9f7f4;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #f26722 0%, #e05010 100%);
+    border-color: #f9f7f4;
+    border-width: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(180deg, #f26722 0%, #d94a0e 100%);
+  }
+
+  /* Firefox Scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #1c3664 #f9f7f4;
+  }
+
+  *:hover {
+    scrollbar-color: #f26722 #f9f7f4;
+  }
+
 }
 
 /* Custom component styles */
 @layer components {
   .btn-primary {
     @apply bg-orange text-white font-extrabold px-8 py-3 rounded-lg
-           shadow-lg transition-all duration-300 hover:bg-orange-hover
-           hover:-translate-y-0.5 hover:shadow-xl;
+           shadow-lg hover:bg-orange-hover hover:-translate-y-0.5 hover:shadow-xl;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .btn-outline {
     @apply border-2 border-blue-dk text-blue-dk font-extrabold px-6 py-2
-           rounded-lg transition-all duration-300 hover:bg-blue-dk hover:text-white;
+           rounded-lg hover:bg-blue-dk hover:text-white;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .section-title {
@@ -53,3 +140,66 @@
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 }
+
+/* Hero button pulse animation */
+@keyframes button-pulse {
+  0%, 100% {
+    box-shadow: 0 12px 30px rgba(242, 103, 34, 0.4),
+                0 0 0 0 rgba(242, 103, 34, 0.5),
+                0 0 0 0 rgba(242, 103, 34, 0.3);
+  }
+  50% {
+    box-shadow: 0 15px 45px rgba(242, 103, 34, 0.6),
+                0 0 0 10px rgba(242, 103, 34, 0),
+                0 0 0 20px rgba(242, 103, 34, 0);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.hero-cta-button {
+  animation: button-pulse 2s ease-in-out infinite;
+  will-change: box-shadow, transform;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* Banks marquee styles - let library handle styling */
+.banks-marquee {
+  cursor: pointer;
+}
+
+.banks-marquee img {
+  height: 40px !important;
+  width: auto !important;
+  max-width: 120px !important;
+  object-fit: contain !important;
+  pointer-events: none;
+}
+
+/* FullScreenLoader animations */
+@keyframes float-dots {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.6;
+  }
+}
+
+.loader-float-dot {
+  animation: float-dots ease-in-out infinite;
+}
+
+

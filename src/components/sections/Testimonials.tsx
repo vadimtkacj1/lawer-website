@@ -2,6 +2,13 @@
 
 import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
+import {
+  fadeInUpFast,
+  staggerContainer,
+  staggerItem,
+  viewportOptions,
+} from "@/lib/animations";
 
 const testimonials = [
   {
@@ -131,12 +138,24 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="py-20" style={{ backgroundColor: "#f9f7f4" }}>
       <div className="container mx-auto px-4">
-        <h2 className="section-title">לקוחות מספרים</h2>
+        <motion.h2
+          className="section-title"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOptions}
+          variants={fadeInUpFast}
+        >
+          לקוחות מספרים
+        </motion.h2>
 
-        <div
+        <motion.div
           className="relative"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOptions}
+          variants={staggerContainer}
         >
           {/* Navigation Arrows */}
           <button
@@ -204,6 +223,7 @@ export default function Testimonials() {
                               alt={testimonial.name}
                               width={85}
                               height={85}
+                              sizes="85px"
                               className="w-[85px] h-[85px] rounded-full mx-auto object-cover
                                          border-3 border-blue-dk"
                             />
@@ -251,7 +271,7 @@ export default function Testimonials() {
           <div className="text-center mt-4 text-blue-dk/60 text-sm">
             {currentSlide + 1} / {totalSlides}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

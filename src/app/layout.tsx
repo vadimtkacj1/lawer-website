@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Heebo } from "next/font/google";
 import "./globals.css";
+import CursorFollower from "@/components/ui/CursorFollower";
+import SmoothScrollProvider from "@/components/ui/SmoothScrollProvider";
+import FullScreenLoader from "@/components/ui/FullScreenLoader";
 
 // Hebrew-friendly font with next/font for optimal loading
 const heebo = Heebo({
@@ -24,8 +27,18 @@ export const metadata: Metadata = {
     "משכנתא",
     "מחזור משכנתא",
     "יועץ משכנתאות חולון",
+    "יועץ משכנתאות בת ים",
+    "יועץ משכנתאות תל אביב",
+    "יועץ משכנתאות ראשון לציון",
     "משכנתא לדירה ראשונה",
     "ייעוץ משכנתאות",
+    "חיסכון במשכנתא",
+    "משפטן פיננסי",
+    "מסורבי בנק",
+    "מחזור משכנתא חולון",
+    "ייעוץ משכנתאות מקצועי",
+    "משכנתא למשקיעים",
+    "ליווי משפטי משכנתא",
   ],
   authors: [{ name: "אבי - הבית למשכנתאות" }],
   creator: "אבי - הבית למשכנתאות",
@@ -81,7 +94,21 @@ export default function RootLayout({
       dir="rtl"
       className={heebo.variable}
     >
-      <body className="font-heebo antialiased">{children}</body>
+      <head>
+        {/* Preconnect to external domains for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* DNS prefetch for social media */}
+        <link rel="dns-prefetch" href="https://www.facebook.com" />
+        <link rel="dns-prefetch" href="https://www.instagram.com" />
+        <link rel="dns-prefetch" href="https://wa.me" />
+      </head>
+            <body className="font-heebo antialiased">
+              <FullScreenLoader />
+              <SmoothScrollProvider />
+              <CursorFollower />
+              {children}
+            </body>
     </html>
   );
 }

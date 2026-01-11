@@ -1,6 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  fadeInUpFast,
+  staggerContainer,
+  staggerItem,
+  viewportOptions,
+} from "@/lib/animations";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -26,16 +33,22 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20" style={{ backgroundColor: "#f9f7f4" }}>
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-12 md:py-16 lg:py-20" style={{ backgroundColor: "#f9f7f4" }}>
+      <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col items-center gap-8">
+          <motion.div
+            className="flex flex-col items-center gap-6 md:gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+            variants={staggerContainer}
+          >
             {/* Contact Details */}
-            <div className="text-center">
-              <h2 className="text-5xl md:text-6xl font-black text-blue-dk mb-4">
+            <motion.div className="text-center" variants={staggerItem}>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-blue-dk mb-3 md:mb-4">
                 דברו איתי
               </h2>
-              <p className="text-xl md:text-2xl font-bold text-blue-dk/80 mb-6 max-w-md mx-auto">
+              <p className="text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-blue-dk/80 mb-4 md:mb-6 max-w-md mx-auto px-4">
                 השאירו פרטים ונחזור אליכם בהקדם לשיחת ייעוץ ראשונית ללא
                 התחייבות.
               </p>
@@ -76,13 +89,14 @@ export default function Contact() {
                   </span>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Contact Form */}
-            <form
+            <motion.form
               onSubmit={handleSubmit}
               className="w-full max-w-md"
               noValidate
+              variants={staggerItem}
             >
               <div className="flex flex-col gap-3">
                 <input
@@ -124,8 +138,8 @@ export default function Contact() {
                   שלח הודעה
                 </button>
               </div>
-            </form>
-          </div>
+            </motion.form>
+          </motion.div>
         </div>
       </div>
     </section>

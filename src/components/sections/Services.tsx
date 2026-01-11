@@ -1,6 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  fadeInUpFast,
+  staggerContainer,
+  staggerItem,
+  viewportOptions,
+} from "@/lib/animations";
 
 const services = [
   {
@@ -62,19 +69,38 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="relative py-20 z-0 bg-cream">
-      <div className="container mx-auto px-4">
-        <h2 className="section-title">השירותים שלנו</h2>
+    <section id="services" className="relative py-12 md:py-16 lg:py-20 z-0 bg-cream">
+      <div className="container mx-auto px-4 md:px-6">
+        <motion.h2
+          className="section-title text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOptions}
+          variants={fadeInUpFast}
+        >
+          השירותים שלנו
+        </motion.h2>
 
         <div className="max-w-[1200px] mx-auto">
           {/* Unified block container */}
-          <nav className="flex flex-col md:flex-row" style={{ perspective: "2000px" }}>
+          <motion.nav
+            className="flex flex-col md:flex-row"
+            style={{ perspective: "2000px" }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+            variants={staggerContainer}
+          >
             {services.map((service, index) => (
-              <Link
+              <motion.div
                 key={service.href}
-                href={service.href}
-                className="group flex-1 relative"
+                className="flex-1 relative"
+                variants={staggerItem}
               >
+                <Link
+                  href={service.href}
+                  className="group block h-full"
+                >
                 {/* Background shadow that appears when card lifts */}
                 <div
                   className="absolute inset-0 bg-gradient-to-br from-blue-dk/20 to-orange/10
@@ -138,8 +164,9 @@ export default function Services() {
                   </div>
                 </div>
               </Link>
+              </motion.div>
             ))}
-          </nav>
+          </motion.nav>
         </div>
       </div>
     </section>

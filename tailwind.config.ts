@@ -20,12 +20,12 @@ const config: Config = {
         heebo: ["var(--font-heebo)", "sans-serif"],
       },
       animation: {
-        "banks-scroll": "banksScroll 20s linear infinite",
+        "banks-scroll": "banksScroll 40s linear infinite",
       },
       keyframes: {
         banksScroll: {
           "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(-33.333%)" },
         },
       },
     },

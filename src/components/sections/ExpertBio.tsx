@@ -1,5 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  fadeInUpFast,
+  fadeInLeft,
+  fadeInRight,
+  staggerContainer,
+  staggerItem,
+  scaleIn,
+  viewportOptions,
+} from "@/lib/animations";
 
 const highlights = [
   {
@@ -35,57 +47,110 @@ const highlights = [
 
 export default function ExpertBio() {
   return (
-    <section id="about-expert" className="py-24" style={{ backgroundColor: "#f9f7f4" }}>
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+    <section id="about-expert" className="py-12 md:py-20 lg:py-24" style={{ backgroundColor: "#f9f7f4" }}>
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12 lg:gap-20">
           {/* Image */}
-          <div className="flex-1">
+          <motion.div
+            className="flex-1"
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOptions}
+            variants={fadeInRight}
+          >
             <Image
               src="/images/lawyer-photo.jpg"
               alt="אבי - עורך דין ומשפטן פיננסי"
               width={500}
               height={600}
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="w-full rounded-[40px] shadow-2xl"
             />
-          </div>
+          </motion.div>
 
           {/* Content */}
           <div className="flex-[1.2] text-center lg:text-right">
-            <h2
-              className="font-heebo font-black text-blue-dk mb-6 leading-tight"
-              style={{ fontSize: "clamp(40px, 5vw, 62px)" }}
+            <motion.h2
+              className="font-heebo font-black text-blue-dk mb-4 md:mb-6 leading-tight text-center lg:text-right"
+              style={{ fontSize: "clamp(28px, 6vw, 62px)" }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOptions}
+              variants={fadeInUpFast}
             >
               הכוח המשפטי מאחורי המשכנתא שלכם
-            </h2>
+            </motion.h2>
 
-            <p className="text-2xl font-bold text-blue-dk/90 leading-relaxed mb-8">
+            <motion.p
+              className="text-lg md:text-xl lg:text-2xl font-bold text-blue-dk/90 leading-relaxed mb-6 md:mb-8 text-center lg:text-right"
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOptions}
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.7,
+                    delay: 0.2,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                  },
+                },
+              }}
+            >
               שלום, אני אבי. כמשפטן פיננסי המתמחה בדיני בנקאות, אני לא רק בונה
               לכם תמהיל חסכוני — אני מוודא שכל אות בחוזה משרתת את האינטרסים שלכם.
               הניסיון שלי מול המערכות הבנקאיות מאפשר לי להשיג עבורכם תנאים
               שיועצים רגילים פשוט לא יכולים להגיע אליהם.
-            </p>
+            </motion.p>
 
-            <ul className="space-y-4 mb-10">
+            <motion.ul
+              className="space-y-4 mb-10"
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOptions}
+              variants={staggerContainer}
+            >
               {highlights.map((item, index) => (
-                <li
+                <motion.li
                   key={index}
                   className="flex items-center gap-3 text-xl font-black
                              justify-center lg:justify-start"
+                  variants={staggerItem}
                 >
                   <span className="text-orange">{item.icon}</span>
                   <span>{item.text}</span>
-                </li>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
 
-            <Link
-              href="/about"
-              className="inline-block px-10 py-4 border-2 border-blue-dk text-blue-dk
-                         text-xl font-black rounded-xl transition-all duration-300
-                         hover:bg-blue-dk hover:text-white"
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOptions}
+              variants={{
+                hidden: { opacity: 0, scale: 0.9 },
+                visible: {
+                  opacity: 1,
+                  scale: 1,
+                  transition: {
+                    duration: 0.6,
+                    delay: 0.5,
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                  },
+                },
+              }}
             >
-              קראו עוד על הניסיון שלי
-            </Link>
+              <Link
+                href="/about"
+                className="inline-block px-10 py-4 bg-blue-dk text-white
+                           text-xl font-black rounded-xl transition-all duration-300
+                           shadow-lg hover:bg-blue-dk/90 hover:-translate-y-0.5 hover:shadow-xl"
+              >
+                קראו עוד על הניסיון שלי
+              </Link>
+            </motion.div>
           </div>
         </div>
       </div>

@@ -1,4 +1,6 @@
-export default function FixedWidgets() {
+"use client";
+
+export default function Widgets() {
   return (
     <>
       {/* WhatsApp Widget */}
@@ -6,13 +8,13 @@ export default function FixedWidgets() {
         href="https://wa.me/972500000000"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-50 w-16 h-16 rounded-xl bg-[#25d366]
+        className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 w-14 h-14 md:w-16 md:h-16 rounded-xl bg-[#25d366]
                    flex items-center justify-center shadow-lg
-                   transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                   transition-all duration-300 hover:-translate-y-1 hover:shadow-xl active:scale-95"
         aria-label="WhatsApp"
       >
         <svg
-          className="w-9 h-9 text-white"
+          className="w-8 h-8 md:w-9 md:h-9 text-white"
           fill="currentColor"
           viewBox="0 0 16 16"
         >
@@ -22,14 +24,14 @@ export default function FixedWidgets() {
 
       {/* Accessibility Widget */}
       <button
-        className="fixed bottom-8 left-8 z-50 w-16 h-16 rounded-xl bg-[#2563eb]
+        className="fixed bottom-4 left-4 md:bottom-8 md:left-8 z-50 w-14 h-14 md:w-16 md:h-16 rounded-xl bg-[#2563eb]
                    flex items-center justify-center shadow-lg
-                   transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-[#1d4ed8]"
+                   transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-[#1d4ed8] active:scale-95"
         aria-label="נגישות"
         title="נגישות"
       >
         <svg
-          className="w-8 h-8 text-white"
+          className="w-7 h-7 md:w-8 md:h-8 text-white"
           fill="currentColor"
           viewBox="0 0 16 16"
         >

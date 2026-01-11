@@ -1,22 +1,65 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
-import BanksCarousel from "@/components/sections/BanksCarousel";
-import ExpertBio from "@/components/sections/ExpertBio";
-import Services from "@/components/sections/Services";
-import Testimonials from "@/components/sections/Testimonials";
-import Contact from "@/components/sections/Contact";
-import FAQ from "@/components/sections/FAQ";
-import Footer from "@/components/sections/Footer";
-import FixedWidgets from "@/components/ui/FixedWidgets";
 
-// Page-specific metadata
+// Lazy load components below the fold for better performance
+const BanksCarousel = dynamic(() => import("@/components/sections/BanksCarousel"), {
+  loading: () => <div className="h-32 bg-cream" />,
+});
+const ExpertBio = dynamic(() => import("@/components/sections/ExpertBio"));
+const Services = dynamic(() => import("@/components/sections/Services"));
+const Testimonials = dynamic(() => import("@/components/sections/Testimonials"));
+const Contact = dynamic(() => import("@/components/sections/Contact"));
+const FAQ = dynamic(() => import("@/components/sections/FAQ"));
+const Footer = dynamic(() => import("@/components/sections/Footer"));
+const Widgets = dynamic(() => import("@/components/ui/Widgets"));
+
+// Page-specific metadata with enhanced SEO
 export const metadata: Metadata = {
   title: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
   description:
     "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז. חיסכון ממוצע של 180,000 ש״ח למשפחה. ליווי משפטי מלא, התמחות במסורבי בנק.",
+  keywords: [
+    "יועץ משכנתאות",
+    "משכנתא",
+    "מחזור משכנתא",
+    "יועץ משכנתאות חולון",
+    "יועץ משכנתאות בת ים",
+    "יועץ משכנתאות תל אביב",
+    "יועץ משכנתאות ראשון לציון",
+    "משכנתא לדירה ראשונה",
+    "ייעוץ משכנתאות",
+    "חיסכון במשכנתא",
+    "משפטן פיננסי",
+    "מסורבי בנק",
+    "מחזור משכנתא חולון",
+    "ייעוץ משכנתאות מקצועי",
+  ],
   alternates: {
     canonical: "https://avi-home.co.il",
+  },
+  openGraph: {
+    title: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
+    description: "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז. חיסכון ממוצע של 180,000 ש״ח למשפחה.",
+    url: "https://avi-home.co.il",
+    siteName: "אבי - הבית למשכנתאות",
+    locale: "he_IL",
+    type: "website",
+    images: [
+      {
+        url: "https://avi-home.co.il/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "אבי - הבית למשכנתאות - ייעוץ משכנתאות מקצועי",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
+    description: "ייעוץ משכנתאות מקצועי ואובייקטיבי. חיסכון ממוצע של 180,000 ש״ח למשפחה.",
+    images: ["https://avi-home.co.il/images/og-image.jpg"],
   },
 };
 
@@ -81,6 +124,16 @@ function JsonLd() {
           reviewCount: "150",
         },
       },
+      // Website
+      {
+        "@type": "WebSite",
+        "@id": "https://avi-home.co.il/#website",
+        url: "https://avi-home.co.il",
+        name: "אבי - הבית למשכנתאות",
+        description: "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז",
+        inLanguage: "he-IL",
+        publisher: { "@id": "https://avi-home.co.il/#organization" },
+      },
       // WebPage
       {
         "@type": "WebPage",
@@ -92,6 +145,20 @@ function JsonLd() {
         isPartOf: { "@id": "https://avi-home.co.il/#website" },
         about: { "@id": "https://avi-home.co.il/#business" },
         inLanguage: "he-IL",
+        breadcrumb: { "@id": "https://avi-home.co.il/#breadcrumb" },
+      },
+      // BreadcrumbList
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://avi-home.co.il/#breadcrumb",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "דף הבית",
+            item: "https://avi-home.co.il",
+          },
+        ],
       },
       // FAQPage
       {
@@ -149,7 +216,7 @@ export default function HomePage() {
         <FAQ />
       </main>
       <Footer />
-      <FixedWidgets />
+      <Widgets />
     </>
   );
 }

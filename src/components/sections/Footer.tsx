@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeInUp, staggerContainer, staggerItem, viewportOptions } from "@/lib/animations";
 
 const serviceLinks = [
   { href: "/services/first-home", label: "משכנתא לדירה ראשונה" },
@@ -29,46 +33,48 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-blue-dk text-white py-16">
+    <footer className="bg-blue-dk text-white py-16" dir="rtl">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 text-center lg:text-right">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 items-start"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOptions}
+          variants={staggerContainer}
+        >
           {/* About */}
-          <div>
+          <motion.div variants={staggerItem} className="flex flex-col items-start lg:items-center text-right lg:text-center">
             <h3 className="text-orange font-black text-xl mb-4">
               אבי - הבית למשכנתאות
             </h3>
-            <p className="text-white/70 text-lg font-semibold leading-relaxed">
+            <p className="text-white/70 text-lg font-semibold leading-relaxed max-w-sm">
               ליווי מקצועי ואובייקטיבי בתהליך לקיחת המשכנתא. אנחנו עובדים
-              בשבילכם, לא בשביל הבנק, כדי להבטיח את התנאים המשתלמים ביותר בשוק.
+              בשבילכם, לא בשביל הבנק, כדי להבטיח את התנאים המשתלמים ביותר.
             </p>
-          </div>
+          </motion.div>
 
           {/* Services */}
-          <div>
+          <motion.div variants={staggerItem} className="flex flex-col items-start lg:items-center text-right lg:text-center">
             <h3 className="text-orange font-black text-xl mb-4">השירותים שלנו</h3>
-            <nav className="space-y-2">
+            <nav className="flex flex-col space-y-2 w-full">
               {serviceLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="block text-white/70 text-lg font-semibold hover:text-white transition-colors"
+                  className="text-white/70 text-lg font-semibold hover:text-white transition-colors"
                 >
                   {link.label}
                 </Link>
               ))}
             </nav>
-          </div>
+          </motion.div>
 
           {/* Contact */}
-          <div>
+          <motion.div variants={staggerItem} className="flex flex-col items-start lg:items-center text-right lg:text-center">
             <h3 className="text-orange font-black text-xl mb-4">צרו קשר</h3>
-            <address className="not-italic space-y-2 text-white/70 text-lg font-semibold">
-              <p className="flex items-center gap-2 justify-center lg:justify-start">
-                <svg
-                  className="w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
+            <address className="not-italic space-y-2 text-white/70 text-lg font-semibold w-full">
+              <p className="flex items-center gap-2 justify-start lg:justify-center">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
                   <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
                   <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                 </svg>
@@ -77,7 +83,7 @@ export default function Footer() {
             </address>
 
             {/* Social Links */}
-            <div className="flex gap-4 mt-6 justify-center lg:justify-start">
+            <div className="flex gap-4 mt-6 justify-start lg:justify-center w-full">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
@@ -91,16 +97,21 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Copyright */}
-        <div className="border-t border-white/20 mt-12 pt-8 text-center">
+        <motion.div
+          className="border-t border-white/20 mt-12 pt-8 text-center"
+          whileInView="visible"
+          viewport={viewportOptions}
+          variants={fadeInUp}
+        >
           <p className="text-white/70 text-lg font-semibold">
             © {new Date().getFullYear()} אבי - הבית למשכנתאות. כל הזכויות
             שמורות. תכנון נכון שחוסך לכם כסף.
           </p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

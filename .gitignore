@@ -18,6 +18,9 @@ desktop.ini
 *.njsproj
 *.sln
 *.sw*
+.cursor/
+.clouade/
+.cursorrules
 
 # --- Environment Secrets (Crucial) ---
 .env

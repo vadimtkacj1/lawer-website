@@ -1,53 +1,48 @@
-import Image from "next/image";
+"use client";
+
+import { motion } from "framer-motion";
+import { fadeInUp, viewportOptions } from "@/lib/animations";
+import InfiniteMarquee from "@/components/ui/InfiniteMarquee";
 
 const banks = [
-  { name: "בנק לאומי", logo: "/images/bank1.png" },
-  { name: "בנק הפועלים", logo: "/images/bank2.png" },
-  { name: "בנק דיסקונט", logo: "/images/bank3.svg" },
-  { name: "בנק מזרחי", logo: "/images/bank4.png" },
-  { name: "בנק ירושלים", logo: "/images/bank5.png" },
-  { name: "בנק מרכנתיל", logo: "/images/bank6.png" },
-  { name: "בנק מרכנתיל", logo: "/images/bank7.png" },
-  { name: "בנק מרכנתיל", logo: "/images/bank8.png" },
-  { name: "בנק מרכנתיל", logo: "/images/bank9.png" },
-  { name: "בנק מרכנתיל", logo: "/images/bank10.png" },
-  { name: "בנק מרכנתיל", logo: "/images/bank11.png" },
-  { name: "בנק מרכנתיל", logo: "/images/bank12.png" },
+  { name: "Bank Leumi", logo: "/images/bank1.png" },
+  { name: "Bank Hapoalim", logo: "/images/bank2.png" },
+  { name: "Discount Bank", logo: "/images/bank3.svg" },
+  { name: "Mizrahi Tefahot", logo: "/images/bank4.png" },
+  { name: "Bank Of Jerusalem", logo: "/images/bank5.png" },
+  { name: "Mercantile Bank", logo: "/images/bank6.png" },
+  { name: "First International", logo: "/images/bank7.png" },
+  { name: "Massad Bank", logo: "/images/bank8.png" },
 ];
 
 export default function BanksCarousel() {
-  // Duplicate banks for seamless infinite scroll (need at least 2x for seamless loop)
-  const duplicatedBanks = [...banks, ...banks];
+  const bankLogos = banks.map((bank) => bank.logo);
 
   return (
-    <section className="relative py-12 md:py-16 z-0" style={{ backgroundColor: "#f9f7f4" }}>
-      <div className="container mx-auto px-4">
-        {/* Constrained carousel window */}
-        <div className="relative max-w-4xl mx-auto overflow-hidden">
-          {/* Gradient masks on sides for fade effect */}
-          <div className="absolute inset-y-0 left-0 w-16 md:w-24 bg-gradient-to-r from-[#f9f7f4] to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-16 md:w-24 bg-gradient-to-l from-[#f9f7f4] to-transparent z-10 pointer-events-none" />
-
-          {/* Infinite scrolling track */}
-          <div className="flex animate-banks-scroll" style={{ width: "fit-content" }}>
-            {duplicatedBanks.map((bank, index) => (
-              <div
-                key={`${bank.name}-${index}`}
-                className="flex-shrink-0 px-6 md:px-8 flex items-center justify-center"
-              >
-                <Image
-                  src={bank.logo}
-                  alt={bank.name}
-                  width={160}
-                  height={60}
-                  className="h-[50px] md:h-[60px] w-auto opacity-50 hover:opacity-100
-                             transition-all duration-300 grayscale hover:grayscale-0"
-                />
-              </div>
-            ))}
-          </div>
+    <motion.section
+      className="relative py-12 md:py-16 z-0 overflow-hidden"
+      style={{ backgroundColor: "#f9f7f4" }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportOptions}
+      variants={fadeInUp}
+    >
+      <div className="max-w-6xl mx-auto px-4">
+        {/* Градиентные маски для плавного исчезновения по бокам */}
+        <div className="relative overflow-hidden 
+          before:absolute before:left-0 before:top-0 before:z-20 before:h-full before:w-24 before:bg-gradient-to-r before:from-[#f9f7f4] before:to-transparent 
+          after:absolute after:right-0 after:top-0 after:z-20 after:h-full after:w-24 after:bg-gradient-to-l after:from-[#f9f7f4] after:to-transparent">
+          
+          <InfiniteMarquee
+            dataType="image"
+            dataArray={bankLogos}
+            speed={40} 
+            direction="right"
+            className="banks-marquee"
+          />
+          
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
