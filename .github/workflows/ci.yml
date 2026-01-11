@@ -49,27 +49,33 @@ jobs:
             set -e
             
             DEPLOY_PATH="${{ secrets.DEPLOY_PATH || '/var/www/lawyer-website' }}"
+            REPO_URL="${{ github.server_url }}/${{ github.repository }}.git"
             
-            # Check if directory exists
+            # Create directory if it doesn't exist
             if [ ! -d "$DEPLOY_PATH" ]; then
-              echo "ERROR: Directory $DEPLOY_PATH does not exist!"
-              echo "Please create the directory and clone the repository first:"
-              echo "  mkdir -p $DEPLOY_PATH"
-              echo "  cd $DEPLOY_PATH"
-              echo "  git clone <your-repository-url> ."
-              exit 1
+              echo "Directory $DEPLOY_PATH does not exist. Creating..."
+              mkdir -p "$DEPLOY_PATH" || {
+                echo "ERROR: Failed to create directory $DEPLOY_PATH"
+                echo "Please create it manually with proper permissions:"
+                echo "  sudo mkdir -p $DEPLOY_PATH"
+                echo "  sudo chown -R $USER:$USER $DEPLOY_PATH"
+                exit 1
+              }
             fi
             
             # Navigate to the project directory
             cd "$DEPLOY_PATH"
             
-            # Check if it's a git repository
+            # Check if it's a git repository, if not - clone it
             if [ ! -d ".git" ]; then
-              echo "ERROR: Directory $DEPLOY_PATH is not a git repository!"
-              echo "Please clone the repository first:"
-              echo "  cd $DEPLOY_PATH"
-              echo "  git clone <your-repository-url> ."
-              exit 1
+              echo "Directory is not a git repository. Cloning..."
+              git clone "$REPO_URL" . || {
+                echo "ERROR: Failed to clone repository"
+                echo "Please clone manually:"
+                echo "  cd $DEPLOY_PATH"
+                echo "  git clone $REPO_URL ."
+                exit 1
+              }
             fi
             
             # Pull the latest changes from the current branch
