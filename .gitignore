@@ -19,7 +19,7 @@ desktop.ini
 *.sln
 *.sw*
 .cursor/
-.clouade/
+.claude/
 .cursorrules
 
 # --- Environment Secrets (Crucial) ---
