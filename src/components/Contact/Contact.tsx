@@ -112,20 +112,20 @@ export default function Contact() {
           >
             {/* Contact Details */}
             <motion.div className="text-center" variants={staggerItem}>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-blue-dk mb-2 sm:mb-3 md:mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 3xl:text-7xl 4xl:text-8xl 5xl:text-9xl font-black text-blue-dk mb-2 sm:mb-3 md:mb-4 3xl:mb-5 4xl:mb-6">
                 דברו איתי
               </h2>
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-blue-dk/80 mb-3 sm:mb-4 md:mb-6 max-w-md mx-auto px-2 sm:px-4">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 3xl:text-3xl 4xl:text-4xl 5xl:text-5xl font-bold text-blue-dk/80 mb-3 sm:mb-4 md:mb-6 3xl:mb-8 4xl:mb-10 max-w-md 3xl:max-w-2xl 4xl:max-w-3xl 5xl:max-w-4xl mx-auto px-2 sm:px-4 3xl:px-6 4xl:px-8">
                 השאירו פרטים ונחזור אליכם בהקדם לשיחת ייעוץ ראשונית ללא
                 התחייבות.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 3xl:gap-8 4xl:gap-10 5xl:gap-12">
                 {/* Phone */}
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="bg-blue-dk rounded-lg p-2 sm:p-2.5 md:p-3">
+                <div className="flex items-center gap-2 sm:gap-3 3xl:gap-4 4xl:gap-5">
+                  <div className="bg-blue-dk rounded-lg p-2 sm:p-2.5 md:p-3 3xl:p-4 4xl:p-5 5xl:p-6">
                     <svg
-                      className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white"
+                      className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 3xl:w-7 3xl:h-7 4xl:w-8 4xl:h-8 5xl:w-10 5xl:h-10 text-white"
                       fill="currentColor"
                       viewBox="0 0 16 16"
                     >
@@ -135,23 +135,23 @@ export default function Contact() {
                       />
                     </svg>
                   </div>
-                  <span className="text-base sm:text-lg md:text-xl font-black text-blue-dk">
+                  <span className="text-base sm:text-lg md:text-xl 3xl:text-2xl 4xl:text-3xl 5xl:text-4xl font-black text-blue-dk">
                     050-000-0000
                   </span>
                 </div>
 
                 {/* Email */}
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="bg-blue-dk rounded-lg p-2 sm:p-2.5 md:p-3">
+                <div className="flex items-center gap-2 sm:gap-3 3xl:gap-4 4xl:gap-5">
+                  <div className="bg-blue-dk rounded-lg p-2 sm:p-2.5 md:p-3 3xl:p-4 4xl:p-5 5xl:p-6">
                     <svg
-                      className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white"
+                      className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 3xl:w-7 3xl:h-7 4xl:w-8 4xl:h-8 5xl:w-10 5xl:h-10 text-white"
                       fill="currentColor"
                       viewBox="0 0 16 16"
                     >
                       <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
                     </svg>
                   </div>
-                  <span className="text-sm sm:text-base md:text-lg lg:text-xl font-black text-blue-dk">
+                  <span className="text-sm sm:text-base md:text-lg lg:text-xl 3xl:text-2xl 4xl:text-3xl 5xl:text-4xl font-black text-blue-dk">
                     assistant@avi-mashkanta.com
                   </span>
                 </div>

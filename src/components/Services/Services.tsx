@@ -62,7 +62,7 @@ export default function Services() {
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.h2
-          className="section-title text-center text-3xl md:text-5xl lg:text-6xl mb-10 md:mb-16"
+          className="section-title text-center text-3xl md:text-5xl lg:text-6xl 3xl:text-7xl 4xl:text-8xl 5xl:text-9xl mb-10 md:mb-16 3xl:mb-20 4xl:mb-24"
           initial="hidden"
           whileInView="visible"
           viewport={viewportOptions}
@@ -71,7 +71,7 @@ export default function Services() {
           השירותים שלנו
         </motion.h2>
 
-        <div className="max-w-[1100px] mx-auto">
+        <div className="max-w-[1100px] 3xl:max-w-[1400px] 4xl:max-w-[1600px] 5xl:max-w-[1800px] mx-auto">
           {/* GRID/FLEX WRAPPER:
               - Mobile: Small gap (gap-3) and centered flex items
               - Desktop: Seamless grid (gap-0)
@@ -101,26 +101,26 @@ export default function Services() {
                       - Fixed aspect-square or min-height ensures identical size.
                       - Reduced padding for a tighter, cleaner look on mobile.
                   */}
-                  <div className="flex flex-col items-center justify-center p-4 sm:p-6 min-h-[140px] sm:min-h-[180px] lg:min-h-[220px] transition-all duration-300 hover:bg-orange/[0.03] relative">
+                  <div className="flex flex-col items-center justify-center p-4 sm:p-6 3xl:p-8 4xl:p-10 5xl:p-12 min-h-[140px] sm:min-h-[180px] lg:min-h-[220px] 3xl:min-h-[260px] 4xl:min-h-[300px] 5xl:min-h-[340px] transition-all duration-300 hover:bg-orange/[0.03] relative">
 
                     {/* Icon scaling on hover */}
                     <div className="text-orange mb-3 transition-transform duration-300 group-hover:scale-110">
-                      <service.Icon className="w-9 h-9 sm:w-12 sm:h-12" />
+                      <service.Icon className="w-9 h-9 sm:w-12 sm:h-12 3xl:w-14 3xl:h-14 4xl:w-16 4xl:h-16 5xl:w-[72px] 5xl:h-[72px]" />
                     </div>
 
                     {/* Uniform title styling */}
-                    <h3 className="text-blue-dk font-black text-[13px] sm:text-sm md:text-base text-center leading-tight transition-colors duration-300 group-hover:text-orange mb-2">
+                    <h3 className="text-blue-dk font-black text-[13px] sm:text-sm md:text-base 3xl:text-lg 4xl:text-xl 5xl:text-2xl text-center leading-tight transition-colors duration-300 group-hover:text-orange mb-2">
                       {service.title}
                     </h3>
 
                     {/* Description - показывается при hover */}
-                    <p className="text-blue-dk/70 text-xs md:text-sm text-center leading-snug opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-20 transition-all duration-300 overflow-hidden">
+                    <p className="text-blue-dk/70 text-xs md:text-sm 3xl:text-base 4xl:text-lg 5xl:text-xl text-center leading-snug opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-20 3xl:group-hover:max-h-24 4xl:group-hover:max-h-28 transition-all duration-300 overflow-hidden">
                       {service.description}
                     </p>
 
                     {/* Arrow icon - показывает что это кликабельно */}
                     <div className="mt-2 text-orange opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1">
-                      <ArrowIcon className="w-5 h-5 rotate-180" />
+                      <ArrowIcon className="w-5 h-5 3xl:w-6 3xl:h-6 4xl:w-7 4xl:h-7 5xl:w-8 5xl:h-8 rotate-180" />
                     </div>
                   </div>
                 </Link>
