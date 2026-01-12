@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Header from "@/components/sections/Header";
-import Hero from "@/components/sections/Hero";
-import HomeLazySections from "@/components/pages/HomeLazySections";
+import Header from "@/components/Header";
+import Hero from "@/app/components/Hero";
+import HomeLazySections from "@/app/components/HomeLazySections";
 
 // Page-specific metadata with enhanced SEO
 export const metadata: Metadata = {

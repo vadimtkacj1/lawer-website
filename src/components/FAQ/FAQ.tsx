@@ -71,8 +71,8 @@ function AccordionItem({
       </button>
 
       <div
-        className={`overflow-hidden transition-[max-height] duration-200 ease-out
-                    ${isOpen ? "max-h-96 pb-4 sm:pb-5 md:pb-6" : "max-h-0"}`}
+        className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out
+                    ${isOpen ? "max-h-96 opacity-100 pb-4 sm:pb-5" : "max-h-0 opacity-0"}`}
       >
         <p className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-blue-dk/85 leading-relaxed pe-2 sm:pe-4 md:pe-8 lg:pe-12">
           {answer}
@@ -81,6 +81,7 @@ function AccordionItem({
     </div>
   );
 }
+
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -89,16 +90,14 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="relative py-8 md:py-12 lg:py-16" style={{ backgroundColor: "#f9f7f4" }}>
+    <section id="faq" className="relative pt-8 md:pt-12 lg:pt-16 pb-4 md:pb-6" style={{ backgroundColor: "#f9f7f4" }}>
       <DecorativeShapes variant="default" />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
-
-          {/* FAQ Section */}
           <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-10 items-start">
-
-            {/* Левая колонка - Заголовок - Sticky только на десктопе */}
-            <div className="w-full lg:w-1/3 lg:sticky lg:top-16 self-start z-30 pb-4 sm:pb-6 lg:pb-0">
+            
+            {/* Левая колонка */}
+            <div className="w-full lg:w-1/3 lg:sticky lg:top-24 self-start z-30">
               <div className="h-fit text-center lg:text-right">
                 <div className="flex items-center gap-2 mb-3 md:mb-4 justify-center lg:justify-start">
                   <svg className="w-5 h-5 md:w-6 md:h-6 text-orange" fill="currentColor" viewBox="0 0 16 16">
@@ -113,14 +112,15 @@ export default function FAQ() {
                   FAQ
                 </h2>
 
-                <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-blue-dk/80 mb-0 sm:mb-2 md:mb-4 lg:mb-6 leading-relaxed max-w-md mx-auto lg:mx-0 px-2 sm:px-0">
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-blue-dk/80 leading-relaxed max-w-md mx-auto lg:mx-0 px-2 sm:px-0">
                   אנחנו צוות ייעוץ משכנתאות המתמקד בתוצאות ועוזר למשפחות לפתוח יעילות.
                 </p>
               </div>
             </div>
 
             {/* Правая колонка - Аккордеон */}
-            <div className="w-full lg:w-2/3 order-2 lg:order-2">
+            {/* min-h уменьшен до минимума, необходимого для стабильности футера */}
+            <div className="w-full lg:w-2/3 order-2 min-h-[320px] sm:min-h-[350px] md:min-h-[380px]">
               {faqItems.map((item, index) => (
                 <AccordionItem
                   key={index}

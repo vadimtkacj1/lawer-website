@@ -5,11 +5,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   fadeInUpFast,
-  fadeInLeft,
   fadeInRight,
   staggerContainer,
   staggerItem,
-  scaleIn,
   viewportOptions,
 } from "@/lib/animations";
 import DecorativeShapes from "@/components/ui/DecorativeShapes";
@@ -46,7 +44,7 @@ const highlights = [
 
 export default function ExpertBio() {
   return (
-    <section id="about-expert" className="relative py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24" style={{ backgroundColor: "#f9f7f4" }}>
+    <section id="about-expert" className="relative py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24 overflow-hidden" style={{ backgroundColor: "#f9f7f4" }}>
       <DecorativeShapes variant="default" />
       <div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20">

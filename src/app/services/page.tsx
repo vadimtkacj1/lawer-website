@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Header from "@/components/sections/Header";
-import ServicesHero from "@/components/sections/ServicesHero";
-import ServicesLazySections from "@/components/pages/ServicesLazySections";
+import Header from "@/components/Header";
+import ServicesHero from "@/app/services/components/ServicesHero";
+import ServicesLazySections from "@/app/services/components/ServicesLazySections";
 
 export const metadata: Metadata = {
   title: "שירותים | אבי - הבית למשכנתאות",
