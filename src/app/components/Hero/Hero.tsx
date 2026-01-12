@@ -66,11 +66,6 @@ export default function Hero() {
       {/* --- TEXT CONTENT --- */}
       <div className="container mx-auto px-6 md:px-12 relative z-30">
         <motion.div 
-          /**
-           * Layout logic:
-           * - Mobile: Content pushed to bottom (justify-end) for better visibility over the image.
-           * - Desktop: Centered vertically (lg:justify-center).
-           */
           className="flex flex-col items-start text-right justify-end pb-24 lg:justify-center lg:pb-0 min-h-[100dvh] lg:h-full lg:pt-0"
           style={{ y: textY, opacity: textOpacity }}
         >

@@ -12,8 +12,8 @@ const optimizedViewport = {
 
 export default function CommercialWhySection() {
   return (
-    <section className="relative bg-cream z-10 py-12 lg:py-20 overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="relative bg-cream z-10 py-20 lg:py-28 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="max-w-5xl mx-auto"
           initial="hidden"
@@ -21,37 +21,50 @@ export default function CommercialWhySection() {
           viewport={optimizedViewport}
           variants={staggerContainer}
         >
-          <motion.h2
-            className="section-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heebo font-black text-blue-dk mb-8 lg:mb-12 text-center leading-tight"
-            variants={staggerItem}
-          >
-            למה דווקא{" "}
-            <span className="bg-orange text-white px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4 rounded-xl inline-block">
-              "אבי - הבית למשכנתאות"
-            </span>
-            ? היתרון של איש מבפנים
-          </motion.h2>
-
-          <motion.div
-            className="space-y-6 lg:space-y-8 max-w-4xl mx-auto"
-            variants={staggerItem}
-          >
-            <motion.p
-              className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-blue-dk/90 leading-relaxed text-center"
-              variants={staggerItem}
-            >
-              <span className="text-blue-dk font-black">
-                יועץ הבנק עובד עבור הבנק – אני עובד עבורכם.
+          {/* Simple Title */}
+          <motion.div className="text-center mb-14 lg:mb-20" variants={staggerItem}>
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-heebo font-black text-blue-dk mb-4 leading-tight">
+              למה דווקא{" "}
+              <span className="bg-orange text-white px-6 py-2 lg:px-8 lg:py-3 rounded-xl inline-block">
+                "אבי - הבית למשכנתאות"
               </span>
-              {" "}זה ההבדל שחוסך לכם עשרות אלפי שקלים.
-            </motion.p>
+              ?
+            </h2>
+            <p className="text-xl lg:text-3xl font-bold text-blue-dk/70 mt-6">
+              היתרון של איש מבפנים
+            </p>
+          </motion.div>
 
-            <motion.p
-              className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-blue-dk/90 leading-relaxed text-center"
+          {/* Clean Text Blocks */}
+          <motion.div className="space-y-8 max-w-4xl mx-auto" variants={staggerItem}>
+            {/* Block 1 */}
+            <motion.div
+              className="p-6 lg:p-10"
               variants={staggerItem}
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.2 }}
             >
-              כיוצא בנק דיסקונט, אני מכיר את ה<span className="font-black text-orange">"אותיות הקטנות"</span> – יודע על אילו ריביות להתמקח, איפה ללחוץ, ואיך להגיש תיק שיקבל אישור גם במקרים מורכבים.
-            </motion.p>
+              <p className="text-2xl lg:text-4xl font-bold text-blue-dk leading-relaxed text-center">
+                <span className="text-orange font-black">יועץ הבנק עובד עבור הבנק</span> – אני עובד עבורכם.
+                <br />
+                <span className="text-xl lg:text-3xl text-blue-dk/70 mt-3 inline-block">
+                  זה ההבדל שחוסך לכם <span className="text-orange font-black">עשרות אלפי שקלים</span>.
+                </span>
+              </p>
+            </motion.div>
+
+            {/* Block 2 */}
+            <motion.div
+              className="p-6 lg:p-10"
+              variants={staggerItem}
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.2 }}
+            >
+              <p className="text-2xl lg:text-4xl font-bold text-blue-dk leading-relaxed text-center">
+                כיוצא <span className="text-orange font-black">בנק דיסקונט</span>, אני מכיר את ה
+                <span className="text-orange font-black">"אותיות הקטנות"</span> – יודע על אילו ריביות להתמקח, איפה ללחוץ, ואיך להגיש תיק שיקבל אישור גם במקרים מורכבים.
+              </p>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { fadeInUpFast, staggerContainer, staggerItem } from "@/lib/animations";
 
 // Optimized viewport - only animate once for better performance
@@ -59,8 +60,216 @@ const commercialServices = [
 ];
 
 export default function CommercialHero() {
+  const sectionRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Анимация текста при скролле - уходит вверх
+  const textY = useTransform(scrollYProgress, [0, 0.5], [0, -150]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-cream z-10 py-16 lg:py-24 overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center bg-cream z-10 py-16 lg:py-24 overflow-hidden">
+      {/* Animated Background with Commercial Theme */}
+      <div className="absolute inset-0 opacity-[0.35] pointer-events-none">
+        <svg
+          className="w-full h-full"
+          viewBox="0 0 1600 900"
+          preserveAspectRatio="xMidYMid slice"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Modern Office Buildings - Back Layer */}
+          <g opacity="0.5">
+            <rect x="50" y="500" width="120" height="400" fill="#0F2344" rx="4" />
+            <rect x="200" y="400" width="140" height="500" fill="#0F2344" rx="4" />
+            <rect x="370" y="450" width="110" height="450" fill="#0F2344" rx="4" />
+            <rect x="510" y="350" width="160" height="550" fill="#0F2344" rx="4" />
+            <rect x="700" y="300" width="130" height="600" fill="#0F2344" rx="4" />
+            <rect x="860" y="380" width="150" height="520" fill="#0F2344" rx="4" />
+            <rect x="1040" y="320" width="140" height="580" fill="#0F2344" rx="4" />
+            <rect x="1210" y="420" width="120" height="480" fill="#0F2344" rx="4" />
+            <rect x="1360" y="480" width="130" height="420" fill="#0F2344" rx="4" />
+          </g>
+
+          {/* Modern Office Buildings - Front Layer with Windows */}
+          <g opacity="0.75">
+            {/* Building 1 */}
+            <rect x="80" y="520" width="150" height="380" fill="#1a3a5c" rx="6" />
+            <g fill="#F1662A" opacity="0.85">
+              {[...Array(5)].map((_, i) =>
+                [...Array(7)].map((_, j) => (
+                  <rect
+                    key={`b1-${i}-${j}`}
+                    x={95 + i * 28}
+                    y={540 + j * 50}
+                    width="18"
+                    height="28"
+                    rx="2"
+                  />
+                ))
+              )}
+            </g>
+
+            {/* Building 2 - Tall */}
+            <rect x="280" y="280" width="180" height="620" fill="#1a3a5c" rx="6" />
+            <g fill="#F1662A" opacity="0.9">
+              {[...Array(6)].map((_, i) =>
+                [...Array(11)].map((_, j) => (
+                  <rect
+                    key={`b2-${i}-${j}`}
+                    x={300 + i * 28}
+                    y={300 + j * 52}
+                    width="18"
+                    height="30"
+                    rx="2"
+                  />
+                ))
+              )}
+            </g>
+
+            {/* Building 3 */}
+            <rect x="500" y="380" width="140" height="520" fill="#1a3a5c" rx="6" />
+            <g fill="#F1662A" opacity="0.88">
+              {[...Array(4)].map((_, i) =>
+                [...Array(9)].map((_, j) => (
+                  <rect
+                    key={`b3-${i}-${j}`}
+                    x={518 + i * 30}
+                    y={400 + j * 54}
+                    width="20"
+                    height="32"
+                    rx="2"
+                  />
+                ))
+              )}
+            </g>
+
+            {/* Building 4 - Modern Tower */}
+            <rect x="680" y="200" width="190" height="700" fill="#1a3a5c" rx="6" />
+            <g fill="#F1662A" opacity="0.92">
+              {[...Array(6)].map((_, i) =>
+                [...Array(13)].map((_, j) => (
+                  <rect
+                    key={`b4-${i}-${j}`}
+                    x={702 + i * 30}
+                    y={220 + j * 50}
+                    width="20"
+                    height="30"
+                    rx="2"
+                  />
+                ))
+              )}
+            </g>
+
+            {/* Building 5 */}
+            <rect x="910" y="340" width="160" height="560" fill="#1a3a5c" rx="6" />
+            <g fill="#F1662A" opacity="0.87">
+              {[...Array(5)].map((_, i) =>
+                [...Array(10)].map((_, j) => (
+                  <rect
+                    key={`b5-${i}-${j}`}
+                    x={928 + i * 30}
+                    y={360 + j * 52}
+                    width="20"
+                    height="32"
+                    rx="2"
+                  />
+                ))
+              )}
+            </g>
+
+            {/* Building 6 */}
+            <rect x="1110" y="280" width="170" height="620" fill="#1a3a5c" rx="6" />
+            <g fill="#F1662A" opacity="0.9">
+              {[...Array(5)].map((_, i) =>
+                [...Array(11)].map((_, j) => (
+                  <rect
+                    key={`b6-${i}-${j}`}
+                    x={1130 + i * 30}
+                    y={300 + j * 52}
+                    width="20"
+                    height="30"
+                    rx="2"
+                  />
+                ))
+              )}
+            </g>
+
+            {/* Building 7 */}
+            <rect x="1320" y="420" width="150" height="480" fill="#1a3a5c" rx="6" />
+            <g fill="#F1662A" opacity="0.86">
+              {[...Array(4)].map((_, i) =>
+                [...Array(8)].map((_, j) => (
+                  <rect
+                    key={`b7-${i}-${j}`}
+                    x={1340 + i * 32}
+                    y={440 + j * 56}
+                    width="22"
+                    height="34"
+                    rx="2"
+                  />
+                ))
+              )}
+            </g>
+          </g>
+
+          {/* Floating Abstract Shapes for Commercial/Financial Feel */}
+          <g opacity="0.45">
+            {/* Circles */}
+            <circle cx="1400" cy="150" r="60" fill="#F1662A" opacity="0.6" />
+            <circle cx="200" cy="200" r="80" fill="#F1662A" opacity="0.5" />
+            <circle cx="1500" cy="350" r="45" fill="#0F2344" opacity="0.7" />
+
+            {/* Triangles */}
+            <path d="M 100 100 L 180 100 L 140 40 Z" fill="#F1662A" opacity="0.6" />
+            <path d="M 1300 100 L 1400 100 L 1350 20 Z" fill="#0F2344" opacity="0.65" />
+
+            {/* Lines representing growth/charts */}
+            <path
+              d="M 50 700 L 200 650 L 350 680 L 500 600 L 650 550 L 800 580 L 950 520 L 1100 500 L 1250 530 L 1400 480 L 1550 450"
+              stroke="#F1662A"
+              strokeWidth="4"
+              fill="none"
+              opacity="0.7"
+              strokeLinecap="round"
+            />
+            <path
+              d="M 50 750 L 200 720 L 350 740 L 500 680 L 650 650 L 800 670 L 950 620 L 1100 600 L 1250 630 L 1400 590 L 1550 560"
+              stroke="#0F2344"
+              strokeWidth="3"
+              fill="none"
+              opacity="0.6"
+              strokeLinecap="round"
+            />
+          </g>
+
+          {/* Animated dots/particles */}
+          {[...Array(30)].map((_, i) => (
+            <motion.circle
+              key={`dot-${i}`}
+              cx={100 + (i * 50) % 1500}
+              cy={50 + ((i * 137) % 800)}
+              r={3 + (i % 4)}
+              fill={i % 2 === 0 ? "#F1662A" : "#0F2344"}
+              opacity={0.7}
+              animate={{
+                opacity: [0.4, 0.9, 0.4],
+                scale: [1, 1.5, 1],
+              }}
+              transition={{
+                duration: 3 + (i % 4),
+                repeat: Infinity,
+                delay: i * 0.2,
+              }}
+            />
+          ))}
+        </svg>
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 relative z-20">
         <motion.div
           className="w-full max-w-4xl mx-auto"
@@ -68,38 +277,20 @@ export default function CommercialHero() {
           whileInView="visible"
           viewport={optimizedViewport}
           variants={staggerContainer}
+          style={{ y: textY, opacity: textOpacity }}
         >
           <div className="w-full text-center space-y-6 lg:space-y-8">
             <motion.h1
               className="font-heebo font-black leading-[1.1]
                          text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
                          text-blue-dk
-                         mb-6 sm:mb-8"
+                         mb-6 sm:mb-8
+                         [text-shadow:_0_2px_20px_rgb(249_245_231_/_90%),_0_4px_40px_rgb(249_245_231_/_70%)]
+                         relative px-4 py-2"
               variants={staggerItem}
             >
               יועץ משכנתאות בחולון והמרכז: המומחיות של יוצא מערכת הבנקאות אצלכם בכיס
             </motion.h1>
-
-            {/* SVG Icons Grid - similar to Services section */}
-            <motion.div
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 mt-8 lg:mt-12"
-              variants={staggerItem}
-            >
-              {commercialServices.map((service, index) => (
-                <motion.div
-                  key={index}
-                  className="flex flex-col items-center justify-center gap-2 sm:gap-3 p-4 sm:p-6 bg-white/80 md:bg-white/60 md:backdrop-blur-none rounded-xl shadow-md border border-blue-dk/10 hover:bg-white/90 hover:shadow-lg transition-[background-color,box-shadow] duration-200"
-                  variants={staggerItem}
-                >
-                  <span className="text-orange">
-                    {service.icon}
-                  </span>
-                  <span className="text-blue-dk font-black text-xs sm:text-sm md:text-base text-center leading-tight">
-                    {service.title}
-                  </span>
-                </motion.div>
-              ))}
-            </motion.div>
           </div>
         </motion.div>
       </div>
