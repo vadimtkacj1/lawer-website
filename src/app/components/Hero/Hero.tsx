@@ -7,7 +7,7 @@ import { motion, useScroll, useTransform, easeIn } from "framer-motion";
 /**
  * HERO COMPONENT
  * Layout: Image on the left (lg:w-[65%]), Text on the right.
- * Background: Updated to Cream (#F9F5E7).
+ * Background: Updated to Cream (#f9f7f4).
  */
 export default function Hero() {
   const sectionRef = useRef(null);
@@ -32,7 +32,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       // Main background set to Cream
-      className="relative w-full min-h-[100dvh] lg:h-[110vh] overflow-hidden bg-[#F9F5E7]"
+      className="relative w-full min-h-[100dvh] lg:h-[110vh] overflow-hidden bg-cream"
       dir="rtl"
     >
       {/* --- BACKGROUND IMAGE --- */}
@@ -42,10 +42,10 @@ export default function Hero() {
       >
         <div className="relative w-full h-full">
           {/* Mobile Overlay: Gradient transition to Cream background at the bottom */}
-          <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#F9F5E7] via-[#F9F5E7]/60 to-transparent lg:hidden" />
-          
+          <div className="absolute inset-0 z-20 bg-gradient-to-t from-cream via-cream/60 to-transparent lg:hidden" />
+
           {/* Desktop Overlay: Gradient transition to Cream background on the right side */}
-          <div className="absolute inset-y-0 right-0 w-1/2 z-20 bg-gradient-to-l from-[#F9F5E7] to-transparent hidden lg:block" />
+          <div className="absolute inset-y-0 right-0 w-1/2 z-20 bg-gradient-to-l from-cream to-transparent hidden lg:block" />
 
           <motion.div
             initial={{ opacity: 0 }}
