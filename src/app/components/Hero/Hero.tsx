@@ -25,7 +25,8 @@ export default function Hero() {
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
   const imageFilter = useTransform(scrollYProgress, [0, 0.6], ["brightness(1)", "brightness(0.35)"]);
 
-  const entranceTransition = { duration: 1, ease: [0.22, 1, 0.36, 1] };
+  // Добавлено "as const", чтобы TypeScript не ругался на формат ease
+  const entranceTransition = { duration: 1, ease: [0.22, 1, 0.36, 1] } as const;
 
   return (
     <section
