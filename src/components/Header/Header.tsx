@@ -20,7 +20,6 @@ export default function Header() {
 
   useEffect(() => {
     let raf: number | null = null;
-
     const onScroll = () => {
       if (raf != null) return;
       raf = window.requestAnimationFrame(() => {
@@ -37,7 +36,6 @@ export default function Header() {
     };
   }, []);
 
-  // Block body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -52,19 +50,17 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color,padding] duration-200
+        className={`fixed top-0 left-0 right-0 z-[60] transition-[background-color,box-shadow,border-color,padding] duration-200
                     ${
                       isScrolled || isMobileMenuOpen
-                        ? "shadow-md py-2 sm:py-2 border-b-2 border-blue-dk/30 bg-cream"
+                        ? "shadow-md py-2 border-b-2 border-blue-dk/30 bg-cream"
                         : "py-2 sm:py-3 border-b-0 bg-transparent"
                     }`}
       >
         <div className="container mx-auto px-4 md:px-8">
           <nav className="flex items-center justify-between">
-
-            {/* Logo and Navigation */}
+            {/* Logo */}
             <div className="flex items-center gap-3 md:gap-6">
-              {/* Logo */}
               <Link href="/" className="flex items-center">
                 <Image
                   src="/images/logo.png"
@@ -82,8 +78,7 @@ export default function Header() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="relative px-3 py-1 text-blue-dk font-black text-xl md:text-2xl lg:text-2xl
-                                 transition-colors hover:text-orange
+                      className="relative px-3 py-1 text-blue-dk font-black text-xl md:text-2xl transition-colors hover:text-orange
                                  after:content-[''] after:absolute after:bottom-0
                                  after:right-1/2 after:w-0 after:h-0.5 after:bg-orange
                                  after:transition-[width] after:translate-x-1/2
@@ -96,20 +91,20 @@ export default function Header() {
               </ul>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - Increased z-index to stay above full-screen menu */}
             <button
-              className="lg:hidden p-2 text-blue-dk hover:text-orange transition-colors"
+              className="lg:hidden relative z-[70] p-2 text-blue-dk hover:text-orange transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="תפריט"
             >
               {isMobileMenuOpen ? (
-                <CloseIcon className="w-8 h-8 sm:w-9 sm:h-9" />
+                <CloseIcon className="w-9 h-9 sm:w-10 sm:h-10" />
               ) : (
-                <MenuIcon className="w-8 h-8 sm:w-9 sm:h-9" />
+                <MenuIcon className="w-9 h-9 sm:w-10 sm:h-10" />
               )}
             </button>
 
-            {/* CTA Section */}
+            {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-2">
               <a
                 href="tel:050-000-0000"
@@ -123,45 +118,44 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Menu - Centered Sidebar */}
-      {isMobileMenuOpen && (
-        <>
-          {/* Backdrop */}
-          <div
-            className="lg:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
-
-          {/* Sidebar */}
-          <div className="lg:hidden fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-md bg-cream rounded-2xl shadow-2xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-            <div className="px-6 py-8">
-              <ul className="flex flex-col gap-3">
-                {navLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="block px-4 py-2 text-blue-dk font-black text-2xl text-center hover:text-orange hover:bg-blue-dk/5 rounded-lg transition-colors uppercase"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              {/* Mobile CTA */}
-              <div className="mt-8">
-                <a
-                  href="tel:050-000-0000"
-                  className="btn-primary flex items-center justify-center gap-2 w-full py-3 text-base"
+      {/* Full Screen Mobile Menu */}
+      <div 
+        className={`lg:hidden fixed inset-0 bg-cream z-[55] flex flex-col items-center justify-center transition-all duration-300 transform ${
+          isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+        }`}
+      >
+        <div className="container mx-auto px-6 flex flex-col items-center">
+          <ul className="flex flex-col gap-6 items-center">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="block text-blue-dk font-black text-4xl sm:text-5xl text-center hover:text-orange transition-colors uppercase tracking-tight"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <PhoneIcon className="w-4 h-4" />
-                  <span>התקשר עכשיו</span>
-                </a>
-              </div>
-            </div>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Mobile CTA - Narrower width (w-fit) */}
+          <div className="mt-12 flex justify-center w-full">
+            <a
+              href="tel:050-000-0000"
+              className="btn-primary flex items-center justify-center gap-3 px-10 py-4 text-xl w-fit shadow-xl"
+            >
+              <PhoneIcon className="w-6 h-6" />
+              <span>התקשר עכשיו</span>
+            </a>
           </div>
-        </>
-      )}
+        </div>
+        
+        {/* Decorative background element for full-screen feel */}
+        <div className="absolute bottom-0 right-0 opacity-[0.03] pointer-events-none -z-10 translate-x-1/4 translate-y-1/4">
+           <div className="text-[40vw] font-black text-blue-dk">אבי</div>
+        </div>
+      </div>
     </>
   );
 }
