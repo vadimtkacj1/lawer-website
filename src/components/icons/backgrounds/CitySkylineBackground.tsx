@@ -8,7 +8,7 @@ export default function CitySkylineBackground() {
       xmlns="http://www.w3.org/2000/svg"
     >
       {/* Building silhouettes */}
-      <g fill="#1c3664" opacity="0.5">
+      <g fill="#1c3664" opacity="0.8">
         {/* Left buildings */}
         <rect x="0" y="400" width="80" height="200" />
         <rect x="90" y="320" width="100" height="280" />
@@ -32,7 +32,7 @@ export default function CitySkylineBackground() {
       </g>
 
       {/* Windows - more prominent and bigger */}
-      <g fill="#d4c5b9" opacity="0.4">
+      <g fill="#f9a825" opacity="0.7">
         {/* Left buildings windows */}
         <rect x="15" y="420" width="20" height="25" />
         <rect x="45" y="420" width="20" height="25" />

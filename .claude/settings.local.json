@@ -4,7 +4,10 @@
       "Bash(npm install:*)",
       "Bash(npm run dev:*)",
       "Bash(cd:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(git mv:*)",
+      "Bash(dir:*)",
+      "Bash(git rm:*)"
     ]
   }
 }

@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import Header from "@/components/sections/Header";
-import CommercialHero from "@/components/sections/CommercialHero";
-import CommercialIntro from "@/components/sections/CommercialIntro";
-import CommercialAbout from "@/components/sections/CommercialAbout";
-import CommercialWhySection from "@/components/sections/CommercialWhySection";
-import CommercialServicesSection from "@/components/sections/CommercialServicesSection";
+import Header from "@/components/Header";
+import CommercialHero from "@/app/services/commercial/components/CommercialHero";
+import CommercialIntro from "@/app/services/commercial/components/CommercialIntro";
+import CommercialAbout from "@/app/services/commercial/components/CommercialAbout";
+import CommercialWhySection from "@/app/services/commercial/components/CommercialWhySection";
+import CommercialServicesSection from "@/app/services/commercial/components/CommercialServicesSection";
 
 // Lazy load components for better performance
-const FAQ = dynamic(() => import("@/components/sections/FAQ"), { ssr: false });
-const Contact = dynamic(() => import("@/components/sections/Contact"), { ssr: false });
-const Footer = dynamic(() => import("@/components/sections/Footer"), { ssr: false });
+const FAQ = dynamic(() => import("@/components/FAQ"), { ssr: false });
+const Contact = dynamic(() => import("@/components/Contact"), { ssr: false });
+const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
 const Widgets = dynamic(() => import("@/components/ui/Widgets"), { ssr: false });
 
 export const metadata: Metadata = {
