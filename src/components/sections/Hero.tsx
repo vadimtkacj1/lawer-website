@@ -32,7 +32,7 @@ export default function Hero() {
           />
 
           {/* BOTTOM GRADIENT - Smooth fade to next section */}
-          <div className="absolute inset-x-0 bottom-0 h-32 md:h-40 lg:h-48 z-20 bg-gradient-to-t from-cream via-cream/95 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-25 md:h-32 lg:h-34 z-20 bg-gradient-to-t from-cream via-cream/95 to-transparent" />
 
           {/* Mobile gradient overlay - more opaque for better text visibility */}
           <div className="absolute inset-0 z-20 lg:hidden bg-gradient-to-t from-cream via-cream/80 to-cream/30" />

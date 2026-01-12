@@ -1,90 +1,125 @@
+
 "use client";
 import React, { useMemo, memo } from "react";
 
 interface MarqueeProps {
   dataArray: string[];
   dataType?: "image" | "text";
-  speed?: number; // Чим більше число, тим повільніше (секунди на повне коло)
+  speed?: number;
   direction?: "left" | "right";
   className?: string;
-  pauseOnHover?: boolean;
 }
 
 function InfiniteMarquee({
   dataArray,
   dataType = "image",
-  speed = 20,
+  speed = 40,
   direction = "left",
   className = "",
-  pauseOnHover = true,
 }: MarqueeProps) {
-  // Подвоюємо масив для нескінченної анімації
   const duplicatedData = useMemo(() => [...dataArray, ...dataArray], [dataArray]);
-  
-  // Використовуємо CSS анімацію замість framer-motion для кращої продуктивності
-  const animationName = direction === "left" ? "marquee-left" : "marquee-right";
-  const animationClass = `marquee-${direction}`;
 
   return (
     <>
-      <style jsx>{`
-        @keyframes marquee-left {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        
-        @keyframes marquee-right {
-          0% {
-            transform: translateX(-50%);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-        
-        .marquee-container {
-          animation: ${animationName} ${speed}s linear infinite;
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes marquee-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
 
-        .marquee-container:hover {
-          animation-play-state: ${pauseOnHover ? "paused" : "running"};
+        .mq-viewport {
+          width: 100%;
+          overflow: hidden;
+          position: relative;
+          background: transparent;
+          /* КРИТИЧНО: Переопределяем RTL на LTR для корректной работы */
+          direction: ltr;
+          mask-image: linear-gradient(to right, transparent, black 5rem, black calc(100% - 5rem), transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, black 5rem, black calc(100% - 5rem), transparent);
         }
 
-        @media (prefers-reduced-motion: reduce) {
-          .marquee-container {
-            animation: none !important;
-            transform: translateX(0) !important;
+        .mq-track {
+          display: flex;
+          align-items: center;
+          width: max-content;
+          flex-wrap: nowrap;
+          gap: 2rem;
+          padding: 1.5rem 0;
+          animation: marquee-scroll ${speed}s linear infinite;
+          animation-direction: ${direction === "left" ? "normal" : "reverse"};
+          will-change: transform;
+        }
+
+        @media (min-width: 768px) {
+          .mq-track {
+            gap: 4.8rem;
+            padding: 3rem 0;
           }
         }
-      `}</style>
-      
-      <div className={`relative w-full overflow-hidden bg-transparent py-6 ${className}`}>
-        {/* Градієнтне затінення по краях */}
-        <div className="absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-white to-transparent pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-white to-transparent pointer-events-none" />
 
-        <div className={`flex w-max gap-12 px-6 marquee-container ${animationClass}`}>
+        .mq-track:hover {
+          animation-play-state: paused;
+        }
+
+        .mq-item {
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .mq-img {
+          height: 2.2rem;
+          width: auto;
+          filter: grayscale(100%);
+          opacity: 0.6;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          object-fit: contain;
+        }
+
+        @media (min-width: 768px) {
+          .mq-img {
+            height: 3.8rem;
+          }
+        }
+
+        .mq-item:hover .mq-img {
+          filter: grayscale(0%);
+          opacity: 1;
+          transform: scale(1.12);
+        }
+
+        .mq-pill {
+          border: 1px solid rgba(255,255,255,0.2);
+          background-color: #141414;
+          border-radius: 999px;
+          padding: 0.8rem 1.5rem;
+          color: white;
+          white-space: nowrap;
+          font-weight: 600;
+        }
+
+        @media (min-width: 768px) {
+          .mq-pill {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+          }
+        }
+      `}} />
+
+      <div className={`mq-viewport ${className}`}>
+        <div className="mq-track">
           {duplicatedData.map((item, index) => (
-            <div
-              key={index}
-              className="flex shrink-0 items-center justify-center"
-            >
+            <div key={index} className="mq-item">
               {dataType === "image" ? (
                 <img
                   src={item}
                   alt={`logo-${index}`}
-                  className="h-12 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-200"
-                  loading="lazy"
-                  decoding="async"
+                  className="mq-img"
+                  loading="eager" 
                 />
               ) : (
-                <span className="text-2xl font-bold whitespace-nowrap text-gray-800">
-                  {item}
-                </span>
+                <p className="mq-pill">{item}</p>
               )}
             </div>
           ))}

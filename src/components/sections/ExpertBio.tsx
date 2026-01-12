@@ -52,7 +52,6 @@ export default function ExpertBio() {
         <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20">
 {/* Image */}
           <motion.div
-            // Возвращаем ширину, чтобы картинка была солидной
             className="flex-1 w-full max-w-[300px] sm:max-w-[400px] md:max-w-[450px] lg:max-w-none mx-auto lg:mx-0"
             initial="hidden"
             whileInView="visible"
