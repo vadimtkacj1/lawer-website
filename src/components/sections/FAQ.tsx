@@ -47,7 +47,7 @@ function AccordionItem({
     >
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between gap-3 sm:gap-4 py-4 sm:py-5 md:py-6 text-right
+        className="w-full flex items-center justify-between gap-3 sm:gap-4 py-3 sm:py-4 md:py-5 text-right
                    transition-colors hover:text-orange focus:outline-none active:text-orange"
         aria-expanded={isOpen}
       >
@@ -56,7 +56,7 @@ function AccordionItem({
         </span>
         <span
           className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-orange text-white
-                      flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
+                      flex items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95"
         >
           {isOpen ? (
             <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 16 16">
@@ -71,7 +71,7 @@ function AccordionItem({
       </button>
 
       <div
-        className={`overflow-hidden transition-all duration-300 ease-out
+        className={`overflow-hidden transition-[max-height] duration-200 ease-out
                     ${isOpen ? "max-h-96 pb-4 sm:pb-5 md:pb-6" : "max-h-0"}`}
       >
         <p className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-blue-dk/85 leading-relaxed pe-2 sm:pe-4 md:pe-8 lg:pe-12">
@@ -89,7 +89,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="relative py-12 md:py-16 lg:py-20 min-h-screen" style={{ backgroundColor: "#f9f7f4" }}>
+    <section id="faq" className="relative py-8 md:py-12 lg:py-16" style={{ backgroundColor: "#f9f7f4" }}>
       <DecorativeShapes variant="default" />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
@@ -97,8 +97,8 @@ export default function FAQ() {
           {/* FAQ Section */}
           <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-10 items-start">
 
-            {/* Левая колонка - Заголовок - Sticky на всех экранах */}
-            <div className="w-full lg:w-1/3 sticky top-16 sm:top-20 md:top-24 lg:top-28 self-start z-30 bg-[#f9f7f4] pb-4 sm:pb-6 lg:pb-0 shadow-sm lg:shadow-none">
+            {/* Левая колонка - Заголовок - Sticky только на десктопе */}
+            <div className="w-full lg:w-1/3 lg:sticky lg:top-16 self-start z-30 pb-4 sm:pb-6 lg:pb-0">
               <div className="h-fit text-center lg:text-right">
                 <div className="flex items-center gap-2 mb-3 md:mb-4 justify-center lg:justify-start">
                   <svg className="w-5 h-5 md:w-6 md:h-6 text-orange" fill="currentColor" viewBox="0 0 16 16">

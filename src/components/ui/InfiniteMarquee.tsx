@@ -48,9 +48,8 @@ function InfiniteMarquee({
         
         .marquee-container {
           animation: ${animationName} ${speed}s linear infinite;
-          will-change: transform;
         }
-        
+
         .marquee-container:hover {
           animation-play-state: ${pauseOnHover ? "paused" : "running"};
         }
@@ -78,7 +77,7 @@ function InfiniteMarquee({
                 <img
                   src={item}
                   alt={`logo-${index}`}
-                  className="h-12 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                  className="h-12 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-[opacity,filter] duration-200"
                   loading="lazy"
                   decoding="async"
                 />

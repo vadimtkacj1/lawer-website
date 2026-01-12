@@ -3,6 +3,9 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import MenuIcon from "@/components/icons/MenuIcon";
+import CloseIcon from "@/components/icons/CloseIcon";
+import PhoneIcon from "@/components/icons/PhoneIcon";
 
 const navLinks = [
   { href: "/", label: "דף הבית" },
@@ -36,26 +39,26 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color,padding] duration-200
                   ${
                     isScrolled
-                      ? "shadow-md py-1 border-b-2 border-blue-dk/30 bg-cream"
-                      : "py-1 border-b-0 bg-transparent"
+                      ? "shadow-md py-3 sm:py-3 border-b-2 border-blue-dk/30 bg-cream"
+                      : "py-4 sm:py-5 border-b-0 bg-transparent"
                   }`}
     >
-      <div className="container mx-auto px-3 sm:px-4">
+      <div className="container mx-auto px-4 md:px-8">
         <nav className="flex items-center justify-between">
 
           {/* Logo and Navigation */}
-          <div className="flex items-center gap-4 md:gap-8">
+          <div className="flex items-center gap-3 md:gap-6">
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <Image
                 src="/images/logo.png"
                 alt="אבי - הבית למשכנתאות"
-                width={110}
-                height={50}
-                className="h-auto w-[60px] sm:w-[70px] md:w-[80px]"
+                width={180}
+                height={120}
+                className="h-[70px] w-auto sm:h-[80px] md:h-[90px] lg:h-[100px]"
                 priority
               />
             </Link>
@@ -66,11 +69,11 @@ export default function Header() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="relative px-3 py-1 text-blue-dk font-black text-lg
+                    className="relative px-3 py-1 text-blue-dk font-black text-xl md:text-2xl lg:text-2xl
                                transition-colors hover:text-orange
                                after:content-[''] after:absolute after:bottom-0
                                after:right-1/2 after:w-0 after:h-0.5 after:bg-orange
-                               after:transition-all after:translate-x-1/2
+                               after:transition-[width] after:translate-x-1/2
                                hover:after:w-4/5"
                   >
                     {link.label}
@@ -86,30 +89,20 @@ export default function Header() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="תפריט"
           >
-            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 16 16">
-              {isMobileMenuOpen ? (
-                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-              ) : (
-                <path
-                  fillRule="evenodd"
-                  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-                />
-              )}
-            </svg>
+            {isMobileMenuOpen ? (
+              <CloseIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+            ) : (
+              <MenuIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+            )}
           </button>
 
           {/* CTA Section */}
           <div className="hidden lg:flex items-center gap-2">
             <a
               href="tel:050-000-0000"
-              className="btn-primary flex items-center gap-1.5 text-sm px-4 py-1.5"
+              className="btn-primary flex items-center gap-2 text-lg px-6 py-3"
             >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 16 16">
-                <path
-                  fillRule="evenodd"
-                  d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
-                />
-              </svg>
+              <PhoneIcon className="w-5 h-5" />
               <span>התקשר עכשיו</span>
             </a>
           </div>
@@ -123,7 +116,7 @@ export default function Header() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block px-3 sm:px-4 py-2 text-blue-dk font-black text-base sm:text-lg md:text-xl hover:text-orange hover:bg-blue-dk/5 rounded-lg transition-colors"
+                    className="block px-3 sm:px-4 py-2 text-blue-dk font-black text-lg sm:text-xl md:text-2xl hover:text-orange hover:bg-blue-dk/5 rounded-lg transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.label}
@@ -137,12 +130,7 @@ export default function Header() {
                 href="tel:050-000-0000"
                 className="btn-primary flex items-center justify-center gap-2 w-full py-3 text-base sm:text-lg"
               >
-                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 16 16">
-                  <path
-                    fillRule="evenodd"
-                    d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
-                  />
-                </svg>
+                <PhoneIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>התקשר עכשיו</span>
               </a>
             </div>

@@ -12,7 +12,7 @@ export const fadeInUp: Variants = {
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.6,
+      duration: 0.4,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -46,8 +46,8 @@ export const fadeInRight: Variants = {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.9,
-      ease: [0.22, 1, 0.36, 1], // Ultra-smooth easing
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };
@@ -62,8 +62,8 @@ export const fadeInLeft: Variants = {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.9,
-      ease: [0.22, 1, 0.36, 1], // Ultra-smooth easing
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };
@@ -76,8 +76,8 @@ export const fadeIn: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 0.8,
-      ease: [0.22, 1, 0.36, 1], // Ultra-smooth easing
+      duration: 0.4,
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };
@@ -92,8 +92,8 @@ export const scaleIn: Variants = {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 1.1,
-      ease: [0.22, 1, 0.36, 1], // Ultra-smooth easing
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };

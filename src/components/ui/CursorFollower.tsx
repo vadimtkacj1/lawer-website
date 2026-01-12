@@ -15,8 +15,8 @@ export default function CursorFollower() {
   const innerX = cursorX;
   const innerY = cursorY;
 
-  // Smooth spring animation for outer circle (with lag) - оптимізована конфігурація
-  const springConfig = { damping: 35, stiffness: 150 };
+  // Optimized spring animation for outer circle - lighter config for better performance
+  const springConfig = { damping: 35, stiffness: 180, mass: 0.5 };
   const outerX = useSpring(cursorX, springConfig);
   const outerY = useSpring(cursorY, springConfig);
 
@@ -33,9 +33,9 @@ export default function CursorFollower() {
         rafRef.current = requestAnimationFrame(update);
       }
 
-      // Hover detection is expensive if done too often; check at most ~10x/sec
+      // Hover detection is expensive if done too often; check at most ~6x/sec
       const now = performance.now();
-      if (now - lastHoverCheckAtRef.current < 100) return;
+      if (now - lastHoverCheckAtRef.current < 160) return;
       lastHoverCheckAtRef.current = now;
 
       const target = e.target as HTMLElement | null;
@@ -71,7 +71,6 @@ export default function CursorFollower() {
           y: outerY,
           translateX: "-50%",
           translateY: "-50%",
-          willChange: "transform",
         }}
       >
         <motion.div
@@ -98,7 +97,6 @@ export default function CursorFollower() {
           y: innerY,
           translateX: "-50%",
           translateY: "-50%",
-          willChange: "transform",
         }}
       >
         <motion.div

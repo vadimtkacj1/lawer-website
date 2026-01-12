@@ -193,7 +193,7 @@ export default function Testimonials() {
                        w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-blue-dk shadow-lg
                        flex items-center justify-center
                        text-white hover:bg-orange
-                       transition-all duration-300"
+                       transition-[background-color] duration-200"
             aria-label="הקודם"
           >
             <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -207,7 +207,7 @@ export default function Testimonials() {
                        w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-blue-dk shadow-lg
                        flex items-center justify-center
                        text-white hover:bg-orange
-                       transition-all duration-300"
+                       transition-[background-color] duration-200"
             aria-label="הבא"
           >
             <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -242,7 +242,7 @@ export default function Testimonials() {
                         <article
                           key={index}
                           className="p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl
-                                     transition-all duration-300 hover:-translate-y-1
+                                     transition-transform duration-200 hover:-translate-y-1
                                      text-center bg-white/30"
                         >
                           {/* Client Image */}
@@ -286,7 +286,7 @@ export default function Testimonials() {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300
+                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-[background-color,width] duration-200
                            ${currentSlide === index
                              ? 'bg-orange w-5 sm:w-8'
                              : 'bg-blue-dk/30 hover:bg-blue-dk/50'

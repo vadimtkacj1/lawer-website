@@ -74,7 +74,7 @@ export default function ExpertBio() {
           {/* Content */}
           <div className="flex-[1.2] text-center lg:text-right">
             <motion.h2
-              className="font-heebo font-black text-blue-dk mb-3 sm:mb-4 md:mb-6 leading-tight text-center lg:text-right text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
+              className="font-heebo font-black text-blue-dk mb-3 sm:mb-4 md:mb-6 leading-tight text-center lg:text-right text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
               initial="hidden"
               whileInView="visible"
               viewport={viewportOptions}
@@ -84,7 +84,7 @@ export default function ExpertBio() {
             </motion.h2>
 
             <motion.p
-              className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-blue-dk/90 leading-relaxed mb-4 sm:mb-6 md:mb-8 text-center lg:text-right"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-blue-dk/90 leading-relaxed mb-4 sm:mb-6 md:mb-8 text-center lg:text-right"
               initial="hidden"
               whileInView="visible"
               viewport={viewportOptions}
@@ -117,12 +117,12 @@ export default function ExpertBio() {
               {highlights.map((item, index) => (
                 <motion.li
                   key={index}
-                  className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg lg:text-xl font-black
+                  className="flex items-center gap-2 sm:gap-3 text-base sm:text-lg md:text-xl lg:text-2xl font-black
                              justify-center lg:justify-start"
                   variants={staggerItem}
                 >
                   <span className="text-orange flex-shrink-0">
-                    <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" fill="currentColor" viewBox="0 0 16 16">
+                    <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 16 16">
                       {item.iconPath}
                     </svg>
                   </span>
@@ -151,7 +151,7 @@ export default function ExpertBio() {
               <Link
                 href="/about"
                 className="inline-block px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 bg-blue-dk text-white
-                           text-base sm:text-lg md:text-xl font-black rounded-lg sm:rounded-xl transition-all duration-300
+                           text-base sm:text-lg md:text-xl font-black rounded-lg transition-[background-color,transform,box-shadow] duration-200
                            shadow-lg hover:bg-blue-dk/90 hover:-translate-y-0.5 hover:shadow-xl"
               >
                 קראו עוד על הניסיון שלי

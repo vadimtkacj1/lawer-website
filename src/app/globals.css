@@ -6,15 +6,12 @@
 @layer base {
   html {
     direction: rtl;
-    scroll-behavior: smooth;
+    scroll-behavior: auto; /* Disabled for performance - handled by SmoothScrollProvider */
     -webkit-overflow-scrolling: touch;
     overflow-y: scroll;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
+    scroll-padding-top: var(--header-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
@@ -24,33 +21,12 @@
 
   /* Header height variable for spacing */
   :root {
-    --header-height: 80px;
+    --header-height: 90px;
   }
 
   @media (min-width: 768px) {
     :root {
-      --header-height: 90px;
-    }
-  }
-
-  /* Ultra-smooth scrolling with custom timing */
-  @supports (scroll-behavior: smooth) {
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: var(--header-height);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-  }
-
-  /* Enhanced smooth scrolling for anchor links only (optimized) */
-  html {
-    scroll-behavior: smooth;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      scroll-behavior: auto;
+      --header-height: 110px;
     }
   }
 
@@ -140,52 +116,26 @@
   }
 }
 
-/* Hero button pulse animation - Enhanced with glow */
-@keyframes button-pulse {
+/* Hero button animation - Optimized: single animation instead of 3 */
+@keyframes button-pulse-optimized {
   0%, 100% {
-    box-shadow: 0 12px 30px rgba(242, 103, 34, 0.5),
-                0 0 20px rgba(242, 103, 34, 0.3),
-                0 0 40px rgba(242, 103, 34, 0.2);
+    box-shadow: 0 10px 25px rgba(242, 103, 34, 0.4);
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 15px 50px rgba(242, 103, 34, 0.8),
-                0 0 40px rgba(242, 103, 34, 0.6),
-                0 0 80px rgba(242, 103, 34, 0.4);
-    transform: scale(1.03);
-  }
-}
-
-@keyframes button-glow {
-  0%, 100% {
-    filter: brightness(1) drop-shadow(0 0 5px rgba(242, 103, 34, 0.5));
-  }
-  50% {
-    filter: brightness(1.1) drop-shadow(0 0 20px rgba(242, 103, 34, 0.8));
-  }
-}
-
-@keyframes pulse-ring {
-  0% {
-    box-shadow: 0 0 0 0 rgba(242, 103, 34, 0.7),
-                0 0 0 0 rgba(242, 103, 34, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 0 15px rgba(242, 103, 34, 0),
-                0 0 0 30px rgba(242, 103, 34, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 15px rgba(242, 103, 34, 0),
-                0 0 0 30px rgba(242, 103, 34, 0);
+    box-shadow: 0 12px 35px rgba(242, 103, 34, 0.6);
+    transform: scale(1.02);
   }
 }
 
 .hero-cta-button {
-  animation: button-pulse 2s ease-in-out infinite,
-             button-glow 2s ease-in-out infinite,
-             pulse-ring 2s ease-in-out infinite;
-  will-change: box-shadow, transform, filter;
+  animation: button-pulse-optimized 2.5s ease-in-out infinite;
   position: relative;
+}
+
+/* Only apply will-change during animation for better performance */
+.hero-cta-button:hover {
+  will-change: transform;
 }
 
 .animate-pulse-slow {
@@ -204,7 +154,6 @@
 
 .animate-scroll-rtl {
   animation: scroll-rtl 30s linear infinite;
-  will-change: transform;
 }
 
 .animate-scroll-rtl:hover {
@@ -240,7 +189,7 @@
   animation: float-dots ease-in-out infinite;
 }
 
-/* Button shimmer animation - оптимізовано */
+/* Button shimmer animation - optimized */
 @keyframes shimmer {
   0% {
     transform: translateX(-100%) skewX(-12deg);
@@ -254,12 +203,12 @@
   animation: shimmer 3s ease-in-out infinite;
   animation-delay: 1s;
   animation-play-state: paused;
-  will-change: transform;
 }
 
 /* Run shimmer only on hover to avoid constant repainting */
 .group:hover .animate-shimmer {
   animation-play-state: running;
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {

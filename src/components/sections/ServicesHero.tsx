@@ -64,7 +64,8 @@ export default function ServicesHero() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-cream/20 via-transparent to-blue-dk/70" />
+        {/* More opaque gradient for better text visibility on mobile */}
+        <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-cream/30 via-cream/10 to-blue-dk/85" />
       </div>
 
       {/* --- Desktop & Main Layout --- */}
@@ -244,7 +245,7 @@ export default function ServicesHero() {
                 </p>
                 <Link
                   href="#contact"
-                  className="inline-flex items-center gap-3 bg-orange text-white px-8 py-4 lg:px-12 lg:py-5 text-xl lg:text-2xl font-black rounded-md shadow-lg transition-all duration-300 hover:brightness-110 hover:scale-105"
+                  className="inline-flex items-center gap-3 bg-orange text-white px-8 py-4 lg:px-12 lg:py-5 text-xl lg:text-2xl font-black rounded-lg shadow-lg transition-[brightness,transform] duration-200 hover:brightness-110 hover:scale-105"
                 >
                   צרו קשר
                   <svg className="w-6 h-6 rotate-180" fill="currentColor" viewBox="0 0 16 16">

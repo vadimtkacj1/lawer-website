@@ -88,7 +88,7 @@ export default function CommercialHero() {
               {commercialServices.map((service, index) => (
                 <motion.div
                   key={index}
-                  className="flex flex-col items-center justify-center gap-2 sm:gap-3 p-4 sm:p-6 bg-white/80 md:bg-white/60 md:backdrop-blur-none rounded-xl shadow-md border border-blue-dk/10 hover:bg-white/90 hover:shadow-lg transition-all duration-200"
+                  className="flex flex-col items-center justify-center gap-2 sm:gap-3 p-4 sm:p-6 bg-white/80 md:bg-white/60 md:backdrop-blur-none rounded-xl shadow-md border border-blue-dk/10 hover:bg-white/90 hover:shadow-lg transition-[background-color,box-shadow] duration-200"
                   variants={staggerItem}
                 >
                   <span className="text-orange">
