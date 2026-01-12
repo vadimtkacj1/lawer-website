@@ -6,8 +6,8 @@ import { motion, useScroll, useTransform, easeIn } from "framer-motion";
 
 /**
  * HERO COMPONENT
- * Fix: Explicitly forcing min-h-[100dvh] on the flex container to ensure 
- * 'justify-end' works correctly on mobile.
+ * Layout: Image on the left (lg:w-[65%]), Text on the right.
+ * Background: Updated to Cream (#F9F5E7).
  */
 export default function Hero() {
   const sectionRef = useRef(null);
@@ -17,7 +17,7 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  // Scroll animations
+  // --- Scroll Animations ---
   const textY = useTransform(scrollYProgress, [0, 0.4], [0, -100], { ease: easeIn });
   const textOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0], { ease: easeIn });
   
@@ -30,7 +30,8 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-[100dvh] lg:h-[110vh] overflow-hidden bg-[#FDFCFB]"
+      // Main background set to Cream
+      className="relative w-full min-h-[100dvh] lg:h-[110vh] overflow-hidden bg-[#F9F5E7]"
       dir="rtl"
     >
       {/* --- BACKGROUND IMAGE --- */}
@@ -39,10 +40,11 @@ export default function Hero() {
         style={{ y: imageY, scale: imageScale, filter: imageFilter }}
       >
         <div className="relative w-full h-full">
-          {/* Mobile Overlay: Stronger gradient at bottom for text contrast */}
-          <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#FDFCFB] via-[#FDFCFB]/60 to-transparent lg:hidden" />
+          {/* Mobile Overlay: Gradient transition to Cream background at the bottom */}
+          <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#F9F5E7] via-[#F9F5E7]/60 to-transparent lg:hidden" />
           
-          <div className="absolute inset-y-0 right-0 w-1/2 z-20 bg-gradient-to-l from-[#FDFCFB] to-transparent hidden lg:block" />
+          {/* Desktop Overlay: Gradient transition to Cream background on the right side */}
+          <div className="absolute inset-y-0 right-0 w-1/2 z-20 bg-gradient-to-l from-[#F9F5E7] to-transparent hidden lg:block" />
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -65,10 +67,9 @@ export default function Hero() {
       <div className="container mx-auto px-6 md:px-12 relative z-30">
         <motion.div 
           /**
-           * MOBILE FIX: 
-           * 1. 'min-h-[100dvh]' ensures the div is as tall as the screen.
-           * 2. 'justify-end' now has space to push the content to the bottom.
-           * 3. 'pb-24' adds space from the absolute bottom of the screen.
+           * Layout logic:
+           * - Mobile: Content pushed to bottom (justify-end) for better visibility over the image.
+           * - Desktop: Centered vertically (lg:justify-center).
            */
           className="flex flex-col items-start text-right justify-end pb-24 lg:justify-center lg:pb-0 min-h-[100dvh] lg:h-full lg:pt-0"
           style={{ y: textY, opacity: textOpacity }}
@@ -99,6 +100,7 @@ export default function Hero() {
               למשפחה בתכנון נכון.
             </motion.p>
 
+            {/* --- CTA BUTTON --- */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -109,6 +111,7 @@ export default function Hero() {
                 href="#contact"
                 className="relative inline-flex items-center justify-center gap-4 w-full sm:w-auto bg-[#F1662A] text-white px-12 py-5 text-xl font-extrabold rounded-2xl shadow-2xl shadow-[#F1662A]/30 transition-all hover:brightness-110 active:scale-95 group overflow-hidden"
               >
+                {/* Shine effect animation */}
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
                   animate={{ x: ["-100%", "200%"] }}
