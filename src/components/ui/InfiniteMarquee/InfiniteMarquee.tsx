@@ -8,6 +8,7 @@ interface MarqueeProps {
   speed?: number;
   direction?: "left" | "right";
   className?: string;
+  preserveColors?: boolean;
 }
 
 function InfiniteMarquee({
@@ -16,6 +17,7 @@ function InfiniteMarquee({
   speed = 40,
   direction = "left",
   className = "",
+  preserveColors = false,
 }: MarqueeProps) {
   const duplicatedData = useMemo(() => [...dataArray, ...dataArray], [dataArray]);
 
@@ -71,8 +73,8 @@ function InfiniteMarquee({
         .mq-img {
           height: 2.2rem;
           width: auto;
-          filter: grayscale(100%);
-          opacity: 0.6;
+          filter: ${preserveColors ? 'none' : 'grayscale(100%)'};
+          opacity: ${preserveColors ? '1' : '0.6'};
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           object-fit: contain;
         }
@@ -84,7 +86,7 @@ function InfiniteMarquee({
         }
 
         .mq-item:hover .mq-img {
-          filter: grayscale(0%);
+          filter: ${preserveColors ? 'none' : 'grayscale(0%)'};
           opacity: 1;
           transform: scale(1.12);
         }
