@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -7,6 +8,13 @@ import {
   Landmark, Coins, Wallet, Building2, Key, ShieldCheck, Banknote 
 } from "lucide-react";
 import { fadeInUpFast, viewportOptions } from "@/lib/animations";
+
+interface FloatingIconProps {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+  duration?: number;
+}
 
 // --- Configuration Constants ---
 const STEP = 100000;
@@ -17,7 +25,7 @@ const MAX_EQUITY = 5000000;
  * FloatingIcon Component
  * Decorative background elements
  */
-const FloatingIcon = ({ children, className, delay = 0, duration = 8 }) => (
+const FloatingIcon = ({ children, className, delay = 0, duration = 8 } : FloatingIconProps) => (
   <motion.div
     className={`absolute text-blue-dk/20 pointer-events-none z-0 ${className}`}
     animate={{
