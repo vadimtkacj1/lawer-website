@@ -71,7 +71,7 @@ export default function CommercialServicesSection() {
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
           className="mb-12 md:mb-24 lg:mb-40 text-center"
         >
-          <motion.h2 variants={staggerItem} className="text-3xl md:text-5xl lg:text-7xl font-heebo font-black text-blue-dk mb-4 md:mb-8 leading-tight">
+          <motion.h2 variants={staggerItem} className="text-3xl md:text-5xl lg:text-7xl font-noto-sans-hebrew font-black text-blue-dk mb-4 md:mb-8 leading-tight">
             השירותים שלנו: <br />
             <span className="text-orange">דיוק פיננסי</span> וליווי משפטי
           </motion.h2>
@@ -118,7 +118,7 @@ export default function CommercialServicesSection() {
                   
                   {/* Art & Number Side */}
                   <div className="w-full lg:w-1/2 flex items-center justify-center relative h-40 md:h-56 lg:h-80">
-                    <span className="absolute text-[6rem] md:text-[10rem] lg:text-[18rem] font-black text-blue-dk/[0.08] select-none font-heebo leading-none">
+                    <span className="absolute text-[6rem] md:text-[10rem] lg:text-[18rem] font-black text-blue-dk/[0.08] select-none font-noto-sans-hebrew leading-none">
                       0{index + 1}
                     </span>
                     <div className="relative z-10 w-32 h-32 md:w-52 md:h-52 lg:w-80 lg:h-80 text-blue-dk drop-shadow-md">

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import CommercialHero from "@/app/services/commercial/components/CommercialHero";
-import CommercialIntro from "@/app/services/commercial/components/CommercialIntro";
 import CommercialAbout from "@/app/services/commercial/components/CommercialAbout";
 import CommercialWhySection from "@/app/services/commercial/components/CommercialWhySection";
 import CommercialServicesSection from "@/app/services/commercial/components/CommercialServicesSection";
@@ -37,7 +36,6 @@ export default function CommercialPage() {
       <Header />
       <main>
         <CommercialHero />
-        <CommercialIntro />
         <CommercialAbout />
         <CommercialWhySection />
         <CommercialServicesSection />

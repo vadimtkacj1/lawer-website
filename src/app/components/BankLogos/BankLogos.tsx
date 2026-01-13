@@ -22,17 +22,6 @@ export default function BankLogos() {
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-dk/20 to-transparent" />
 
       <div className="container mx-auto px-4 md:px-8">
-        {/* Section Header */}
-        <motion.h2
-          className="text-center text-3xl md:text-5xl lg:text-6xl mb-10 md:mb-16 font-heebo font-black text-blue-dk"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOptions}
-          variants={fadeInUpFast}
-        >
-          שותפים
-        </motion.h2>
-
         {/* Bank Logos Carousel - with original colors */}
         <motion.div
           className="relative"

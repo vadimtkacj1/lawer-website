@@ -70,7 +70,7 @@ export default function CommercialAbout() {
               variants={fadeInUpFast}
               dir="rtl"
             >
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heebo font-black text-blue-dk mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-noto-sans-hebrew font-black text-blue-dk mb-6 leading-tight">
                 אבי בוקעי
               </h2>
 

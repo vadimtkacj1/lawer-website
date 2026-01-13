@@ -80,7 +80,7 @@ export default function FirstHomeHero() {
             <div className="flex flex-col items-end w-full">
               
               <motion.h1
-                className="font-heebo font-black leading-[1.05] mb-6
+                className="font-noto-sans-hebrew font-black leading-[1.05] mb-6
                            text-4xl sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl
                            text-white lg:text-blue-dk
                            text-center lg:text-right
@@ -215,7 +215,7 @@ export default function FirstHomeHero() {
                   className="flex flex-col md:flex-row gap-4 md:gap-6 items-start bg-white/60 backdrop-blur-sm rounded-2xl p-6 lg:p-8 shadow-lg border border-blue-dk/10"
                   variants={staggerItem}
                 >
-                  <div className="flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 bg-orange rounded-full flex items-center justify-center">
+                  <div className="flex-shrink-0 w-16 h-16 lg:w-20 lg:h-20 bg-blue-dk rounded-full flex items-center justify-center">
                     <span className="text-2xl lg:text-3xl font-black text-white">
                       {step.number}
                     </span>
@@ -246,7 +246,7 @@ export default function FirstHomeHero() {
             </p>
             <Link
               href="#contact"
-              className="inline-flex items-center gap-3 bg-orange text-white px-8 py-4 lg:px-12 lg:py-5 text-xl lg:text-2xl font-black rounded-lg shadow-lg transition-[brightness,transform] duration-200 hover:brightness-110 hover:scale-105"
+              className="inline-flex items-center gap-3 bg-blue-dk text-white px-8 py-4 lg:px-12 lg:py-5 text-xl lg:text-2xl font-black shadow-lg transition-[brightness,transform] duration-200 hover:brightness-110 hover:scale-105"
             >
               צרו קשר
               <svg className="w-6 h-6 rotate-180" fill="currentColor" viewBox="0 0 16 16">

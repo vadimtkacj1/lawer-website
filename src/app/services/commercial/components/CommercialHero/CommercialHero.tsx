@@ -281,7 +281,7 @@ export default function CommercialHero() {
         >
           <div className="w-full text-center space-y-6 lg:space-y-8">
             <motion.h1
-              className="font-heebo font-black leading-[1.1]
+              className="font-noto-sans-hebrew font-black leading-[1.1]
                          text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
                          text-blue-dk
                          mb-6 sm:mb-8
