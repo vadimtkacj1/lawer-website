@@ -55,7 +55,7 @@ function AccordionItem({
           {index + 1}. {question}
         </span>
         <span
-          className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-orange text-white
+          className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-blue-dk text-white
                       flex items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95"
         >
           {isOpen ? (

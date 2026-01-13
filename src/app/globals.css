@@ -36,7 +36,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heebo font-black tracking-tight;
+    @apply font-noto-sans-hebrew font-black tracking-tight;
   }
 
   /* Custom Scrollbar - Premium Design */
@@ -81,16 +81,35 @@
 
 /* Custom component styles */
 @layer components {
+  /* Global button styles - border-radius: 0.5rem for all buttons and Noto Sans Hebrew font */
+  button,
+  .btn-primary,
+  .btn-outline,
+  a[role="button"],
+  [role="button"],
+  a.bg-orange,
+  button.bg-orange,
+  a[href].bg-orange,
+  button[type="button"],
+  button[type="submit"],
+  button[type="reset"],
+  a[href][class*="bg-"] {
+    border-radius: 0.5rem !important;
+    font-family: "Noto Sans Hebrew", sans-serif;
+  }
+
   .btn-primary {
-    @apply bg-orange text-white font-extrabold px-8 py-3 rounded-lg
-           shadow-lg hover:bg-orange-hover hover:-translate-y-0.5 hover:shadow-xl;
+    @apply bg-blue-dk text-white font-extrabold px-8 py-3
+           shadow-lg hover:bg-blue-dk/90 hover:-translate-y-0.5 hover:shadow-xl;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0.5rem;
   }
 
   .btn-outline {
     @apply border-2 border-blue-dk text-blue-dk font-extrabold px-6 py-2
-           rounded-lg hover:bg-blue-dk hover:text-white;
+           hover:bg-blue-dk hover:text-white;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0.5rem;
   }
 
   .section-title {
@@ -218,6 +237,63 @@
   .loader-float-dot {
     animation: none !important;
   }
+}
+
+/* Accessibility Settings */
+.font-size-normal {
+  font-size: 100% !important;
+}
+
+.font-size-large {
+  font-size: 125% !important;
+}
+
+.font-size-extra-large {
+  font-size: 150% !important;
+}
+
+.font-size-large *,
+.font-size-extra-large * {
+  font-size: inherit;
+}
+
+.contrast-normal {
+  /* Default contrast */
+}
+
+.contrast-high {
+  filter: contrast(1.2) brightness(1.1);
+}
+
+.contrast-high body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.contrast-high h1,
+.contrast-high h2,
+.contrast-high h3,
+.contrast-high h4,
+.contrast-high h5,
+.contrast-high h6,
+.contrast-high p,
+.contrast-high span,
+.contrast-high div {
+  color: #000000 !important;
+}
+
+.contrast-high a {
+  color: #0000ff !important;
+  font-weight: bold !important;
+}
+
+.contrast-high button {
+  border: 2px solid #000000 !important;
+}
+
+.underline-links a {
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
 }
 
 

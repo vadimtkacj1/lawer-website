@@ -34,7 +34,7 @@ export default function BanksCarousel() {
         >
           <motion.h2
             variants={staggerItem}
-            className="text-3xl md:text-5xl lg:text-6xl font-heebo font-black text-blue-dk mb-4 md:mb-6 leading-tight"
+            className="text-3xl md:text-5xl lg:text-6xl font-noto-sans-hebrew font-black text-blue-dk mb-4 md:mb-6 leading-tight"
           >
             <span className="text-orange">שותפינו</span>
           </motion.h2>

@@ -27,7 +27,7 @@ const config: Config = {
         "orange-hover": "#d95a1a",
       },
       fontFamily: {
-        heebo: ["var(--font-heebo)", "sans-serif"],
+        "noto-sans-hebrew": ["Noto Sans Hebrew", "sans-serif"],
       },
       container: {
         center: true,

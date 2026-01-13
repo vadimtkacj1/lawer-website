@@ -19,41 +19,52 @@ import CitySkylineBackground from "@/components/icons/backgrounds/CitySkylineBac
 
 const services = [
   {
-    href: "/services/first-home",
+    href: "/services/residential",
     Icon: HomeIcon,
-    title: "משכנתא לדירה ראשונה",
-    description: "ליווי מלא מהיכרות ועד קבלת מפתח",
+    title: "משכנתא לרכישת דירה",
+    description: "ליווי לדירה ראשונה, להשקעה או דירה חליפית בתכנון נכון",
+  },
+  {
+    href: "/services/mechir-lamishtaken",
+    Icon: BuildingIcon,
+    title: "מחיר למשתכן",
+    description: "ליווי ייעודי עם היכרות מעמיקה של המסלולים וההתאמות",
   },
   {
     href: "/services/refinance",
     Icon: RefreshIcon,
-    title: "מחזור משכנתא",
-    description: "חיסכון של אלפי שקלים בתשלום החודשי",
+    title: "מחזור ואיחוד הלוואות",
+    description: "שיפור תנאים קיימים והפחתת ההחזר החודשי שלכם",
+  },
+  {
+    href: "/services/reverse-mortgage",
+    Icon: CurrencyIcon,
+    title: "משכנתא הפוכה",
+    description: "פתרונות מימוני יצירתיים ומותאמים לבני 60 ומעלה",
+  },
+  {
+    href: "/services/refused",
+    Icon: ChartIcon,
+    title: "מסורבי בנקים ומורכבות",
+    description: "פתרונות יצירתיים לעסקאות מורכבות גם כשהבנק אמר 'לא'",
+  },
+  {
+    href: "/services/renovation",
+    Icon: BuildingIcon, // ניתן להחליף באייקון פטיש/שיפוץ אם קיים
+    title: "משכנתא לשיפוץ",
+    description: "מימון שיפוץ בתנאי משכנתא ובתהליך יעיל ומהיר",
   },
   {
     href: "/services/all-purpose",
     Icon: CurrencyIcon,
     title: "משכנתא לכל מטרה",
-    description: "פתרונות מימון גמישים לכל צורך",
-  },
-  {
-    href: "/services/investors",
-    Icon: ChartIcon,
-    title: "משכנתא למשקיעים",
-    description: "אסטרטגיות מימון חכמות להשקעה",
-  },
-  {
-    href: "/services/commercial",
-    Icon: BuildingIcon,
-    title: "ליווי עסקאות מורכבות",
-    description: "פתרונות מקצועיים לעסקאות מורכבות",
+    description: "מימון מגוון צרכים בפריסה ארוכה באמצעות שעבוד נכס",
   },
 ];
 
 export default function Services() {
   return (
     <section id="services" className="relative py-12 md:py-20 z-0 bg-cream overflow-hidden">
-      {/* Subtle background for depth */}
       <div className="absolute inset-0 opacity-20 pointer-events-none z-0">
         <CitySkylineBackground />
       </div>
@@ -71,11 +82,7 @@ export default function Services() {
           השירותים שלנו
         </motion.h2>
 
-        <div className="max-w-[1100px] 3xl:max-w-[1400px] 4xl:max-w-[1600px] 5xl:max-w-[1800px] mx-auto">
-          {/* GRID/FLEX WRAPPER:
-              - Mobile: Small gap (gap-3) and centered flex items
-              - Desktop: Seamless grid (gap-0)
-          */}
+        <div className="max-w-[1200px] 3xl:max-w-[1500px] 4xl:max-w-[1700px] 5xl:max-w-[1900px] mx-auto">
           <motion.nav
             className="flex flex-wrap justify-center gap-3 md:gap-0 md:bg-white md:shadow-xl md:rounded-3xl md:border border-blue-dk/10 overflow-hidden"
             initial="hidden"
@@ -87,43 +94,36 @@ export default function Services() {
               <motion.div
                 key={service.href}
                 variants={staggerItem}
-                // Mobile: w-[calc(50%-6px)] makes two equal items per row with gaps.
-                // Desktop: lg:flex-1 makes five equal items in one row.
                 className="w-[calc(50%-6px)] md:w-1/3 lg:flex-1 bg-white rounded-2xl md:rounded-none
-                           border border-blue-dk/5 md:border-0 md:border-l md:border-l-blue-dk/10 md:last:border-l-0
-                           shadow-sm md:shadow-none"
+                           relative border border-blue-dk/5 md:border-0 shadow-sm md:shadow-none"
               >
                 <Link
                   href={service.href}
                   className="group block h-full relative"
                 >
-                  {/* CARD CONTENT:
-                      - Fixed aspect-square or min-height ensures identical size.
-                      - Reduced padding for a tighter, cleaner look on mobile.
-                  */}
-                  <div className="flex flex-col items-center justify-center p-4 sm:p-6 3xl:p-8 4xl:p-10 5xl:p-12 min-h-[140px] sm:min-h-[180px] lg:min-h-[220px] 3xl:min-h-[260px] 4xl:min-h-[300px] 5xl:min-h-[340px] transition-all duration-300 hover:bg-orange/[0.03] relative">
-
-                    {/* Icon scaling on hover */}
+                  <div className="flex flex-col items-center justify-center p-4 sm:p-6 3xl:p-8 4xl:p-10 5xl:p-12 min-h-[160px] sm:min-h-[200px] lg:min-h-[240px] 3xl:min-h-[280px] 4xl:min-h-[320px] 5xl:min-h-[360px] transition-all duration-300 hover:bg-orange/[0.03] relative">
                     <div className="text-orange mb-3 transition-transform duration-300 group-hover:scale-110">
                       <service.Icon className="w-9 h-9 sm:w-12 sm:h-12 3xl:w-14 3xl:h-14 4xl:w-16 4xl:h-16 5xl:w-[72px] 5xl:h-[72px]" />
                     </div>
 
-                    {/* Uniform title styling */}
                     <h3 className="text-blue-dk font-black text-[13px] sm:text-sm md:text-base 3xl:text-lg 4xl:text-xl 5xl:text-2xl text-center leading-tight transition-colors duration-300 group-hover:text-orange mb-2">
                       {service.title}
                     </h3>
 
-                    {/* Description - показывается при hover */}
-                    <p className="text-blue-dk/70 text-xs md:text-sm 3xl:text-base 4xl:text-lg 5xl:text-xl text-center leading-snug opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-20 3xl:group-hover:max-h-24 4xl:group-hover:max-h-28 transition-all duration-300 overflow-hidden">
+                    <p className="text-blue-dk/70 text-xs md:text-sm 3xl:text-base 4xl:text-lg 5xl:text-xl text-center leading-snug opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-24 3xl:group-hover:max-h-28 transition-all duration-300 overflow-hidden px-2">
                       {service.description}
                     </p>
 
-                    {/* Arrow icon - показывает что это кликабельно */}
                     <div className="mt-2 text-orange opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1">
                       <ArrowIcon className="w-5 h-5 3xl:w-6 3xl:h-6 4xl:w-7 4xl:h-7 5xl:w-8 5xl:h-8 rotate-180" />
                     </div>
                   </div>
                 </Link>
+
+                {/* קו מפריד - מופיע רק בדסקטופ בין פריטים שהם לא האחרון */}
+                {index !== services.length - 1 && (
+                  <div className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 w-[1px] h-[40%] bg-blue-dk/10" />
+                )}
               </motion.div>
             ))}
           </motion.nav>

@@ -9,7 +9,7 @@ const optimizedViewport = {
   amount: 0.2,
 };
 
-export default function CommercialIntro() {
+export default function Quote() {
   return (
     <section className="relative bg-cream z-10 py-16 lg:py-24 overflow-hidden">
       {/* Мягкий фоновый декор (еле заметное свечение) */}
@@ -32,7 +32,7 @@ export default function CommercialIntro() {
               ”
             </div>
 
-            <p className="relative z-10 text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-blue-dk/90 leading-[1.8] text-center font-heebo" dir="rtl">
+            <p className="relative z-10 text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-blue-dk/90 leading-[1.8] text-center font-noto-sans-hebrew" dir="rtl">
               לקיחת משכנתא היא כנראה{" "}
               <span className="relative inline-block text-orange font-black">
                 העסקה הכלכלית הגדולה ביותר

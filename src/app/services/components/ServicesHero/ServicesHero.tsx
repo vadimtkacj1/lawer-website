@@ -77,7 +77,7 @@ export default function ServicesHero() {
             <div className="flex flex-col items-end w-full">
               
               <motion.h1
-                className="font-heebo font-black leading-[1.1] mb-3 sm:mb-4 md:mb-3 lg:mb-2
+                className="font-noto-sans-hebrew font-black leading-[1.1] mb-3 sm:mb-4 md:mb-3 lg:mb-2
                            text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl
                            text-white lg:text-blue-dk
                            text-center lg:text-right
@@ -91,7 +91,7 @@ export default function ServicesHero() {
                 }}
               >
                 <span className="text-white lg:text-blue-dk">יועץ משכנתאות בחולון והמרכז:</span>{" "}
-                <span className="bg-orange text-white px-3 py-1 sm:px-4 sm:py-1.5 md:px-5 md:py-2 lg:px-6 lg:py-2.5 rounded-md inline-block">
+                <span className="bg-blue-dk text-white px-3 py-1 sm:px-4 sm:py-1.5 md:px-5 md:py-2 lg:px-6 lg:py-2.5 rounded-md inline-block">
                   המומחיות של יוצא מערכת הבנקאות אצלכם בכיס
                 </span>
               </motion.h1>
@@ -245,7 +245,7 @@ export default function ServicesHero() {
                 </p>
                 <Link
                   href="#contact"
-                  className="inline-flex items-center gap-3 bg-orange text-white px-8 py-4 lg:px-12 lg:py-5 text-xl lg:text-2xl font-black rounded-lg shadow-lg transition-[brightness,transform] duration-200 hover:brightness-110 hover:scale-105"
+                  className="inline-flex items-center gap-3 bg-blue-dk text-white px-8 py-4 lg:px-12 lg:py-5 text-xl lg:text-2xl font-black shadow-lg transition-[brightness,transform] duration-200 hover:brightness-110 hover:scale-105"
                 >
                   צרו קשר
                   <svg className="w-6 h-6 rotate-180" fill="currentColor" viewBox="0 0 16 16">

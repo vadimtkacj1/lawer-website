@@ -1,16 +1,7 @@
 import type { Metadata } from "next";
-import { Heebo } from "next/font/google";
 import "./globals.css";
 import FullScreenLoader from "@/components/ui/FullScreenLoader";
 import ClientEffects from "@/components/ui/ClientEffects";
-
-// Hebrew-friendly font with next/font for optimal loading
-const heebo = Heebo({
-  subsets: ["hebrew", "latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-heebo",
-  display: "swap",
-});
 
 // Base metadata - can be extended per page
 export const metadata: Metadata = {
@@ -91,18 +82,18 @@ export default function RootLayout({
     <html
       lang="he"
       dir="rtl"
-      className={heebo.variable}
     >
       <head>
-        {/* Preconnect to external domains for performance */}
+        {/* Google Fonts - Noto Sans Hebrew */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&display=swap" rel="stylesheet" />
         {/* DNS prefetch for social media */}
         <link rel="dns-prefetch" href="https://www.facebook.com" />
         <link rel="dns-prefetch" href="https://www.instagram.com" />
         <link rel="dns-prefetch" href="https://wa.me" />
       </head>
-      <body className="font-heebo antialiased">
+      <body className="font-noto-sans-hebrew antialiased">
         <FullScreenLoader />
         <ClientEffects />
         {children}

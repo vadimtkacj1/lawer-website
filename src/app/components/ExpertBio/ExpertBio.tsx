@@ -71,7 +71,7 @@ export default function ExpertBio() {
           {/* Content */}
           <div className="flex-[1.2] text-center lg:text-right">
             <motion.h2
-              className="font-heebo font-black text-blue-dk mb-3 sm:mb-4 md:mb-6 leading-tight text-center lg:text-right text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
+              className="font-noto-sans-hebrew font-black text-blue-dk mb-3 sm:mb-4 md:mb-6 leading-tight text-center lg:text-right text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
               initial="hidden"
               whileInView="visible"
               viewport={viewportOptions}
@@ -148,7 +148,7 @@ export default function ExpertBio() {
               <Link
                 href="/about"
                 className="inline-block px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 bg-blue-dk text-white
-                           text-base sm:text-lg md:text-xl font-black rounded-lg transition-[background-color,transform,box-shadow] duration-200
+                           text-base sm:text-lg md:text-xl font-black transition-[background-color,transform,box-shadow] duration-200
                            shadow-lg hover:bg-blue-dk/90 hover:-translate-y-0.5 hover:shadow-xl"
               >
                 קראו עוד על הניסיון שלי

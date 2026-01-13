@@ -105,7 +105,7 @@ export default function Hero() {
             >
               <motion.a
                 href="#contact"
-                className="relative inline-flex items-center justify-center gap-4 3xl:gap-6 4xl:gap-8 w-full sm:w-auto bg-[#F1662A] text-white px-12 3xl:px-16 4xl:px-20 5xl:px-24 py-5 3xl:py-6 4xl:py-8 5xl:py-10 text-xl 3xl:text-2xl 4xl:text-3xl 5xl:text-4xl font-extrabold rounded-2xl 3xl:rounded-3xl 4xl:rounded-[2rem] shadow-2xl shadow-[#F1662A]/30 transition-all hover:brightness-110 active:scale-95 group overflow-hidden"
+                className="relative inline-flex items-center justify-center gap-4 3xl:gap-6 4xl:gap-8 w-full sm:w-auto bg-blue-dk text-white px-12 3xl:px-16 4xl:px-20 5xl:px-24 py-5 3xl:py-6 4xl:py-8 5xl:py-10 text-xl 3xl:text-2xl 4xl:text-3xl 5xl:text-4xl font-extrabold shadow-2xl shadow-blue-dk/30 transition-all hover:brightness-110 active:scale-95 group overflow-hidden"
               >
                 {/* Shine effect animation */}
                 <motion.div

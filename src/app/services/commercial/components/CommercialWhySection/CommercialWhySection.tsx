@@ -27,7 +27,7 @@ export default function CommercialWhySection() {
         >
           {/* 1. TITLE SECTION */}
           <motion.div className="text-center mb-24 lg:mb-40" variants={fadeInUpFast}>
-            <h2 className="text-5xl lg:text-8xl font-heebo font-black text-blue-dk leading-tight">
+            <h2 className="text-5xl lg:text-8xl font-noto-sans-hebrew font-black text-blue-dk leading-tight">
               למה דווקא <span className="text-orange">אבי</span>?
             </h2>
             
