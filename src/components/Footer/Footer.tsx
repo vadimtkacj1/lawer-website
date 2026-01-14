@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { fadeInUp, staggerContainer, staggerItem, viewportOptions } from "@/lib/animations";
 import LocationIcon from "@/components/icons/LocationIcon";
 import FacebookIcon from "@/components/icons/FacebookIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
@@ -30,15 +28,9 @@ export default function Footer() {
   return (
     <footer className="bg-blue-dk text-white py-10 sm:py-12 md:py-14 lg:py-16" dir="rtl">
       <div className="container mx-auto px-3 sm:px-4 md:px-6">
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-start"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOptions}
-          variants={staggerContainer}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-start">
           {/* About */}
-          <motion.div variants={staggerItem} className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
+          <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
             <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">
               אבי - הבית למשכנתאות
             </h3>
@@ -46,10 +38,10 @@ export default function Footer() {
               ליווי מקצועי ואובייקטיבי בתהליך לקיחת המשכנתא. אנחנו עובדים
               בשבילכם, לא בשביל הבנק, כדי להבטיח את התנאים המשתלמים ביותר.
             </p>
-          </motion.div>
+          </div>
 
           {/* Services */}
-          <motion.div variants={staggerItem} className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
+          <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
             <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">השירותים שלנו</h3>
             <nav className="flex flex-col space-y-1.5 sm:space-y-2 w-full">
               {serviceLinks.map((link) => (
@@ -62,10 +54,10 @@ export default function Footer() {
                 </Link>
               ))}
             </nav>
-          </motion.div>
+          </div>
 
           {/* Contact */}
-          <motion.div variants={staggerItem} className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center sm:col-span-2 lg:col-span-1">
+          <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center sm:col-span-2 lg:col-span-1">
             <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">צרו קשר</h3>
             <address className="not-italic space-y-1.5 sm:space-y-2 text-white/70 text-sm sm:text-base md:text-lg font-semibold w-full">
               <p className="flex items-center gap-2 justify-center sm:justify-start lg:justify-center">
@@ -89,21 +81,16 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Copyright */}
-        <motion.div
-          className="border-t border-white/20 mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-7 md:pt-8 text-center"
-          whileInView="visible"
-          viewport={viewportOptions}
-          variants={fadeInUp}
-        >
+        <div className="border-t border-white/20 mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-7 md:pt-8 text-center">
           <p className="text-white/70 text-xs sm:text-sm md:text-base lg:text-lg font-semibold px-2">
             © {new Date().getFullYear()} אבי - הבית למשכנתאות. כל הזכויות
             שמורות. תכנון נכון שחוסך לכם כסף.
           </p>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );
