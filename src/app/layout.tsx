@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { MotionConfig } from "framer-motion";
 import FullScreenLoader from "@/components/ui/FullScreenLoader";
 import ClientEffects from "@/components/ui/ClientEffects";
 
@@ -94,9 +95,11 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://wa.me" />
       </head>
       <body className="font-noto-sans-hebrew antialiased">
-        <FullScreenLoader />
-        <ClientEffects />
-        {children}
+        <MotionConfig reducedMotion="user">
+          <FullScreenLoader />
+          <ClientEffects />
+          {children}
+        </MotionConfig>
       </body>
     </html>
   );
