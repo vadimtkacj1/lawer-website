@@ -27,7 +27,7 @@ export default function HowItWorks() {
   return (
     <section className="relative py-16 md:py-20 bg-cream overflow-hidden" dir="rtl">
       
-      {/* --- НОВЫЙ АБСТРАКТНЫЙ SVG ФОН --- */}
+      {/* --- NEW ABSTRACT SVG BACKGROUND --- */}
       <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
         <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
@@ -74,36 +74,36 @@ export default function HowItWorks() {
                 variants={staggerItem}
                 className="flex flex-col items-center w-full relative"
               >
-                {/* БОЛЬШИЕ ФОНОВЫЕ ЦИФРЫ */}
-                <div className="absolute -top-12 md:-top-16 text-7xl md:text-8xl font-black text-blue-dk/[0.07] select-none transition-colors duration-500 group-hover:text-orange/10 z-0">
+                {/* LARGE BACKGROUND NUMBERS - Moved right with ml-* classes */}
+                <div className="absolute -top-12 md:-top-16 ml-8 md:ml-14 text-7xl md:text-8xl font-black text-blue-dk/[0.07] select-none transition-colors duration-500 group-hover:text-orange/10 z-0">
                   {step.id}
                 </div>
 
-                {/* КРУГ С ИКОНКОЙ */}
-                <div className="w-24 h-24 md:w-36 md:h-36 rounded-full bg-white shadow-[0_10px_40px_rgba(0,0,0,0.06)] flex items-center justify-center border border-white relative z-20 transition-all duration-500 group-hover:shadow-orange/20 group-hover:-translate-y-1">
+                {/* ICON CONTAINER - Changed from rounded-full to rounded-3xl for rounded cube look */}
+                <div className="w-24 h-24 md:w-36 md:h-36 rounded-3xl bg-white shadow-[0_10px_40px_rgba(0,0,0,0.06)] flex items-center justify-center border border-white relative z-20 transition-all duration-500 group-hover:shadow-orange/20 group-hover:-translate-y-1">
                   <step.Icon className="w-10 h-10 md:w-16 md:h-16 text-orange transition-transform duration-500 group-hover:scale-105" strokeWidth={1.2} />
                 </div>
 
-                {/* ТЕКСТ (отступ уменьшен) */}
+                {/* TEXT (reduced margin) */}
                 <h3 className="mt-2 md:mt-3 text-blue-dk font-bold text-center text-lg md:text-xl max-w-[180px] leading-tight transition-colors duration-300 group-hover:text-orange relative z-10">
                   {step.title}
                 </h3>
               </motion.div>
 
-              {/* КРИВЫЕ СТРЕЛКИ С ПАЛКАМИ */}
+              {/* CURVED ARROWS */}
               {index !== steps.length - 1 && (
                 <>
-                  {/* Десктопная стрелка (кривая) */}
+                  {/* Desktop arrow (curved) */}
                   <div className="hidden lg:block absolute top-[48px] md:top-[72px] -left-12 z-10 w-24 pointer-events-none">
                     <svg width="80" height="20" viewBox="0 0 80 20" fill="none" className="text-orange">
-                      {/* Изогнутая линия */}
+                      {/* Curved line */}
                       <path 
                         d="M78 10 Q 40 0 2 10" 
                         stroke="currentColor" 
                         strokeWidth="2.5" 
                         strokeLinecap="round" 
                       />
-                      {/* Наконечник */}
+                      {/* Arrowhead */}
                       <path 
                         d="M2 10L12 2M2 10L12 18" 
                         stroke="currentColor" 
@@ -114,12 +114,12 @@ export default function HowItWorks() {
                     </svg>
                   </div>
                   
-                  {/* Мобильная стрелка вниз (кривая) */}
+                  {/* Mobile down arrow (curved) */}
                   <div className="lg:hidden my-4 text-orange opacity-60">
                     <svg width="20" height="40" viewBox="0 0 20 40" fill="none">
-                      {/* Изогнутая линия */}
+                      {/* Curved line */}
                       <path d="M10 0 Q 15 20 10 38" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                      {/* Наконечник */}
+                      {/* Arrowhead */}
                       <path d="M10 38L2 30M10 38L18 30" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
