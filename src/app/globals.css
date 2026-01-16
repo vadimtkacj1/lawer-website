@@ -6,7 +6,7 @@
 @layer base {
   html {
     direction: rtl;
-    scroll-behavior: auto; /* Disabled for performance - handled by SmoothScrollProvider */
+    scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     overflow-y: scroll;
     scroll-padding-top: var(--header-height);
@@ -35,8 +35,56 @@
     overscroll-behavior-y: none;
   }
 
+  /* Optimize image loading */
+  img {
+    content-visibility: auto;
+  }
+
+  /* GPU acceleration for better performance on mobile */
+  @media (hover: none) and (pointer: coarse) {
+    body {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    /* Disable all non-essential animations on mobile */
+    * {
+      animation-play-state: paused !important;
+    }
+
+    /* Force hardware acceleration only for critical elements */
+    img, video, picture {
+      will-change: auto;
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-noto-sans-hebrew font-black tracking-tight;
+  }
+
+  /* Performance optimizations for all sections */
+  section {
+    /* Contain layout changes within sections */
+    contain: layout style paint;
+    /* Force GPU acceleration */
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* Mobile-specific text rendering optimization */
+  @media (hover: none) and (pointer: coarse) {
+    h1, h2, h3, h4, h5, h6, p, span, div {
+      /* Optimize text rendering on mobile */
+      text-rendering: optimizeSpeed;
+      /* Prevent text from triggering layout */
+      contain: layout;
+    }
   }
 
   /* Custom Scrollbar - Premium Design */
@@ -193,19 +241,22 @@
 }
 
 /* FullScreenLoader animations */
-@keyframes float-dots {
-  0%, 100% {
-    transform: translateY(0) translateX(0);
-    opacity: 0.3;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  50% {
-    transform: translateY(-20px) translateX(10px);
-    opacity: 0.6;
+  100% {
+    transform: rotate(360deg);
   }
 }
 
-.loader-float-dot {
-  animation: float-dots ease-in-out infinite;
+.fullscreen-spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(28, 54, 100, 0.1);
+  border-top: 5px solid #1c3664;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
 /* Button shimmer animation - optimized */
@@ -230,11 +281,77 @@
   will-change: transform;
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* Mobile performance optimizations - disable heavy animations on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .hero-cta-button {
+    animation: none !important;
+  }
+  .animate-scroll-rtl {
+    animation-duration: 60s !important; /* Slower animation on mobile for better performance */
+  }
   .animate-shimmer {
     animation: none !important;
   }
-  .loader-float-dot {
+  /* Disable parallax effects on mobile */
+  [data-parallax] {
+    transform: none !important;
+  }
+  /* Disable will-change on mobile to prevent GPU layer creation */
+  * {
+    will-change: auto !important;
+  }
+  /* Simplify transitions on mobile */
+  * {
+    transition-duration: 0.1s !important;
+  }
+  /* Disable ALL framer motion animations on mobile for performance */
+  [data-framer-motion],
+  [data-projection-id] {
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Force simple fades only */
+  .motion-div {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Reduce image quality on mobile for faster loading */
+  img {
+    image-rendering: auto;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* Simplify shadows on mobile - except essential ones */
+  button:not(.hero-cta-button),
+  .card,
+  .shadow-lg:not(.hero-cta-button) {
+    box-shadow: none !important;
+  }
+
+  /* Disable decorative text shadows on mobile */
+  p, span, div {
+    text-shadow: none !important;
+  }
+}
+
+/* Reduced motion preferences - more comprehensive support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-shimmer,
+  .fullscreen-spinner,
+  .hero-cta-button,
+  .animate-scroll-rtl,
+  .animate-pulse-slow {
     animation: none !important;
   }
 }

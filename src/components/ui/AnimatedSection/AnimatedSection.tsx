@@ -3,6 +3,7 @@
 import { motion, Variants } from "framer-motion";
 import { ReactNode } from "react";
 import { fadeInUp, viewportOptions } from "@/lib/animations";
+import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
 
 interface AnimatedSectionProps {
   children: ReactNode;
@@ -19,6 +20,23 @@ export default function AnimatedSection({
   viewport = viewportOptions,
   delay = 0,
 }: AnimatedSectionProps) {
+  const { shouldDisableAnimations, shouldReduceAnimations, isMobile } = usePerformanceSettings();
+
+  // CRITICAL: Completely disable animations on mobile for performance
+  // Return plain div to avoid ANY framer-motion overhead
+  if (shouldDisableAnimations || isMobile) {
+    return <div className={className}>{children}</div>;
+  }
+
+  // Optimize viewport settings for mobile
+  const optimizedViewport = isMobile
+    ? {
+        once: true,
+        margin: "0px",
+        amount: 0.05 // Much lower threshold for mobile
+      }
+    : viewport;
+
   // Add delay to variants if specified
   const variantsWithDelay = delay > 0
     ? {
@@ -27,7 +45,7 @@ export default function AnimatedSection({
           ...variants.visible,
           transition: {
             ...(variants.visible as any).transition,
-            delay,
+            delay: shouldReduceAnimations ? delay * 0.3 : delay, // Even shorter delays
           },
         },
       }
@@ -37,7 +55,7 @@ export default function AnimatedSection({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={viewport}
+      viewport={optimizedViewport}
       variants={variantsWithDelay}
       className={className}
     >
