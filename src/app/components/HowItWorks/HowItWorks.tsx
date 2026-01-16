@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { 
-  Phone, 
-  Users, 
-  FileCheck, 
-  Handshake, 
-  PenTool 
+import {
+  Phone,
+  Users,
+  FileCheck,
+  Handshake,
+  PenTool
 } from "lucide-react";
 import {
   fadeInUpFast,
@@ -14,6 +14,7 @@ import {
   staggerItem,
   viewportOptions,
 } from "@/lib/animations";
+import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
 
 const steps = [
   { id: "01", title: "שיחת אפיון והיכרות ראשונית", Icon: Phone },
@@ -24,9 +25,11 @@ const steps = [
 ];
 
 export default function HowItWorks() {
+  const { shouldReduceAnimations } = usePerformanceSettings();
+
   return (
     <section className="relative py-16 md:py-20 bg-cream overflow-hidden" dir="rtl">
-      
+
       {/* --- NEW ABSTRACT SVG BACKGROUND --- */}
       <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
         <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -36,16 +39,20 @@ export default function HowItWorks() {
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)" />
-          <motion.circle 
-            cx="10%" cy="20%" r="15" fill="#f26722" fillOpacity="0.03" 
-            animate={{ scale: [1, 1.2, 1], x: [0, 50, 0] }} 
-            transition={{ duration: 20, repeat: Infinity }}
-          />
-          <motion.circle 
-            cx="90%" cy="80%" r="20" fill="#1c3664" fillOpacity="0.02" 
-            animate={{ scale: [1, 1.1, 1], y: [0, -40, 0] }} 
-            transition={{ duration: 15, repeat: Infinity }}
-          />
+          {!shouldReduceAnimations && (
+            <>
+              <motion.circle
+                cx="10%" cy="20%" r="15" fill="#f26722" fillOpacity="0.03"
+                animate={{ scale: [1, 1.2, 1], x: [0, 50, 0] }}
+                transition={{ duration: 20, repeat: Infinity }}
+              />
+              <motion.circle
+                cx="90%" cy="80%" r="20" fill="#1c3664" fillOpacity="0.02"
+                animate={{ scale: [1, 1.1, 1], y: [0, -40, 0] }}
+                transition={{ duration: 15, repeat: Infinity }}
+              />
+            </>
+          )}
         </svg>
       </div>
 

@@ -1,18 +1,25 @@
 import { Variants } from "framer-motion";
 
+// Mobile-optimized animations with reduced values for better performance
+const isMobile = typeof window !== 'undefined' && (
+  'ontouchstart' in window || 
+  window.navigator.maxTouchPoints > 0 || 
+  window.innerWidth <= 768
+);
+
 // Fade in from bottom with scale - optimized for performance
 export const fadeInUp: Variants = {
   hidden: {
     opacity: 0,
-    y: 50,
-    scale: 0.96,
+    y: isMobile ? 20 : 50,
+    scale: isMobile ? 0.98 : 0.96,
   },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.4,
+      duration: isMobile ? 0.25 : 0.4,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -22,15 +29,15 @@ export const fadeInUp: Variants = {
 export const fadeInUpFast: Variants = {
   hidden: {
     opacity: 0,
-    y: 30,
-    scale: 0.98,
+    y: isMobile ? 15 : 30,
+    scale: isMobile ? 0.99 : 0.98,
   },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.5,
+      duration: isMobile ? 0.3 : 0.5,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -40,13 +47,13 @@ export const fadeInUpFast: Variants = {
 export const fadeInRight: Variants = {
   hidden: {
     opacity: 0,
-    x: -50,
+    x: isMobile ? -20 : -50,
   },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.5,
+      duration: isMobile ? 0.3 : 0.5,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -56,13 +63,13 @@ export const fadeInRight: Variants = {
 export const fadeInLeft: Variants = {
   hidden: {
     opacity: 0,
-    x: 50,
+    x: isMobile ? 20 : 50,
   },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.5,
+      duration: isMobile ? 0.3 : 0.5,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -76,7 +83,7 @@ export const fadeIn: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 0.4,
+      duration: isMobile ? 0.25 : 0.4,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -86,13 +93,13 @@ export const fadeIn: Variants = {
 export const scaleIn: Variants = {
   hidden: {
     opacity: 0,
-    scale: 0.9,
+    scale: isMobile ? 0.95 : 0.9,
   },
   visible: {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 0.5,
+      duration: isMobile ? 0.3 : 0.5,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -104,8 +111,8 @@ export const staggerContainer: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.05,
+      staggerChildren: isMobile ? 0.05 : 0.08,
+      delayChildren: isMobile ? 0.02 : 0.05,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -128,15 +135,15 @@ export const staggerContainerFast: Variants = {
 export const staggerItem: Variants = {
   hidden: {
     opacity: 0,
-    y: 25,
-    scale: 0.96,
+    y: isMobile ? 15 : 25,
+    scale: isMobile ? 0.98 : 0.96,
   },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.5,
+      duration: isMobile ? 0.3 : 0.5,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -156,8 +163,8 @@ export const parallaxVariants = (speed: number = 0.5): Variants => ({
 // View transition helper for scroll-triggered animations - optimized for performance
 export const viewportOptions = {
   once: true, // Only animate once for better performance
-  margin: "0px", // Reduced margin for better performance
-  amount: 0.2, // Optimized amount
+  margin: isMobile ? "0px" : "0px", // Reduced margin for better performance
+  amount: isMobile ? 0.1 : 0.2, // Less strict trigger for mobile
 };
 
 // Aggressive viewport for elements that should animate early

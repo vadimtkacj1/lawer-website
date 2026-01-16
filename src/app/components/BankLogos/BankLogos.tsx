@@ -17,28 +17,24 @@ const banks = [
 
 export default function BankLogos() {
   return (
-    <section className="relative py-12 md:py-16 bg-gradient-to-b from-cream via-white to-cream overflow-hidden">
+    <section className="relative py-8 md:py-16 bg-cream overflow-hidden">
       {/* Decorative top border */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-dk/20 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-blue-dk/10" />
 
-      <div className="container mx-auto px-4 md:px-8">
-        {/* Bank Logos Carousel - with original colors */}
+      <div className="container mx-auto px-4">
         <motion.div
-          className="relative"
-          initial={{ opacity: 0, y: 20 }}
+          className="relative w-full"
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewportOptions}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          // "once: true" ensures better performance on mobile devices
+          viewport={{ ...viewportOptions, once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
-          {/* Gradient overlays for smooth fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
-
-          <div className="py-4">
+          <div className="py-2 md:py-4">
             <InfiniteMarquee
               dataType="image"
               dataArray={banks}
-              speed={40}
+              speed={35} // Slightly slower for better readability on small screens
               direction="right"
               preserveColors={true}
             />
@@ -47,7 +43,7 @@ export default function BankLogos() {
       </div>
 
       {/* Decorative bottom border */}
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-dk/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-blue-dk/10" />
     </section>
   );
 }
