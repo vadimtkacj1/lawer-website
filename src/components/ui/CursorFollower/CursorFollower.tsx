@@ -5,11 +5,29 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CursorFollower() {
   const [isHovering, setIsHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   const rafRef = useRef<number | null>(null);
   const lastPointRef = useRef<{ x: number; y: number }>({ x: -100, y: -100 });
   const lastHoverCheckAtRef = useRef<number>(0);
+
+  // Check if device is mobile to disable cursor follower
+  useEffect(() => {
+    const checkDevice = () => {
+      const isMobileDevice = 'ontouchstart' in window || 
+        window.navigator.maxTouchPoints > 0 || 
+        window.innerWidth <= 768;
+      setIsMobile(isMobileDevice);
+    };
+    
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
+
+  // Return null for mobile devices - major performance improvement
+  if (isMobile) return null;
 
   // Instant tracking for inner dot
   const innerX = cursorX;

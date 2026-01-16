@@ -1,6 +1,7 @@
 
 "use client";
 import React, { useMemo, memo } from "react";
+import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
 
 interface MarqueeProps {
   dataArray: string[];
@@ -20,6 +21,10 @@ function InfiniteMarquee({
   preserveColors = false,
 }: MarqueeProps) {
   const duplicatedData = useMemo(() => [...dataArray, ...dataArray], [dataArray]);
+  const { isMobile } = usePerformanceSettings();
+
+  // Замедляем анимацию на мобилках для экономии ресурсов
+  const adjustedSpeed = isMobile ? speed * 1.5 : speed;
 
   return (
     <>
@@ -47,9 +52,9 @@ function InfiniteMarquee({
           flex-wrap: nowrap;
           gap: 2rem;
           padding: 1.5rem 0;
-          animation: marquee-scroll ${speed}s linear infinite;
+          animation: marquee-scroll ${adjustedSpeed}s linear infinite;
           animation-direction: ${direction === "left" ? "normal" : "reverse"};
-          will-change: transform;
+          ${!isMobile ? 'will-change: transform;' : ''}
         }
 
         @media (min-width: 768px) {

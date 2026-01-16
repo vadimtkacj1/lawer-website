@@ -34,6 +34,14 @@ export default function LazyMount({
       return;
     }
 
+    // On mobile, load components closer to viewport for better performance
+    const isMobile = 'ontouchstart' in window ||
+      window.navigator.maxTouchPoints > 0 ||
+      window.innerWidth <= 768;
+
+    // Reduce rootMargin on mobile to load only when closer to viewport
+    const optimizedRootMargin = isMobile ? "100px 0px" : rootMargin;
+
     const obs = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -44,7 +52,7 @@ export default function LazyMount({
           }
         }
       },
-      { root: null, rootMargin, threshold: 0.01 }
+      { root: null, rootMargin: optimizedRootMargin, threshold: 0.01 }
     );
 
     obs.observe(el);
