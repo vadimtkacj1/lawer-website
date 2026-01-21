@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { fadeInUp, viewportOptions, fadeInUpFast, staggerContainer, staggerItem } from "@/lib/animations";
+import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
 import InfiniteMarquee from "@/components/ui/InfiniteMarquee";
 
 const bankLogos = [
@@ -16,19 +16,14 @@ const bankLogos = [
 
 export default function BanksCarousel() {
   return (
-    <motion.section
-      className="relative bg-[#f9f7f4] py-12 md:py-16 lg:py-20 z-0 overflow-hidden"
-      initial="hidden"
-      whileInView="visible"
-      viewport={viewportOptions}
-      variants={fadeInUp}
-    >
+    <section className="relative bg-[#f9f7f4] py-12 md:py-16 lg:py-20 z-0 overflow-hidden">
       <div className="container mx-auto px-6">
-        {/* Section Header */}
+        {/* Анимируем только заголовок, чтобы он не блокировал карусель */}
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          // amount: 0.2 гарантирует запуск на маленьких экранах
+          viewport={{ once: true, amount: 0.2 }}
           variants={staggerContainer}
           className="mb-8 md:mb-12 lg:mb-16 text-center"
         >
@@ -44,16 +39,19 @@ export default function BanksCarousel() {
           />
         </motion.div>
 
-        {/* Banks Carousel */}
-        <div className="max-w-6xl mx-auto">
+        {/* Контейнер карусели с принудительным LTR */}
+        <div 
+          className="max-w-6xl mx-auto" 
+          style={{ direction: 'ltr' }} // Важно для корректной математики анимации на мобилках
+        >
           <InfiniteMarquee
             dataType="image"
             dataArray={bankLogos}
-            speed={40}
+            speed={35} // Чуть увеличим скорость для наглядности
             direction="right"
           />
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

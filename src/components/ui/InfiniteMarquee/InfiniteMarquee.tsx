@@ -1,5 +1,6 @@
 "use client";
 import React, { useMemo, memo } from "react";
+import { motion } from "framer-motion";
 import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
 
 interface MarqueeProps {
@@ -19,135 +20,54 @@ function InfiniteMarquee({
   className = "",
   preserveColors = false,
 }: MarqueeProps) {
-  const duplicatedData = useMemo(() => [...dataArray, ...dataArray], [dataArray]);
+  // Triple the data to ensure there's always enough content to fill the screen during animation
+  const duplicatedData = useMemo(() => [...dataArray, ...dataArray, ...dataArray], [dataArray]);
   const { isMobile } = usePerformanceSettings();
 
-  // Slow down animation on mobile to save system resources
-  // Added a fallback to 'speed' to prevent NaN during hydration
-  const adjustedSpeed = (isMobile ? speed * 1.5 : speed) || speed;
+  // Adjust duration based on performance settings
+  const duration = isMobile ? speed * 1.5 : speed;
 
   return (
-    <>
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes marquee-scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-
-        .mq-viewport {
-          width: 100%;
-          overflow: hidden;
-          position: relative;
-          background: transparent;
-          /* CRITICAL: Force LTR direction for consistent animation math */
-          direction: ltr;
-          mask-image: linear-gradient(to right, transparent, black 5rem, black calc(100% - 5rem), transparent);
-          -webkit-mask-image: linear-gradient(to right, transparent, black 5rem, black calc(100% - 5rem), transparent);
-        }
-
-        .mq-track {
-          display: flex;
-          align-items: center;
-          width: max-content;
-          flex-wrap: nowrap;
-          gap: 2rem;
-          padding: 1.5rem 0;
-          
-          /* Using CSS variables for dynamic values to prevent style re-parsing */
-          animation: marquee-scroll var(--mq-speed) linear infinite;
-          animation-direction: var(--mq-direction);
-          
-          /* Hardware acceleration: Trigger GPU rendering for smooth mobile performance */
-          -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-          perspective: 1000px;
-          transform: translate3d(0, 0, 0);
-          will-change: transform;
-        }
-
-        @media (min-width: 768px) {
-          .mq-track {
-            gap: 4.8rem;
-            padding: 3rem 0;
-          }
-        }
-
-        .mq-track:hover {
-          animation-play-state: paused;
-        }
-
-        .mq-item {
-          flex-shrink: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .mq-img {
-          height: 2.2rem;
-          width: auto;
-          filter: ${preserveColors ? 'none' : 'grayscale(100%)'};
-          opacity: ${preserveColors ? '1' : '0.6'};
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          object-fit: contain;
-        }
-
-        @media (min-width: 768px) {
-          .mq-img {
-            height: 3.8rem;
-          }
-        }
-
-        .mq-item:hover .mq-img {
-          filter: grayscale(0%);
-          opacity: 1;
-          transform: scale(1.12);
-        }
-
-        .mq-pill {
-          border: 1px solid rgba(255,255,255,0.2);
-          background-color: #141414;
-          border-radius: 999px;
-          padding: 0.8rem 1.5rem;
-          color: white;
-          white-space: nowrap;
-          font-weight: 600;
-        }
-
-        @media (min-width: 768px) {
-          .mq-pill {
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-          }
-        }
-      `}} />
-
-      <div 
-        className={`mq-viewport ${className}`}
-        style={{
-          // @ts-ignore - Custom CSS properties
-          "--mq-speed": `${adjustedSpeed}s`,
-          "--mq-direction": direction === "left" ? "normal" : "reverse"
-        } as React.CSSProperties}
+    <div 
+      className={`relative w-full overflow-hidden py-6 md:py-12 ${className}`}
+      style={{ 
+        maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+        direction: 'ltr' 
+      }}
+    >
+      <motion.div
+        className="flex w-max items-center gap-8 md:gap-20"
+        initial={{ x: direction === "left" ? 0 : "-33.33%" }}
+        animate={{ x: direction === "left" ? "-33.33%" : 0 }}
+        transition={{
+          duration: duration,
+          ease: "linear",
+          repeat: Infinity,
+        }}
+        // Only pause on hover if device has a mouse
+        whileHover={{ animationPlayState: "paused" }} 
       >
-        <div className="mq-track">
-          {duplicatedData.map((item, index) => (
-            <div key={index} className="mq-item">
-              {dataType === "image" ? (
-                <img
-                  src={item}
-                  alt={`logo-${index}`}
-                  className="mq-img"
-                  loading="eager" 
-                />
-              ) : (
-                <p className="mq-pill">{item}</p>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
+        {duplicatedData.map((item, index) => (
+          <div key={index} className="flex-shrink-0 flex items-center justify-center">
+            {dataType === "image" ? (
+              <img
+                src={item}
+                alt=""
+                className={`h-8 md:h-14 w-auto object-contain transition-all duration-500 
+                  ${preserveColors ? "grayscale-0 opacity-100" : "grayscale opacity-60 hover:grayscale-0 hover:opacity-100"}
+                  hover:scale-110 active:scale-110`}
+                loading="eager"
+              />
+            ) : (
+              <p className="whitespace-nowrap rounded-full border border-white/20 bg-[#141414] px-6 py-3 font-semibold text-white md:text-lg">
+                {item}
+              </p>
+            )}
+          </div>
+        ))}
+      </motion.div>
+    </div>
   );
 }
 
