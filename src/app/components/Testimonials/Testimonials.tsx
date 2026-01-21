@@ -5,6 +5,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
 
+/**
+ * Static data for testimonials.
+ */
 const testimonials = [
   {
     name: "דניאל לוי",
@@ -40,10 +43,13 @@ const testimonials = [
     name: "אילנה ברק",
     image: "/images/client.jpg",
     rating: 5,
-    text: "אחרי שכמה בנקים סירבו לי, אבי מצא פתרון יצירתי ועזר לי לממש את החלום של דירה משלי. תודה רבה!",
+    text: "אחרי שכמה בנקים סירבו לי, אבי מצא פתרון יצירתי ועזר לי לממש את החלום של диרה משלי. תודה רבה!",
   },
 ];
 
+/**
+ * Individual Testimonial Card Component.
+ */
 const TestimonialCard = ({ item }: { item: typeof testimonials[0] }) => (
   <div
     className="flex flex-col justify-between w-[320px] md:w-[500px] h-[260px] md:h-[320px] p-6 md:p-10 bg-gradient-to-bl from-[#1c3664] via-[#2a54a1] to-[#5da2ff] rounded-3xl text-right shrink-0"
@@ -54,7 +60,7 @@ const TestimonialCard = ({ item }: { item: typeof testimonials[0] }) => (
     dir="rtl"
   >
     <div>
-      {/* Star ratings */}
+      {/* Star Ratings */}
       <div className="flex justify-start gap-1 mb-4 md:mb-6">
         {[...Array(item.rating)].map((_, i) => (
           <svg key={i} className="w-4 h-4 md:w-6 md:h-6 fill-[#f26722]" viewBox="0 0 20 20">
@@ -63,13 +69,13 @@ const TestimonialCard = ({ item }: { item: typeof testimonials[0] }) => (
         ))}
       </div>
 
-      {/* Review content */}
+      {/* Testimonial Text */}
       <p className="text-white text-base md:text-xl font-medium leading-relaxed line-clamp-4">
         &ldquo;{item.text}&rdquo;
       </p>
     </div>
 
-    {/* Footer: Avatar and Name */}
+    {/* User Info Footer */}
     <div className="flex items-center gap-4 mt-4">
       <div className="relative w-10 h-10 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-white/20 shrink-0 shadow-sm">
         <Image src={item.image} alt={item.name} fill className="object-cover" />
@@ -83,7 +89,7 @@ const TestimonialCard = ({ item }: { item: typeof testimonials[0] }) => (
 );
 
 /**
- * Reusable Marquee Row Component
+ * Marquee Row Component utilizing Framer Motion for high-performance looping.
  */
 const MarqueeRow = ({ 
   items, 
@@ -96,7 +102,8 @@ const MarqueeRow = ({
   duration?: number,
   isMobile?: boolean 
 }) => {
-  // Triple items to ensure a seamless infinite loop without gaps
+  // Use a 3x duplication strategy to ensure the line is always filled during infinite transit.
+  // We animate from 0% to -33.33% (the first full set of items).
   const tripleItems = useMemo(() => [...items, ...items, ...items], [items]);
   
   return (
@@ -106,11 +113,12 @@ const MarqueeRow = ({
         initial={{ x: direction === "left" ? "0%" : "-33.33%" }}
         animate={{ x: direction === "left" ? "-33.33%" : "0%" }}
         transition={{
-          duration: isMobile ? duration * 1.2 : duration,
+          duration: isMobile ? duration * 1.3 : duration, // Slightly slower on mobile for performance
           ease: "linear",
           repeat: Infinity,
         }}
-        // CRITICAL: Disable hover pause on mobile to prevent "sticky" freezing
+        // FIX: 'whileHover' on mobile triggers a permanent pause upon the first touch.
+        // We disable it for mobile users.
         whileHover={!isMobile ? { animationPlayState: "paused" } : {}}
       >
         {tripleItems.map((item, i) => (
@@ -121,20 +129,27 @@ const MarqueeRow = ({
   );
 };
 
+
+
+/**
+ * Main Testimonials Section with a Cream background (#f9f7f4).
+ */
 function TestimonialsSection() {
   const { isMobile } = usePerformanceSettings();
   
-  // Reverse second row for visual variety
+  // Creating a reversed array for the second row to create visual contrast
   const reversedTestimonials = useMemo(() => [...testimonials].reverse(), []);
 
   return (
     <section id="testimonials" className="py-16 md:py-24 bg-[#f9f7f4] overflow-hidden">
       <div className="container mx-auto px-4 mb-10 md:mb-16 text-center">
-        <h2 className="text-4xl md:text-6xl font-black text-[#1c3664]">What Our Clients Say</h2>
+        <h2 className="text-4xl md:text-6xl font-black text-[#1c3664]">
+          What Our Clients Say
+        </h2>
       </div>
 
       <div className="flex flex-col gap-2 md:gap-4">
-        {/* Row 1: Moving Left */}
+        {/* Row 1: Scrolling Left */}
         <MarqueeRow 
           items={testimonials} 
           direction="left" 
@@ -142,7 +157,7 @@ function TestimonialsSection() {
           isMobile={isMobile} 
         />
         
-        {/* Row 2: Moving Right */}
+        {/* Row 2: Scrolling Right */}
         <MarqueeRow 
           items={reversedTestimonials} 
           direction="right" 
