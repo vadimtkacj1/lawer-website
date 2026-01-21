@@ -150,9 +150,9 @@ export default function Header() {
       </header>
 
       {/* Full Screen Mobile Menu */}
-      <div 
-        className={`lg:hidden fixed inset-0 bg-cream z-[55] flex flex-col items-center justify-center transition-all duration-300 transform ${
-          isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+      <div
+        className={`lg:hidden fixed inset-0 bg-cream z-[65] flex flex-col items-center justify-center transition-all duration-300 transform ${
+          isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
         }`}
       >
         <div className="container mx-auto px-6 flex flex-col items-center">
