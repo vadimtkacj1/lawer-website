@@ -32,7 +32,7 @@ const services = [
     description: "ליווי ייעודי עם היכרות מעמיקה של המסלולים וההתאמות",
   },
   {
-    href: "/services/refinance",
+    href: "/services/mortgage-consultant",
     Icon: RefreshIcon,
     title: "מחזור ואיחוד הלוואות",
     description: "שיפור תנאים קיימים והפחתת ההחזר החודשי שלכם",
@@ -50,7 +50,7 @@ const services = [
     description: "פתרונות יצירתיים לעסקאות מורכבות גם כשהבנק אמר 'לא'",
   },
   {
-    href: "/services/renovation",
+    href: "/services/renovation-mortgage",
     Icon: BuildingIcon,
     title: "משכנתא לשיפוץ",
     description: "מימון שיפוץ בתנאי משכנתא ובתהליך יעיל ומהיר",
@@ -76,9 +76,6 @@ export default function Services() {
           </h2>
           
           <div className="max-w-[1200px] mx-auto">
-            {/* Using flex flex-wrap justify-center instead of grid 
-              to make sure the 7th item is centered horizontally 
-            */}
             <div className="flex flex-wrap justify-center gap-3 md:gap-4">
               {services.map((service) => (
                 <div 
@@ -86,7 +83,7 @@ export default function Services() {
                   className="bg-white rounded-2xl border border-blue-dk/5 shadow-sm w-[calc(50%-6px)] md:w-[calc(33.333%-12px)] lg:w-[calc(25%-16px)]"
                 >
                   <Link href={service.href} className="group block h-full">
-                    <div className="flex flex-col items-center justify-center p-4 md:p-6 min-h-[170px] md:min-h-[200px] transition-all duration-300 hover:bg-orange/[0.03] text-center">
+                    <div className="flex flex-col items-center justify-center p-4 md:p-6 min-h-[220px] md:min-h-[260px] transition-all duration-300 hover:bg-orange/[0.03] text-center">
                       <div className="text-orange mb-3">
                         <service.Icon className="w-9 h-9 md:w-12 md:h-12" />
                       </div>
@@ -139,14 +136,15 @@ export default function Services() {
               <motion.div
                 key={service.href}
                 variants={staggerItem}
-                className="w-[calc(50%-6px)] md:w-1/3 lg:flex-1 bg-white rounded-2xl md:rounded-none
+                className="w-[calc(50%-5px)] md:w-1/3 lg:flex-1 bg-white rounded-2xl md:rounded-none
                            relative border border-blue-dk/5 md:border-0 shadow-sm md:shadow-none"
               >
                 <Link
                   href={service.href}
                   className="group block h-full relative"
                 >
-                  <div className="flex flex-col items-center justify-center p-4 sm:p-6 min-h-[170px] sm:min-h-[200px] lg:min-h-[240px] transition-all duration-300 hover:bg-orange/[0.03] text-center relative">
+                  <div className="flex flex-col items-center justify-center p-4 sm:p-6 min-h-[220px] sm:min-h-[250px] lg:min-h-[300px] transition-all duration-300 hover:bg-orange/[0.03] text-center relative">
+                    
                     <div className="text-orange mb-3 transition-transform duration-300 group-hover:scale-110">
                       <service.Icon className="w-9 h-9 sm:w-12 sm:h-12" />
                     </div>
@@ -155,9 +153,12 @@ export default function Services() {
                       {service.title}
                     </h3>
 
-                    <p className="text-blue-dk/70 text-[11px] md:text-sm text-center leading-snug opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-24 transition-all duration-300 overflow-hidden px-2 font-noto-sans-hebrew">
-                      {service.description}
-                    </p>
+                    {/* Описание теперь не меняет высоту контейнера при появлении за счет фиксированного max-h в hover и min-h обертки */}
+                    <div className="h-0 group-hover:h-16 lg:group-hover:h-20 transition-all duration-300 overflow-hidden">
+                        <p className="text-blue-dk/70 text-[11px] md:text-sm text-center leading-snug opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-2 font-noto-sans-hebrew">
+                          {service.description}
+                        </p>
+                    </div>
 
                     <div className="mt-2 text-orange opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1">
                       <ArrowIcon className="w-5 h-5 rotate-180" />

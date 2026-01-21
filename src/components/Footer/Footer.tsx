@@ -62,12 +62,12 @@ export default function Footer() {
             <address className="not-italic space-y-1.5 sm:space-y-2 text-white/70 text-sm sm:text-base md:text-lg font-semibold w-full">
               <p className="flex items-center gap-2 justify-center sm:justify-start lg:justify-center">
                 <LocationIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                תל אביב, ישראל
+                חנקין 83 חולון
               </p>
             </address>
 
             {/* Social Links */}
-            <div className="flex gap-3 sm:gap-4 mt-4 sm:mt-5 md:mt-6 justify-center sm:justify-start lg:justify-center w-full">
+            {/* <div className="flex gap-3 sm:gap-4 mt-4 sm:mt-5 md:mt-6 justify-center sm:justify-start lg:justify-center w-full">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
@@ -80,7 +80,7 @@ export default function Footer() {
                   <social.Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
 

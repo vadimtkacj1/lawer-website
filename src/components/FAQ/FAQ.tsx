@@ -3,28 +3,52 @@
 import { useState } from "react";
 import DecorativeShapes from "@/components/ui/DecorativeShapes";
 
+// FAQ Data with the provided Hebrew content
 const faqItems = [
   {
-    question: "איחוד הלוואות",
+    question: "כמה אחוזי מימון ניתן לקבל?",
     answer:
-      "ממנפים את הנכס הקיים כדי לאחד הלוואות (רכב, אשראי, מינוס) למשכנתא אחת בריבית נמוכה. המטרה: להקטין את ההחזר החודשי באלפי שקלים.",
+      "אחוז המימון נקבע לפי סוג העסקה והיכולת הכלכלית של הלווה, וברוב המקרים ניתן לקבל עד 75% מימון לרכישת דירה ראשונה. בדירה להשקעה לרוב עד 50%, ובמחזור משכנתא ניתן להגיע בדרך כלל עד 75% משווי הנכס. בפועל כל מקרה נבדק לגופו בהתאם להכנסות, התחייבויות ודירוג האשראי.",
   },
   {
-    question: "מיחזור משכנתא",
+    question: "למה לקחת יועץ משכנתא ולא לעשות לבד?",
     answer:
-      "בדיקת כדאיות למיחזור (ללא עלות) יכולה לחסוך הון לאורך חיי המשכנתא. אידיאלי אם הריביות השתנו או הסטטוס הכלכלי השתפר.",
+      "כי משכנתא היא אחת ההחלטות הכלכליות הכי משמעותיות בחיים, וכל שינוי קטן בתמהיל, בריביות או בתנאים יכול לחסוך עשרות אלפי שקלים לאורך השנים. יועץ משכנתאות בונה תכנון מדויק לפי המצב שלכם, מנהל משא ומתן מול הבנקים ומוודא שאתם לא נכנסים להתחייבות שלא מתאימה לכם. המטרה היא להשיג תנאים טובים יותר ולמנוע טעויות יקרות.",
   },
   {
-    question: "משכנתא לזוגות צעירים וציבור חרדי",
+    question: "האם יש הלוואות שאי אפשר לאחד?",
     answer:
-      "מתמחים בהשגת אחוזי מימון מקסימליים ומכירים לעומק את צרכי הציבור החרדי. הליווי כולל תוכניות \"מחיר למשתכן\" ומשכנתא ראשונה.",
+      "כן, לא כל הלוואה ניתן לאחד באופן מלא. יש הלוואות עם תנאים מיוחדים, התחייבויות מול גופים מסוימים או קנסות יציאה שיכולים להפוך את האיחוד ללא משתלם. בנוסף, לפעמים איחוד הלוואות יגרום לפריסה ארוכה מדי שתעלה את העלות הכוללת. לכן חשוב לבצע בדיקה מקצועית לפני שמחליטים.",
   },
   {
-    question: "פתרונות למסורבי בנקים",
+    question: "מה ההבדל בין ייעוץ פרטי לייעוץ בבנק?",
     answer:
-      "בעלי ניסיון בבניית תיקים מחדש למסורבי בנק ובעלי BDI שלילי. מוצאים את גורמי המימון הנכונים כדי להפוך סירוב לאישור.",
+      "יועץ בבנק מייצג את הבנק והמטרה שלו היא להתאים לכם משכנתא מתוך המוצרים של אותו בנק בלבד. יועץ פרטי מייצג אתכם בלבד, בונה תמהיל לפי הצרכים שלכם, ומשווה בין בנקים כדי להשיג תנאים טובים יותר. בנוסף, ייעוץ פרטי כולל ליווי מלא לאורך התהליך ולא רק הצעת מחיר.",
+  },
+  {
+    question: "באיזה שלב כדאי לפנות לייעוץ?",
+    answer:
+      "השלב הכי נכון הוא לפני חתימה על חוזה ולפני התחייבות לסכומים. ייעוץ מוקדם מאפשר להבין כמה באמת אפשר לקחת, מה ההחזר הנכון לכם ואיזה תמהיל מתאים. כך אתם מגיעים לעסקה מוכנים, עם ביטחון ויכולת תכנון טובה יותר.",
+  },
+  {
+    question: "האם יש בדיקת כדאיות למחזור משכנתא והאם היא עולה כסף?",
+    answer:
+      "כן, קיימת בדיקת כדאיות שמטרתה לבדוק האם מחזור משכנתא יכול לחסוך לכם כסף או לשפר את התנאים. הבדיקה כוללת ניתוח של המשכנתא הקיימת, בדיקת קנסות פירעון, ריביות חדשות והחזר חודשי. לגבי עלות הבדיקה זה משתנה בין יועצים, יש כאלה שמציעים בדיקה ראשונית ללא עלות ויש כאלה שגובים תשלום בהתאם להיקף הבדיקה.",
+  },
+  {
+    question: "האם בחירת הריביות למשכנתא היא הפקטור העיקרי?",
+    answer:
+      "הריביות חשובות מאוד, אבל הן לא הדבר היחיד. תכנון נכון כולל גם בחירת מסלולים מתאימים, איזון בין יציבות לגמישות, התאמה להכנסות ולשינויים עתידיים, והבנה של סיכונים כמו עליית ריבית או שינוי במדד. לפעמים דווקא תמהיל נכון ויציב חוסך יותר כסף מאשר ריבית נמוכה שלא מתאימה למצב שלכם.",
   },
 ];
+
+interface AccordionItemProps {
+  question: string;
+  answer: string;
+  index: number;
+  isOpen: boolean;
+  onToggle: () => void;
+}
 
 function AccordionItem({
   question,
@@ -32,13 +56,7 @@ function AccordionItem({
   index,
   isOpen,
   onToggle,
-}: {
-  question: string;
-  answer: string;
-  index: number;
-  isOpen: boolean;
-  onToggle: () => void;
-}) {
+}: AccordionItemProps) {
   return (
     <div
       className={`border-b-2 border-blue-dk/10 ${
@@ -72,7 +90,7 @@ function AccordionItem({
 
       <div
         className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out
-                    ${isOpen ? "max-h-96 opacity-100 pb-4 sm:pb-5" : "max-h-0 opacity-0"}`}
+                    ${isOpen ? "max-h-[500px] opacity-100 pb-4 sm:pb-5" : "max-h-0 opacity-0"}`}
       >
         <p className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-blue-dk/85 leading-relaxed pe-2 sm:pe-4 md:pe-8 lg:pe-12">
           {answer}
@@ -90,13 +108,16 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="relative pt-8 md:pt-12 lg:pt-16 pb-4 md:pb-6" style={{ backgroundColor: "#f9f7f4" }}>
-      <DecorativeShapes variant="default" />
+<section 
+      id="faq" 
+      className="relative pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-24 lg:pb-32" 
+      style={{ backgroundColor: "#f9f7f4" }}
+    >      <DecorativeShapes variant="default" />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-10 items-start">
             
-            {/* Левая колонка */}
+            {/* Left Column: Heading and Info */}
             <div className="w-full lg:w-1/3 lg:sticky lg:top-24 self-start z-30">
               <div className="h-fit text-center lg:text-right">
                 <div className="flex items-center gap-2 mb-3 md:mb-4 justify-center lg:justify-start">
@@ -104,23 +125,22 @@ export default function FAQ() {
                     <path d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434l.071-.286zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5zm0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78h4.723zM5.048 3.967c-.03.021-.058.043-.087.065l.087-.065zm-.431.355A4.995 4.995 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8 4.617 4.322zm.344 7.646.087.065-.087-.065z" />
                   </svg>
                   <span className="text-xs md:text-sm font-semibold text-orange uppercase tracking-wider">
-                    השאלות שלנו
+                    שאלות ותשובות
                   </span>
                 </div>
 
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black text-blue-dk mb-3 sm:mb-4 md:mb-6">
-                  FAQ
+                  שאלות נפוצות
                 </h2>
 
                 <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-blue-dk/80 leading-relaxed max-w-md mx-auto lg:mx-0 px-2 sm:px-0">
-                  אנחנו צוות ייעוץ משכנתאות המתמקד בתוצאות ועוזר למשפחות לפתוח יעילות.
+                  ריכזנו עבורכם את התשובות לכל השאלות הכי חשובות בדרך למשכנתא האופטימלית שלכם.
                 </p>
               </div>
             </div>
 
-            {/* Правая колонка - Аккордеон */}
-            {/* min-h уменьшен до минимума, необходимого для стабильности футера */}
-            <div className="w-full lg:w-2/3 order-2 min-h-[320px] sm:min-h-[350px] md:min-h-[380px]">
+            {/* Right Column: Accordion with adjusted min-height for layout stability */}
+            <div className="w-full lg:w-2/3 order-2 min-h-[400px]">
               {faqItems.map((item, index) => (
                 <AccordionItem
                   key={index}

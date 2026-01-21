@@ -1,22 +1,39 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://avi-home.co.il'
-  
+  const baseUrl = 'https://avi-home.co.il';
+  const currentDate = new Date();
+
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1,
     },
-    // Add more pages here as your site grows
-    // {
-    //   url: `${baseUrl}/services`,
-    //   lastModified: new Date(),
-    //   changeFrequency: 'monthly',
-    //   priority: 0.8,
-    // },
-  ]
+    {
+      url: `${baseUrl}/services`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/services/first-home`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/mortgage-consultant`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+  ];
 }
-

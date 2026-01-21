@@ -47,14 +47,40 @@ export default function Header() {
     };
   }, [isMobileMenuOpen]);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Check if it is an anchor link (starts with #)
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        // Close the mobile menu if it is open
+        setIsMobileMenuOpen(false);
+
+        // Smooth scroll to the element
+        const headerOffset = 100; // Offset from the top to account for header height
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    }
+  };
+
   return (
     <>
       <header
+        /* Added suppressHydrationWarning to ignore extension-injected styles */
+        suppressHydrationWarning
         className={`fixed top-0 left-0 right-0 z-[60] transition-[background-color,box-shadow,border-color,padding] duration-200
                     ${
                       isScrolled || isMobileMenuOpen
-                        ? "shadow-md py-2 border-b-2 border-blue-dk/30 bg-cream"
-                        : "py-2 sm:py-3 border-b-0 bg-transparent"
+                        ? "shadow-md py-1 border-b-2 border-blue-dk/30 bg-cream" // Reduced padding here (py-1)
+                        : "py-1 sm:py-2 border-b-0 bg-transparent" // And here (py-1 sm:py-2)
                     }`}
       >
         <div className="container mx-auto px-4 md:px-8">
@@ -67,7 +93,8 @@ export default function Header() {
                   alt="אבי - הבית למשכנתאות"
                   width={180}
                   height={120}
-                  className="h-[50px] w-auto sm:h-[55px] md:h-[90px] lg:h-[100px]"
+                  // Slightly reduced logo height on larger screens from 100px to 80px
+                  className="h-[45px] w-auto sm:h-[50px] md:h-[70px] lg:h-[80px]"
                   priority
                 />
               </Link>
@@ -78,6 +105,8 @@ export default function Header() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
+                      onClick={(e) => handleNavClick(e, link.href)}
+                      suppressHydrationWarning
                       className="relative px-3 py-1 text-blue-dk font-black text-xl md:text-2xl transition-colors hover:text-orange
                                  after:content-[''] after:absolute after:bottom-0
                                  after:right-1/2 after:w-0 after:h-0.5 after:bg-orange
@@ -91,24 +120,26 @@ export default function Header() {
               </ul>
             </div>
 
-            {/* Mobile Menu Button - Increased z-index to stay above full-screen menu */}
+            {/* Mobile Menu Button */}
             <button
-              className="lg:hidden relative z-[70] p-2 text-blue-dk hover:text-orange transition-colors"
+              className="lg:hidden relative z-[70] p-1 text-blue-dk hover:text-orange transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="תפריט"
+              aria-label="Menu"
             >
               {isMobileMenuOpen ? (
-                <CloseIcon className="w-9 h-9 sm:w-10 sm:h-10" />
+                <CloseIcon className="w-8 h-8 sm:w-9 sm:h-9" />
               ) : (
-                <MenuIcon className="w-9 h-9 sm:w-10 sm:h-10" />
+                <MenuIcon className="w-8 h-8 sm:w-9 sm:h-9" />
               )}
             </button>
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-2">
               <a
-                href="tel:050-000-0000"
-                className="btn-primary flex items-center gap-2 text-lg px-6 py-3"
+                href="tel:054-472-9513"
+                // Reduced vertical padding (py-2 instead of py-3)
+                className="btn-primary flex items-center gap-2 text-lg px-6 py-2"
+                suppressHydrationWarning
               >
                 <PhoneIcon className="w-5 h-5" />
                 <span>התקשר עכשיו</span>
@@ -131,7 +162,8 @@ export default function Header() {
                 <Link
                   href={link.href}
                   className="block text-blue-dk font-black text-4xl sm:text-5xl text-center hover:text-orange transition-colors uppercase tracking-tight"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  suppressHydrationWarning
                 >
                   {link.label}
                 </Link>
@@ -139,11 +171,11 @@ export default function Header() {
             ))}
           </ul>
 
-          {/* Mobile CTA - Narrower width (w-fit) */}
           <div className="mt-12 flex justify-center w-full">
             <a
-              href="tel:050-000-0000"
+              href="tel:054-472-9513"
               className="btn-primary flex items-center justify-center gap-3 px-10 py-4 text-xl w-fit shadow-xl"
+              suppressHydrationWarning
             >
               <PhoneIcon className="w-6 h-6" />
               <span>התקשר עכשיו</span>
@@ -151,7 +183,7 @@ export default function Header() {
           </div>
         </div>
         
-        {/* Decorative background element for full-screen feel */}
+        {/* Background Decorative Text */}
         <div className="absolute bottom-0 right-0 opacity-[0.03] pointer-events-none -z-10 translate-x-1/4 translate-y-1/4">
            <div className="text-[40vw] font-black text-blue-dk">אבי</div>
         </div>

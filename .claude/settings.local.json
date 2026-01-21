@@ -9,7 +9,19 @@
       "Bash(dir:*)",
       "Bash(git rm:*)",
       "Bash(node optimize-images.js:*)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "Bash(ls \"c:\\\\Users\\\\vadim\\\\Downloads\\\\lawer website\\\\public\\\\images\"\" | grep -i \"aittera|expert \")",
+      "Bash(findstr:*)",
+      "Bash(timeout 3 tail:*)",
+      "Bash(npm run build:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm approve-builds:*)",
+      "Bash(pnpm rebuild:*)",
+      "Bash(test:*)",
+      "Bash(pnpm dev)",
+      "Bash(pnpm update:*)",
+      "Bash(curl:*)",
+      "Bash(pnpm add:*)"
     ]
   }
 }
