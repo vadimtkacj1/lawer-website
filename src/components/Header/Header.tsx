@@ -18,24 +18,38 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Handle sticky background on scroll
+  // Handle scroll effect to change header background
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+    let raf: number | null = null;
+    const onScroll = () => {
+      if (raf != null) return;
+      raf = window.requestAnimationFrame(() => {
+        raf = null;
+        setIsScrolled(window.scrollY > 50);
+      });
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf != null) window.cancelAnimationFrame(raf);
+    };
   }, []);
 
-  // Prevent background scrolling when mobile menu is open
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isMobileMenuOpen]);
 
+  // Smooth scroll logic for anchor links
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("#")) {
       e.preventDefault();
@@ -43,109 +57,131 @@ export default function Header() {
       const targetElement = document.getElementById(targetId);
 
       if (targetElement) {
-        setIsMobileMenuOpen(false);
-        const offset = 80;
-        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: targetPosition, behavior: "smooth" });
+        setIsMobileMenuOpen(false); // Close menu on click
+
+        const headerOffset = 100; 
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
       }
     }
   };
 
   return (
     <>
-      {/* STUCK HEADER: 
-          Uses 'fixed' with a high z-index to stay on top.
-      */}
+      {/* Main Header Container */}
       <header
-        dir="rtl"
-        className={`fixed top-0 left-0 w-full z-[999] transition-all duration-300 ${
-          isScrolled || isMobileMenuOpen
-            ? "bg-cream shadow-md py-2"
-            : "bg-transparent py-4"
-        }`}
+        suppressHydrationWarning
+        className={`fixed top-0 left-0 right-0 z-[70] transition-all duration-300
+                    ${isScrolled || isMobileMenuOpen
+                      ? "shadow-md py-1 border-b-2 border-blue-dk/30 bg-cream"
+                      : "py-2 sm:py-4 border-b-0 bg-transparent"
+                    }`}
       >
-        <div className="container mx-auto px-5 flex items-center justify-between">
-          {/* Logo Section */}
-          <Link href="/" className="relative z-[1001]" onClick={() => setIsMobileMenuOpen(false)}>
-            <Image
-              src="/images/logo.png"
-              alt="Logo"
-              width={150}
-              height={50}
-              className="h-[40px] sm:h-[50px] md:h-[65px] w-auto transition-all"
-              priority
-            />
-          </Link>
-
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-blue-dk font-bold text-lg hover:text-orange transition-colors"
-              >
-                {link.label}
+        <div className="container mx-auto px-4 md:px-8">
+          <nav className="flex items-center justify-between">
+            {/* Logo Section */}
+            <div className="flex items-center gap-3 md:gap-6">
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/images/logo.png"
+                  alt="Avi - Mortgage House"
+                  width={180}
+                  height={120}
+                  className="h-[45px] w-auto sm:h-[50px] md:h-[70px] lg:h-[80px]"
+                  priority
+                />
               </Link>
-            ))}
-            <a href="tel:054-472-9513" className="btn-primary px-5 py-2 flex items-center gap-2">
-              <PhoneIcon className="w-4 h-4" />
-              <span>התקשר עכשיו</span>
-            </a>
-          </nav>
 
-          {/* Mobile Menu Button (Burger) */}
-          <button
-            className="lg:hidden relative z-[1001] p-3 -mr-3 text-blue-dk outline-none"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
-          >
-            {isMobileMenuOpen ? (
-              <CloseIcon className="w-8 h-8" />
-            ) : (
-              <MenuIcon className="w-8 h-8" />
-            )}
-          </button>
+              {/* Desktop Navigation Links */}
+              <ul className="hidden lg:flex items-center gap-1">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      onClick={(e) => handleNavClick(e, link.href)}
+                      className="relative px-3 py-1 text-blue-dk font-black text-xl md:text-2xl transition-colors hover:text-orange
+                                 after:content-[''] after:absolute after:bottom-0
+                                 after:right-1/2 after:w-0 after:h-0.5 after:bg-orange
+                                 after:transition-[width] after:translate-x-1/2
+                                 hover:after:w-4/5"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Mobile Menu Toggle Button (Burger/Close) */}
+            {/* Keeping this at z-[80] ensures it sits above the mobile overlay */}
+            <button
+              className="lg:hidden relative z-[80] p-2 text-blue-dk hover:text-orange transition-colors"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle Navigation"
+            >
+              {isMobileMenuOpen ? (
+                <CloseIcon className="w-9 h-9" />
+              ) : (
+                <MenuIcon className="w-9 h-9" />
+              )}
+            </button>
+
+            {/* Desktop Call to Action Button */}
+            <div className="hidden lg:flex items-center gap-2">
+              <a
+                href="tel:054-472-9513"
+                className="btn-primary flex items-center gap-2 text-lg px-6 py-2 transition-transform hover:scale-105"
+              >
+                <PhoneIcon className="w-5 h-5" />
+                <span>התקשר עכשיו</span>
+              </a>
+            </div>
+          </nav>
         </div>
       </header>
 
-      {/* MOBILE MENU OVERLAY:
-          Fixed h-[100dvh] ensures it fits mobile screens perfectly.
-      */}
-      <div
-        dir="rtl"
-        className={`lg:hidden fixed inset-0 z-[1000] bg-cream transition-transform duration-500 ease-in-out ${
-          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+      {/* Full Screen Mobile Menu Overlay */}
+      <div 
+        className={`lg:hidden fixed inset-0 bg-cream z-[60] flex flex-col items-center justify-center transition-all duration-500 ease-in-out transform ${
+          isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
         }`}
       >
-        <div className="flex flex-col h-full pt-28 pb-10 px-6">
-          <nav className="flex flex-col items-center gap-6">
+        <div className="container mx-auto px-6 flex flex-col items-center">
+          {/* Mobile Navigation Links List */}
+          <ul className="flex flex-col gap-8 items-center">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-blue-dk font-black text-3xl sm:text-4xl py-2 active:text-orange transition-colors w-full text-center"
-              >
-                {link.label}
-              </Link>
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="block text-blue-dk font-black text-4xl sm:text-5xl text-center hover:text-orange transition-colors uppercase tracking-tight"
+                  onClick={(e) => handleNavClick(e, link.href)}
+                >
+                  {link.label}
+                </Link>
+              </li>
             ))}
-          </nav>
+          </ul>
 
-          <div className="mt-auto flex flex-col items-center gap-6 w-full">
+          {/* Mobile Call to Action Button */}
+          <div className="mt-12 flex justify-center w-full">
             <a
               href="tel:054-472-9513"
-              className="btn-primary w-full max-w-sm py-4 flex items-center justify-center gap-3 text-xl shadow-lg rounded-xl"
+              className="btn-primary flex items-center justify-center gap-3 px-10 py-4 text-xl w-fit shadow-xl"
             >
               <PhoneIcon className="w-6 h-6" />
               <span>התקשר עכשיו</span>
             </a>
-            
-            <div className="text-blue-dk/10 font-black text-6xl select-none">
-              אבי
-            </div>
           </div>
+        </div>
+        
+        {/* Background Decorative Text (Hebrew Name) */}
+        <div className="absolute bottom-0 right-0 opacity-[0.04] pointer-events-none -z-10 translate-x-1/4 translate-y-1/4">
+            <div className="text-[45vw] font-black text-blue-dk leading-none">אבי</div>
         </div>
       </div>
     </>

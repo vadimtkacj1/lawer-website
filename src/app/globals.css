@@ -43,8 +43,6 @@
   /* GPU acceleration for better performance on mobile */
   @media (hover: none) and (pointer: coarse) {
     body {
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
     }
