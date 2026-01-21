@@ -30,8 +30,14 @@ function InfiniteMarquee({
     <>
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes marquee-scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% {
+            transform: translateX(0);
+            -webkit-transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+          }
         }
 
         .mq-viewport {
@@ -53,7 +59,11 @@ function InfiniteMarquee({
           gap: 2rem;
           padding: 1.5rem 0;
           animation: marquee-scroll ${adjustedSpeed}s linear infinite;
+          -webkit-animation: marquee-scroll ${adjustedSpeed}s linear infinite;
           animation-direction: ${direction === "left" ? "normal" : "reverse"};
+          -webkit-animation-direction: ${direction === "left" ? "normal" : "reverse"};
+          transform: translate3d(0, 0, 0);
+          -webkit-transform: translate3d(0, 0, 0);
           ${!isMobile ? 'will-change: transform;' : ''}
         }
 
@@ -66,6 +76,7 @@ function InfiniteMarquee({
 
         .mq-track:hover {
           animation-play-state: paused;
+          -webkit-animation-play-state: paused;
         }
 
         .mq-item {

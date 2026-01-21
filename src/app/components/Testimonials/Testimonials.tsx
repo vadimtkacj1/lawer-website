@@ -93,12 +93,24 @@ function TestimonialsSection() {
     <section id="testimonials" className="py-20 md:py-24 bg-[#f9f7f4] overflow-hidden">
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes scroll-left {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% {
+            transform: translateX(0);
+            -webkit-transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+          }
         }
         @keyframes scroll-right {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
+          0% {
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+            -webkit-transform: translateX(0);
+          }
         }
 
         .mq-container {
@@ -112,13 +124,30 @@ function TestimonialsSection() {
           width: max-content;
           gap: 2.5rem;
           padding: 2rem 0;
-          will-change: transform;
+          transform: translate3d(0, 0, 0);
+          -webkit-transform: translate3d(0, 0, 0);
         }
 
-        .animate-left { animation: scroll-left 65s linear infinite; }
-        .animate-right { animation: scroll-right 70s linear infinite; }
+        @media (min-width: 768px) {
+          .mq-track {
+            will-change: transform;
+          }
+        }
 
-        .mq-track:hover { animation-play-state: paused; }
+        .animate-left {
+          animation: scroll-left 65s linear infinite;
+          -webkit-animation: scroll-left 65s linear infinite;
+        }
+
+        .animate-right {
+          animation: scroll-right 70s linear infinite;
+          -webkit-animation: scroll-right 70s linear infinite;
+        }
+
+        .mq-track:hover {
+          animation-play-state: paused;
+          -webkit-animation-play-state: paused;
+        }
       `}} />
 
       <div className="container mx-auto px-4 mb-10 md:mb-16 text-center">
