@@ -11,6 +11,7 @@ const nextConfig = {
     minimumCacheTTL: 31536000, // 1 year cache
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    qualities: [75, 85], // Support both default and high quality
     // Disable static image optimization in development for faster builds
     unoptimized: process.env.NODE_ENV === 'development',
   },
@@ -20,12 +21,6 @@ const nextConfig = {
   
   // React strict mode for better development
   reactStrictMode: true,
-
-  // Optimize fonts
-  optimizeFonts: true,
-
-  // Compiler options
-  swcMinify: true,
 
   // Output configuration for Docker
   output: 'standalone',

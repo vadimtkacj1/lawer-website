@@ -63,6 +63,7 @@
     }
   }
 
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-noto-sans-hebrew font-black tracking-tight;
   }
@@ -85,6 +86,12 @@
       /* Prevent text from triggering layout */
       contain: layout;
     }
+  }
+
+  /* Pattern background for renovation sections */
+  .pattern-bg {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjOWU5YmIzIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjIiLz48L2c+PC9zdmc+');
+    background-repeat: repeat;
   }
 
   /* Custom Scrollbar - Premium Design */
@@ -143,7 +150,7 @@
   button[type="reset"],
   a[href][class*="bg-"] {
     border-radius: 0.5rem !important;
-    font-family: "Noto Sans Hebrew", sans-serif;
+    font-family: var(--font-noto-sans-hebrew), sans-serif;
   }
 
   .btn-primary {
@@ -181,6 +188,19 @@
   .text-shadow-lg {
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
+}
+
+/* Banks marquee styles - let library handle styling */
+.banks-marquee {
+  cursor: pointer;
+}
+
+.banks-marquee img {
+  height: 40px !important;
+  width: auto !important;
+  max-width: 120px !important;
+  object-fit: contain !important;
+  pointer-events: none;
 }
 
 /* Hero button animation - Optimized: single animation instead of 3 */
@@ -225,19 +245,6 @@
 
 .animate-scroll-rtl:hover {
   animation-play-state: paused;
-}
-
-/* Banks marquee styles - let library handle styling */
-.banks-marquee {
-  cursor: pointer;
-}
-
-.banks-marquee img {
-  height: 40px !important;
-  width: auto !important;
-  max-width: 120px !important;
-  object-fit: contain !important;
-  pointer-events: none;
 }
 
 /* FullScreenLoader animations */
@@ -346,7 +353,7 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  
+
   .animate-shimmer,
   .fullscreen-spinner,
   .hero-cta-button,
@@ -355,62 +362,3 @@
     animation: none !important;
   }
 }
-
-/* Accessibility Settings */
-.font-size-normal {
-  font-size: 100% !important;
-}
-
-.font-size-large {
-  font-size: 125% !important;
-}
-
-.font-size-extra-large {
-  font-size: 150% !important;
-}
-
-.font-size-large *,
-.font-size-extra-large * {
-  font-size: inherit;
-}
-
-.contrast-normal {
-  /* Default contrast */
-}
-
-.contrast-high {
-  filter: contrast(1.2) brightness(1.1);
-}
-
-.contrast-high body {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-}
-
-.contrast-high h1,
-.contrast-high h2,
-.contrast-high h3,
-.contrast-high h4,
-.contrast-high h5,
-.contrast-high h6,
-.contrast-high p,
-.contrast-high span,
-.contrast-high div {
-  color: #000000 !important;
-}
-
-.contrast-high a {
-  color: #0000ff !important;
-  font-weight: bold !important;
-}
-
-.contrast-high button {
-  border: 2px solid #000000 !important;
-}
-
-.underline-links a {
-  text-decoration: underline !important;
-  text-underline-offset: 2px;
-}
-
-

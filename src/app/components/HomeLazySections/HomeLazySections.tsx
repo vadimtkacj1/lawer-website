@@ -3,17 +3,17 @@
 import dynamic from "next/dynamic";
 import LazyMount from "@/components/ui/LazyMount";
 
-const BankLogos = dynamic(() => import("@/app/components/BankLogos"), { ssr: false });
-const ExpertBio = dynamic(() => import("@/app/components/ExpertBio"), { ssr: false });
-const Quote = dynamic(() => import("@/components/Quote"), { ssr: false });
-const Services = dynamic(() => import("@/components/Services"), { ssr: false });
-const Testimonials = dynamic(() => import("@/app/components/Testimonials"), { ssr: false });
-const HowItWorks = dynamic(() => import("@/app/components/HowItWorks"), { ssr: false });
-const Contact = dynamic(() => import("@/components/Contact"), { ssr: false });
-const MortgageCalculator = dynamic(() => import("@/components/MortgageCalculator"), { ssr: false });
-const FAQ = dynamic(() => import("@/components/FAQ"), { ssr: false });
-const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
-const Widgets = dynamic(() => import("@/components/ui/Widgets"), { ssr: false });
+const BankLogos = dynamic(() => import("@/app/components/BankLogos"), {});
+const ExpertBio = dynamic(() => import("@/app/components/ExpertBio"), {});
+const Quote = dynamic(() => import("@/components/Quote"), {});
+const Services = dynamic(() => import("@/components/Services"), {});
+const Testimonials = dynamic(() => import("@/app/components/Testimonials"), {});
+const HowItWorks = dynamic(() => import("@/app/components/HowItWorks"), {});
+const Contact = dynamic(() => import("@/components/Contact"), {});
+const MortgageCalculator = dynamic(() => import("@/components/MortgageCalculator"), {});
+const FAQ = dynamic(() => import("@/components/FAQ"), {});
+const Footer = dynamic(() => import("@/components/Footer"), {});
+const Widgets = dynamic(() => import("@/components/ui/Widgets"), {});
 
 export default function HomeLazySections() {
   return (

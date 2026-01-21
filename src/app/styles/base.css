@@ -1,0 +1,131 @@
+/* Custom base styles */
+@layer base {
+  html {
+    direction: rtl;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+    scroll-padding-top: var(--header-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply text-blue-dk;
+    background-color: #f9f7f4;
+  }
+
+  /* Header height variable for spacing */
+  :root {
+    --header-height: 90px;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --header-height: 110px;
+    }
+  }
+
+  /* Performance optimizations for smooth scrolling */
+  html, body {
+    overscroll-behavior-y: none;
+  }
+
+  /* Optimize image loading */
+  img {
+    content-visibility: auto;
+  }
+
+  /* GPU acceleration for better performance on mobile */
+  @media (hover: none) and (pointer: coarse) {
+    body {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    /* Disable all non-essential animations on mobile */
+    * {
+      animation-play-state: paused !important;
+    }
+
+    /* Force hardware acceleration only for critical elements */
+    img, video, picture {
+      will-change: auto;
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+  }
+
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-noto-sans-hebrew font-black tracking-tight;
+  }
+
+  /* Performance optimizations for all sections */
+  section {
+    /* Contain layout changes within sections */
+    contain: layout style paint;
+    /* Force GPU acceleration */
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* Mobile-specific text rendering optimization */
+  @media (hover: none) and (pointer: coarse) {
+    h1, h2, h3, h4, h5, h6, p, span, div {
+      /* Optimize text rendering on mobile */
+      text-rendering: optimizeSpeed;
+      /* Prevent text from triggering layout */
+      contain: layout;
+    }
+  }
+
+  /* Pattern background for renovation sections */
+  .pattern-bg {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjOWU5YmIzIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjIiLz48L2c+PC9zdmc+');
+    background-repeat: repeat;
+  }
+
+  /* Custom Scrollbar - Premium Design */
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f9f7f4;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #1c3664 0%, #0d1f3c 100%);
+    border-radius: 10px;
+    border: 3px solid #f9f7f4;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #f26722 0%, #e05010 100%);
+    border-color: #f9f7f4;
+    border-width: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(180deg, #f26722 0%, #d94a0e 100%);
+  }
+
+  /* Firefox Scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #1c3664 #f9f7f4;
+  }
+
+  *:hover {
+    scrollbar-color: #f26722 #f9f7f4;
+  }
+
+}

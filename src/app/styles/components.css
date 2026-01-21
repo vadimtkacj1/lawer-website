@@ -1,0 +1,48 @@
+/* Custom component styles */
+@layer components {
+  /* Global button styles - border-radius: 0.5rem for all buttons and Noto Sans Hebrew font */
+  button,
+  .btn-primary,
+  .btn-outline,
+  a[role="button"],
+  [role="button"],
+  a.bg-orange,
+  button.bg-orange,
+  a[href].bg-orange,
+  button[type="button"],
+  button[type="submit"],
+  button[type="reset"],
+  a[href][class*="bg-"] {
+    border-radius: 0.5rem !important;
+    font-family: var(--font-noto-sans-hebrew), sans-serif;
+  }
+
+  .btn-primary {
+    @apply bg-blue-dk text-white font-extrabold px-8 py-3
+           shadow-lg hover:bg-blue-dk/90 hover:-translate-y-0.5 hover:shadow-xl;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0.5rem;
+  }
+
+  .btn-outline {
+    @apply border-2 border-blue-dk text-blue-dk font-extrabold px-6 py-2
+           hover:bg-blue-dk hover:text-white;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0.5rem;
+  }
+
+  .section-title {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl 4xl:text-9xl font-black text-blue-dk text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12 3xl:mb-16 4xl:mb-20;
+  }
+
+  /* Hero section noise overlay */
+  .hero-noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    pointer-events: none;
+    z-index: 0;
+  }
+}

@@ -19,7 +19,6 @@ export { default as LocationIcon } from './LocationIcon';
 export { default as FacebookIcon } from './FacebookIcon';
 export { default as InstagramIcon } from './InstagramIcon';
 export { default as WhatsAppIcon } from './WhatsAppIcon';
-export { default as AccessibilityIcon } from './AccessibilityIcon';
 
 // Services
 export { default as HomeIcon } from './HomeIcon';

@@ -2,147 +2,109 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, Variants } from "framer-motion";
-import {
-  fadeInUpFast,
-  fadeInRight,
-  staggerContainer,
-  staggerItem,
-  viewportOptions,
-} from "@/lib/animations";
-import DecorativeShapes from "@/components/ui/DecorativeShapes";
-import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
+import { motion } from "framer-motion";
+import { ShieldCheck, TrendingUp, Award } from "lucide-react";
+import { fadeInUpFast, fadeInRight, staggerContainer, staggerItem, viewportOptions } from "@/lib/animations";
 
 /**
- * Optimized viewport settings for mobile triggers
+ * EXPERT BIO COMPONENT
+ * Primary branding color used: #0f2344
+ * Focus: Professionalism and trust for financial/legal services.
  */
-const mobileViewport = { ...viewportOptions, once: true, amount: 0.1 };
-
-const mobileFadeIn: Variants = {
-  hidden: { opacity: 0, y: 15 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.5, ease: "easeOut" } 
-  }
-};
 
 const highlights = [
   {
-    iconPath: <path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />,
-    text: "ליווי משפטי מלא לאורך כל התהליך",
+    icon: <ShieldCheck className="w-6 h-6 sm:w-7 sm:h-7" />, 
+    text: `ליווי מקצועי מלא לאורך כל התהליך`,
   },
   {
-    iconPath: <path d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z" />,
-    text: 'התמחיות בתיקי "מסורבי בנק"',
+    icon: <TrendingUp className="w-6 h-6 sm:w-7 sm:h-7" />, 
+    text: `התאמת תמהיל משכנתא מדויק לצרכים שלכם`,
   },
   {
-    iconPath: <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />,
-    text: "מעל 1,000 משפחות שחסכו מאות אלפי שקלים",
+    icon: <Award className="w-6 h-6 sm:w-7 sm:h-7" />, 
+    text: `חיסכון משמעותי בעלויות המשכנתא לאורך השנים`,
   },
 ];
 
 export default function ExpertBio() {
-  const { shouldDisableAnimations, isMobile } = usePerformanceSettings();
-  const initialPresence = shouldDisableAnimations ? "visible" : "hidden";
-
   return (
-    <section 
-      id="about-expert" 
-      dir="rtl" 
-      className="relative py-12 md:py-20 overflow-hidden bg-[#f9f7f4]"
-    >
-      <DecorativeShapes variant="default" />
-      
+    <section id="about-expert" dir="rtl" className="relative py-12 md:py-24 overflow-hidden bg-[#f9f7f4]">
       <div className="container mx-auto px-6 sm:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
-          {/* Expert Image */}
+          {/* IMAGE SECTION: Portrait with white border and shadow */}
           <motion.div
-            className="w-full max-w-[280px] sm:max-w-[350px] lg:max-w-none flex-1 mx-auto will-change-transform"
-            initial={initialPresence}
+            className="w-full max-w-[300px] sm:max-w-[400px] lg:max-w-none flex-1 mx-auto lg:mx-0"
+            initial="hidden"
             whileInView="visible"
-            viewport={isMobile ? mobileViewport : viewportOptions}
-            variants={isMobile ? mobileFadeIn : fadeInRight}
+            viewport={viewportOptions}
+            variants={fadeInRight}
           >
             <Image
               src="/images/second_expert.jpeg"
-              alt="Avi - Financial Lawyer"
+              alt="Avi Bukai - Professional Bio"
               width={500}
               height={625}
               priority
-              quality={90}
-              className="w-full aspect-[4/5] object-cover object-top rounded-3xl shadow-xl"
+              className="w-full aspect-[4/5] object-cover object-top rounded-[40px] shadow-2xl border-8 border-white"
             />
           </motion.div>
 
-          {/* Bio Content */}
-          <div className="flex-[1.3] text-center lg:text-right w-full">
+          {/* CONTENT SECTION: Text and Call to Action */}
+          <div className="flex-[1.4] text-center lg:text-right w-full">
+            
+            {/* Header: Applied requested color #0f2344 */}
             <motion.h2
-              className="font-noto-sans-hebrew font-black text-blue-dk mb-6 leading-[1.2]
-                         text-3xl sm:text-4xl lg:text-6xl"
-              initial={initialPresence}
+              className="font-noto-sans-hebrew font-black text-[#0f2344] mb-10 leading-[1.05] text-4xl sm:text-6xl lg:text-7xl"
+              initial="hidden"
               whileInView="visible"
-              viewport={isMobile ? mobileViewport : viewportOptions}
-              variants={isMobile ? mobileFadeIn : fadeInUpFast}
+              variants={fadeInUpFast}
             >
-              הכוח המשפטי מאחורי <br className="sm:hidden" />
-              המשכנתא שלכם
+              כשניסיון בנקאי פוגש <br />
+              <span className="text-orange">ידע אקדמי</span>
             </motion.h2>
 
-            <motion.p
-              className="text-base sm:text-lg lg:text-xl font-bold text-blue-dk/90
-                         leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0 font-noto-sans-hebrew"
-              initial={initialPresence}
+            {/* Paragraph: Applied requested color #0f2344 */}
+            <motion.p 
+              className="text-lg sm:text-2xl font-medium text-[#0f2344] leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0"
+              initial="hidden"
               whileInView="visible"
-              viewport={isMobile ? mobileViewport : viewportOptions}
-              variants={mobileFadeIn}
+              variants={fadeInUpFast}
             >
-              שלום, אני אבי. כמשפטן פיננסי המתמחה בדיני בנקאות, אני לא רק בונה
-              לכם תמהיל חסכוני — אני מוודא שכל אות בחוזה משרתת את האינטרסים שלכם.
+              אני אבי בוקעי, יוצא המערכת הבנקאית ובעל תואר אקדמי במנהל עסקים עם דגש על נדל"ן. אני כאן כדי ללוות אתכם צעד-צעד בבחירות הכלכליות החשובות שלכם.
             </motion.p>
 
-            {/* Adjusted Highlights List */}
-            <motion.ul
-              className="inline-flex flex-col items-start space-y-4 mb-10 text-right"
-              initial={initialPresence}
-              whileInView="visible"
-              viewport={isMobile ? mobileViewport : viewportOptions}
-              variants={isMobile ? {} : staggerContainer}
-            >
-              {highlights.map((item, index) => (
-                <motion.li
-                  key={index}
-                  className="flex items-center gap-3 text-base sm:text-lg lg:text-xl font-extrabold font-noto-sans-hebrew group"
-                  variants={isMobile ? mobileFadeIn : staggerItem}
-                >
-                  {/* Smaller, more refined icon container */}
-                  <span className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-orange/10 text-orange rounded-lg transition-colors group-hover:bg-orange/20">
-                    <svg className="w-5 h-5 sm:w-6 h-6" fill="currentColor" viewBox="0 0 16 16">
-                      {item.iconPath}
-                    </svg>
-                  </span>
-                  {/* Text remains prominent */}
-                  <span className="text-blue-dk">
-                    {item.text}
-                  </span>
-                </motion.li>
-              ))}
-            </motion.ul>
+            {/* HIGHLIGHTS: List with custom icon containers */}
+            <div className="flex justify-center lg:justify-start mb-12">
+              <motion.ul 
+                className="inline-flex flex-col items-start space-y-6 text-right"
+                initial="hidden"
+                whileInView="visible"
+                variants={staggerContainer}
+              >
+                {highlights.map((item, index) => (
+                  <motion.li key={index} className="flex items-center gap-5 text-lg sm:text-xl font-bold group" variants={staggerItem}>
+                    {/* Icon container with hover state switching to brand color #0f2344 */}
+                    <span className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-white shadow-md text-orange rounded-2xl transition-all duration-300 group-hover:bg-[#0f2344] group-hover:text-white">
+                      {item.icon}
+                    </span>
+                    <span className="text-[#0f2344]">{item.text}</span>
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </div>
 
-            {/* CTA Button */}
-            <motion.div
-              initial={initialPresence}
-              whileInView="visible"
-              viewport={isMobile ? mobileViewport : viewportOptions}
-              variants={mobileFadeIn}
+            {/* CALL TO ACTION: Button with requested color #0f2344 */}
+            <motion.div 
               className="flex justify-center lg:justify-start"
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInUpFast}
             >
               <Link
                 href="/about"
-                className="inline-block px-10 py-4 bg-blue-dk text-white
-                           text-lg font-black transition-all duration-200 rounded-xl
-                           shadow-lg hover:bg-blue-dk/90 active:scale-95 font-noto-sans-hebrew"
+                className="relative inline-flex items-center justify-center gap-3 bg-[#0f2344] text-white px-8 py-4 md:px-12 md:py-5 text-lg md:text-xl font-extrabold shadow-lg hover:brightness-110 active:scale-[0.98] transition-all"
               >
                 קראו עוד על הניסיון שלי
               </Link>

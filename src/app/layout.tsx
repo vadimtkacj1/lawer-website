@@ -3,6 +3,15 @@ import "./globals.css";
 import { MotionConfig } from "framer-motion";
 import FullScreenLoader from "@/components/ui/FullScreenLoader";
 import ClientEffects from "@/components/ui/ClientEffects";
+import localFont from "next/font/local";
+
+// Load local Noto Sans Hebrew variable font
+const notoSansHebrew = localFont({
+  src: "./fonts/NotoSansHebrew-VariableFont_wdth,wght.ttf",
+  variable: "--font-noto-sans-hebrew",
+  display: "swap",
+  preload: true,
+});
 
 // Base metadata - can be extended per page
 export const metadata: Metadata = {
@@ -85,16 +94,28 @@ export default function RootLayout({
       dir="rtl"
     >
       <head>
-        {/* Google Fonts - Noto Sans Hebrew */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&display=swap" rel="stylesheet" />
+        {/* Favicon - multiple formats for better browser support */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
+        {/* Preload critical assets */}
+        <link rel="preload" href="/images/logo.png" as="image" type="image/png" />
         {/* DNS prefetch for social media */}
         <link rel="dns-prefetch" href="https://www.facebook.com" />
         <link rel="dns-prefetch" href="https://www.instagram.com" />
         <link rel="dns-prefetch" href="https://wa.me" />
+        {/* Sienna Accessibility Widget - lazy loaded */}
+        <script src="https://cdn.jsdelivr.net/npm/sienna-accessibility@latest/dist/sienna-accessibility.umd.js" defer></script>
+        <script dangerouslySetInnerHTML={{__html: `
+          window.addEventListener('DOMContentLoaded', function() {
+            if (window.SiennaAccessibility) {
+              window.SiennaAccessibility.init({
+                language: 'he'
+              });
+            }
+          });
+        `}} />
       </head>
-      <body className="font-noto-sans-hebrew antialiased">
+      <body className={`${notoSansHebrew.variable} font-noto-sans-hebrew antialiased`}>
         <MotionConfig reducedMotion="user">
           <FullScreenLoader />
           <ClientEffects />

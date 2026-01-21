@@ -90,7 +90,7 @@ function TestimonialsSection() {
   const row2 = useMemo(() => [...testimonials.reverse(), ...testimonials, ...testimonials], []);
 
   return (
-    <section className="py-20 md:py-24 bg-[#f9f7f4] overflow-hidden">
+    <section id="testimonials" className="py-20 md:py-24 bg-[#f9f7f4] overflow-hidden">
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes scroll-left {
           0% { transform: translateX(0); }

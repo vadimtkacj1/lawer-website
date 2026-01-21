@@ -1,0 +1,84 @@
+/* Hero button animation - Optimized: single animation instead of 3 */
+@keyframes button-pulse-optimized {
+  0%, 100% {
+    box-shadow: 0 10px 25px rgba(242, 103, 34, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 12px 35px rgba(242, 103, 34, 0.6);
+    transform: scale(1.02);
+  }
+}
+
+.hero-cta-button {
+  animation: button-pulse-optimized 2.5s ease-in-out infinite;
+  position: relative;
+}
+
+/* Only apply will-change during animation for better performance */
+.hero-cta-button:hover {
+  will-change: transform;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* Banks carousel scroll animation (RTL) */
+@keyframes scroll-rtl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-rtl {
+  animation: scroll-rtl 30s linear infinite;
+}
+
+.animate-scroll-rtl:hover {
+  animation-play-state: paused;
+}
+
+/* FullScreenLoader animations */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.fullscreen-spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(28, 54, 100, 0.1);
+  border-top: 5px solid #1c3664;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Button shimmer animation - optimized */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-12deg);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+  animation-delay: 1s;
+  animation-play-state: paused;
+}
+
+/* Run shimmer only on hover to avoid constant repainting */
+.group:hover .animate-shimmer {
+  animation-play-state: running;
+  will-change: transform;
+}
