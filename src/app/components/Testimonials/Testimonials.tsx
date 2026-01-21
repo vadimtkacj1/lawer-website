@@ -109,6 +109,7 @@ const MarqueeRow = ({
   return (
     <div className="flex w-full overflow-hidden" style={{ direction: 'ltr' }}>
       <motion.div
+        key={`marquee-${direction}-${duration}`}
         className="flex gap-6 md:gap-8 py-4"
         initial={{ x: direction === "left" ? "0%" : "-33.33%" }}
         animate={{ x: direction === "left" ? "-33.33%" : "0%" }}
@@ -122,7 +123,7 @@ const MarqueeRow = ({
         whileHover={!isMobile ? { animationPlayState: "paused" } : {}}
       >
         {tripleItems.map((item, i) => (
-          <TestimonialCard key={i} item={item} />
+          <TestimonialCard key={`testimonial-${direction}-${i}`} item={item} />
         ))}
       </motion.div>
     </div>
