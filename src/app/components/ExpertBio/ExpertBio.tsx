@@ -8,7 +8,7 @@ import { fadeInUpFast, fadeInRight, staggerContainer, staggerItem, viewportOptio
 
 /**
  * EXPERT BIO COMPONENT
- * Primary branding color used: #0f2344
+ * Primary branding color used: #0f3244
  * Focus: Professionalism and trust for financial/legal services.
  */
 
@@ -55,10 +55,10 @@ export default function ExpertBio() {
           {/* CONTENT SECTION: Text and Call to Action */}
           <div className="flex-[1.4] text-center lg:text-right w-full">
             
-            {/* Header: Applied requested color #0f2344 */}
+            {/* Header: Applied color #0f3244 */}
             <motion.h2
               key="expert-bio-heading"
-              className="font-noto-sans-hebrew font-black text-[#0f2344] mb-10 leading-[1.05] text-4xl sm:text-6xl lg:text-7xl"
+              className="font-noto-sans-hebrew font-black text-[#0f3244] mb-10 leading-[1.05] text-4xl sm:text-6xl lg:text-7xl"
               initial="hidden"
               whileInView="visible"
               variants={fadeInUpFast}
@@ -67,10 +67,10 @@ export default function ExpertBio() {
               <span className="text-orange">ידע אקדמי</span>
             </motion.h2>
 
-            {/* Paragraph: Applied requested color #0f2344 */}
+            {/* Paragraph: Applied color #0f3244 */}
             <motion.p
               key="expert-bio-description"
-              className="text-lg sm:text-2xl font-medium text-[#0f2344] leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0"
+              className="text-lg sm:text-2xl font-medium text-[#0f3244] leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0"
               initial="hidden"
               whileInView="visible"
               variants={fadeInUpFast}
@@ -89,17 +89,17 @@ export default function ExpertBio() {
               >
                 {highlights.map((item, index) => (
                   <motion.li key={`expert-bio-highlight-${index}`} className="flex items-center gap-5 text-lg sm:text-xl font-bold group" variants={staggerItem}>
-                    {/* Icon container with hover state switching to brand color #0f2344 */}
-                    <span className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-white shadow-md text-orange rounded-2xl transition-all duration-300 group-hover:bg-[#0f2344] group-hover:text-white">
+                    {/* Icon container with hover state switching to brand color #0f3244 */}
+                    <span className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-white shadow-md text-orange rounded-2xl transition-all duration-300 group-hover:bg-[#0f3244] group-hover:text-white">
                       {item.icon}
                     </span>
-                    <span className="text-[#0f2344]">{item.text}</span>
+                    <span className="text-[#0f3244]">{item.text}</span>
                   </motion.li>
                 ))}
               </motion.ul>
             </div>
 
-            {/* CALL TO ACTION: Button with requested color #0f2344 */}
+            {/* CALL TO ACTION: Button with updated color #0f3244 */}
             <motion.div
               key="expert-bio-cta"
               className="flex justify-center lg:justify-start"
@@ -109,7 +109,7 @@ export default function ExpertBio() {
             >
               <Link
                 href="/about"
-                className="relative inline-flex items-center justify-center gap-3 bg-[#0f2344] text-white px-8 py-4 md:px-12 md:py-5 text-lg md:text-xl font-extrabold shadow-lg hover:brightness-110 active:scale-[0.98] transition-all"
+                className="relative inline-flex items-center justify-center gap-3 bg-[#1c3664] text-white px-8 py-4 md:px-12 md:py-5 text-lg md:text-xl font-extrabold shadow-lg hover:brightness-110 active:scale-[0.98] transition-all"
               >
                 קראו עוד על הניסיון שלי
               </Link>
