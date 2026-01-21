@@ -27,6 +27,7 @@ const MAX_EQUITY = 5000000;
  */
 const FloatingIcon = ({ children, className, delay = 0, duration = 8 } : FloatingIconProps) => (
   <motion.div
+    key={`floating-icon-${className}-${delay}`}
     className={`absolute text-blue-dk/20 pointer-events-none z-0 ${className}`}
     animate={{
       y: [0, -20, 0],
@@ -105,7 +106,8 @@ export default function MortgageSliderCalculator() {
 
       {/* --- CALCULATOR CARD --- */}
       <div className="container mx-auto px-4 relative z-10 flex justify-center">
-        <motion.div 
+        <motion.div
+          key="mortgage-calculator-card"
           className="w-full max-w-2xl bg-white/95 backdrop-blur-3xl rounded-[3.5rem] p-8 md:p-12 border border-blue-dk/5 shadow-[0_40px_100px_-15px_rgba(0,0,0,0.12)]"
           initial="hidden"
           whileInView="visible"
@@ -190,7 +192,8 @@ export default function MortgageSliderCalculator() {
             <div className="h-6 flex justify-center" dir="rtl">
               <AnimatePresence>
                 {isEquityTooHigh && (
-                  <motion.div 
+                  <motion.div
+                    key="mortgage-calculator-error"
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}

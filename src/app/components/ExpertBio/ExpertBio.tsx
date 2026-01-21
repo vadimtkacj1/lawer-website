@@ -35,6 +35,7 @@ export default function ExpertBio() {
           
           {/* IMAGE SECTION: Portrait with white border and shadow */}
           <motion.div
+            key="expert-bio-image"
             className="w-full max-w-[300px] sm:max-w-[400px] lg:max-w-none flex-1 mx-auto lg:mx-0"
             initial="hidden"
             whileInView="visible"
@@ -56,6 +57,7 @@ export default function ExpertBio() {
             
             {/* Header: Applied requested color #0f2344 */}
             <motion.h2
+              key="expert-bio-heading"
               className="font-noto-sans-hebrew font-black text-[#0f2344] mb-10 leading-[1.05] text-4xl sm:text-6xl lg:text-7xl"
               initial="hidden"
               whileInView="visible"
@@ -66,7 +68,8 @@ export default function ExpertBio() {
             </motion.h2>
 
             {/* Paragraph: Applied requested color #0f2344 */}
-            <motion.p 
+            <motion.p
+              key="expert-bio-description"
               className="text-lg sm:text-2xl font-medium text-[#0f2344] leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0"
               initial="hidden"
               whileInView="visible"
@@ -77,14 +80,15 @@ export default function ExpertBio() {
 
             {/* HIGHLIGHTS: List with custom icon containers */}
             <div className="flex justify-center lg:justify-start mb-12">
-              <motion.ul 
+              <motion.ul
+                key="expert-bio-highlights-list"
                 className="inline-flex flex-col items-start space-y-6 text-right"
                 initial="hidden"
                 whileInView="visible"
                 variants={staggerContainer}
               >
                 {highlights.map((item, index) => (
-                  <motion.li key={index} className="flex items-center gap-5 text-lg sm:text-xl font-bold group" variants={staggerItem}>
+                  <motion.li key={`expert-bio-highlight-${index}`} className="flex items-center gap-5 text-lg sm:text-xl font-bold group" variants={staggerItem}>
                     {/* Icon container with hover state switching to brand color #0f2344 */}
                     <span className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-white shadow-md text-orange rounded-2xl transition-all duration-300 group-hover:bg-[#0f2344] group-hover:text-white">
                       {item.icon}
@@ -96,7 +100,8 @@ export default function ExpertBio() {
             </div>
 
             {/* CALL TO ACTION: Button with requested color #0f2344 */}
-            <motion.div 
+            <motion.div
+              key="expert-bio-cta"
               className="flex justify-center lg:justify-start"
               initial="hidden"
               whileInView="visible"

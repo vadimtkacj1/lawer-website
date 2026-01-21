@@ -115,6 +115,7 @@ export default function Services() {
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.h2
+          key="services-heading"
           className="section-title text-center text-3xl md:text-5xl lg:text-6xl mb-10 md:mb-16 font-noto-sans-hebrew"
           initial="hidden"
           whileInView="visible"
@@ -126,6 +127,7 @@ export default function Services() {
 
         <div className="max-w-[1200px] 3xl:max-w-[1500px] mx-auto">
           <motion.nav
+            key="services-nav"
             className="flex flex-wrap justify-center gap-3 md:gap-0 md:bg-white md:shadow-xl md:rounded-3xl md:border border-blue-dk/10 overflow-hidden"
             initial="hidden"
             whileInView="visible"
@@ -134,7 +136,7 @@ export default function Services() {
           >
             {services.map((service, index) => (
               <motion.div
-                key={service.href}
+                key={`service-${service.href}`}
                 variants={staggerItem}
                 className="w-[calc(50%-5px)] md:w-1/3 lg:flex-1 bg-white rounded-2xl md:rounded-none
                            relative border border-blue-dk/5 md:border-0 shadow-sm md:shadow-none"

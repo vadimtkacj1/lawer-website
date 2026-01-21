@@ -68,13 +68,15 @@ export default function Quote() {
       {/* --- MAIN CONTENT CARD --- */}
       <div className="container mx-auto px-6 sm:px-8 relative z-10">
         <motion.div
+          key="quote-container"
           className="max-w-4xl mx-auto"
           initial="hidden"
           whileInView="visible"
           viewport={optimizedViewport}
           variants={fadeInUpFast}
         >
-          <motion.div 
+          <motion.div
+            key="quote-card" 
             /* Premium Dark Shadow:
                - Neutral shadow for a professional, clean aesthetic.
                - Multi-layered depth for a realistic 'floating' effect.

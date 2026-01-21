@@ -23,6 +23,7 @@ export default function BankLogos() {
 
       <div className="container mx-auto px-4">
         <motion.div
+          key="bank-logos-marquee"
           className="relative w-full"
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}

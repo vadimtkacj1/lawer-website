@@ -108,16 +108,17 @@ export default function Contact() {
           <p className="text-lg md:text-2xl font-bold text-[#1c3664]/80">השאירו פרטים ונחזור אליכם בהקדם</p>
         </div>
 
-        <motion.div 
+        <motion.div
+          key="contact-grid"
           className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-10 lg:gap-6 items-center max-w-5xl mx-auto"
           initial="hidden"
           whileInView="visible"
           viewport={viewportOptions}
           variants={staggerContainer}
         >
-          
+
           {/* Top Block: Promotional Content */}
-          <motion.div variants={staggerItem} className="flex flex-col items-center lg:items-start text-center lg:text-right">
+          <motion.div key="contact-promo" variants={staggerItem} className="flex flex-col items-center lg:items-start text-center lg:text-right">
             <div className="relative group max-w-[320px]">
               <div className="absolute -top-4 -right-2 bg-[#1c3664] text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm z-20">
                 חדש
@@ -143,7 +144,7 @@ export default function Contact() {
           </motion.div>
 
           {/* Separator */}
-          <motion.div variants={staggerItem} className="flex flex-col items-center justify-center px-4">
+          <motion.div key="contact-separator" variants={staggerItem} className="flex flex-col items-center justify-center px-4">
             <div className="hidden lg:block h-24 w-[2px] bg-[#1c3664]/10 mb-6"></div>
             <div className="flex flex-col items-center">
               <span className="text-[#1c3664]/20 font-black text-4xl md:text-5xl uppercase">או</span>
@@ -153,7 +154,7 @@ export default function Contact() {
           </motion.div>
 
           {/* Bottom Block: Form and Direct Contact */}
-          <motion.div variants={staggerItem} className="flex flex-col gap-8 items-center lg:items-end w-full">
+          <motion.div key="contact-form-block" variants={staggerItem} className="flex flex-col gap-8 items-center lg:items-end w-full">
             
             {/* Contact Details - Fixed Alignment for Mobile */}
             <div className="flex flex-col items-center lg:items-end gap-5 w-full">
