@@ -90,6 +90,9 @@ export default function Footer() {
             © {new Date().getFullYear()} אבי - הבית למשכנתאות. כל הזכויות
             שמורות. תכנון נכון שחוסך לכם כסף.
           </p>
+          <p className="text-white/50 text-xs sm:text-sm mt-3 sm:mt-4">
+            נבנה על ידי Aiterra | פתרונות דיגיטליים לעסקים
+          </p>
         </div>
       </div>
     </footer>

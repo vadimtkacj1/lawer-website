@@ -343,6 +343,43 @@
   }
 }
 
+/* Sienna Accessibility Widget - Fixed positioning for mobile */
+/* Target the widget container */
+#sienna-accessibility-widget,
+.sienna-accessibility-widget,
+[class*="sienna-accessibility"],
+[id*="sienna-accessibility"] {
+  position: fixed !important;
+  z-index: 9999 !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Ensure button stays visible on mobile */
+@media (max-width: 768px) {
+  #sienna-accessibility-widget,
+  .sienna-accessibility-widget,
+  [class*="sienna-accessibility"],
+  [id*="sienna-accessibility"] {
+    bottom: 15px !important;
+    right: 15px !important;
+    position: fixed !important;
+    z-index: 10000 !important;
+  }
+
+  /* Ensure the widget button has a fixed size on mobile */
+  #sienna-accessibility-widget button,
+  .sienna-accessibility-widget button,
+  [class*="sienna-accessibility"] button {
+    min-width: 50px !important;
+    min-height: 50px !important;
+  }
+}
+
 /* Reduced motion preferences - more comprehensive support */
 @media (prefers-reduced-motion: reduce) {
   * {
