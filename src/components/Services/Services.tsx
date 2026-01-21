@@ -20,13 +20,13 @@ import CitySkylineBackground from "@/components/icons/backgrounds/CitySkylineBac
 
 const services = [
   {
-    href: "/services/residential",
+    href: "/services/debt-consolidation",
     Icon: HomeIcon,
     title: "משכנתא לרכישת דירה",
     description: "ליווי לדירה ראשונה, להשקעה או דירה חליפית בתכנון נכון",
   },
   {
-    href: "/services/mechir-lamishtaken",
+    href: "/services/foreign-mortgages",
     Icon: BuildingIcon,
     title: "מחיר למשתכן",
     description: "ליווי ייעודי עם היכרות מעמיקה של המסלולים וההתאמות",
