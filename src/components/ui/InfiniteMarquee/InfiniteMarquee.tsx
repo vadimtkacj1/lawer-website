@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useMemo, memo } from "react";
 import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
@@ -23,28 +22,16 @@ function InfiniteMarquee({
   const duplicatedData = useMemo(() => [...dataArray, ...dataArray], [dataArray]);
   const { isMobile } = usePerformanceSettings();
 
-  // Замедляем анимацию на мобилках для экономии ресурсов
-  const adjustedSpeed = isMobile ? speed * 1.5 : speed;
+  // Slow down animation on mobile to save system resources
+  // Added a fallback to 'speed' to prevent NaN during hydration
+  const adjustedSpeed = (isMobile ? speed * 1.5 : speed) || speed;
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: `
-        @-webkit-keyframes marquee-scroll {
-          0% {
-            -webkit-transform: translateX(0);
-          }
-          100% {
-            -webkit-transform: translateX(-50%);
-          }
-        }
-
         @keyframes marquee-scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
 
         .mq-viewport {
@@ -52,7 +39,7 @@ function InfiniteMarquee({
           overflow: hidden;
           position: relative;
           background: transparent;
-          /* КРИТИЧНО: Переопределяем RTL на LTR для корректной работы */
+          /* CRITICAL: Force LTR direction for consistent animation math */
           direction: ltr;
           mask-image: linear-gradient(to right, transparent, black 5rem, black calc(100% - 5rem), transparent);
           -webkit-mask-image: linear-gradient(to right, transparent, black 5rem, black calc(100% - 5rem), transparent);
@@ -65,13 +52,17 @@ function InfiniteMarquee({
           flex-wrap: nowrap;
           gap: 2rem;
           padding: 1.5rem 0;
-          -webkit-animation: marquee-scroll ${adjustedSpeed}s linear infinite;
-          animation: marquee-scroll ${adjustedSpeed}s linear infinite;
-          -webkit-animation-direction: ${direction === "left" ? "normal" : "reverse"};
-          animation-direction: ${direction === "left" ? "normal" : "reverse"};
+          
+          /* Using CSS variables for dynamic values to prevent style re-parsing */
+          animation: marquee-scroll var(--mq-speed) linear infinite;
+          animation-direction: var(--mq-direction);
+          
+          /* Hardware acceleration: Trigger GPU rendering for smooth mobile performance */
           -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-          ${!isMobile ? 'will-change: transform;' : ''}
+          perspective: 1000px;
+          transform: translate3d(0, 0, 0);
+          will-change: transform;
         }
 
         @media (min-width: 768px) {
@@ -83,7 +74,6 @@ function InfiniteMarquee({
 
         .mq-track:hover {
           animation-play-state: paused;
-          -webkit-animation-play-state: paused;
         }
 
         .mq-item {
@@ -109,7 +99,7 @@ function InfiniteMarquee({
         }
 
         .mq-item:hover .mq-img {
-          filter: ${preserveColors ? 'none' : 'grayscale(0%)'};
+          filter: grayscale(0%);
           opacity: 1;
           transform: scale(1.12);
         }
@@ -132,7 +122,14 @@ function InfiniteMarquee({
         }
       `}} />
 
-      <div className={`mq-viewport ${className}`}>
+      <div 
+        className={`mq-viewport ${className}`}
+        style={{
+          // @ts-ignore - Custom CSS properties
+          "--mq-speed": `${adjustedSpeed}s`,
+          "--mq-direction": direction === "left" ? "normal" : "reverse"
+        } as React.CSSProperties}
+      >
         <div className="mq-track">
           {duplicatedData.map((item, index) => (
             <div key={index} className="mq-item">
