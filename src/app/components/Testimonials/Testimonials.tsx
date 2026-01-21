@@ -109,7 +109,7 @@ const MarqueeRow = ({
   return (
     <div className="flex w-full overflow-hidden" style={{ direction: 'ltr' }}>
       <motion.div
-        key={`marquee-${direction}-${duration}`}
+        key={`testimonials-marquee-${direction}-${duration}`}
         className="flex gap-6 md:gap-8 py-4"
         initial={{ x: direction === "left" ? "0%" : "-33.33%" }}
         animate={{ x: direction === "left" ? "-33.33%" : "0%" }}
@@ -123,7 +123,7 @@ const MarqueeRow = ({
         whileHover={!isMobile ? { animationPlayState: "paused" } : {}}
       >
         {tripleItems.map((item, i) => (
-          <TestimonialCard key={`testimonial-${direction}-${i}`} item={item} />
+          <TestimonialCard key={`testimonial-card-${direction}-${i}`} item={item} />
         ))}
       </motion.div>
     </div>
@@ -145,8 +145,7 @@ function TestimonialsSection() {
     <section id="testimonials" className="py-16 md:py-24 bg-[#f9f7f4] overflow-hidden">
       <div className="container mx-auto px-4 mb-10 md:mb-16 text-center">
         <h2 className="text-4xl md:text-6xl font-black text-[#1c3664]">
-          What Our Clients Say
-        </h2>
+לקוחות ממליצים        </h2>
       </div>
 
       <div className="flex flex-col gap-2 md:gap-4">
