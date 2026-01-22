@@ -4,13 +4,12 @@ import React from "react";
 
 export default function ProblemSection() {
   return (
-    <section className="relative py-24 lg:py-48 bg-cream overflow-hidden border-b border-[#1c3664]/10">
+    <section className="relative py-24 lg:py-48 bg-cream overflow-hidden border-b border-[#1c3664]/10" dir="rtl">
       
-      {/* 1. STRONG BLUEPRINT BACKGROUND: Increased stroke and opacity for visibility */}
+      {/* 1. STRONG BLUEPRINT BACKGROUND */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none opacity-[0.15]">
         <svg width="100%" height="100%" className="absolute inset-0">
           <defs>
-            {/* Thicker grid lines for 3K and standard displays */}
             <pattern id="bold-blueprint-grid" width="80" height="80" patternUnits="userSpaceOnUse">
               <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#1c3664" strokeWidth="1.5" />
               <circle cx="0" cy="0" r="2" fill="#1c3664" />
@@ -48,28 +47,28 @@ export default function ProblemSection() {
             </div>
 
             <div className="space-y-8">
-              <p className="text-xl md:text-2xl text-[#1c3664] font-light leading-relaxed max-w-3xl ml-auto">
-                ההחלטה לקנות דירה בישראל היא צעד כלכמי משמעותי עבור תושבי חו"ל רבים. בין אם אתם מחפשים "דירת מפלט", נכס להשקעה או מתכננים מגורים עתידיים – שוק הנדל"ן הישראלי מציע הזדמנויות רבות.
+              <p className="text-xl md:text-2xl text-[#1c3664] font-light leading-relaxed max-w-3xl">
+                ההחלטה לקנות דירה בישראל היא צעד כלכלי משמעותי עבור תושבי חו"ל רבים. בין אם אתם מחפשים "דירת מפלט" לחופשות, נכס להשקעה שמניב תשואה שקלית, או מתכננים מגורים עתידיים – שוק הנדל"ן הישראלי מציע הזדמנויות רבות.
               </p>
-              <p className="text-xl md:text-2xl text-[#1c3664]/80 font-light leading-relaxed max-w-3xl ml-auto border-r-2 border-[#F1662A]/30 pr-6">
-                אבל אז מגיעה המציאות: הבנקים בישראל עובדים אחרת לגמרי ממה שאתם מכירים. השפה שונה, הרגולציה נוקשה, והפרשי השעות הופכים כל בירור למבצע לוגיסטי מורכב.
+              <p className="text-xl md:text-2xl text-[#1c3664]/80 font-light leading-relaxed max-w-3xl border-r-2 border-[#F1662A]/30 pr-6">
+                אבל אז מגיעה המציאות: הבנקים בישראל עובדים אחרת לגמרי ממה שאתם מכירים בארה"ב, צרפת או אנגליה. השפה שונה, הרגולציה נוקשה, והפרשי השעות הופכים כל בירור קטן למבצע לוגיסטי מורכב.
               </p>
             </div>
           </div>
 
           {/* Expert Bio - FRAMELESS DESIGN (Left) */}
           <div className="lg:col-span-5 relative lg:mt-12">
-            {/* Content without the box/frame for a cleaner integration */}
             <div className="relative pr-8 border-r-4 border-[#F1662A]">
               <div className="space-y-8">
                 <div className="space-y-2">
+                  <p className="text-[#F1662A] font-bold text-xl tracking-wide italic">נעים להכיר, אני</p>
                   <h3 className="text-4xl md:text-5xl font-black text-[#1c3664]">אבי בוקעי</h3>
-                  <p className="text-[#F1662A] font-bold text-xl tracking-wide uppercase italic">העיניים שלכם בשטח</p>
+                  <p className="text-[#1c3664]/60 font-bold text-lg">הבעלים של "אבי - הבית למשכנתאות"</p>
                 </div>
                 
                 <div className="space-y-6">
                   <p className="text-lg md:text-xl lg:text-2xl text-[#1c3664] font-medium leading-relaxed">
-                    כיוצא המערכת הבנקאית וכמי שמכיר את המערכת הבנקאית הישראלית מבפנים, אני משמש כנציג של תושבי חוץ שרוצים לקנות נכס באיזור המרכז ובכל הארץ.
+                    כיוצא המערכת הבנקאית וכמי שמכיר את המערכת הבנקאית הישראלית מבפנים, אני משמש כ"עיניים" של תושבי חוץ רבים שרוצים לקנות נכס באיזור המרכז (חולון, בת ים, ראשון לציון, תל אביב והסביבה).
                   </p>
                   <p className="text-lg md:text-xl lg:text-2xl text-[#1c3664]/70 font-light leading-relaxed">
                     אני כאן כדי לגשר על המרחק ולוודא שהעסקה שלכם תעבור חלק, גם אם אתם נמצאים אלפי קילומטרים מכאן.
@@ -87,7 +86,7 @@ export default function ProblemSection() {
               </div>
             </div>
 
-            {/* Subtle architectural axis line behind the text */}
+            {/* Subtle architectural axis line */}
             <div className="absolute top-0 -left-10 w-px h-full bg-[#1c3664]/10 hidden lg:block" />
           </div>
 

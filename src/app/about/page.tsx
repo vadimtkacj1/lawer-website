@@ -14,7 +14,7 @@ const Footer = dynamic(() => import("@/components/Footer"));
 const Widgets = dynamic(() => import("@/components/ui/Widgets"));
 
 export const metadata: Metadata = {
-  title: "יועץ משכנתאות בחולון והמרכז | אבי - הבית למשכנתאות",
+  title: "(מאמר) ייעוץ משכנתאות - אבי - הבית למשכנתאות | אבי בוקעי",
   description:
     "יועץ משכנתאות בחולון והמרכז. המומחיות של יוצא מערכת הבנקאות אצלכם בכיס. איחוד הלוואות, מיחזור משכנתא, פתרונות למסורבי בנקים ובעלי דירוג אשראי שלילי.",
   keywords: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     canonical: "https://avi-home.co.il/about",
   },
   openGraph: {
-    title: "יועץ משכנתאות בחולון והמרכז | אבי - הבית למשכנתאות",
+    title: "(מאמר) ייעוץ משכנתאות - אבי - הבית למשכנתאות | אבי בוקעי",
     description: "המומחיות של יוצא מערכת הבנקאות. איחוד הלוואות, מיחזור משכנתא, פתרונות למסורבי בנקים.",
     url: "https://avi-home.co.il/about",
     siteName: "אבי - הבית למשכנתאות",

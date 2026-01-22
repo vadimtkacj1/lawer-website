@@ -106,7 +106,7 @@ export default function Quote() {
                   <span className="absolute bottom-1.5 left-0 w-full h-2 sm:h-3 bg-orange/10 -z-10 rounded-full"></span>
                 </span>{" "}
                 שתעשו בחייכם. בין אם אתם זוג צעיר, משפחה שזקוקה לאיחוד הלוואות, או משקיעים – אתם צריכים מישהו שמדבר את השפה של הבנק, אבל{" "}
-                <span className="text-orange font-black">עובדת בשבילכם</span>.
+                <span className="text-orange font-black">עובד בשבילכם</span>.
               </p>
             </div>
 

@@ -34,7 +34,7 @@ export default function AviAdvantageClosing() {
             className="lg:col-span-4 border-r-2 md:border-r-8 border-orange pr-4 md:pr-8 mt-6 lg:mt-0"
           >
             <p className="text-base md:text-xl lg:text-2xl text-white font-medium italic leading-relaxed opacity-95">
-              "כיוצא המערכת (בנק דיסקונט), אני יודע בדיוק עד לאן אפשר ללחוץ את הבנק בריביות כדי שתחזרו לישון טוב בלילה."
+              "כיוצא המערכת הבנקאית, אני יודע בדיוק עד לאן אפשר ללחוץ את הבנק בריביות כדי שתחזרו לישון טוב בלילה."
             </p>
           </motion.div>
         </motion.div>
