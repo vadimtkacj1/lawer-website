@@ -4,48 +4,72 @@ import { motion } from "framer-motion";
 /* Ensure these variants exist in your @/lib/animations file */
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
-export default function RenovationProblemSection() {
+export default function RetirementProblemSection() {
   return (
-    <section className="relative py-16 md:py-24 bg-[#1c3664] overflow-hidden" dir="rtl">
-      <div className="container relative z-10 mx-auto px-6 max-w-7xl text-right">
-        <motion.div 
-          initial="hidden" 
-          whileInView="visible" 
-          viewport={{ once: true }} 
+    // Збільшив вертикальні відступи для десктопу (md:py-32)
+    <section className="relative py-16 md:py-32 bg-[#1c3664] overflow-hidden" dir="rtl">
+      {/* Збільшив максимальну ширину контейнера (max-w-[1400px]) для більших екранів */}
+      <div className="container relative z-10 mx-auto px-6 md:px-12 max-w-[1400px] text-right">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+          // Збільшив горизонтальний відступ (lg:gap-24) і змінив пропорції колонок
+          className="grid grid-cols-1 lg:grid-cols-12 gap-y-16 lg:gap-x-24 items-center"
         >
-          {/* 1. MAIN CONTENT (Left side in LTR, Right side in RTL) */}
-          <div className="lg:col-span-8 space-y-6 md:space-y-10">
-            <motion.h2 
+          {/* 1. MAIN CONTENT (Right side in RTL on Desktop) */}
+          <div className="lg:col-span-7 space-y-8 md:space-y-12">
+            <motion.h2
               variants={staggerItem}
-              className="font-noto-sans-hebrew font-black text-4xl md:text-5xl lg:text-7xl text-white leading-tight"
+              // Збільшив leading для заголовка
+              className="font-noto-sans-hebrew font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-[1.2] tracking-tight"
             >
-              אתם מסתכלים על המטבח הישן <br className="hidden md:block" />
-              <span className="text-orange">וכבר מדמיינים את האי החדש?</span>
+              עם משכנתא הפוכה, הנכס שלכם יכול להניב לכם כסף נזיל{" "}
+              <br className="hidden md:block" />
+              <span className="text-orange relative inline-block">
+                 ולהעניק לכם את הנזילות הפיננסית שאתם צריכים
+              </span>
             </motion.h2>
 
-            <motion.div variants={staggerItem} className="space-y-6">
-              <p className="text-lg md:text-2xl lg:text-3xl text-white/90 font-light leading-relaxed">
-                או אולי המשפחה התרחבה ואתם חייבים להוסיף עוד חדר, או סתם בא לכם לרענן את הריצוף והאמבטיה. 
-                השיפוץ הוא חלום, אבל המימון שלו יכול להפוך מהר מאוד לסיוט כלכלי אם לא עושים אותו נכון.
+            <motion.div variants={staggerItem} className="space-y-8 md:space-y-10">
+              {/* Збільшив розмір шрифту та leading для параграфів */}
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 font-light leading-loose">
+                לשמירה על רמת החיים, סיוע לילדים או מימון הוצאות בלתי צפויות,
+                מבלי לוותר על הבעלות או לעבור דירה.
               </p>
-              
-              <p className="text-lg md:text-xl lg:text-2xl text-white/70 font-light leading-relaxed">
-                נעים להכיר, אני אבי בוקעי, הבעלים של "אבי - הבית למשכנתאות". 
-                כיוצא המערכת הבנקאית, אני רואה את זה קורה המון: אנשים בחולון ואיזור המרכז לוקחים "הלוואה לכל מטרה" מהירה באפליקציה כדי לשפץ, ומשלמים על כך ביוקר.
+
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/70 font-light leading-loose">
+                נעים להכיר, אני אבי בוקעי, הבעלים של "אבי – הבית למשכנתאות". עם
+                ניסיון של מעל 7 שנים ורקע כיוצא המערכת הבנקאית, אני פוגש לא מעט
+                פנסיונרים שיושבים על "מכרה זהב" – הבית שלהם – אך חיים בצמצום.
               </p>
             </motion.div>
           </div>
 
-          {/* 2. SIDEBAR QUOTE (Matching the image style) */}
-          <motion.div 
+          {/* 2. SIDEBAR QUOTE (Left side in RTL on Desktop) */}
+          {/* lg:order-last гарантує, що цей блок буде зліва в RTL */}
+          <motion.div
             variants={staggerItem}
-            className="lg:col-span-4 border-r-4 md:border-r-8 border-orange pr-6 md:pr-8 py-2"
+            className="lg:col-span-5 relative group lg:order-last"
           >
-            <p className="text-xl md:text-2xl lg:text-3xl text-white font-bold italic leading-tight">
-              "אני כאן כדי להראות לכם שיש דרך אחרת. דרך זולה יותר, חכמה יותר ורגועה יותר: משכנתא לשיפוץ."
-            </p>
+            {/* Стиль для десктопу: прозорий фон, жирна лінія справа (border-r-8), великий відступ справа (pr-12) */}
+            <div className="
+              relative overflow-hidden
+              bg-[#234073] rounded-2xl p-8 border-t-4 border-orange shadow-lg
+              lg:bg-transparent lg:rounded-none lg:p-0 lg:border-t-0 lg:border-r-8 lg:border-orange lg:pr-12 lg:shadow-none
+              transition-all duration-300
+            ">
+               {/* Іконка цитати тільки для мобільного */}
+               <span className="absolute top-0 right-4 text-[10rem] leading-none text-white/5 pointer-events-none select-none font-serif lg:hidden">
+                 ״
+               </span>
+
+              <p className="relative z-10 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[2.5rem] text-white font-bold italic leading-tight lg:leading-[1.3]">
+                "הבשורה הטובה: יש פתרון. משכנתא הפוכה מאפשרת לכם להשתמש בכסף
+                שצברתם בקירות הבית, מבלי לעבור דירה וללא החזר חודשי."
+              </p>
+            </div>
           </motion.div>
         </motion.div>
       </div>

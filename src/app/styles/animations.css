@@ -11,17 +11,26 @@
 }
 
 .hero-cta-button {
-  animation: button-pulse-optimized 2.5s ease-in-out infinite;
   position: relative;
 }
 
-/* Only apply will-change during animation for better performance */
-.hero-cta-button:hover {
-  will-change: transform;
+/* Disable animation on mobile for better performance */
+@media (min-width: 769px) {
+  .hero-cta-button {
+    animation: button-pulse-optimized 2.5s ease-in-out infinite;
+  }
+  
+  /* Only apply will-change during animation for better performance */
+  .hero-cta-button:hover {
+    will-change: transform;
+  }
 }
 
-.animate-pulse-slow {
-  animation: pulse-slow 3s ease-in-out infinite;
+/* Disable pulse animation on mobile */
+@media (min-width: 769px) {
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
 }
 
 /* Banks carousel scroll animation (RTL) */
@@ -36,6 +45,13 @@
 
 .animate-scroll-rtl {
   animation: scroll-rtl 30s linear infinite;
+}
+
+/* Keep carousel animation on mobile but make it simpler */
+@media (max-width: 768px) {
+  .animate-scroll-rtl {
+    animation: scroll-rtl 40s linear infinite;
+  }
 }
 
 .animate-scroll-rtl:hover {
@@ -72,13 +88,20 @@
 }
 
 .animate-shimmer {
-  animation: shimmer 3s ease-in-out infinite;
-  animation-delay: 1s;
   animation-play-state: paused;
 }
 
-/* Run shimmer only on hover to avoid constant repainting */
-.group:hover .animate-shimmer {
-  animation-play-state: running;
-  will-change: transform;
+/* Disable shimmer animation on mobile, only enable on desktop hover */
+@media (min-width: 769px) {
+  .animate-shimmer {
+    animation: shimmer 3s ease-in-out infinite;
+    animation-delay: 1s;
+    animation-play-state: paused;
+  }
+  
+  /* Run shimmer only on hover to avoid constant repainting */
+  .group:hover .animate-shimmer {
+    animation-play-state: running;
+    will-change: transform;
+  }
 }
