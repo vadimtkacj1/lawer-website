@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-/* Animation helpers should be in your @/lib/animations file */
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const optimizedViewport = {
@@ -13,7 +12,7 @@ const optimizedViewport = {
 const reasons = [
   {
     title: "טיפול בירוקרטי מלא",
-    description: "אני מנהל את התהליך מול הבנק כך שהכסף יגיע בזמן לקבלן, בלי שתצטרכו לרדוף אחרי פקידים או אישורים מורכבים.",
+    description: "כמי שמכיר את המערכת הבנקאית מבפנים, אני מנהל את האישורים, השמאות ושחרור הכספים בפעימות, כדי שהכסף יגיע לקבלן בזמן ולכם יהיה שקט נפשי.",
     icon: (
       <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="1.2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -21,8 +20,8 @@ const reasons = [
     ),
   },
   {
-    title: "תכנון תקציב נכון",
-    description: "הניסיון שלי מאפשר לי לעזור לכם לתכנן את מסגרת האשראי כך שלא תיתקעו באמצע השיפוץ בלי כסף בגלל חריגות תקציביות.",
+    title: "תכנון תקציב ריאלי",
+    description: "רוב האנשים חורגים ב-20% מתקציב השיפוץ. הניסיון שלי בתשתיות מאפשר לי לבנות לכם מסגרת אשראי חכמה שתמנע עצירה של הפרויקט באמצע.",
     icon: (
       <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="1.2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -30,8 +29,8 @@ const reasons = [
     ),
   },
   {
-    title: "ראייה רחבה",
-    description: "אני בודק שילוב של משכנתת השיפוץ עם מיחזור המשכנתא הקיימת, במטרה לחסוך לכם כסף גם בשיפוץ וגם בהלוואה הישנה.",
+    title: "ראייה פיננסית רחבה",
+    description: "אני בוחן את כדאיות שילוב משכנתת השיפוץ עם מיחזור המשכנתא הקיימת – מה שעשוי לחסוך לכם עשרות אלפי שקלים בשתי ההלוואות במקביל.",
     icon: (
       <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="1.2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -43,18 +42,15 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative py-24 lg:py-36 bg-cream overflow-hidden">
+    <section className="relative py-24 lg:py-36 bg-cream overflow-hidden" dir="rtl">
       
-      {/* 1. DECORATIVE SVG OBJECTS: Precision lines and symbols for a "Blueprint" feel */}
+      {/* DECORATIVE ELEMENTS */}
       <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
-        {/* Floating plus signs */}
-        <div className="absolute top-20 left-[10%] text-orange/20 text-4xl font-light">+</div>
-        <div className="absolute bottom-40 right-[15%] text-blue-dk/10 text-6xl font-thin">+</div>
-        
-        {/* Abstract precision lines */}
-        <svg className="absolute top-0 right-0 w-64 h-64 opacity-[0.05] text-blue-dk" viewBox="0 0 100 100">
+        <div className="absolute top-20 right-[10%] text-orange/20 text-4xl font-light">+</div>
+        <div className="absolute bottom-40 left-[15%] text-blue-dk/10 text-6xl font-thin">+</div>
+        <svg className="absolute top-0 left-0 w-64 h-64 opacity-[0.05] text-blue-dk" viewBox="0 0 100 100">
           <line x1="0" y1="20" x2="100" y2="20" stroke="currentColor" strokeWidth="0.5" />
-          <line x1="80" y1="0" x2="80" y2="100" stroke="currentColor" strokeWidth="0.5" />
+          <line x1="20" y1="0" x2="20" y2="100" stroke="currentColor" strokeWidth="0.5" />
         </svg>
       </div>
 
@@ -68,7 +64,7 @@ export default function WhyChooseUs() {
           {/* Section Header */}
           <motion.div variants={staggerItem} className="text-center mb-20 lg:mb-28">
             <h2 className="font-noto-sans-hebrew font-black text-4xl md:text-5xl lg:text-6xl text-blue-dk mb-8 leading-tight">
-              למה לבצע את התהליך עם <span className="text-orange">"אבי"</span>?
+              למה לבצע את התהליך עם <span className="text-orange">אבי</span>?
             </h2>
             <div className="h-0.5 w-32 bg-orange/40 mx-auto mb-10" />
             <p className="font-noto-sans-hebrew text-xl md:text-2xl text-blue-dk/70 max-w-4xl mx-auto leading-relaxed">
@@ -77,16 +73,14 @@ export default function WhyChooseUs() {
             </p>
           </motion.div>
 
-          {/* Transparent Reasons Grid */}
+          {/* Grid עם התאמה ל-RTL */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-0 lg:divide-x lg:divide-x-reverse lg:divide-blue-dk/10">
             {reasons.map((reason, index) => (
               <motion.div
                 key={index}
                 variants={staggerItem}
-                /* TRANSPARENT CARDS: No background, just spacing and subtle interaction */
                 className="px-8 lg:px-12 py-10 transition-all duration-300 group hover:translate-y-[-4px]"
               >
-                {/* Icon: Large and clean */}
                 <div className="w-16 h-16 text-orange mb-10 mx-auto lg:mr-0 lg:ml-auto flex items-center justify-center">
                   {reason.icon}
                 </div>

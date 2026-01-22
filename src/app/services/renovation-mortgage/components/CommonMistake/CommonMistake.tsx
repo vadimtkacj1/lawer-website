@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-/* Анимации из вашей библиотеки */
-import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
+import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const optimizedViewport = {
   once: true,
@@ -25,7 +24,7 @@ const advantages = [
   },
   {
     title: "החזר חודשי נמוך",
-    description: "במקום לשלם 4,000 ₪ בחודש על הלוואה קצרה, תשלמו כמה מאות שקלים בודדים בחודש.",
+    description: "במקום לשלם 4,000 ₪ בחודש על הלוואה קצרה, תשלמו כמה מאות שקלים בודדים בחודש בתוך המשכנתא.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path>
@@ -34,7 +33,7 @@ const advantages = [
   },
   {
     title: "ריבית זולה",
-    description: "הריביות במשכנתא לשיפוץ נמוכות משמעותית מריביות של הלוואות רגילות.",
+    description: 'הריביות במשכנתא לדיור/שיפוץ נמוכות משמעותית מריביות של "הלוואות לכל מטרה".',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
@@ -46,8 +45,8 @@ const advantages = [
 
 export default function CommonMistake() {
   return (
-    <section className="py-20 lg:py-32 bg-blue-dk relative overflow-hidden">
-      {/* Blueprint Grid - сделана чуть ярче для текстуры */}
+    <section className="py-20 lg:py-32 bg-blue-dk relative overflow-hidden" dir="rtl">
+      {/* Background Grid */}
       <div className="absolute inset-0 opacity-[0.08] z-0">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -67,27 +66,30 @@ export default function CommonMistake() {
           viewport={optimizedViewport}
           variants={staggerContainer}
         >
-          {/* Section Title */}
+          {/* Header Section from Image */}
           <motion.div variants={staggerItem} className="text-center mb-16">
-            <h2 className="font-noto-sans-hebrew font-black text-3xl md:text-5xl lg:text-6xl text-white mb-8 leading-tight">
-              הטעות הנפוצה: <br className="md:hidden" />
-              <span className="text-orange">הלוואה רגילה</span> מול משכנתא
+            <h2 className="font-noto-sans-hebrew font-black text-4xl md:text-6xl text-white mb-6">
+              הלוואה בנקאית רגילה מול משכנתא
             </h2>
-          </motion.div>
-
-          {/* Problem Block - Теперь без сплошного фона, только рамка */}
-          <motion.div 
-            variants={staggerItem} 
-            className="border-y border-white/10 py-10 mb-20"
-          >
-            <p className="font-noto-sans-hebrew text-xl md:text-2xl text-white/80 leading-relaxed text-center max-w-4xl mx-auto">
-              כשאתם לוקחים הלוואה בנקאית רגילה לשיפוץ, הבנק דורש החזר תוך{" "}
-              <span className="text-orange font-bold">5 עד 7 שנים</span>. <br />
-              זה גורם ל<span className="text-white font-bold underline decoration-orange underline-offset-8">החזר חודשי גבוה</span> שחונק את התקציב המשפחתי.
+            <p className="font-noto-sans-hebrew text-xl md:text-2xl text-white/90 max-w-5xl mx-auto leading-relaxed">
+              כשאתם לוקחים הלוואה בנקאית רגילה לשיפוץ, הבנק בדרך כלל ידרוש מכם להחזיר אותה תוך 5 עד 7 שנים. התוצאה? החזר חודשי מטורף שחונק את העו"ש, ובריבית גבוהה יחסית.
             </p>
           </motion.div>
 
-          {/* Advantages Grid - Блоки центрированы, без фона */}
+          {/* Divider Line */}
+          <motion.div variants={staggerItem} className="w-full max-w-4xl mx-auto h-px bg-white/10 mb-16" />
+
+          {/* Solution Section from Image */}
+          <motion.div variants={staggerItem} className="text-center mb-20">
+            <h3 className="text-orange font-bold text-3xl md:text-4xl mb-6">
+              הפתרון של משכנתא לשיפוץ:
+            </h3>
+            <p className="font-noto-sans-hebrew text-lg md:text-xl text-white/90 max-w-4xl mx-auto">
+              מכיוון שיש לכם נכס (הבית שלכם), אנחנו יכולים להרחיב את המשכנתא הקיימת (או לקחת חדשה אם אין). מה היתרונות?
+            </p>
+          </motion.div>
+
+          {/* Advantages Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {advantages.map((advantage, index) => (
               <motion.div
@@ -95,31 +97,19 @@ export default function CommonMistake() {
                 variants={staggerItem}
                 className="flex flex-col items-center text-center group"
               >
-                {/* Icon Circle - Прозрачный круг с бордером */}
                 <div className="w-20 h-20 mb-6 flex items-center justify-center rounded-full border border-white/10 text-orange group-hover:border-orange group-hover:bg-orange/5 transition-all duration-300">
                   {advantage.icon}
                 </div>
-
                 <h4 className="font-noto-sans-hebrew font-bold text-2xl text-white mb-4 group-hover:text-orange transition-colors">
                   {advantage.title}
                 </h4>
-                
-                {/* Разделитель вместо фона */}
                 <div className="w-12 h-0.5 bg-orange/30 mb-4 group-hover:w-20 transition-all" />
-
                 <p className="font-noto-sans-hebrew text-lg text-white/60 leading-relaxed max-w-xs">
                   {advantage.description}
                 </p>
               </motion.div>
             ))}
           </div>
-          
-          {/* Решение (Текст снизу для баланса) */}
-          <motion.div variants={staggerItem} className="mt-20 text-center">
-            <p className="font-noto-sans-hebrew text-xl text-white/40">
-              מכיוון שיש לכם נכס, אנחנו יכולים להרחיב את המשכנתא הקיימת בצורה חכמה.
-            </p>
-          </motion.div>
         </motion.div>
       </div>
     </section>

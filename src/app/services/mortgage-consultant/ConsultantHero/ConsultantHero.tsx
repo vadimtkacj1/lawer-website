@@ -57,7 +57,7 @@ export default function ConsultantHero() {
                          relative px-4 py-2"
               variants={staggerItem}
             >
-              איחוד הלוואות<br />ומיחזור משכנתא:<br />הדרך היחידה להחזיר את האוויר לנשימה
+              יועץ משכנתאות בחולון<br/> והמרכז: המומחיות של יוצא מערכת<br/> הבנקאות אצלכם בכיס
             </motion.h1>
           </div>
         </motion.div>

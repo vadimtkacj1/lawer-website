@@ -47,7 +47,7 @@ export default function WhyChooseAvi() {
           {/* Section Header: Compact vertical spacing */}
           <motion.div variants={staggerItem} className="mb-16 lg:mb-24">
             <h2 className="font-noto-sans-hebrew font-black text-4xl md:text-6xl lg:text-7xl 3xl:text-8xl text-[#1c3664] leading-[1.1]">
-              למה לבחור ב-"אבי" <br />
+              למה לבחור ב-"אבי - הבית למשכנתאות" <br />
               <span className="text-orange border-b-[8px] 3xl:border-b-[12px] border-orange pb-3 inline-block">כנציג שלכם בישראל?</span>
             </h2>
             <p className="mt-8 text-lg md:text-2xl lg:text-3xl text-[#1c3664] font-medium max-w-5xl ml-auto leading-relaxed italic">
