@@ -22,7 +22,7 @@ const recyclingSigns = [
   }
 ];
 
-export default function RecyclingSection() {
+export default function AllServicesSection() {
   return (
     <section className="relative py-12 md:py-24 lg:py-40 bg-cream overflow-hidden">
       {/* 1. BOLD GRID BACKGROUND */}
