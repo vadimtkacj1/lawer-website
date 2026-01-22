@@ -54,40 +54,31 @@ jobs:
             # Create directory if it doesn't exist
             if [ ! -d "$DEPLOY_PATH" ]; then
               echo "Directory $DEPLOY_PATH does not exist. Creating..."
-              mkdir -p "$DEPLOY_PATH" || {
-                echo "ERROR: Failed to create directory $DEPLOY_PATH"
-                echo "Please create it manually with proper permissions:"
-                echo "  sudo mkdir -p $DEPLOY_PATH"
-                echo "  sudo chown -R $USER:$USER $DEPLOY_PATH"
-                exit 1
-              }
+              mkdir -p "$DEPLOY_PATH"
             fi
             
-            # Navigate to the project directory
             cd "$DEPLOY_PATH"
             
             # Check if it's a git repository, if not - clone it
             if [ ! -d ".git" ]; then
-              echo "Directory is not a git repository. Cloning..."
-              git clone "$REPO_URL" . || {
-                echo "ERROR: Failed to clone repository"
-                echo "Please clone manually:"
-                echo "  cd $DEPLOY_PATH"
-                echo "  git clone $REPO_URL ."
-                exit 1
-              }
+              echo "Cloning repository..."
+              git clone "$REPO_URL" .
             fi
             
-            # Pull the latest changes from the current branch
-            git pull origin ${{ github.ref_name }} || exit 1
+            # FIX: Force the server to match the GitHub repository
+            # This overwrites local changes to docker-compose.yml or other tracked files
+            echo "Fetching latest changes and forcing reset..."
+            git fetch origin ${{ github.ref_name }}
+            git reset --hard origin/${{ github.ref_name }}
             
-            # Build new images without stopping the service (no-cache for clean build)
+            # Build new images (no-cache for clean build)
+            # This will now use the docker-compose.yml from your REPOSITORY
             docker compose build --no-cache || exit 1
             
-            # Recreate containers (Docker will only restart changed services)
+            # Recreate containers
             docker compose up -d || exit 1
             
-            # Remove dangling images and build cache to save disk space
+            # Cleanup
             docker system prune -f
             
             # Verify the deployment
