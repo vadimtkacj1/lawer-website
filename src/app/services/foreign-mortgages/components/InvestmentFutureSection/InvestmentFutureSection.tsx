@@ -6,13 +6,13 @@ import { staggerContainer, staggerItem } from "@/lib/animations";
 export default function InvestmentFutureSection() {
   return (
     /* MAIN SECTION: Solid deep blue background */
-    <section className="relative py-20 md:py-32 bg-[#1c3664] overflow-hidden">
+    <section className="relative py-20 md:py-32 bg-[#1c3664] overflow-hidden" dir="rtl">
       
       {/* Visual Depth: Subtle radial gradient in the background */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-orange/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
       {/* Main Container: RTL for Hebrew layout */}
-      <div className="container relative z-10 mx-auto px-6 max-w-7xl 2xl:max-w-[95rem]" dir="rtl">
+      <div className="container relative z-10 mx-auto px-6 max-w-7xl 2xl:max-w-[95rem]">
         <motion.div 
           initial="hidden" 
           whileInView="visible" 
@@ -32,7 +32,7 @@ export default function InvestmentFutureSection() {
               </h2>
               
               <p className="text-xl md:text-2xl lg:text-3xl text-white/90 font-light leading-relaxed max-w-4xl">
-                אל תתנו למרחק הפיזי למנוע מכם לבצע עסקה חכמה בארץ. בין אם אתם בניו יורק, לונדון או פריז – אני כאן כדי לדאוג לאינטרסים שלכם מול הבנקים הישראליים.
+                אל תתנו למרחק הפיזי למנוע מכם לבצע עסקה חכמה בארץ. בין אם אתם בניו יורק, לונדון או פריז – אני כאן בחולון כדי לדאוג לאינטרסים שלכם מול הבנקים הישראליים ולדאוג שתקבלו את התנאים הטובים ביותר.
               </p>
             </motion.div>
           </div>

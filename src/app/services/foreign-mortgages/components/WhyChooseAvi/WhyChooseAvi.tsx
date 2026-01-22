@@ -10,20 +10,19 @@ const whyAviContent = [
   },
   {
     t: "טכנולוגיה וזמינות",
-    d: "ניהול התהליך ב-Zoom, בוואטסאפ ובמיילים, בשעות שנוחות לכם. אתם לא צריכים לטוס לישראל רק בשביל חתימה או בירור בירוקרטי."
+    d: "אני מנהל את התהליך מולכם ב-Zoom, בוואטסאפ ובמיילים, בשעות שנוחות לכם. אתם לא צריכים לטוס לישראל רק בשביל חתימה או בירור בירוקרטי."
   },
   {
     t: "הכרת השטח ועוצמה ארצית",
-    d: "מומחיות בנדל\"ן באזור המרכז (חולון, בת ים, ראשל\"צ, ת\"א) לצד כוח ביצוע מול בנקים בכל רחבי הארץ – מקרית שמונה ועד אילת. התנאים המצוינים נשארים זהים."
+    d: "כמי שחי ונושם את הנדל\"ן באזור המרכז (חולון, בת ים, ראשל\"צ, ת\"א והסביבה), אני מעניק לרוכשים באזורים אלו יתרון עצום בניתוח כדאיות העסקה. עם זאת, הכוח שלי מול הבנקים אינו מוגבל גיאוגרפית – אני מטפל בתיקי משכנתא בכל רחבי הארץ, מקרית שמונה ועד אילת."
   }
 ];
 
 export default function WhyChooseAvi() {
   return (
-    /* MAIN SECTION: Restored cream background with heavy blueprint grid */
-    <section className="relative py-16 md:py-24 lg:py-32 bg-cream overflow-hidden border-t border-[#1c3664]/10">
+    <section className="relative py-16 md:py-24 lg:py-32 bg-cream overflow-hidden border-t border-[#1c3664]/10" dir="rtl">
       
-      {/* 1. ARCHITECTURAL GRID: Strong dark blue pattern */}
+      {/* 1. ARCHITECTURAL GRID */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none opacity-[0.15]">
         <svg width="100%" height="100%" className="absolute inset-0">
           <defs>
@@ -44,10 +43,10 @@ export default function WhyChooseAvi() {
           variants={staggerContainer}
         >
           
-          {/* Section Header: Compact vertical spacing */}
+          {/* Section Header */}
           <motion.div variants={staggerItem} className="mb-16 lg:mb-24">
             <h2 className="font-noto-sans-hebrew font-black text-4xl md:text-6xl lg:text-7xl 3xl:text-8xl text-[#1c3664] leading-[1.1]">
-              למה לבחור ב-"אבי - הבית למשכנתאות" <br />
+              למה לקחת את "אבי - הבית למשכנתאות" <br />
               <span className="text-orange border-b-[8px] 3xl:border-b-[12px] border-orange pb-3 inline-block">כנציג שלכם בישראל?</span>
             </h2>
             <p className="mt-8 text-lg md:text-2xl lg:text-3xl text-[#1c3664] font-medium max-w-5xl ml-auto leading-relaxed italic">
@@ -55,17 +54,17 @@ export default function WhyChooseAvi() {
             </p>
           </motion.div>
 
-          {/* 2. ADVANTAGES GRID: Responsive layout for mobile and 3K */}
+          {/* 2. ADVANTAGES GRID */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 3xl:gap-24 items-start">
             {whyAviContent.map((step, i) => (
               <motion.div key={i} variants={staggerItem} className="relative pt-16 lg:pt-24">
                 
-                {/* ORANGE NUMBERS: Solid top-left placement */}
+                {/* ORANGE NUMBERS */}
                 <span className="absolute top-0 left-0 font-black text-[8rem] lg:text-[11rem] 3xl:text-[15rem] text-orange opacity-[0.20] z-0 select-none leading-none">
                   0{i + 1}
                 </span>
 
-                {/* Content Unit: Dark blue text on cream with orange accent */}
+                {/* Content Unit */}
                 <div className="relative z-10 pr-6 md:pr-8 border-r-[5px] 3xl:border-r-[10px] border-orange">
                   <h3 className="font-noto-sans-hebrew font-bold text-xl md:text-3xl lg:text-4xl 3xl:text-5xl text-[#1c3664] mb-6 leading-tight">
                     {step.t}
@@ -81,7 +80,7 @@ export default function WhyChooseAvi() {
             ))}
           </div>
 
-          {/* Closing Hook: Compact top margin */}
+          {/* Closing Hook */}
           <motion.div variants={staggerItem} className="mt-20 lg:mt-28 pt-10 border-t border-[#1c3664]/10">
              <p className="font-noto-sans-hebrew text-xl md:text-3xl lg:text-4xl 3xl:text-6xl text-[#1c3664] font-medium max-w-6xl ml-auto leading-tight italic">
               "לא משנה איפה הדירה שאתם קונים – <br className="hidden 3xl:block" />
