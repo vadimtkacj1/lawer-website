@@ -59,8 +59,7 @@ export default function ReverseHero() {
                          relative px-4 py-2"
               variants={staggerItem}
             >
-              משכנתא הפוכה לגיל השלישי: <br className="hidden md:block"/>
-              <span className="text-orange-600">איך להפוך את הבית לכסף נזיל</span>
+              משכנתא הפוכה לגיל השלישי<br/>: איך להפוך את הבית לכסף נזיל
             </motion.h1>
           </div>
         </motion.div>

@@ -114,7 +114,7 @@ const MarqueeRow = ({
         initial={{ x: direction === "left" ? "0%" : "-33.33%" }}
         animate={{ x: direction === "left" ? "-33.33%" : "0%" }}
         transition={{
-          duration: isMobile ? duration * 1.3 : duration, // Slightly slower on mobile for performance
+          duration: isMobile ? duration * 1.8 : duration, // Much slower on mobile for better performance
           ease: "linear",
           repeat: Infinity,
         }}

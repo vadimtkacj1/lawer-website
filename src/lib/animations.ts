@@ -1,149 +1,149 @@
 import { Variants } from "framer-motion";
 
-// Mobile-optimized animations with reduced values for better performance
+// Mobile detection - animations will be completely disabled on mobile for better performance
 const isMobile = typeof window !== 'undefined' && (
   'ontouchstart' in window || 
   window.navigator.maxTouchPoints > 0 || 
   window.innerWidth <= 768
 );
 
-// Fade in from bottom with scale - optimized for performance
+// Fade in from bottom with scale - DISABLED on mobile for performance
 export const fadeInUp: Variants = {
   hidden: {
-    opacity: 0,
-    y: isMobile ? 20 : 50,
-    scale: isMobile ? 0.98 : 0.96,
+    opacity: isMobile ? 1 : 0,
+    y: isMobile ? 0 : 50,
+    scale: 1,
   },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: isMobile ? 0.25 : 0.4,
+      duration: isMobile ? 0 : 0.4,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Fade in from bottom - faster version for headings - optimized
+// Fade in from bottom - faster version for headings - DISABLED on mobile
 export const fadeInUpFast: Variants = {
   hidden: {
-    opacity: 0,
-    y: isMobile ? 15 : 30,
-    scale: isMobile ? 0.99 : 0.98,
+    opacity: isMobile ? 1 : 0,
+    y: isMobile ? 0 : 30,
+    scale: 1,
   },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: isMobile ? 0.3 : 0.5,
+      duration: isMobile ? 0 : 0.5,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Fade in from right (for RTL Hebrew sites)
+// Fade in from right (for RTL Hebrew sites) - DISABLED on mobile
 export const fadeInRight: Variants = {
   hidden: {
-    opacity: 0,
-    x: isMobile ? -20 : -50,
+    opacity: isMobile ? 1 : 0,
+    x: 0,
   },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: isMobile ? 0.3 : 0.5,
+      duration: isMobile ? 0 : 0.5,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Fade in from left (for RTL Hebrew sites)
+// Fade in from left (for RTL Hebrew sites) - DISABLED on mobile
 export const fadeInLeft: Variants = {
   hidden: {
-    opacity: 0,
-    x: isMobile ? 20 : 50,
+    opacity: isMobile ? 1 : 0,
+    x: 0,
   },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: isMobile ? 0.3 : 0.5,
+      duration: isMobile ? 0 : 0.5,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Simple fade in
+// Simple fade in - DISABLED on mobile
 export const fadeIn: Variants = {
   hidden: {
-    opacity: 0,
+    opacity: isMobile ? 1 : 0,
   },
   visible: {
     opacity: 1,
     transition: {
-      duration: isMobile ? 0.25 : 0.4,
+      duration: isMobile ? 0 : 0.4,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Scale and fade in - for images
+// Scale and fade in - for images - DISABLED on mobile
 export const scaleIn: Variants = {
   hidden: {
-    opacity: 0,
-    scale: isMobile ? 0.95 : 0.9,
+    opacity: isMobile ? 1 : 0,
+    scale: 1,
   },
   visible: {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: isMobile ? 0.3 : 0.5,
+      duration: isMobile ? 0 : 0.5,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Stagger container - for lists of items - optimized for performance
+// Stagger container - for lists of items - DISABLED on mobile
 export const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: isMobile ? 1 : 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: isMobile ? 0.05 : 0.08,
-      delayChildren: isMobile ? 0.02 : 0.05,
+      staggerChildren: isMobile ? 0 : 0.08,
+      delayChildren: isMobile ? 0 : 0.05,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Fast stagger for many items
+// Fast stagger for many items - DISABLED on mobile
 export const staggerContainerFast: Variants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: isMobile ? 1 : 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.08,
-      ease: [0.22, 1, 0.36, 1], // Ultra-smooth easing
+      staggerChildren: isMobile ? 0 : 0.1,
+      delayChildren: isMobile ? 0 : 0.08,
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Item to be used inside stagger container - optimized for performance
+// Item to be used inside stagger container - DISABLED on mobile
 export const staggerItem: Variants = {
   hidden: {
-    opacity: 0,
-    y: isMobile ? 15 : 25,
-    scale: isMobile ? 0.98 : 0.96,
+    opacity: isMobile ? 1 : 0,
+    y: 0,
+    scale: 1,
   },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: isMobile ? 0.3 : 0.5,
+      duration: isMobile ? 0 : 0.5,
       ease: [0.22, 1, 0.36, 1],
     },
   },

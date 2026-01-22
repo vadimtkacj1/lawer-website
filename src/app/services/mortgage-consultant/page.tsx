@@ -117,8 +117,8 @@ export default function RenovationMortgagePage() {
         <ExpertSection/>
         <InsiderAdvantage/>
         <AllServicesSection/>
-        <ConsultantFAQ/>
         <Contact />
+        <ConsultantFAQ/>
       </main>
       <Footer />
       <Widgets />

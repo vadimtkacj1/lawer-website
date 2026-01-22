@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
 
 export default function CityBackgroundSVG() {
+  const { isMobile } = usePerformanceSettings();
   return (
     <svg
       className="w-full h-full"
@@ -176,8 +178,8 @@ export default function CityBackgroundSVG() {
         />
       </g>
 
-      {/* Animated dots/particles */}
-      {[...Array(30)].map((_, i) => (
+      {/* Animated dots/particles - Disabled on mobile for performance */}
+      {!isMobile && [...Array(30)].map((_, i) => (
         <motion.circle
           key={`dot-${i}`}
           cx={100 + (i * 50) % 1500}
