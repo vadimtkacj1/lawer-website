@@ -15,24 +15,26 @@ import RefreshIcon from "@/components/icons/RefreshIcon";
 import CurrencyIcon from "@/components/icons/CurrencyIcon";
 import ChartIcon from "@/components/icons/ChartIcon";
 import BuildingIcon from "@/components/icons/BuildingIcon";
+import SettingsIcon from "@/components/icons/SettingsIcon";
+import ShieldIcon from "@/components/icons/ShieldIcon";
 import ArrowIcon from "@/components/icons/ArrowIcon";
 import CitySkylineBackground from "@/components/icons/backgrounds/CitySkylineBackground";
 
 const services = [
   {
-    href: "/services/debt-consolidation",
+    href: "/services/mortgage-for-purchase",
     Icon: HomeIcon,
     title: "משכנתא לרכישת דירה",
     description: "ליווי לדירה ראשונה, להשקעה או דירה חליפית בתכנון נכון",
   },
   {
-    href: "/services/foreign-mortgages",
+    href: "/services/dira-behanacha-mortgage",
     Icon: BuildingIcon,
     title: "מחיר למשתכן",
     description: "ליווי ייעודי עם היכרות מעמיקה של המסלולים וההתאמות",
   },
   {
-    href: "/services/mortgage-consultant",
+    href: "/services/loan-consolidation",
     Icon: RefreshIcon,
     title: "מחזור ואיחוד הלוואות",
     description: "שיפור תנאים קיימים והפחתת ההחזר החודשי שלכם",
@@ -44,22 +46,22 @@ const services = [
     description: "פתרונות מימוני יצירתיים ומותאמים לבני 60 ומעלה",
   },
   {
-    href: "/services/refused",
+    href: "/services/mortgage-refused",
     Icon: ChartIcon,
     title: "מסורבי בנקים ומורכבות",
     description: "פתרונות יצירתיים לעסקאות מורכבות גם כשהבנק אמר 'לא'",
   },
   {
     href: "/services/renovation-mortgage",
-    Icon: BuildingIcon,
+    Icon: SettingsIcon,
     title: "משכנתא לשיפוץ",
     description: "מימון שיפוץ בתנאי משכנתא ובתהליך יעיל ומהיר",
   },
   {
-    href: "/services/all-purpose",
-    Icon: CurrencyIcon,
-    title: "משכנתא לכל מטרה",
-    description: "מימון מגוון צרכים בפריסה ארוכה באמצעות שעבוד נכס",
+    href: "/services/apartment-mortgage",
+    Icon: ShieldIcon,
+    title: "משכנתא לדירה",
+    description: "תמהיל משכנתא מותאם אישית עם ליווי מקצועי מלא",
   },
 ];
 
@@ -87,7 +89,7 @@ export default function Services() {
                       <div className="text-orange mb-3">
                         <service.Icon className="w-9 h-9 md:w-12 md:h-12" />
                       </div>
-                      <h3 className="text-blue-dk font-black text-[13px] md:text-base leading-tight mb-2 font-noto-sans-hebrew">
+                      <h3 className="text-blue-dk font-black text-[11px] md:text-base leading-tight mb-2 font-noto-sans-hebrew">
                         {service.title}
                       </h3>
                       <p className="text-blue-dk/70 text-[11px] md:text-sm leading-snug px-1 opacity-70 font-noto-sans-hebrew">
@@ -151,7 +153,7 @@ export default function Services() {
                       <service.Icon className="w-9 h-9 sm:w-12 sm:h-12" />
                     </div>
 
-                    <h3 className="text-blue-dk font-black text-[13px] sm:text-sm md:text-base text-center leading-tight transition-colors duration-300 group-hover:text-orange mb-2 font-noto-sans-hebrew">
+                    <h3 className="text-blue-dk font-black text-[11px] sm:text-sm md:text-base text-center leading-tight transition-colors duration-300 group-hover:text-orange mb-2 font-noto-sans-hebrew">
                       {service.title}
                     </h3>
 

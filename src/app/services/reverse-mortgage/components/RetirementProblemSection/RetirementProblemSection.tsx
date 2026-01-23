@@ -6,81 +6,100 @@ import { staggerContainer, staggerItem } from "@/lib/animations";
 
 export default function RetirementProblemSection() {
   return (
-    // Збільшив вертикальні відступи для десктопу (md:py-32)
-    <section className="relative py-16 md:py-32 bg-[#1c3664] overflow-hidden" dir="rtl">
-      {/* Збільшив максимальну ширину контейнера (max-w-[1400px]) для більших екранів */}
-      <div className="container relative z-10 mx-auto px-6 md:px-12 max-w-[1400px] text-right">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+    // Background Cream (#fdfbf7), text color deep blue (#1c3664)
+    <section className="relative py-12 md:py-32 bg-[#fdfbf7] overflow-hidden text-[#1c3664]" dir="rtl">
+      
+      {/* DECORATIVE ELEMENTS: Subtle light orange glows */}
+      <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute -top-[5%] -right-[5%] w-[60%] h-[40%] bg-orange/5 blur-[80px] rounded-full lg:w-[30%]" />
+        <div className="absolute bottom-[5%] left-0 w-[50%] h-[30%] bg-orange/5 blur-[60px] rounded-full lg:w-[25%]" />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-6 max-w-7xl">
+        <motion.div 
+          initial="hidden" 
+          whileInView="visible" 
+          viewport={{ once: true, margin: "-50px" }} 
           variants={staggerContainer}
-          // Збільшив горизонтальний відступ (lg:gap-24) і змінив пропорції колонок
-          className="grid grid-cols-1 lg:grid-cols-12 gap-y-16 lg:gap-x-24 items-center"
+          // Mobile: stacked with larger gap (gap-y-12), Desktop: 12 columns
+          className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-x-20 items-start"
         >
-          {/* 1. MAIN CONTENT (Right side in RTL on Desktop) */}
-          <div className="lg:col-span-7 space-y-8 md:space-y-12">
-            <motion.h2
-              variants={staggerItem}
-              // Збільшив leading для заголовка
-              className="font-noto-sans-hebrew font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-[1.2] tracking-tight"
-            >
-              עם משכנתא הפוכה, הנכס שלכם יכול להניב לכם כסף נזיל{" "}
-              <br className="hidden md:block" />
-              <span className="text-orange relative inline-block">
-                 ולהעניק לכם את הנזילות הפיננסית שאתם צריכים
-              </span>
-            </motion.h2>
-
-            <motion.div variants={staggerItem} className="space-y-8 md:space-y-10">
-              {/* Збільшив розмір шрифту та leading для параграфів */}
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 font-light leading-loose">
-                לשמירה על רמת החיים, סיוע לילדים או מימון הוצאות בלתי צפויות,
-                מבלי לוותר על הבעלות או לעבור דירה.
+          
+          {/* 1. MAIN CONTENT AREA (Desktop: 7-8 columns) */}
+          <div className="lg:col-span-7 xl:col-span-8 space-y-8 md:space-y-12 text-right">
+            
+            {/* HEADLINE: Responsive font sizes for mobile optimization */}
+            <motion.div variants={staggerItem} className="space-y-4 md:space-y-6">
+              <h2 className="font-noto-sans-hebrew font-black text-3xl sm:text-4xl md:text-5xl lg:text-7xl leading-[1.2] tracking-tight">
+                עם משכנתא הפוכה, הנכס שלכם יכול להניב לכם <br className="hidden md:block" />
+                <span className="text-orange">כסף נזיל ולהעניק לכם את הנזילות הפיננסית שאתם צריכים</span>
+              </h2>
+              
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-[#1c3664]/90 leading-relaxed">
+                – לשמירה על רמת החיים, סיוע לילדים או מימון הוצאות בלתי צפויות, מבלי לוותר על הבעלות או לעבור דירה.
               </p>
+            </motion.div>
 
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/70 font-light leading-loose">
-                נעים להכיר, אני אבי בוקעי, הבעלים של "אבי – הבית למשכנתאות". עם
-                ניסיון של מעל 7 שנים ורקע כיוצא המערכת הבנקאית, אני פוגש לא מעט
-                פנסיונרים שיושבים על "מכרה זהב" – הבית שלהם – אך חיים בצמצום.
+            {/* BIO: Clean separation for mobile with a subtle top border */}
+            <motion.div 
+              variants={staggerItem}
+              className="pt-8 border-t border-[#1c3664]/10 space-y-4 md:space-y-6"
+            >
+              <div className="flex items-center gap-3">
+                <div className="h-[2px] w-8 bg-orange rounded-full" />
+                <span className="text-orange font-bold text-xs md:text-sm tracking-widest uppercase">אבי – הבית למשכנתאות</span>
+              </div>
+              
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#1c3664]/80 font-light leading-relaxed">
+                נעים להכיר, אני אבי בוקעי, הבעלים של "אבי – הבית למשכנתאות". עם ניסיון של מעל 7 שנים ורקע כיוצא המערכת הבנקאית, אני פוגש לא מעט פנסיונרים שיושבים על "מכרה זהב" – הבית שלהם – אך חיים בצמצום.
               </p>
             </motion.div>
           </div>
 
-          {/* 2. SIDEBAR QUOTE (Left side in RTL on Desktop) */}
-          {/* lg:order-last гарантує, що цей блок буде зліва в RTL */}
-          <motion.div
+          {/* 2. QUOTE SECTION: Clean mobile impact */}
+          <motion.div 
             variants={staggerItem}
-            className="lg:col-span-5 relative group lg:order-last"
+            className="lg:col-span-5 xl:col-span-4 w-full"
           >
-            {/* Стиль для десктопу: прозорий фон, жирна лінія справа (border-r-8), великий відступ справа (pr-12) */}
-            <div className="
-              relative overflow-hidden
-              bg-[#234073] rounded-2xl p-8 border-t-4 border-orange shadow-lg
-              lg:bg-transparent lg:rounded-none lg:p-0 lg:border-t-0 lg:border-r-8 lg:border-orange lg:pr-12 lg:shadow-none
-              transition-all duration-300
-            ">
-               {/* Іконка цитати тільки для мобільного */}
-               <span className="absolute top-0 right-4 text-[10rem] leading-none text-white/5 pointer-events-none select-none font-serif lg:hidden">
-                 ״
-               </span>
+            {/* Quote block: Responsive pr (6 on mobile, 10 on desktop) */}
+            <div className="relative p-0 border-r-4 border-orange pr-6 md:pr-10 lg:mt-4">
+              
+              {/* FIXED SVG: Sizing moved to className to resolve TypeScript error */}
+              <div className="absolute -top-6 right-0 text-orange/20">
+                <svg 
+                  viewBox="0 0 24 24" 
+                  fill="currentColor" 
+                  className="w-10 h-10 md:w-[60px] md:h-[60px]"
+                >
+                  <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V12M5.017 21L5.017 18C5.017 16.8954 5.91243 16 7.017 16H10.017C10.5693 16 11.017 15.5523 11.017 15V9C11.017 8.44772 10.5693 8 10.017 8H6.017C5.46472 8 5.017 8.44772 5.017 9V12" />
+                </svg>
+              </div>
 
-              <p className="relative z-10 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[2.5rem] text-white font-bold italic leading-tight lg:leading-[1.3]">
-                "הבשורה הטובה: יש פתרון. משכנתא הפוכה מאפשרת לכם להשתמש בכסף
-                שצברתם בקירות הבית, מבלי לעבור דירה וללא החזר חודשי."
-              </p>
+              <div className="space-y-4 md:space-y-6">
+                <h3 className="text-xl md:text-2xl font-bold text-orange">הבשורה הטובה: יש פתרון.</h3>
+                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold italic leading-tight text-[#1c3664]">
+                  "משכנתא הפוכה מאפשרת לכם להשתמש בכסף שצברתם בקירות הבית, <span className="text-orange">מבלי לעבור דירה וללא החזר חודשי."</span>
+                </p>
+                
+                {/* Visual trust element */}
+                <div className="pt-4 flex items-center gap-3 text-[#1c3664]/50 text-[13px] md:text-sm font-medium">
+                   <div className="w-8 h-[1px] bg-[#1c3664]/20" />
+                   <span>הצטרפו למאות משפחות שכבר נהנות מהחופש</span>
+                </div>
+              </div>
             </div>
           </motion.div>
+
         </motion.div>
       </div>
 
-      {/* SUBTLE BACKGROUND DETAIL */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+      {/* REFINED BACKGROUND TEXTURE */}
+      <div className="absolute inset-0 opacity-[0.15] pointer-events-none">
         <svg width="100%" height="100%">
-          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/>
+          <pattern id="dot-pattern-final" width="30" height="30" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="0.4" fill="#1c3664" />
           </pattern>
-          <rect width="100%" height="100%" fill="url(#grid)" />
+          <rect width="100%" height="100%" fill="url(#dot-pattern-final)" />
         </svg>
       </div>
     </section>

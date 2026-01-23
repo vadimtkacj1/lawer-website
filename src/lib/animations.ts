@@ -7,6 +7,11 @@ const isMobile = typeof window !== 'undefined' && (
   window.innerWidth <= 768
 );
 
+// Log animation status for debugging
+if (typeof window !== 'undefined') {
+  console.log('🎬 Animation System:', isMobile ? '📱 Mobile Mode - Animations DISABLED' : '🖥️ Desktop Mode - Animations ENABLED');
+}
+
 // Fade in from bottom with scale - DISABLED on mobile for performance
 export const fadeInUp: Variants = {
   hidden: {

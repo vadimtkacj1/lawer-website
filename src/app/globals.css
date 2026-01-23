@@ -30,11 +30,6 @@
     }
   }
 
-  /* Performance optimizations for smooth scrolling */
-  html, body {
-    overscroll-behavior-y: none;
-  }
-
   /* Optimize image loading */
   img {
     content-visibility: auto;
@@ -301,12 +296,12 @@
   [data-parallax] {
     transform: none !important;
   }
-  /* Disable will-change on mobile to prevent GPU layer creation */
-  * {
+  /* Disable will-change on mobile to prevent GPU layer creation - EXCEPT widgets */
+  *:not([class*="sienna"]):not([id*="sienna"]):not([class*="accessibility"]):not([id*="accessibility"]):not(.fixed) {
     will-change: auto !important;
   }
-  /* Simplify transitions on mobile */
-  * {
+  /* Simplify transitions on mobile - EXCEPT widgets */
+  *:not([class*="sienna"]):not([id*="sienna"]):not([class*="accessibility"]):not([id*="accessibility"]):not(.fixed) {
     transition-duration: 0.1s !important;
   }
   /* Disable ALL framer motion animations on mobile for performance */
@@ -344,39 +339,84 @@
 }
 
 /* Sienna Accessibility Widget - Fixed positioning for mobile */
-/* Target the widget container */
+/* Target the widget container with more specific selectors and higher specificity */
 #sienna-accessibility-widget,
 .sienna-accessibility-widget,
 [class*="sienna-accessibility"],
-[id*="sienna-accessibility"] {
+[id*="sienna-accessibility"],
+[class*="sienna"],
+[id*="sienna"],
+body > div[class*="accessibility"],
+body > div[id*="accessibility"],
+div[class*="sienna"],
+div[id*="sienna"] {
   position: fixed !important;
-  z-index: 9999 !important;
+  z-index: 999999 !important;
   bottom: 20px !important;
-  right: 20px !important;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+  left: 20px !important;
+  right: auto !important;
+  top: auto !important;
+  -webkit-transform: translateZ(0) !important;
+  transform: translateZ(0) !important;
+  -webkit-backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
 }
 
-/* Ensure button stays visible on mobile */
+/* Ensure button stays visible on mobile - more aggressive selectors */
 @media (max-width: 768px) {
   #sienna-accessibility-widget,
   .sienna-accessibility-widget,
   [class*="sienna-accessibility"],
-  [id*="sienna-accessibility"] {
-    bottom: 15px !important;
-    right: 15px !important;
+  [id*="sienna-accessibility"],
+  [class*="sienna"],
+  [id*="sienna"],
+  body > div[class*="accessibility"],
+  body > div[id*="accessibility"],
+  div[class*="sienna"],
+  div[id*="sienna"] {
+    bottom: 90px !important; /* Higher to avoid conflict with WhatsApp widget */
+    left: 15px !important;
+    right: auto !important;
+    top: auto !important;
     position: fixed !important;
-    z-index: 10000 !important;
+    z-index: 999999 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+    will-change: transform !important;
   }
 
   /* Ensure the widget button has a fixed size on mobile */
   #sienna-accessibility-widget button,
   .sienna-accessibility-widget button,
-  [class*="sienna-accessibility"] button {
+  [class*="sienna-accessibility"] button,
+  [class*="sienna"] button,
+  body > div[class*="accessibility"] button,
+  body > div[id*="accessibility"] button,
+  div[class*="sienna"] button,
+  div[id*="sienna"] button {
     min-width: 50px !important;
     min-height: 50px !important;
+    position: relative !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Fix any inner containers */
+  #sienna-accessibility-widget > *,
+  .sienna-accessibility-widget > *,
+  [class*="sienna-accessibility"] > *,
+  [id*="sienna-accessibility"] > *,
+  div[class*="sienna"] > *,
+  div[id*="sienna"] > * {
+    position: relative !important;
+    pointer-events: auto !important;
   }
 }
 
