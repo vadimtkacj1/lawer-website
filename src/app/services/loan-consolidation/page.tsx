@@ -6,6 +6,7 @@ import ConsultantFAQ from "./ConsultantFAQ";
 import AllServicesSection from "./AllServicesSection";
 import ExpertSection from "./ExpertSection";
 import InsiderAdvantage from "./InsiderAdvantage";
+import FinancialControlCTA from "./FinancialControlCTA";
 // import RenovationCTA from "./components/RenovationCTA";
 
 // Lazy load components for better performance
@@ -117,6 +118,7 @@ export default function RenovationMortgagePage() {
         <ExpertSection/>
         <InsiderAdvantage/>
         <AllServicesSection/>
+        <FinancialControlCTA/>
         <Contact />
         <ConsultantFAQ/>
       </main>

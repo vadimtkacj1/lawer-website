@@ -30,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/services/mortgage-consultant`,
+      url: `${baseUrl}/services/loan-consolidation`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,

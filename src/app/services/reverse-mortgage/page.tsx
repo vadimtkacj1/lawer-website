@@ -6,6 +6,10 @@ import ReverseHero from "./components/ReverseHero";
 import RetirementProblemSection from "./components/RetirementProblemSection";
 import AviAdvantageReverse from "./components/AviAdvantageReverse";
 import ReverseMortgageBenefits from "./components/ReverseMortgageBenefits";
+import MortgageAdvantages from "./components/MortgageAdvantages";
+import HowItWorks from "./components/HowItWorks";
+import TransparencyAndCTA from "./components/TransparencyAndCTA";
+import ReverseFAQ from "./components/ReverseFAQ";
 
 // Lazy load components for better performance
 const Contact = dynamic(() => import("@/components/Contact"));
@@ -117,7 +121,11 @@ export default function RenovationMortgagePage() {
         <AviAdvantageReverse/>
         <ReverseMortgageBenefits
         />
+        <MortgageAdvantages/>
+        <HowItWorks/>
+        <TransparencyAndCTA/>
         <Contact />
+        <ReverseFAQ/>
       </main>
       <Footer />
       <Widgets />

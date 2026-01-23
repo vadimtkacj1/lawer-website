@@ -27,7 +27,7 @@ const ChevronIcon = ({ className }: { className?: string }) => (
 const servicesLinks = [
   { href: "/services/debt-consolidation", label: "משכנתא לרכישת דירה" },
   { href: "/services/foreign-mortgages", label: "מחיר למשתכן" },
-  { href: "/services/mortgage-consultant", label: "מחזור ואיחוד הלוואות" },
+  { href: "/services/loan-consolidation", label: "מחזור ואיחוד הלוואות" },
   { href: "/services/reverse-mortgage", label: "משכנתא הפוכה" },
   { href: "/services/refused", label: "מסורבי בנקים ומורכבות" },
   { href: "/services/renovation-mortgage", label: "משכנתא לשיפוץ" },

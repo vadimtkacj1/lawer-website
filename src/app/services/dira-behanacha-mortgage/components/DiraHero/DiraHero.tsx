@@ -12,7 +12,7 @@ const optimizedViewport = {
   amount: 0.2,
 };
 
-export default function ConsultantHero() {
+export default function DiraHero() {
   const sectionRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -24,14 +24,18 @@ export default function ConsultantHero() {
   const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const scrollToNext = () => {
+    const nextSection = window.innerHeight;
     window.scrollTo({
-      top: window.innerHeight,
+      top: nextSection,
       behavior: "smooth",
     });
   };
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center bg-cream z-10 py-16 lg:py-24 overflow-hidden">
+    <section 
+      ref={sectionRef} 
+      className="relative min-h-screen flex items-center justify-center bg-cream z-10 py-16 lg:py-24 overflow-hidden"
+    >
       {/* Animated Background with City Theme */}
       <div className="absolute inset-0 opacity-[0.35] pointer-events-none">
         <CityBackgroundSVG />
@@ -49,7 +53,7 @@ export default function ConsultantHero() {
         >
           <div className="w-full text-center space-y-6 lg:space-y-8">
             <motion.h1
-              className="font-noto-sans-hebrew font-black leading-[1.1]
+              className="font-noto-sans-hebrew font-black leading-[1.2]
                          text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
                          text-blue-dk
                          mb-6 sm:mb-8
@@ -57,7 +61,8 @@ export default function ConsultantHero() {
                          relative px-4 py-2"
               variants={staggerItem}
             >
-              יועץ משכנתאות בחולון<br/> והמרכז: המומחיות של יוצא מערכת<br/> הבנקאות אצלכם בכיס
+              משכנתא ל"דירה בהנחה" (מחיר למשתכן):<br />
+              המדריך לזוכים המאושרים
             </motion.h1>
           </div>
         </motion.div>

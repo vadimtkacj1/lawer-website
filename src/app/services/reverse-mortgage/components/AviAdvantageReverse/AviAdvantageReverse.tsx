@@ -1,28 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ClipboardCheck, Calculator, LayoutGrid } from "lucide-react";
+import { Coins, CalendarDays, HandCoins } from "lucide-react";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
-const aviReasons = [
+const moneyOptions = [
   {
-    t: "טיפול בירוקרטי מלא",
-    d: "משכנתא לשיפוץ דורשת אישורים, שמאות, ולעיתים שחרור כספים בשלבים (פעימות) לפי התקדמות הבנייה. כמי שמכיר את המערכת הבנקאית מבפנים, אני יודע איך לנהל את התהליך מול הבנק כך שהכסף יגיע בזמן לקבלן, בלי שתצטרכו לרדוף אחרי פקידים.",
-    icon: ClipboardCheck
+    t: "סכום חד-פעמי",
+    d: "מתאים למטרות גדולות ומוגדרות מראש, כמו שיפוץ מקיף של הבית או רכישת רכב חדש, המאפשר לכם לקבל את כל ההון הדרוש ברגע אחד.",
+    icon: Coins
   },
   {
-    t: "תכנון תקציב נכון",
-    d: "רוב האנשים חורגים בתקציב השיפוץ ב-20% לפחות. הניסיון שלי (גם בתחום הנדל\"ן והתשתיות) מאפשר לי לעזור לכם לתכנן את מסגרת האשראי כך שלא תיתקעו באמצע השיפוץ בלי כסף.",
-    icon: Calculator
+    t: "קצבה חודשית",
+    d: "פתרון אידיאלי להשלמת ההכנסה החודשית. הכסף מועבר אליכם מדי חודש, מה שמאפשר לכם לנהל אורח חיים שקט, ברור ובטוח כלכלית.",
+    icon: CalendarDays
   },
   {
-    t: "ראייה רחבה",
-    d: "אני אבדוק אם כדאי לשלב את משכנתת השיפוץ עם מיחזור המשכנתא הקיימת, וכך אולי לחסוך לכם כסף פעמיים – גם בשיפוץ וגם במשכנתא הישנה.",
-    icon: LayoutGrid
+    t: "מסגרת אשראי",
+    d: "גמישות פיננסית מקסימלית. אתם מקבלים מסגרת כספית ומושכים ממנה רק את מה שאתם צריכים ובזמן שאתם צריכים, בשליטה מלאה שלכם.",
+    icon: HandCoins
   }
 ];
 
-export default function AviAdvantageRenovation() {
+export default function AviAdvantageReverse() {
   return (
     <section className="relative py-20 md:py-32 bg-[#1c3664] overflow-hidden" dir="rtl">
       <div className="container relative z-10 mx-auto px-6 max-w-7xl text-right">
@@ -35,18 +35,17 @@ export default function AviAdvantageRenovation() {
           {/* Header Section */}
           <motion.div variants={staggerItem} className="max-w-4xl mb-20">
             <h2 className="font-noto-sans-hebrew font-black text-4xl md:text-6xl text-white leading-tight mb-8">
-              למה לבצע את התהליך עם <br />
-              <span className="text-orange">"אבי - הבית למשכנתאות"?</span>
+              כסף לכל מטרה – <br />
+              <span className="text-orange">אתם מחליטים</span>
             </h2>
-            <p className="text-xl md:text-2xl text-white/90 font-light max-w-2xl">
-              שיפוץ הוא פרויקט מלחיץ בפני עצמו – אבק, רעש, קבלנים. <br className="hidden md:block" />
-              אתם לא צריכים גם כאב ראש מהבנק.
+            <p className="text-xl md:text-2xl text-white/90 font-light max-w-3xl">
+              רוצים לשפץ את הבית, לעזור לילדים לקנות דירה, לסגור חובות ישנים או אפילו לטוס לטיול מסביב לעולם? הכסף הוא שלכם ואתם מחליטים איך להשתמש בו.
             </p>
           </motion.div>
 
           {/* Grid Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {aviReasons.map((item, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            {moneyOptions.map((item, i) => (
               <motion.div 
                 key={i} 
                 variants={staggerItem} 
@@ -69,6 +68,13 @@ export default function AviAdvantageRenovation() {
               </motion.div>
             ))}
           </div>
+
+          {/* Footer Text */}
+          <motion.div variants={staggerItem} className="max-w-3xl">
+            <p className="text-xl md:text-2xl text-orange font-medium">
+              כך אתם נהנים מנזילות פיננסית מלאה, בלי להתחייב לתשלומים חודשיים, ובשליטה מלאה על הכסף שלכם.
+            </p>
+          </motion.div>
         </motion.div>
       </div>
 
