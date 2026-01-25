@@ -22,23 +22,21 @@ export default function Hero() {
           {/* Desktop Overlay: Fades the right side of the image into the background color */}
           <div className="absolute inset-y-0 right-0 w-1/2 z-20 bg-gradient-to-l from-cream to-transparent hidden lg:block" />
 
-          <div className="w-full h-full">
-            <Image
-              src="/images/expert.jpeg"
-              alt="Expert Mortgage Advisor"
-              fill
-              priority
-              loading="eager"
-              className="object-cover object-top"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              quality={85}
-              style={{
-                transform: 'translate3d(0, 0, 0)',
-                backfaceVisibility: 'hidden',
-                WebkitBackfaceVisibility: 'hidden'
-              }}
-            />
-          </div>
+          <Image
+            src="/images/expert.jpeg"
+            alt="Expert Mortgage Advisor"
+            fill
+            priority
+            loading="eager"
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            quality={85}
+            style={{
+              transform: 'translate3d(0, 0, 0)',
+              backfaceVisibility: 'hidden',
+              WebkitBackfaceVisibility: 'hidden'
+            }}
+          />
         </div>
       </div>
 

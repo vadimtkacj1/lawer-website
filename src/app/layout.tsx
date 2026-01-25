@@ -3,7 +3,6 @@ import "./globals.css";
 import { MotionConfig } from "framer-motion";
 import FullScreenLoader from "@/components/ui/FullScreenLoader";
 import ClientEffects from "@/components/ui/ClientEffects";
-import AccessibilityWidget from "@/components/ui/AccessibilityWidget";
 import localFont from "next/font/local";
 
 // Load local Noto Sans Hebrew variable font
@@ -99,19 +98,59 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/favicon.ico" />
         {/* Preload critical assets */}
-        <link rel="preload" href="/images/logo.png" as="image" type="image/png" />
+        <link rel="preload" href="/images/logo.svg" as="image" type="image/svg+xml" />
         {/* DNS prefetch for social media */}
         <link rel="dns-prefetch" href="https://www.facebook.com" />
         <link rel="dns-prefetch" href="https://www.instagram.com" />
         <link rel="dns-prefetch" href="https://wa.me" />
-        {/* Sienna Accessibility Widget */}
-        <script src="https://cdn.jsdelivr.net/npm/sienna-accessibility@latest/dist/sienna-accessibility.umd.js" defer></script>
+        {/* EqualWeb Accessibility Widget */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.interdeal = {
+                get sitekey() { return "7feb5155e8b4d2affe0ddef57d563c34" },
+                get domains() {
+                  return {
+                    "js": "https://cdn.equalweb.com/",
+                    "acc": "https://access.equalweb.com/"
+                  }
+                },
+                "Position": "left",
+                "Menulang": "HE",
+                "draggable": true,
+                "btnStyle": {
+                  "vPosition": ["80%", "80%"],
+                  "margin": ["0", "0"],
+                  "scale": ["0.5", "0.5"],
+                  "color": {
+                    "main": "#1c4bb6",
+                    "second": "#ffffff"
+                  },
+                  "icon": {
+                    "outline": false,
+                    "outlineColor": "#ffffff",
+                    "type": 10,
+                    "shape": "rounded"
+                  }
+                }
+              };
+              (function(doc, head, body){
+                var coreCall = doc.createElement('script');
+                coreCall.src = interdeal.domains.js + 'core/5.2.5/accessibility.js';
+                coreCall.defer = true;
+                coreCall.integrity = 'sha512-Zamp30ps601kXvZTcIYv1sytUc090mrEJD9rLuoWzEGqmB6t0XdLRgC/g5TznUleEBIMm6T3c6Baf/ExIYh/Hw==';
+                coreCall.crossOrigin = 'anonymous';
+                coreCall.setAttribute('data-cfasync', true);
+                body ? body.appendChild(coreCall) : head.appendChild(coreCall);
+              })(document, document.head, document.body);
+            `,
+          }}
+        />
       </head>
-      <body className={`${notoSansHebrew.variable} font-noto-sans-hebrew antialiased`} suppressHydrationWarning>
+      <body className={`${notoSansHebrew.variable} font-noto-sans-hebrew antialiased`}>
         <MotionConfig reducedMotion="user">
           <FullScreenLoader />
           <ClientEffects />
-          <AccessibilityWidget />
           {children}
         </MotionConfig>
       </body>

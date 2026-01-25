@@ -64,7 +64,7 @@ function JsonLd() {
         url: "https://avi-home.co.il",
         logo: {
           "@type": "ImageObject",
-          url: "https://avi-home.co.il/images/logo.png",
+          url: "https://avi-home.co.il/images/logo.svg",
         },
         contactPoint: {
           "@type": "ContactPoint",

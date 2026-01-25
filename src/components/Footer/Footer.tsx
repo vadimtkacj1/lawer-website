@@ -6,9 +6,15 @@ import FacebookIcon from "@/components/icons/FacebookIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
 
 const serviceLinks = [
-  { href: "/services/first-home", label: "משכנתא לדירה ראשונה" },
-  { href: "/services/refinance", label: "מחזור משכנתא קיימת" },
-  { href: "/services/investors", label: "משכנתא למשקיעים" },
+  { href: "/services/mortgage-for-purchase", label: "משכנתא לרכישת דירה" },
+  { href: "/services/dira-behanacha-mortgage", label: "מחיר למשתכן" },
+  { href: "/services/loan-consolidation", label: "מחזור ואיחוד הלוואות" },
+  { href: "/services/reverse-mortgage", label: "משכנתא הפוכה" },
+  { href: "/services/mortgage-refused", label: "מסורבי בנקים ומורכבות" },
+  { href: "/services/renovation-mortgage", label: "משכנתא לשיפוץ" },
+  { href: "/services/apartment-mortgage", label: "משכנתא לדירה" },
+  { href: "/services/foreign-mortgages", label: "משכנתא לתושבי חוץ" },
+  { href: "/services/debt-consolidation", label: "איחוד הלוואות למשכנתא" },
 ];
 
 const socialLinks = [
@@ -28,7 +34,7 @@ export default function Footer() {
   return (
     <footer className="bg-blue-dk text-white py-10 sm:py-12 md:py-14 lg:py-16" dir="rtl">
       <div className="container mx-auto px-3 sm:px-4 md:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-start">
           {/* About */}
           <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
             <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">
@@ -42,7 +48,7 @@ export default function Footer() {
 
           {/* Services */}
           <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
-            <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">השירותים שלנו</h3>
+            <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">שירותים</h3>
             <nav className="flex flex-col space-y-1.5 sm:space-y-2 w-full">
               {serviceLinks.map((link) => (
                 <Link
@@ -57,7 +63,7 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center sm:col-span-2 lg:col-span-1">
+          <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
             <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">צרו קשר</h3>
             <address className="not-italic space-y-1.5 sm:space-y-2 text-white/70 text-sm sm:text-base md:text-lg font-semibold w-full">
               <p className="flex items-center gap-2 justify-center sm:justify-start lg:justify-center">
@@ -81,6 +87,31 @@ export default function Footer() {
                 </a>
               ))}
             </div> */}
+          </div>
+
+          {/* Legal Links */}
+          <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center sm:col-span-2 lg:col-span-1">
+            <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">מידע משפטי</h3>
+            <nav className="flex flex-col space-y-1.5 sm:space-y-2 w-full">
+              <Link
+                href="/accessibility"
+                className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
+              >
+                הצהרת נגישות
+              </Link>
+              <Link
+                href="/privacy"
+                className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
+              >
+                מדיניות פרטיות
+              </Link>
+              <Link
+                href="/terms"
+                className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
+              >
+                תנאי שימוש
+              </Link>
+            </nav>
           </div>
         </div>
 
