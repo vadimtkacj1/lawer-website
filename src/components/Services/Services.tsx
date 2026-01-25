@@ -17,6 +17,8 @@ import ChartIcon from "@/components/icons/ChartIcon";
 import BuildingIcon from "@/components/icons/BuildingIcon";
 import SettingsIcon from "@/components/icons/SettingsIcon";
 import ShieldIcon from "@/components/icons/ShieldIcon";
+import GlobeIcon from "@/components/icons/GlobeIcon";
+import ReceiptPercentIcon from "@/components/icons/ReceiptPercentIcon";
 import ArrowIcon from "@/components/icons/ArrowIcon";
 import CitySkylineBackground from "@/components/icons/backgrounds/CitySkylineBackground";
 
@@ -63,12 +65,77 @@ const services = [
     title: "משכנתא לדירה",
     description: "תמהיל משכנתא מותאם אישית עם ליווי מקצועי מלא",
   },
+  {
+    href: "/services/foreign-mortgages",
+    Icon: GlobeIcon,
+    title: "משכנתא לתושבי חוץ",
+    description: "פתרונות מימון לרכישת נכס בישראל עבור תושבי חוץ ומשקיעים זרים",
+  },
+  {
+    href: "/services/debt-consolidation",
+    Icon: ReceiptPercentIcon,
+    title: "איחוד הלוואות למשכנתא",
+    description: "הפיכת הלוואות יקרות לתשלום חודשי אחד נמוך ומשתלם על ידי פריסה מחדש בתוך המשכנתא",
+  },
 ];
 
 export default function Services() {
   const { shouldDisableAnimations, isMobile } = usePerformanceSettings();
 
-  // Mobile/Static Version
+  /**
+   * SHARED RENDER LOGIC for both versions
+   * Handles layout for Mobile (2 cols), Tablet (3 cols), and 3K screens (9 cols)
+   */
+  const renderServiceCard = (service: any, index: number, isAnimated: boolean) => {
+    const content = (
+      <Link href={service.href} className="group block h-full relative">
+        <div className="flex flex-col items-center justify-center p-3 sm:p-4 xl:p-6 min-h-[220px] sm:min-h-[250px] 3xl:min-h-[320px] transition-all duration-300 hover:bg-orange/[0.03] text-center relative">
+          <div className="text-orange mb-3 transition-transform duration-300 group-hover:scale-110">
+            <service.Icon className="w-8 h-8 sm:w-10 sm:h-10 3xl:w-14 3xl:h-14" />
+          </div>
+          <h3 className="text-blue-dk font-black text-[10px] sm:text-xs xl:text-sm 3xl:text-lg text-center leading-tight transition-colors duration-300 group-hover:text-orange mb-2 font-noto-sans-hebrew">
+            {service.title}
+          </h3>
+          <div className="h-0 group-hover:h-20 3xl:group-hover:h-24 transition-all duration-300 overflow-hidden">
+            <p className="text-blue-dk/70 text-[10px] sm:text-xs 3xl:text-base text-center leading-snug opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-1 font-noto-sans-hebrew">
+              {service.description}
+            </p>
+          </div>
+          <div className="mt-2 text-orange opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1">
+            <ArrowIcon className="w-4 h-4 rotate-180" />
+          </div>
+        </div>
+      </Link>
+    );
+
+    const commonClasses = "relative bg-white border border-blue-dk/5 md:border-0 shadow-sm md:shadow-none transition-all";
+    
+    // Grid logic: 2 cols on mobile, 3 cols on tablet/laptop, 9 items in one row on 3K (ultra-wide)
+    const responsiveClasses = "w-[calc(50%-6px)] md:w-[calc(33.333%-16px)] lg:w-[calc(33.333%)] 2xl:flex-1";
+
+    if (!isAnimated) {
+      return (
+        <div key={service.href} className={`${commonClasses} ${responsiveClasses} rounded-2xl`}>
+          {content}
+        </div>
+      );
+    }
+
+    return (
+      <motion.div
+        key={`service-${service.href}`}
+        variants={staggerItem}
+        className={`${commonClasses} ${responsiveClasses} md:rounded-none`}
+      >
+        {content}
+        {/* Divider logic: only show on Desktop when items are in one row */}
+        {index !== services.length - 1 && (
+          <div className="hidden 2xl:block absolute left-0 top-1/2 -translate-y-1/2 w-[1px] h-[40%] bg-blue-dk/10" />
+        )}
+      </motion.div>
+    );
+  };
+
   if (isMobile || shouldDisableAnimations) {
     return (
       <section id="services" dir="rtl" className="relative py-12 md:py-20 z-0 bg-cream">
@@ -76,29 +143,9 @@ export default function Services() {
           <h2 className="text-center text-3xl md:text-5xl lg:text-6xl font-black text-blue-dk mb-10 md:mb-16 font-noto-sans-hebrew">
             השירותים שלנו
           </h2>
-          
-          <div className="max-w-[1200px] mx-auto">
-            <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-              {services.map((service) => (
-                <div 
-                  key={service.href} 
-                  className="bg-white rounded-2xl border border-blue-dk/5 shadow-sm w-[calc(50%-6px)] md:w-[calc(33.333%-12px)] lg:w-[calc(25%-16px)]"
-                >
-                  <Link href={service.href} className="group block h-full">
-                    <div className="flex flex-col items-center justify-center p-4 md:p-6 min-h-[220px] md:min-h-[260px] transition-all duration-300 hover:bg-orange/[0.03] text-center">
-                      <div className="text-orange mb-3">
-                        <service.Icon className="w-9 h-9 md:w-12 md:h-12" />
-                      </div>
-                      <h3 className="text-blue-dk font-black text-[11px] md:text-base leading-tight mb-2 font-noto-sans-hebrew">
-                        {service.title}
-                      </h3>
-                      <p className="text-blue-dk/70 text-[11px] md:text-sm leading-snug px-1 opacity-70 font-noto-sans-hebrew">
-                        {service.description}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              ))}
+          <div className="max-w-[1400px] 3xl:max-w-[2000px] mx-auto">
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4 lg:gap-0">
+              {services.map((s, i) => renderServiceCard(s, i, false))}
             </div>
           </div>
         </div>
@@ -106,7 +153,6 @@ export default function Services() {
     );
   }
 
-  // Animated Desktop Version
   return (
     <section id="services" dir="rtl" className="relative py-12 md:py-20 z-0 bg-cream overflow-hidden">
       <div className="absolute inset-0 opacity-20 pointer-events-none z-0">
@@ -127,7 +173,8 @@ export default function Services() {
           השירותים שלנו
         </motion.h2>
 
-        <div className="max-w-[1200px] 3xl:max-w-[1500px] mx-auto">
+        {/* 3K MONITOR OPTIMIZATION: max-width increased to 2200px for ultra-wide displays */}
+        <div className="max-w-[1400px] 2xl:max-w-[1800px] 3xl:max-w-[2200px] mx-auto">
           <motion.nav
             key="services-nav"
             className="flex flex-wrap justify-center gap-3 md:gap-0 md:bg-white md:shadow-xl md:rounded-3xl md:border border-blue-dk/10 overflow-hidden"
@@ -136,45 +183,7 @@ export default function Services() {
             viewport={viewportOptions}
             variants={staggerContainer}
           >
-            {services.map((service, index) => (
-              <motion.div
-                key={`service-${service.href}`}
-                variants={staggerItem}
-                className="w-[calc(50%-5px)] md:w-1/3 lg:flex-1 bg-white rounded-2xl md:rounded-none
-                           relative border border-blue-dk/5 md:border-0 shadow-sm md:shadow-none"
-              >
-                <Link
-                  href={service.href}
-                  className="group block h-full relative"
-                >
-                  <div className="flex flex-col items-center justify-center p-4 sm:p-6 min-h-[220px] sm:min-h-[250px] lg:min-h-[300px] transition-all duration-300 hover:bg-orange/[0.03] text-center relative">
-                    
-                    <div className="text-orange mb-3 transition-transform duration-300 group-hover:scale-110">
-                      <service.Icon className="w-9 h-9 sm:w-12 sm:h-12" />
-                    </div>
-
-                    <h3 className="text-blue-dk font-black text-[11px] sm:text-sm md:text-base text-center leading-tight transition-colors duration-300 group-hover:text-orange mb-2 font-noto-sans-hebrew">
-                      {service.title}
-                    </h3>
-
-                    {/* Описание теперь не меняет высоту контейнера при появлении за счет фиксированного max-h в hover и min-h обертки */}
-                    <div className="h-0 group-hover:h-16 lg:group-hover:h-20 transition-all duration-300 overflow-hidden">
-                        <p className="text-blue-dk/70 text-[11px] md:text-sm text-center leading-snug opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-2 font-noto-sans-hebrew">
-                          {service.description}
-                        </p>
-                    </div>
-
-                    <div className="mt-2 text-orange opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1">
-                      <ArrowIcon className="w-5 h-5 rotate-180" />
-                    </div>
-                  </div>
-                </Link>
-
-                {index !== services.length - 1 && (
-                  <div className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 w-[1px] h-[40%] bg-blue-dk/10" />
-                )}
-              </motion.div>
-            ))}
+            {services.map((s, i) => renderServiceCard(s, i, true))}
           </motion.nav>
         </div>
       </div>

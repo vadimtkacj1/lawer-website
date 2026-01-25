@@ -87,7 +87,7 @@ export default function Header() {
         <div className="container mx-auto px-4 md:px-8">
           <nav className="flex items-center justify-between" dir="rtl">
             <div className="flex items-center gap-3 md:gap-8">
-              <Link href="/" className="flex items-center transition-transform hover:scale-105">
+              <Link href="/" className="flex items-center transition-transform hover:scale-105" suppressHydrationWarning>
                 <Image
                   src="/images/logo.png"
                   alt="Avi - Mortgage House"
@@ -106,12 +106,14 @@ export default function Header() {
                     className="relative"
                     onMouseEnter={() => link.hasDropdown && setIsDesktopDropdownOpen(true)}
                     onMouseLeave={() => link.hasDropdown && setIsDesktopDropdownOpen(false)}
+                    suppressHydrationWarning
                   >
                     <Link
                       href={link.href}
                       onClick={(e) => handleNavClick(e, link.href)}
                       className={`flex items-center gap-2 px-4 py-2 text-blue-dk font-black text-xl xl:text-2xl transition-all duration-300 hover:text-orange
                         ${link.hasDropdown && isDesktopDropdownOpen ? "text-orange" : ""}`}
+                      suppressHydrationWarning
                     >
                       {link.label}
                       {link.hasDropdown && (
