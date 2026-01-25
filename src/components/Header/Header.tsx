@@ -69,7 +69,7 @@ export default function Header() {
       if (targetElement) {
         setIsMobileMenuOpen(false);
         setIsDesktopDropdownOpen(false);
-        const offsetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 100;
+        const offsetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top: offsetPosition, behavior: "smooth" });
       }
     }
@@ -80,8 +80,8 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-[70] transition-all duration-300
                     ${isScrolled || isMobileMenuOpen
-                      ? "shadow-lg py-1 border-b-2 border-blue-dk/20 bg-cream"
-                      : "py-2 sm:py-4 border-b-0 bg-transparent"
+                      ? "shadow-md py-0.5 border-b border-blue-dk/10 bg-cream"
+                      : "py-1.5 sm:py-2 border-b-0 bg-transparent"
                     }`}
       >
         <div className="container mx-auto px-4 md:px-8">
@@ -89,17 +89,17 @@ export default function Header() {
             <div className="flex items-center gap-3 md:gap-8">
               <Link href="/" className="flex items-center transition-transform hover:scale-105" suppressHydrationWarning>
                 <Image
-                  src="/images/logo.png"
+                  src="/images/logo.svg"
                   alt="Avi - Mortgage House"
-                  width={180}
-                  height={120}
-                  className="h-[45px] w-auto sm:h-[55px] md:h-[75px] lg:h-[85px]"
+                  width={150}
+                  height={80}
+                  className="h-[38px] w-auto sm:h-[45px] md:h-[55px] lg:h-[60px]"
                   priority
                 />
               </Link>
 
-              {/* Desktop Nav - ОСТАВИЛ КАК БЫЛО */}
-              <ul className="hidden lg:flex items-center gap-2">
+              {/* Desktop Nav */}
+              <ul className="hidden lg:flex items-center gap-1">
                 {navLinks.map((link) => (
                   <li 
                     key={link.href}
@@ -111,31 +111,31 @@ export default function Header() {
                     <Link
                       href={link.href}
                       onClick={(e) => handleNavClick(e, link.href)}
-                      className={`flex items-center gap-2 px-4 py-2 text-blue-dk font-black text-xl xl:text-2xl transition-all duration-300 hover:text-orange
+                      className={`flex items-center gap-1.5 px-3 py-1.5 text-blue-dk font-bold text-lg xl:text-xl transition-all duration-300 hover:text-orange
                         ${link.hasDropdown && isDesktopDropdownOpen ? "text-orange" : ""}`}
                       suppressHydrationWarning
                     >
                       {link.label}
                       {link.hasDropdown && (
-                        <ChevronIcon className={`w-4 h-4 transition-transform duration-300 ${isDesktopDropdownOpen ? "rotate-180" : ""}`} />
+                        <ChevronIcon className={`w-3.5 h-3.5 transition-transform duration-300 ${isDesktopDropdownOpen ? "rotate-180" : ""}`} />
                       )}
                     </Link>
 
                     {/* Desktop Premium Dropdown */}
                     {link.hasDropdown && (
                       <div 
-                        className={`absolute top-full right-0 mt-1 w-80 bg-cream shadow-[0_20px_50px_rgba(0,0,0,0.15)] rounded-2xl border border-blue-dk/10 overflow-hidden transition-all duration-300 origin-top
+                        className={`absolute top-full right-0 mt-0 w-72 bg-cream shadow-xl rounded-xl border border-blue-dk/5 overflow-hidden transition-all duration-300 origin-top
                           ${isDesktopDropdownOpen ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}
                       >
-                        <div className="py-3 flex flex-col">
+                        <div className="py-1.5 flex flex-col">
                           {servicesLinks.map((service) => (
                             <Link
                               key={service.href}
                               href={service.href}
-                              className="px-6 py-3.5 text-lg font-bold text-blue-dk hover:bg-orange/5 hover:text-orange transition-all duration-200 border-b border-blue-dk/5 last:border-0 text-right flex items-center justify-between group"
+                              className="px-5 py-2 text-base font-semibold text-blue-dk hover:bg-orange/5 hover:text-orange transition-all duration-200 border-b border-blue-dk/5 last:border-0 text-right flex items-center justify-between group"
                             >
                               {service.label}
-                              <div className="w-1.5 h-1.5 rounded-full bg-orange opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                              <div className="w-1 h-1 rounded-full bg-orange opacity-0 group-hover:opacity-100 transition-opacity"></div>
                             </Link>
                           ))}
                         </div>
@@ -148,16 +148,16 @@ export default function Header() {
 
             {/* Mobile Toggle */}
             <button
-              className="lg:hidden relative z-[80] p-2 text-blue-dk hover:text-orange transition-colors"
+              className="lg:hidden relative z-[80] p-1.5 text-blue-dk hover:text-orange transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <CloseIcon className="w-9 h-9" /> : <MenuIcon className="w-9 h-9" />}
+              {isMobileMenuOpen ? <CloseIcon className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
             </button>
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-2">
-              <a href="tel:054-472-9513" className="btn-primary flex items-center gap-2 text-lg px-7 py-2.5 transition-all hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 text-white bg-blue-dk rounded-full font-bold">
-                <PhoneIcon className="w-5 h-5" />
+              <a href="tel:054-472-9513" className="flex items-center gap-2 text-sm px-4 py-1.5 transition-all hover:bg-blue-dk/90 active:scale-95 text-white bg-blue-dk rounded-full font-bold">
+                <PhoneIcon className="w-4 h-4" />
                 <span>התקשר עכשיו</span>
               </a>
             </div>
@@ -171,45 +171,37 @@ export default function Header() {
           isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="container mx-auto px-6 pt-32 pb-10 flex flex-col items-center overflow-y-auto">
-          <ul className="flex flex-col gap-6 items-center w-full">
+        <div className="container mx-auto px-6 pt-24 pb-10 flex flex-col items-center overflow-y-auto">
+          <ul className="flex flex-col gap-5 items-center w-full">
             {navLinks.map((link) => (
               <li key={link.href} className="w-full text-center">
                 {link.hasDropdown ? (
                   <div className="flex flex-col items-center">
                     <button
                       onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                      className="flex items-center justify-center gap-4 text-blue-dk font-black text-4xl hover:text-orange transition-colors"
+                      className="flex items-center justify-center gap-3 text-blue-dk font-bold text-3xl hover:text-orange transition-colors"
                     >
                       {link.label}
-                      {/* СТРЕЛКА ТЕПЕРЬ ТУТ, РЯДОМ С ТЕКСТОМ */}
-                      <ChevronIcon className={`w-8 h-8 transition-transform duration-300 ${isMobileServicesOpen ? "rotate-180" : ""}`} />
+                      <ChevronIcon className={`w-6 h-6 transition-transform duration-300 ${isMobileServicesOpen ? "rotate-180" : ""}`} />
                     </button>
                     
-                    <div className={`flex flex-col gap-5 mt-6 overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}>
+                    <div className={`flex flex-col gap-4 mt-4 overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
                       {servicesLinks.map((subLink) => (
                         <Link
                           key={subLink.href}
                           href={subLink.href}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="text-blue-dk/60 font-bold text-2xl hover:text-orange"
+                          className="text-blue-dk/60 font-medium text-xl hover:text-orange"
                         >
                           {subLink.label}
                         </Link>
                       ))}
-                      <Link 
-                        href="#services" 
-                        onClick={(e) => handleNavClick(e, "#services")}
-                        className="text-orange font-black text-xl underline underline-offset-8 mt-2"
-                      >
-                        לכל השירותים
-                      </Link>
                     </div>
                   </div>
                 ) : (
                   <Link
                     href={link.href}
-                    className="block text-blue-dk font-black text-4xl hover:text-orange transition-colors"
+                    className="block text-blue-dk font-bold text-3xl hover:text-orange transition-colors"
                     onClick={(e) => handleNavClick(e, link.href)}
                   >
                     {link.label}
@@ -219,9 +211,9 @@ export default function Header() {
             ))}
           </ul>
 
-          <div className="mt-16 w-full flex justify-center">
-            <a href="tel:054-472-9513" className="bg-blue-dk text-white flex items-center justify-center gap-3 px-10 py-5 text-2xl w-fit rounded-xl font-black shadow-2xl">
-              <PhoneIcon className="w-7 h-7" />
+          <div className="mt-12 w-full flex justify-center">
+            <a href="tel:054-472-9513" className="bg-blue-dk text-white flex items-center justify-center gap-3 px-8 py-4 text-xl w-fit rounded-lg font-bold shadow-lg">
+              <PhoneIcon className="w-6 h-6" />
               <span>התקשר עכשיו</span>
             </a>
           </div>

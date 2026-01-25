@@ -21,7 +21,9 @@
       "Bash(pnpm dev)",
       "Bash(pnpm update:*)",
       "Bash(curl:*)",
-      "Bash(pnpm add:*)"
+      "Bash(pnpm add:*)",
+      "WebFetch(domain:cdn.jsdelivr.net)",
+      "WebFetch(domain:www.npmjs.com)"
     ]
   }
 }

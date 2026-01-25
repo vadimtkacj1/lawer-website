@@ -77,7 +77,8 @@ export default function ExpertBio() {
             >
 א יבא ,יעקוב אצוי תכרעמה תיאקנבה לעבו ראות ימדקא להנמב םיקסע םע שגד לע .ן"לדנ ינא ןאכ ידכ 
 תוולל םכתא דעצ-דעצ תוריחבב תוילכלכה תובושחה ,םכלש ךוסחלו םכל תא היטרקוריבה ףסכהו קנבהש 
-אל הצור .וכסחתש            </motion.p>
+אל הצור .וכסחתש 
+         </motion.p>
 
             {/* HIGHLIGHTS: List with custom icon containers */}
             <div className="flex justify-center lg:justify-start mb-12">

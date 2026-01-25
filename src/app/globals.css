@@ -297,11 +297,11 @@
     transform: none !important;
   }
   /* Disable will-change on mobile to prevent GPU layer creation - EXCEPT widgets */
-  *:not([class*="sienna"]):not([id*="sienna"]):not([class*="accessibility"]):not([id*="accessibility"]):not(.fixed) {
+  *:not([class*="accessibility"]):not([id*="accessibility"]):not(.fixed) {
     will-change: auto !important;
   }
   /* Simplify transitions on mobile - EXCEPT widgets */
-  *:not([class*="sienna"]):not([id*="sienna"]):not([class*="accessibility"]):not([id*="accessibility"]):not(.fixed) {
+  *:not([class*="accessibility"]):not([id*="accessibility"]):not(.fixed) {
     transition-duration: 0.1s !important;
   }
   /* Disable ALL framer motion animations on mobile for performance */
@@ -338,87 +338,22 @@
   }
 }
 
-
-
-/* Accessibility Widget Styles - ensure it's always visible and clickable */
-#sienna-accessibility-widget,
-[id*="sienna"],
-[class*="sienna"],
-.sienna-accessibility-widget,
-div[style*="position: fixed"][style*="z-index"] {
-  position: fixed !important;
+/* EqualWeb Accessibility Widget - Ensure visibility on all devices */
+#interdeal-button,
+#interdeal-panel,
+[id*="interdeal"],
+[class*="interdeal"] {
   z-index: 999999 !important;
   pointer-events: auto !important;
-  will-change: transform !important;
-  transform: translateZ(0) !important;
-  backface-visibility: hidden !important;
-  -webkit-backface-visibility: hidden !important;
-  contain: none !important;
-  animation: none !important;
-  transition: all 0.3s ease !important;
-  bottom: 20px !important;
-  left: 20px !important;
 }
 
-/* Ensure all child elements of accessibility widget are clickable */
-#sienna-accessibility-widget *,
-[id*="sienna"] *,
-[class*="sienna"] *,
-.sienna-accessibility-widget * {
-  pointer-events: auto !important;
-  z-index: inherit !important;
-}
-
-/* Mobile specific fixes for accessibility widget */
-@media (hover: none) and (pointer: coarse) {
-  #sienna-accessibility-widget,
-  [id*="sienna"],
-  [class*="sienna"],
-  .sienna-accessibility-widget {
+/* Ensure the widget button is visible and accessible on mobile */
+@media (max-width: 768px) {
+  #interdeal-button {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     position: fixed !important;
-    bottom: 20px !important;
-    left: 20px !important;
     z-index: 999999 !important;
-    pointer-events: auto !important;
-    touch-action: manipulation !important;
-    -webkit-tap-highlight-color: transparent !important;
-    will-change: auto !important;
-    transform: none !important;
-  }
-
-  /* Make sure widget button is large enough for touch */
-  #sienna-accessibility-widget button,
-  [id*="sienna"] button,
-  [class*="sienna"] button {
-    min-width: 44px !important;
-    min-height: 44px !important;
-    pointer-events: auto !important;
-    touch-action: manipulation !important;
-  }
-}
-
-/* Reduced motion preferences - more comprehensive support */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  .animate-shimmer,
-  .fullscreen-spinner,
-  .hero-cta-button,
-  .animate-scroll-rtl,
-  .animate-pulse-slow {
-    animation: none !important;
-  }
-
-  /* Keep accessibility widget transitions even with reduced motion */
-  #sienna-accessibility-widget,
-  [id*="sienna"],
-  [class*="sienna"],
-  .sienna-accessibility-widget {
-    transition-duration: 0.3s !important;
   }
 }
