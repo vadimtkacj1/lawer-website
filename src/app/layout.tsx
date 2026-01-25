@@ -3,6 +3,7 @@ import "./globals.css";
 import { MotionConfig } from "framer-motion";
 import FullScreenLoader from "@/components/ui/FullScreenLoader";
 import ClientEffects from "@/components/ui/ClientEffects";
+import AccessibilityWidget from "@/components/ui/AccessibilityWidget";
 import localFont from "next/font/local";
 
 // Load local Noto Sans Hebrew variable font
@@ -103,22 +104,14 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.facebook.com" />
         <link rel="dns-prefetch" href="https://www.instagram.com" />
         <link rel="dns-prefetch" href="https://wa.me" />
-        {/* Sienna Accessibility Widget - lazy loaded */}
+        {/* Sienna Accessibility Widget */}
         <script src="https://cdn.jsdelivr.net/npm/sienna-accessibility@latest/dist/sienna-accessibility.umd.js" defer></script>
-        <script dangerouslySetInnerHTML={{__html: `
-          window.addEventListener('DOMContentLoaded', function() {
-            if (window.SiennaAccessibility) {
-              window.SiennaAccessibility.init({
-                language: 'he'
-              });
-            }
-          });
-        `}} />
       </head>
-      <body className={`${notoSansHebrew.variable} font-noto-sans-hebrew antialiased`}>
+      <body className={`${notoSansHebrew.variable} font-noto-sans-hebrew antialiased`} suppressHydrationWarning>
         <MotionConfig reducedMotion="user">
           <FullScreenLoader />
           <ClientEffects />
+          <AccessibilityWidget />
           {children}
         </MotionConfig>
       </body>
