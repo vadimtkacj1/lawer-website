@@ -200,7 +200,7 @@ export default function MortgageSliderCalculator() {
                     className="flex items-center gap-2 text-red-600 font-bold text-xs bg-red-50 px-6 py-2 rounded-xl border border-red-100"
                   >
                     <AlertTriangle size={14} />
-                    <span>הון העצми גבוה ממחיר הנכס</span>
+                    <span>ההון העצמי גבוה ממחיר הנכס</span>
                   </motion.div>
                 )}
               </AnimatePresence>

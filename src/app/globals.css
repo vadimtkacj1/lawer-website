@@ -340,6 +340,63 @@
 
 
 
+/* Accessibility Widget Styles - ensure it's always visible and clickable */
+#sienna-accessibility-widget,
+[id*="sienna"],
+[class*="sienna"],
+.sienna-accessibility-widget,
+div[style*="position: fixed"][style*="z-index"] {
+  position: fixed !important;
+  z-index: 999999 !important;
+  pointer-events: auto !important;
+  will-change: transform !important;
+  transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  contain: none !important;
+  animation: none !important;
+  transition: all 0.3s ease !important;
+  bottom: 20px !important;
+  left: 20px !important;
+}
+
+/* Ensure all child elements of accessibility widget are clickable */
+#sienna-accessibility-widget *,
+[id*="sienna"] *,
+[class*="sienna"] *,
+.sienna-accessibility-widget * {
+  pointer-events: auto !important;
+  z-index: inherit !important;
+}
+
+/* Mobile specific fixes for accessibility widget */
+@media (hover: none) and (pointer: coarse) {
+  #sienna-accessibility-widget,
+  [id*="sienna"],
+  [class*="sienna"],
+  .sienna-accessibility-widget {
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 20px !important;
+    z-index: 999999 !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+    will-change: auto !important;
+    transform: none !important;
+  }
+
+  /* Make sure widget button is large enough for touch */
+  #sienna-accessibility-widget button,
+  [id*="sienna"] button,
+  [class*="sienna"] button {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+  }
+}
+
 /* Reduced motion preferences - more comprehensive support */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -355,5 +412,13 @@
   .animate-scroll-rtl,
   .animate-pulse-slow {
     animation: none !important;
+  }
+
+  /* Keep accessibility widget transitions even with reduced motion */
+  #sienna-accessibility-widget,
+  [id*="sienna"],
+  [class*="sienna"],
+  .sienna-accessibility-widget {
+    transition-duration: 0.3s !important;
   }
 }
