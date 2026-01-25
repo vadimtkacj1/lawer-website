@@ -75,8 +75,9 @@ export default function ExpertBio() {
               whileInView="visible"
               variants={fadeInUpFast}
             >
-              אני אבי בוקעי, יוצא המערכת הבנקאית ובעל תואר אקדמי במנהל עסקים עם דגש על נדל"ן. אני כאן כדי ללוות אתכם צעד-צעד בבחירות הכלכליות החשובות שלכם.
-            </motion.p>
+א יבא ,יעקוב אצוי תכרעמה תיאקנבה לעבו ראות ימדקא להנמב םיקסע םע שגד לע .ן"לדנ ינא ןאכ ידכ 
+תוולל םכתא דעצ-דעצ תוריחבב תוילכלכה תובושחה ,םכלש ךוסחלו םכל תא היטרקוריבה ףסכהו קנבהש 
+אל הצור .וכסחתש            </motion.p>
 
             {/* HIGHLIGHTS: List with custom icon containers */}
             <div className="flex justify-center lg:justify-start mb-12">
