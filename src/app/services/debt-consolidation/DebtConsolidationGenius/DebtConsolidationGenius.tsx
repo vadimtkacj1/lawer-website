@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const consolidationBenefits = [
-  { t: "פריסה ארוכה וחכמה", d: "במקום להחזיר את הכסף ב-3 שנים, פורסים אותו ל-20 או 30 שנה בתוך המשכנתא. זה מפנה כסף פנוי לחיות." },
-  { t: "ריבית נמוכה משמעותית", d: "הריבית על משכנתא זולה משמעותית מריבית של הלוואת רכב, אשראי או הלוואה בנקאית רגילה." }
+  { t: "הריבית", d: "נכון, הריבית ב'משכנתא לכל מטרה' מעט גבוהה יותר ממשכנתא לרכישת דירה, אבל היא עדיין נמוכה משמעותית (בפער של 3%-5% ואף יותר) מכל הלוואה מסחרית רגילה ('הלוואת סולו') שתקבלו בבנק." },
+  { t: "הפריסה", d: "הלוואה רגילה מחזירים תוך 5 שנים, מה שמייצר החזר חודשי גבוה מאוד. משכנתא לכל מטרה ניתן לפרוס ל-20 ואף 30 שנה!" },
+  { t: "התוצאה", d: "במקום לשלם 4,000 ₪ בחודש על הלוואה של 200,000 ₪, תשלמו כמה מאות שקלים בודדים בחודש בתוך המשכנתא." }
 ];
 
 export default function DebtConsolidationGenius() {
@@ -21,9 +22,15 @@ export default function DebtConsolidationGenius() {
           
           <motion.div variants={staggerItem} className="mb-14 md:mb-32">
             <h2 className="font-noto-sans-hebrew font-black text-xl md:text-7xl lg:text-8xl text-[#1c3664] leading-tight">
-              איחוד הלוואות: <br />
-              <span className="text-orange border-b-2 md:border-b-8 border-orange pb-2 md:pb-3 inline-block mt-1">להחזיר את האוויר לנשימה</span>
+              מה זה "משכנתא לכל מטרה" <br />
+              <span className="text-orange border-b-2 md:border-b-8 border-orange pb-2 md:pb-3 inline-block mt-1">ולמה זה משתלם?</span>
             </h2>
+            <p className="text-base md:text-2xl lg:text-3xl text-[#1c3664]/80 font-light leading-relaxed mt-6 md:mt-12">
+              בפשטות: אנחנו ממשכנים את הנכס הקיים שלכם (או מרחיבים את המשכנתא הקיימת) כדי לקבל כסף לחשבון הבנק לשימוש חופשי.
+            </p>
+            <h3 className="font-noto-sans-hebrew font-bold text-lg md:text-4xl lg:text-5xl text-[#1c3664] mt-8 md:mt-16 mb-4 md:mb-8">
+              למה זה עדיף על הלוואה רגילה? המספרים מדברים:
+            </h3>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">

@@ -4,6 +4,7 @@ import { MotionConfig } from "framer-motion";
 import FullScreenLoader from "@/components/ui/FullScreenLoader";
 import ClientEffects from "@/components/ui/ClientEffects";
 import localFont from "next/font/local";
+import Script from "next/script";
 
 // Load local Noto Sans Hebrew variable font
 const notoSansHebrew = localFont({
@@ -103,51 +104,51 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.facebook.com" />
         <link rel="dns-prefetch" href="https://www.instagram.com" />
         <link rel="dns-prefetch" href="https://wa.me" />
-        {/* EqualWeb Accessibility Widget */}
-        <script
+        {/* EqualWeb Accessibility Widget - now loaded via client component to prevent hydration issues */}
+      </head>
+      <body className={`${notoSansHebrew.variable} font-noto-sans-hebrew antialiased`}>
+        {/* EqualWeb Accessibility Widget - configured for mobile support */}
+        <Script
+          id="equalweb-config"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              window.interdeal = {
-                get sitekey() { return "7feb5155e8b4d2affe0ddef57d563c34" },
-                get domains() {
-                  return {
+              (function() {
+                window.interdeal = {
+                  "sitekey": "7feb5155e8b4d2affe0ddef57d563c34",
+                  "Position": "left",
+                  "Menulang": "HE",
+                  "domains": {
                     "js": "https://cdn.equalweb.com/",
                     "acc": "https://access.equalweb.com/"
-                  }
-                },
-                "Position": "left",
-                "Menulang": "HE",
-                "draggable": true,
-                "btnStyle": {
-                  "vPosition": ["80%", "80%"],
-                  "margin": ["0", "0"],
-                  "scale": ["0.5", "0.5"],
-                  "color": {
-                    "main": "#1c4bb6",
-                    "second": "#ffffff"
                   },
-                  "icon": {
-                    "outline": false,
-                    "outlineColor": "#ffffff",
-                    "type": 10,
-                    "shape": "rounded"
+                  "btnStyle": {
+                    "vPosition": ["80%", "80%"],
+                    "margin": ["0", "0"],
+                    "scale": ["0.5", "0.5"],
+                    "color": {
+                      "main": "#1c4bb6",
+                      "second": "#ffffff"
+                    },
+                    "icon": {
+                      "type": 10,
+                      "shape": "rounded",
+                      "outline": false
+                    }
                   }
-                }
-              };
-              (function(doc, head, body){
-                var coreCall = doc.createElement('script');
-                coreCall.src = interdeal.domains.js + 'core/5.2.5/accessibility.js';
-                coreCall.defer = true;
-                coreCall.integrity = 'sha512-Zamp30ps601kXvZTcIYv1sytUc090mrEJD9rLuoWzEGqmB6t0XdLRgC/g5TznUleEBIMm6T3c6Baf/ExIYh/Hw==';
-                coreCall.crossOrigin = 'anonymous';
-                coreCall.setAttribute('data-cfasync', true);
-                body ? body.appendChild(coreCall) : head.appendChild(coreCall);
-              })(document, document.head, document.body);
+                };
+                
+                var script = document.createElement('script');
+                script.src = 'https://cdn.equalweb.com/core/5.2.5/accessibility.js';
+                script.defer = true;
+                script.integrity = 'sha512-Zamp30ps601kXvZTcIYv1sytUc090mrEJD9rLuoWzEGqmB6t0XdLRgC/g5TznUleEBIMm6T3c6Baf/ExIYh/Hw==';
+                script.crossOrigin = 'anonymous';
+                script.setAttribute('data-cfasync', 'true');
+                (document.body || document.head).appendChild(script);
+              })();
             `,
           }}
         />
-      </head>
-      <body className={`${notoSansHebrew.variable} font-noto-sans-hebrew antialiased`}>
         <MotionConfig reducedMotion="user">
           <FullScreenLoader />
           <ClientEffects />

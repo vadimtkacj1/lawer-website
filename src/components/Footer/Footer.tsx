@@ -14,7 +14,7 @@ const serviceLinks = [
   { href: "/services/renovation-mortgage", label: "משכנתא לשיפוץ" },
   { href: "/services/apartment-mortgage", label: "משכנתא לדירה" },
   { href: "/services/foreign-mortgages", label: "משכנתא לתושבי חוץ" },
-  { href: "/services/debt-consolidation", label: "איחוד הלוואות למשכנתא" },
+  { href: "/services/debt-consolidation", label: "משכנתא לכל מטרה" },
 ];
 
 const socialLinks = [

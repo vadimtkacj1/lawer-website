@@ -15,7 +15,7 @@ const Footer = dynamic(() => import("@/components/Footer"));
 const Widgets = dynamic(() => import("@/components/ui/Widgets"));
 
 export const metadata: Metadata = {
-  title: "(מאמר) איחוד הלוואות ומחזור משכנתא - אבי - הבית למשכנתאות | אבי בוקעי",
+  title: " איחוד הלוואות ומחזור משכנתא - אבי - הבית למשכנתאות ",
   description:
     "משכנתא לשיפוץ בריביות נמוכות. שדרגו את הבית ללא הלוואות יקרות. טיפול מלא בשמאויות ושחרור כספים. מומחה משכנתאות מנוסה בחולון והמרכז.",
   keywords: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     canonical: "https://avi-home.co.il/services/renovation-mortgage",
   },
   openGraph: {
-    title: "(מאמר) איחוד הלוואות ומחזור משכנתא - אבי - הבית למשכנתאות | אבי בוקעי",
+    title: " איחוד הלוואות ומחזור משכנתא - אבי - הבית למשכנתאות ",
     description: "שדרגו את הבית ללא הלוואות יקרות. משכנתא לשיפוץ בריביות נמוכות עם טיפול מלא בשמאויות ושחרור כספים.",
     url: "https://avi-home.co.il/services/renovation-mortgage",
     siteName: "אבי - הבית למשכנתאות",
