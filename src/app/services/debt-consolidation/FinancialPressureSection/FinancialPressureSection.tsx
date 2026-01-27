@@ -22,9 +22,9 @@ export default function FinancialPressureSection() {
               variants={staggerItem}
               className="font-noto-sans-hebrew font-black text-xl md:text-6xl lg:text-7xl text-white leading-[1.2] md:leading-[1.15]"
             >
-              ה-1 או ה-10 לחודש מגיע, <br />
+              דמיינו שאתם יושבים על ארגז מלא בזהב, <br />
               <span className="text-orange border-b-2 md:border-b-8 border-orange pb-1 md:pb-2 inline-block mt-1">
-                ואיתו הלחץ בחזה.
+                אבל הולכים לבקש נדבות ברחוב.
               </span>
             </motion.h2>
             
@@ -32,14 +32,21 @@ export default function FinancialPressureSection() {
               variants={staggerItem}
               className="text-base md:text-2xl lg:text-3xl text-white/90 font-light leading-relaxed max-w-5xl"
             >
-              אתם עובדים קשה ומרוויחים יפה, אבל בסוף החודש נשארים עם הלשון בחוץ. הבית שלכם הוא לא רק מקום לגור בו, הוא הכלי הפיננסי הכי חזק שיש לכם כדי למחוק את המינוס.
+              זה בדיוק מה שקורה כשבעלי דירות לוקחים "הלוואה לכל מטרה" רגילה מהבנק או מחברת האשראי, בזמן שיש להם נכס ששווה מיליונים.
+            </motion.p>
+            
+            <motion.p 
+              variants={staggerItem}
+              className="text-base md:text-2xl lg:text-3xl text-white/90 font-light leading-relaxed max-w-5xl mt-4"
+            >
+              בין אם אתם רוצים לעזור לילד עם הון עצמי לדירה משלו, לממן אירוע משפחתי גדול, לסגור מינוס לוחץ או לקנות רכב חדש - הבנק ישמח לתת לכם הלוואה "רגילה". הבעיה? הריבית תהיה גבוהה, וההחזר החודשי יחנוק אתכם כי הפריסה קצרה (בדרך כלל עד 5-7 שנים).
             </motion.p>
           </div>
 
           <motion.div variants={staggerItem} className="lg:col-span-4 relative mt-6 lg:mt-0">
             <div className="border-r-2 md:border-r-8 border-orange pr-4 md:pr-10 py-1 md:py-2">
               <p className="text-base md:text-2xl lg:text-3xl text-white font-bold italic leading-snug">
-                "אני כאן כדי לגלות לכם סוד: אפשר להקטין את ההוצאות ב-3,000 עד 5,000 שקלים בכל חודש."
+                "נעים להכיר, אני אבי בוקעי, הבעלים של 'אבי - הבית למשכנתאות'. כיוצא מערכת הבנקאות ובעל תואר אקדמי במנהל עסקים והתמחות בנדל״ן ותשתיות, אני כאן כדי לגלות לכם את האלטרנטיבה החכמה שהבנקים לא תמיד דוחפים לקדמת הבמה: משכנתא לכל מטרה."
               </p>
             </div>
           </motion.div>

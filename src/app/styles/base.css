@@ -36,27 +36,6 @@
     content-visibility: auto;
   }
 
-  /* GPU acceleration for better performance on mobile */
-  @media (hover: none) and (pointer: coarse) {
-    body {
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-    }
-
-    /* Disable all non-essential animations on mobile */
-    * {
-      animation-play-state: paused !important;
-    }
-
-    /* Force hardware acceleration only for critical elements */
-    img, video, picture {
-      will-change: auto;
-      transform: translateZ(0);
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-    }
-  }
-
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-noto-sans-hebrew font-black tracking-tight;
@@ -72,16 +51,6 @@
     backface-visibility: hidden;
   }
 
-  /* Mobile-specific text rendering optimization */
-  @media (hover: none) and (pointer: coarse) {
-    h1, h2, h3, h4, h5, h6, p, span, div {
-      /* Optimize text rendering on mobile */
-      text-rendering: optimizeSpeed;
-      /* Prevent text from triggering layout */
-      contain: layout;
-    }
-  }
-
   /* Pattern background for renovation sections */
   .pattern-bg {
     background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjOWU5YmIzIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjIiLz48L2c+PC9zdmc+');
@@ -90,40 +59,58 @@
 
   /* Custom Scrollbar - Premium Design */
   ::-webkit-scrollbar {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #f9f7f4;
+    background: rgba(28, 54, 100, 0.03);
     border-radius: 10px;
+    margin: 4px 0;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #1c3664 0%, #0d1f3c 100%);
+    background: linear-gradient(180deg, #1c3664 0%, #0f2749 100%);
     border-radius: 10px;
-    border: 3px solid #f9f7f4;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 
+      inset 0 1px 2px rgba(255, 255, 255, 0.2),
+      0 2px 4px rgba(28, 54, 100, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #f26722 0%, #e05010 100%);
-    border-color: #f9f7f4;
-    border-width: 2px;
+    background: linear-gradient(180deg, #f26722 0%, #d94a0e 100%);
+    border-color: transparent;
+    box-shadow: 
+      inset 0 1px 2px rgba(255, 255, 255, 0.3),
+      0 3px 8px rgba(242, 103, 34, 0.3);
+    transform: scaleY(1.02);
   }
 
   ::-webkit-scrollbar-thumb:active {
-    background: linear-gradient(180deg, #f26722 0%, #d94a0e 100%);
+    background: linear-gradient(180deg, #d94a0e 0%, #c04209 100%);
+    box-shadow: 
+      inset 0 1px 2px rgba(0, 0, 0, 0.2),
+      0 1px 2px rgba(242, 103, 34, 0.2);
   }
 
   /* Firefox Scrollbar */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #1c3664 #f9f7f4;
+    scrollbar-color: #1c3664 rgba(28, 54, 100, 0.03);
   }
 
-  *:hover {
-    scrollbar-color: #f26722 #f9f7f4;
+  html:hover {
+    scrollbar-color: #f26722 rgba(28, 54, 100, 0.03);
+  }
+
+  /* Smooth scrollbar transitions */
+  @supports (scrollbar-width: thin) {
+    * {
+      scrollbar-gutter: stable;
+    }
   }
 
 }

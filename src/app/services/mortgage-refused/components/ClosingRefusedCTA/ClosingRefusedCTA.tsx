@@ -33,7 +33,7 @@ export default function ClosingRefusedCTA() {
             className="pt-6"
           >
             <p className="text-2xl md:text-4xl text-orange font-black italic">
-              אבי - הבית למשכנתאות | אבי בוקעי
+              אבי - הבית למשכנתאות 
             </p>
           </motion.div>
         </motion.div>

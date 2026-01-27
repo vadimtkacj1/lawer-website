@@ -6,6 +6,7 @@ import LazyMount from "@/components/ui/LazyMount";
 const BankLogos = dynamic(() => import("@/app/components/BankLogos"), {});
 const ExpertBio = dynamic(() => import("@/app/components/ExpertBio"), {});
 const Quote = dynamic(() => import("@/components/Quote"), {});
+const WhyChooseAvi = dynamic(() => import("@/app/components/WhyChooseAvi"), {});
 const Services = dynamic(() => import("@/components/Services"), {});
 const Testimonials = dynamic(() => import("@/app/components/Testimonials"), {});
 const HowItWorks = dynamic(() => import("@/app/components/HowItWorks"), {});
@@ -26,6 +27,9 @@ export default function HomeLazySections() {
       </LazyMount>
       <LazyMount>
         <Quote />
+      </LazyMount>
+      <LazyMount>
+        <WhyChooseAvi />
       </LazyMount>
       <LazyMount>
         <Services />

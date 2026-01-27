@@ -60,12 +60,6 @@ const services = [
     description: "מימון שיפוץ בתנאי משכנתא ובתהליך יעיל ומהיר",
   },
   {
-    href: "/services/apartment-mortgage",
-    Icon: ShieldIcon,
-    title: "משכנתא לדירה",
-    description: "תמהיל משכנתא מותאם אישית עם ליווי מקצועי מלא",
-  },
-  {
     href: "/services/foreign-mortgages",
     Icon: GlobeIcon,
     title: "משכנתא לתושבי חוץ",
@@ -74,7 +68,7 @@ const services = [
   {
     href: "/services/debt-consolidation",
     Icon: ReceiptPercentIcon,
-    title: "איחוד הלוואות למשכנתא",
+    title: "משכנתא לכל מטרה",
     description: "הפיכת הלוואות יקרות לתשלום חודשי אחד נמוך ומשתלם על ידי פריסה מחדש בתוך המשכנתא",
   },
 ];

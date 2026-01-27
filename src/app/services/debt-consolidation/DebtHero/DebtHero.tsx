@@ -59,9 +59,9 @@ export default function DebtHero() {
                          relative px-4 py-2"
               variants={staggerItem}
             >
-              משכנתא לשיפוץ <br/>
-              איך לשדרג את הבית <br/>
-              בלי להיחנק מהלוואות יקרות
+              משכנתא לכל מטרה: <br/>
+              להפוך את הבית לכספומט <br/>
+              הכי זול שתפגשו
             </motion.h1>
           </div>
         </motion.div>

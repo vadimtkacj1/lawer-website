@@ -14,44 +14,44 @@ const Footer = dynamic(() => import("@/components/Footer"));
 const Widgets = dynamic(() => import("@/components/ui/Widgets"));
 
 export const metadata: Metadata = {
-  title: "משכנתא לשיפוץ בחולון והמרכז | אבי - הבית למשכנתאות",
+  title: "משכנתא לכל מטרה בחולון והמרכז | אבי - הבית למשכנתאות",
   description:
-    "משכנתא לשיפוץ בריביות נמוכות. שדרגו את הבית ללא הלוואות יקרות. טיפול מלא בשמאויות ושחרור כספים. מומחה משכנתאות מנוסה בחולון והמרכז.",
+    "משכנתא לכל מטרה בריביות נמוכות. הפכו את הבית לכספומט זול. עזרה לילדים, איחוד הלוואות, סגירת מינוס. מומחה משכנתאות מנוסה בחולון והמרכז.",
   keywords: [
-    "משכנתא לשיפוץ",
-    "משכנתא לשיפוץ דירה",
-    "הלוואה לשיפוץ",
-    "מימון שיפוץ",
-    "שיפוץ דירה משכנתא",
-    "הרחבת משכנתא לשיפוץ",
-    "משכנתא לשיפוץ בחולון",
-    "יועץ משכנתאות שיפוץ",
-    "שמאות לשיפוץ",
-    "מיחזור משכנתא לשיפוץ",
+    "משכנתא לכל מטרה",
+    "משכנתא לעזרה לילדים",
+    "איחוד הלוואות",
+    "סגירת מינוס",
+    "הרחבת משכנתא",
+    "משכנתא להשקעה",
+    "משכנתא לכל מטרה בחולון",
+    "יועץ משכנתאות",
+    "מיחזור משכנתא",
+    "הלוואה על הבית",
   ],
   alternates: {
-    canonical: "https://avi-home.co.il/services/renovation-mortgage",
+    canonical: "https://avi-home.co.il/services/debt-consolidation",
   },
   openGraph: {
-    title: "משכנתא לשיפוץ בחולון והמרכז | אבי - הבית למשכנתאות",
-    description: "שדרגו את הבית ללא הלוואות יקרות. משכנתא לשיפוץ בריביות נמוכות עם טיפול מלא בשמאויות ושחרור כספים.",
-    url: "https://avi-home.co.il/services/renovation-mortgage",
+    title: "משכנתא לכל מטרה בחולון והמרכז | אבי - הבית למשכנתאות",
+    description: "הפכו את הבית לכספומט זול. משכנתא לכל מטרה בריביות נמוכות לעזרה לילדים, איחוד הלוואות וסגירת מינוס.",
+    url: "https://avi-home.co.il/services/debt-consolidation",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
     type: "website",
   },
 };
 
-// JSON-LD Structured Data for Renovation Mortgage Service
+// JSON-LD Structured Data for Mortgage for Any Purpose Service
 function JsonLd() {
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://avi-home.co.il/services/renovation-mortgage#service",
-        name: "משכנתא לשיפוץ",
-        description: "משכנתא לשיפוץ בריביות נמוכות. שדרגו את הבית ללא הלוואות יקרות. טיפול מלא בשמאויות ושחרור כספים.",
+        "@id": "https://avi-home.co.il/services/debt-consolidation#service",
+        name: "משכנתא לכל מטרה",
+        description: "משכנתא לכל מטרה בריביות נמוכות. הפכו את הבית לכספומט זול. עזרה לילדים, איחוד הלוואות, סגירת מינוס.",
         provider: {
           "@id": "https://avi-home.co.il/#organization"
         },
@@ -62,14 +62,14 @@ function JsonLd() {
           { "@type": "City", name: "תל אביב" }
         ],
         serviceType: "Financial Service",
-        category: "Renovation Mortgage"
+        category: "Mortgage for Any Purpose"
       },
       {
         "@type": "WebPage",
-        "@id": "https://avi-home.co.il/services/renovation-mortgage#webpage",
-        url: "https://avi-home.co.il/services/renovation-mortgage",
-        name: "משכנתא לשיפוץ | אבי - הבית למשכנתאות",
-        description: "משכנתא לשיפוץ בריביות נמוכות. טיפול מלא בשמאויות ושחרור כספים.",
+        "@id": "https://avi-home.co.il/services/debt-consolidation#webpage",
+        url: "https://avi-home.co.il/services/debt-consolidation",
+        name: "משכנתא לכל מטרה | אבי - הבית למשכנתאות",
+        description: "משכנתא לכל מטרה בריביות נמוכות. הפכו את הבית לכספומט זול.",
         inLanguage: "he-IL",
         isPartOf: { "@id": "https://avi-home.co.il/#website" },
         breadcrumb: {
@@ -90,8 +90,8 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 3,
-              name: "משכנתא לשיפוץ",
-              item: "https://avi-home.co.il/services/renovation-mortgage"
+              name: "משכנתא לכל מטרה",
+              item: "https://avi-home.co.il/services/debt-consolidation"
             }
           ]
         }
@@ -107,7 +107,7 @@ function JsonLd() {
   );
 }
 
-export default function RenovationMortgagePage() {
+export default function DebtConsolidationPage() {
   return (
     <>
       <JsonLd />
