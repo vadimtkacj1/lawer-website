@@ -26,19 +26,21 @@ const ChevronIcon = ({ className }: { className?: string }) => (
 );
 
 const servicesLinks = [
-  { href: "/services/debt-consolidation", label: "משכנתא לרכישת דירה" },
-  { href: "/services/foreign-mortgages", label: "מחיר למשתכן" },
+  { href: "/services/mortgage-for-purchase", label: "משכנתא לרכישת דירה" },
+  { href: "/services/dira-behanacha-mortgage", label: "מחיר למשתכן" },
   { href: "/services/loan-consolidation", label: "מחזור ואיחוד הלוואות" },
   { href: "/services/reverse-mortgage", label: "משכנתא הפוכה" },
-  { href: "/services/refused", label: "מסורבי בנקים ומורכבות" },
+  { href: "/services/mortgage-refused", label: "מסורבי בנקים ומורכבות" },
   { href: "/services/renovation-mortgage", label: "משכנתא לשיפוץ" },
-  { href: "/services/all-purpose", label: "משכנתא לכל מטרה" },
+  { href: "/services/apartment-mortgage", label: "משכנתא לדירה" },
+  { href: "/services/foreign-mortgages", label: "משכנתא לתושבי חוץ" },
+  { href: "/services/debt-consolidation", label: "משכנתא לכל מטרה" },
 ];
 
 const navLinks = [
   { href: "/", label: "דף הבית" },
   { href: "#services", label: "שירותים", hasDropdown: true },
-  { href: "#testimonials", label: "המלצות" },
+  { href: "/about", label: "אודות" },
   { href: "#contact", label: "צור קשר" },
 ];
 
@@ -72,6 +74,11 @@ export default function Header() {
         setIsDesktopDropdownOpen(false);
         const offsetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      } else {
+        // If element doesn't exist on current page, navigate to home page with hash
+        setIsMobileMenuOpen(false);
+        setIsDesktopDropdownOpen(false);
+        window.location.href = `/${href}`;
       }
     }
   };

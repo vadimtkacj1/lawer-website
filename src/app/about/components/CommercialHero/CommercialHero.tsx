@@ -115,7 +115,8 @@ export default function CommercialHero() {
       </div>
 
 {/* --- NEW LARGER CENTERED SCROLL BUTTON --- */}
-      <motion.div 
+      <motion.div
+        initial={{ opacity: 1 }}
         style={{ opacity: textOpacity }}
         className="absolute bottom-6 left-0 right-0 flex flex-col items-center cursor-pointer z-30 group"
         onClick={scrollToNext}
