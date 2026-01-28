@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { PHONE_NUMBER_RAW, PHONE_NUMBER, handlePhoneClick } from "@/lib/phone";
+import { PHONE_NUMBER_RAW, PHONE_NUMBER } from "@/lib/phone";
 
 export default function AboutCTA() {
   return (
@@ -39,7 +39,6 @@ export default function AboutCTA() {
             </Link>
             <a
               href={`tel:${PHONE_NUMBER_RAW}`}
-              onClick={handlePhoneClick}
               className="inline-flex items-center justify-center px-8 py-4 text-lg md:text-xl font-black
                        bg-white text-blue-dk rounded-full hover:bg-white/90 transition-all duration-300
                        hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl w-full sm:w-auto"
