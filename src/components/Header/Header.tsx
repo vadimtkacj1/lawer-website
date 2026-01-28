@@ -6,6 +6,7 @@ import Link from "next/link";
 import MenuIcon from "@/components/icons/MenuIcon";
 import CloseIcon from "@/components/icons/CloseIcon";
 import PhoneIcon from "@/components/icons/PhoneIcon";
+import { PHONE_NUMBER_RAW } from "@/lib/phone";
 
 /**
  * A clean Chevron icon (arrowhead only) for the dropdown.
@@ -154,11 +155,15 @@ export default function Header() {
               {isMobileMenuOpen ? <CloseIcon className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
             </button>
 
-            {/* Desktop CTA */}
+            {/* Desktop CTA - Now links to #contact */}
             <div className="hidden lg:flex items-center gap-2">
-              <a href="tel:054-472-9513" className="flex items-center gap-2 text-sm px-4 py-1.5 transition-all hover:bg-blue-dk/90 active:scale-95 text-white bg-blue-dk rounded-full font-bold">
+              <a 
+                href="#contact"
+                onClick={(e) => handleNavClick(e, "#contact")}
+                className="flex items-center gap-2 text-sm px-4 py-1.5 transition-all hover:bg-blue-dk/90 active:scale-95 text-white bg-blue-dk rounded-full font-bold"
+              >
                 <PhoneIcon className="w-4 h-4" />
-                <span>התקשר עכשיו</span>
+                <span>צור קשר</span>
               </a>
             </div>
           </nav>
@@ -211,10 +216,15 @@ export default function Header() {
             ))}
           </ul>
 
+          {/* Mobile CTA - Now links to #contact */}
           <div className="mt-12 w-full flex justify-center">
-            <a href="tel:054-472-9513" className="bg-blue-dk text-white flex items-center justify-center gap-3 px-8 py-4 text-xl w-fit rounded-lg font-bold shadow-lg">
+            <a 
+              href="#contact"
+              onClick={(e) => handleNavClick(e, "#contact")}
+              className="bg-blue-dk text-white flex items-center justify-center gap-3 px-8 py-4 text-xl w-fit rounded-lg font-bold shadow-lg"
+            >
               <PhoneIcon className="w-6 h-6" />
-              <span>התקשר עכשיו</span>
+              <span>צור קשר</span>
             </a>
           </div>
         </div>
