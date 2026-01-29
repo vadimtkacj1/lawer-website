@@ -93,24 +93,27 @@ export default function Footer() {
           <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center sm:col-span-2 lg:col-span-1">
             <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">מידע משפטי</h3>
             <nav className="flex flex-col space-y-1.5 sm:space-y-2 w-full">
-              <Link
-                href="/accessibility"
+              <a
+                href="/pdfs/accessibility.pdf"
+                download
                 className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
               >
                 הצהרת נגישות
-              </Link>
-              <Link
-                href="/privacy"
+              </a>
+              <a
+                href="/pdfs/privacy.pdf"
+                download
                 className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
               >
                 מדיניות פרטיות
-              </Link>
-              <Link
-                href="/terms"
+              </a>
+              <a
+                href="/pdfs/terms.pdf"
+                download
                 className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
               >
                 תנאי שימוש
-              </Link>
+              </a>
             </nav>
           </div>
         </div>
