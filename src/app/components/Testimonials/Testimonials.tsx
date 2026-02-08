@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useMemo, memo } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
 
@@ -10,40 +9,72 @@ import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
  */
 const testimonials = [
   {
-    name: "דניאל לוי",
-    image: "/images/client.jpg",
     rating: 5,
-    text: 'הגעתי למחזור משכנתא וחשבתי שאני יודע הכל. אבי בנה לי תמהיל חדש שקיצר את תקופת ההחזר ב-5 שנים והוריד את ההחזר החודשי.',
+    text: 'הגענו עם תחושה שאולי כבר מאוחר לשפר משהו, אבל בדיקה מסודרת הראתה אחרת. קיבלנו תמונה ברורה של המסלולים והמספרים, בלי לחץ ובלי סיסמאות. המחזור שבוצע שיפר את הריביות וההחזר החודשי בצורה מורגשת.',
   },
   {
-    name: "יוסי ומיכל כהן",
-    image: "/images/client.jpg",
     rating: 5,
-    text: 'אבי ליווה אותנו ברכישת הדירה הראשונה שלנו. בזכותו חסכנו למעלה מ-150,000 ש"ח בריביות והרגשנו שיש מישהו שנלחם עבורנו.',
+    text: 'באנו בלי ידע מוקדם ועם לא מעט חשש. קיבלנו הכוונה מדויקת כבר מהפגישה הראשונה, בלי סיבובים ובלי הבטחות מיותרות. בסוף התהליך סגרנו משכנתא בריביות טובות והרגשנו שיש מי שמוביל אותנו צעד־צעד עד הסוף.',
   },
   {
-    name: "רונית אברהם",
-    image: "/images/client.jpg",
     rating: 5,
-    text: "מקצוענות נטו. תהליך לקיחת המשכנתא היה שקוף, ברור ומהיר. אבי דאג לכל הבירוקרטיה ואני קיבלתי שקט נפשי ותנאים מעולים.",
+    text: 'היה לנו חשוב לעבוד עם מישהו זמין וקשוב, וזה בדיוק מה שקיבלנו. כל שאלה נענתה, גם בשעות לא שגרתיות, והכול הוסבר בגובה העיניים. תהליך לא פשוט שהפך להרבה יותר רגוע וברור.',
   },
   {
-    name: "משה דוידוב",
-    image: "/images/client.jpg",
     rating: 5,
-    text: 'לא האמנתי שאפשר לקבל תנאים כאלה טובים. אבי הצליח להשיג לי ריבית נמוכה משמעותית מהצעות הבנקים. ממליץ בחום!',
+    text: 'לא האמנתי שאפשר לשנות את המצב בצורה כזו. אחרי בדיקה יסודית ותכנון נכון, הצלחנו למחזר ולאחד הלוואות ולחסוך סכום של מעל 200,000 ש״ח. עבודה מקצועית, עניינית ועם תוצאות שמדברות בעד עצמן.',
   },
   {
-    name: "שרה ואבי גולדשטיין",
-    image: "/images/client.jpg",
     rating: 5,
-    text: 'קנינו דירה שנייה להשקעה ואבי עזר לנו לבנות תמהיל שמשתלם מאוד. השירות היה אישי, זמין ומקצועי לאורך כל הדרך.',
+    text: 'עברנו מחזור משכנתא מתוך רצון לשפר תנאים, וקיבלנו ניתוח מלא של המצב והאפשרויות. לא דחפו אותנו לשום כיוון, אלא הציגו את התמונה המלאה ונתנו לנו לבחור. התוצאה – תנאים טובים יותר ושקט נפשי.',
   },
   {
-    name: "אילנה ברק",
-    image: "/images/client.jpg",
     rating: 5,
-    text: "אחרי שכמה בנקים סירבו לי, אבי מצא פתרון יצירתי ועזר לי לממש את החלום של диרה משלי. תודה רבה!",
+    text: 'מה שאהבנו במיוחד זה הסדר והשליטה בפרטים. הכול היה מתוכנן מראש, בלי הפתעות ובלי לחץ. ידענו בכל שלב מה הצעד הבא ומה מצופה מאיתנו. ליווי מדויק שעשה את ההבדל.',
+  },
+  {
+    rating: 5,
+    text: 'נכנסנו לתהליך רגיש וחשוב עבורנו. קיבלנו יחס מכבד, סבלנות והסברים ברורים מאוד. הרגשנו שמקשיבים לנו באמת ולא ממהרים. יצאנו מהתהליך עם תחושת ביטחון והחלטה שאנחנו שלמים איתה.',
+  },
+  {
+    rating: 5,
+    text: 'בתור רוכש ראשון הייתי מלא סימני שאלה. קיבלתי הסברים ברורים על כל שלב, כולל טעויות שכדאי להימנע מהן. התהליך היה מסודר ומדויק, והרגשתי שיש מי שמחזיק את ההגה עד החתימה.',
+  },
+  {
+    rating: 5,
+    text: 'המטרה שלנו הייתה להוריד עומס חודשי בלי להסתבך. נעשתה בדיקה מעמיקה של הנתונים והוצגו כמה אפשרויות, עם יתרונות וחסרונות. בחרנו את הפתרון שהכי מתאים לנו וההקלה מורגשת כבר עכשיו.',
+  },
+  {
+    rating: 5,
+    text: 'הייתי עם כמה הלוואות במקביל והרגשתי שהכול מתפזר. אחרי ניתוח יסודי נבנתה תוכנית מסודרת שאיחדה הכול למסגרת אחת ברורה. היום ההתנהלות הרבה יותר פשוטה והמספרים סוף סוף עובדים לטובתי.',
+  },
+  {
+    rating: 5,
+    text: 'היינו צריכים ליווי שיידע לקחת בחשבון תשלומים עתידיים ושינויים בדרך. קיבלנו תכנון מדויק וחשיבה קדימה, בלי הפתעות. הרגשנו בטוחים גם בהחלטות הגדולות וגם בפרטים הקטנים.',
+  },
+  {
+    rating: 5,
+    text: 'פניתי רק כדי לבדוק אם בכלל יש טעם למחזר. קיבלתי תשובה כנה ומנומקת, בלי לנסות "למכור" תהליך מיותר. בסוף כן בוצע מחזור נקודתי שנתן שיפור אמיתי בתנאים.',
+  },
+  {
+    rating: 5,
+    text: 'היה לנו חשוב להבין ולא רק לחתום. כל סעיף הוסבר בצורה פשוטה וברורה, גם כששאלנו שוב. תהליך מורכב שהפך להרבה יותר רגוע בזכות ליווי מסודר וזמין.',
+  },
+  {
+    rating: 5,
+    text: 'לא חשבתי שאפשר לשפר תנאים בלי לעבור בנק, אבל ניהול מו״מ נכון שינה את התמונה. התהליך היה קצר, ממוקד ומבוסס על נתונים. התוצאה – ריביות טובות יותר בלי כאב ראש מיותר.',
+  },
+  {
+    rating: 5,
+    text: 'לא האמנתי שאפשר לשפר תנאים בלי לעבור בנק, אבל אחרי בדיקה יסודית וניהול מו״מ מדויק מול הבנק, בוצע מחזור חלקי שהוזיל משמעותית את הריביות. התהליך היה ענייני, מהיר ומבוסס על מספרים ולא על הבטחות. קיבלתי פתרון חכם שמתאים למצב הקיים שלי וחיסכון שמורגש מהחודש הראשון.',
+  },
+  {
+    rating: 5,
+    text: 'קיבלנו סקירה מלאה של המצב שלנו ושל האפשרויות, בלי לדחוף לכיוון מסוים. ההחלטה הייתה שלנו, אבל עם כל המידע הנכון. יצאנו עם תחושת שליטה ושקט.',
+  },
+  {
+    rating: 5,
+    text: 'זה היה תהליך רגיש עבורנו, והיחס שקיבלנו היה סבלני ומכבד. הכול הוסבר לאט ובבהירות, בלי לחץ ובלי קיצורי דרך. קיבלנו החלטה מושכלת שמתאימה לצרכים שלנו.',
   },
 ];
 
@@ -52,39 +83,26 @@ const testimonials = [
  */
 const TestimonialCard = ({ item }: { item: typeof testimonials[0] }) => (
   <div
-    className="flex flex-col justify-between w-[320px] md:w-[500px] h-[260px] md:h-[320px] p-6 md:p-10 bg-gradient-to-bl from-[#1c3664] via-[#2a54a1] to-[#5da2ff] rounded-3xl text-right shrink-0"
-    style={{ 
+    className="flex flex-col justify-center w-[320px] md:w-[500px] min-h-[220px] md:min-h-[280px] p-6 md:p-10 bg-gradient-to-bl from-[#1c3664] via-[#2a54a1] to-[#5da2ff] rounded-3xl text-right shrink-0"
+    style={{
       boxShadow: '0 15px 40px -12px rgba(28, 54, 100, 0.25)',
-      border: '1px solid rgba(255, 255, 255, 0.1)' 
+      border: '1px solid rgba(255, 255, 255, 0.1)'
     }}
     dir="rtl"
   >
-    <div>
-      {/* Star Ratings */}
-      <div className="flex justify-start gap-1 mb-4 md:mb-6">
-        {[...Array(item.rating)].map((_, i) => (
-          <svg key={i} className="w-4 h-4 md:w-6 md:h-6 fill-[#f26722]" viewBox="0 0 20 20">
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
-        ))}
-      </div>
-
-      {/* Testimonial Text */}
-      <p className="text-white text-base md:text-xl font-medium leading-relaxed line-clamp-4">
-        &ldquo;{item.text}&rdquo;
-      </p>
+    {/* Star Ratings */}
+    <div className="flex justify-start gap-1 mb-4 md:mb-6">
+      {[...Array(item.rating)].map((_, i) => (
+        <svg key={i} className="w-4 h-4 md:w-6 md:h-6 fill-[#f26722]" viewBox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
     </div>
 
-    {/* User Info Footer */}
-    <div className="flex items-center gap-4 mt-4">
-      <div className="relative w-10 h-10 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-white/20 shrink-0 shadow-sm">
-        <Image src={item.image} alt={item.name} fill className="object-cover" />
-      </div>
-      <div className="flex flex-col">
-        <span className="text-white font-bold text-sm md:text-lg leading-none mb-1">{item.name}</span>
-        <span className="text-white/80 text-[10px] md:text-sm">Verified Client</span>
-      </div>
-    </div>
+    {/* Testimonial Text */}
+    <p className="text-white text-base md:text-xl font-medium leading-relaxed">
+      &ldquo;{item.text}&rdquo;
+    </p>
   </div>
 );
 
@@ -150,19 +168,19 @@ function TestimonialsSection() {
 
       <div className="flex flex-col gap-2 md:gap-4">
         {/* Row 1: Scrolling Left */}
-        <MarqueeRow 
-          items={testimonials} 
-          direction="left" 
-          duration={50} 
-          isMobile={isMobile} 
+        <MarqueeRow
+          items={testimonials}
+          direction="left"
+          duration={200}
+          isMobile={isMobile}
         />
-        
+
         {/* Row 2: Scrolling Right */}
-        <MarqueeRow 
-          items={reversedTestimonials} 
-          direction="right" 
-          duration={55} 
-          isMobile={isMobile} 
+        <MarqueeRow
+          items={reversedTestimonials}
+          direction="right"
+          duration={205}
+          isMobile={isMobile}
         />
       </div>
     </section>
