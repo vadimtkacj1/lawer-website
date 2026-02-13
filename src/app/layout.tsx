@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "./styles/mobile.css";
 import { MotionConfig } from "framer-motion";
 import FullScreenLoader from "@/components/ui/FullScreenLoader";
 import ClientEffects from "@/components/ui/ClientEffects";
@@ -13,6 +14,15 @@ const notoSansHebrew = localFont({
   display: "swap",
   preload: true,
 });
+
+// Viewport configuration for mobile optimization
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: "#1c3664",
+};
 
 // Base metadata - can be extended per page
 export const metadata: Metadata = {
