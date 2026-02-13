@@ -72,10 +72,9 @@ export default function Header() {
       if (targetElement) {
         setIsMobileMenuOpen(false);
         setIsDesktopDropdownOpen(false);
-        const offsetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 80;
+        const offsetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 100;
         window.scrollTo({ top: offsetPosition, behavior: "smooth" });
       } else {
-        // If element doesn't exist on current page, navigate to home page with hash
         setIsMobileMenuOpen(false);
         setIsDesktopDropdownOpen(false);
         window.location.href = `/${href}`;
@@ -88,20 +87,20 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-[70] transition-all duration-300
                     ${isScrolled || isMobileMenuOpen
-                      ? "shadow-md py-0.5 border-b border-blue-dk/10 bg-cream"
-                      : "py-1.5 sm:py-2 border-b-0 bg-transparent"
+                      ? "shadow-md py-3 sm:py-4 border-b border-blue-dk/10 bg-cream"
+                      : "py-4 sm:py-6 border-b-0 bg-transparent"
                     }`}
       >
-        <div className="container mx-auto px-3 sm:px-4 md:px-8">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8">
           <nav className="flex items-center justify-between" dir="rtl">
             <div className="flex items-center gap-2 sm:gap-3 md:gap-8">
               <Link href="/" className="flex items-center" suppressHydrationWarning>
                 <Image
                   src="/images/logo.svg"
                   alt="Avi - Mortgage House"
-                  width={150}
-                  height={80}
-                  className="h-[32px] w-auto xs:h-[36px] sm:h-[42px] md:h-[52px] lg:h-[60px]"
+                  width={220}
+                  height={110}
+                  className="h-[60px] w-auto xs:h-[68px] sm:h-[75px] md:h-[80px] lg:h-[85px] transition-all duration-300"
                   priority
                 />
               </Link>
@@ -156,19 +155,19 @@ export default function Header() {
 
             {/* Mobile Toggle */}
             <button
-              className="lg:hidden relative z-[80] p-1 sm:p-1.5 text-blue-dk hover:text-orange transition-colors"
+              className="lg:hidden relative z-[80] p-2 text-blue-dk hover:text-orange transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "סגור תפריט" : "פתח תפריט"}
             >
-              {isMobileMenuOpen ? <CloseIcon className="w-7 h-7 sm:w-8 sm:h-8" /> : <MenuIcon className="w-7 h-7 sm:w-8 sm:h-8" />}
+              {isMobileMenuOpen ? <CloseIcon className="w-9 h-9 sm:w-10 sm:h-10" /> : <MenuIcon className="w-9 h-9 sm:w-10 sm:h-10" />}
             </button>
 
-            {/* Desktop CTA - Now links to #contact */}
+            {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-2">
               <a 
                 href="#contact"
                 onClick={(e) => handleNavClick(e, "#contact")}
-                className="flex items-center gap-2 text-sm px-4 py-1.5 transition-all hover:bg-blue-dk/90 active:scale-95 text-white bg-blue-dk rounded-full font-bold"
+                className="flex items-center gap-2 text-sm px-6 py-2.5 transition-all hover:bg-blue-dk/90 active:scale-95 text-white bg-blue-dk rounded-full font-bold"
               >
                 <PhoneIcon className="w-4 h-4" />
                 <span>צור קשר</span>
@@ -184,27 +183,27 @@ export default function Header() {
           isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="container mx-auto px-6 pt-24 pb-10 flex flex-col items-center overflow-y-auto">
-          <ul className="flex flex-col gap-5 items-center w-full">
+        <div className="container mx-auto px-6 pt-40 pb-10 flex flex-col items-center overflow-y-auto">
+          <ul className="flex flex-col gap-8 items-center w-full">
             {navLinks.map((link) => (
               <li key={link.href} className="w-full text-center">
                 {link.hasDropdown ? (
                   <div className="flex flex-col items-center">
                     <button
                       onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                      className="flex items-center justify-center gap-3 text-blue-dk font-bold text-3xl hover:text-orange transition-colors"
+                      className="flex items-center justify-center gap-3 text-blue-dk font-bold text-4xl hover:text-orange transition-colors"
                     >
                       {link.label}
-                      <ChevronIcon className={`w-6 h-6 transition-transform duration-300 ${isMobileServicesOpen ? "rotate-180" : ""}`} />
+                      <ChevronIcon className={`w-8 h-8 transition-transform duration-300 ${isMobileServicesOpen ? "rotate-180" : ""}`} />
                     </button>
                     
-                    <div className={`flex flex-col gap-4 mt-4 overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
+                    <div className={`flex flex-col gap-6 mt-6 overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? "max-h-[700px] opacity-100" : "max-h-0 opacity-0"}`}>
                       {servicesLinks.map((subLink) => (
                         <Link
                           key={subLink.href}
                           href={subLink.href}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="text-blue-dk/60 font-medium text-xl hover:text-orange"
+                          className="text-blue-dk/60 font-medium text-2xl hover:text-orange"
                         >
                           {subLink.label}
                         </Link>
@@ -214,7 +213,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={link.href}
-                    className="block text-blue-dk font-bold text-3xl hover:text-orange transition-colors"
+                    className="block text-blue-dk font-bold text-4xl hover:text-orange transition-colors"
                     onClick={(e) => handleNavClick(e, link.href)}
                   >
                     {link.label}
@@ -224,14 +223,13 @@ export default function Header() {
             ))}
           </ul>
 
-          {/* Mobile CTA - Now links to #contact */}
-          <div className="mt-12 w-full flex justify-center">
+          <div className="mt-16 w-full flex justify-center">
             <a 
               href="#contact"
               onClick={(e) => handleNavClick(e, "#contact")}
-              className="bg-blue-dk text-white flex items-center justify-center gap-3 px-8 py-4 text-xl w-fit rounded-lg font-bold shadow-lg"
+              className="bg-blue-dk text-white flex items-center justify-center gap-3 px-12 py-5 text-2xl w-fit rounded-xl font-bold shadow-lg active:scale-95 transition-transform"
             >
-              <PhoneIcon className="w-6 h-6" />
+              <PhoneIcon className="w-7 h-7" />
               <span>צור קשר</span>
             </a>
           </div>
