@@ -1,26 +1,103 @@
+/* ===== MOBILE RESPONSIVE OPTIMIZATIONS ===== */
+
+/* Small mobile devices (320px - 480px) */
+@media (max-width: 480px) {
+  /* Ensure proper text sizing on small screens */
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Better spacing for mobile */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Improve button tap targets (min 44px recommended) */
+  button,
+  a[role="button"],
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better line heights for readability */
+  p {
+    line-height: 1.6;
+  }
+
+  h1, h2, h3 {
+    line-height: 1.2;
+  }
+}
+
+/* Mobile portrait and landscape */
+@media (max-width: 768px) {
+  /* Ensure sections don't have excessive padding on mobile */
+  section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Improve form inputs on mobile */
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevents zoom on iOS */
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  /* Better spacing for stacked content */
+  .flex-col > * + * {
+    margin-top: 1rem;
+  }
+
+  /* Improve image containers */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 /* Mobile performance optimizations - disable heavy animations on touch devices */
 @media (hover: none) and (pointer: coarse) {
+  /* Optimize scrolling */
+  html {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Disable heavy animations */
   .hero-cta-button {
     animation: none !important;
   }
+
   .animate-scroll-rtl {
     animation-duration: 60s !important; /* Slower animation on mobile for better performance */
   }
+
   .animate-shimmer {
     animation: none !important;
   }
+
   /* Disable parallax effects on mobile */
   [data-parallax] {
     transform: none !important;
   }
-  /* Disable will-change on mobile to prevent GPU layer creation */
-  * {
+
+  /* Disable will-change on mobile to prevent GPU layer creation - except widgets */
+  *:not([class*="accessibility"]):not([id*="accessibility"]):not(.fixed) {
     will-change: auto !important;
   }
-  /* Simplify transitions on mobile */
-  * {
-    transition-duration: 0.1s !important;
+
+  /* Simplify transitions on mobile - except widgets */
+  *:not([class*="accessibility"]):not([id*="accessibility"]):not(.fixed) {
+    transition-duration: 0.15s !important;
   }
+
   /* Disable ALL framer motion animations on mobile for performance */
   [data-framer-motion],
   [data-projection-id] {
@@ -46,12 +123,47 @@
   button:not(.hero-cta-button),
   .card,
   .shadow-lg:not(.hero-cta-button) {
-    box-shadow: none !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
   }
 
-  /* Disable decorative text shadows on mobile */
-  p, span, div {
-    text-shadow: none !important;
+  /* Better touch targets for links */
+  a {
+    padding: 0.25rem;
+    margin: -0.25rem;
+  }
+
+  /* Improve tap highlighting */
+  * {
+    -webkit-tap-highlight-color: rgba(28, 54, 100, 0.1);
+  }
+}
+
+/* Landscape orientation optimizations */
+@media (max-width: 900px) and (orientation: landscape) {
+  /* Reduce vertical spacing in landscape */
+  section {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  /* Make hero section fit better in landscape */
+  .min-h-\[100dvh\] {
+    min-height: auto;
+  }
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+  /* Fix iOS Safari 100vh issue */
+  .min-h-\[100dvh\] {
+    min-height: -webkit-fill-available;
+  }
+
+  /* Prevent iOS zoom on input focus */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
   }
 }
 
@@ -70,5 +182,27 @@
   .animate-scroll-rtl,
   .animate-pulse-slow {
     animation: none !important;
+  }
+}
+
+/* Tablet optimizations (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Better spacing for tablet */
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* Optimize typography for tablets */
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
   }
 }

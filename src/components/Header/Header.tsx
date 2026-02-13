@@ -92,16 +92,16 @@ export default function Header() {
                       : "py-1.5 sm:py-2 border-b-0 bg-transparent"
                     }`}
       >
-        <div className="container mx-auto px-4 md:px-8">
+        <div className="container mx-auto px-3 sm:px-4 md:px-8">
           <nav className="flex items-center justify-between" dir="rtl">
-            <div className="flex items-center gap-3 md:gap-8">
+            <div className="flex items-center gap-2 sm:gap-3 md:gap-8">
               <Link href="/" className="flex items-center transition-transform hover:scale-105" suppressHydrationWarning>
                 <Image
                   src="/images/logo.svg"
                   alt="Avi - Mortgage House"
                   width={150}
                   height={80}
-                  className="h-[38px] w-auto sm:h-[45px] md:h-[55px] lg:h-[60px]"
+                  className="h-[32px] w-auto xs:h-[36px] sm:h-[42px] md:h-[52px] lg:h-[60px]"
                   priority
                 />
               </Link>
@@ -156,10 +156,11 @@ export default function Header() {
 
             {/* Mobile Toggle */}
             <button
-              className="lg:hidden relative z-[80] p-1.5 text-blue-dk hover:text-orange transition-colors"
+              className="lg:hidden relative z-[80] p-1 sm:p-1.5 text-blue-dk hover:text-orange transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "סגור תפריט" : "פתח תפריט"}
             >
-              {isMobileMenuOpen ? <CloseIcon className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
+              {isMobileMenuOpen ? <CloseIcon className="w-7 h-7 sm:w-8 sm:h-8" /> : <MenuIcon className="w-7 h-7 sm:w-8 sm:h-8" />}
             </button>
 
             {/* Desktop CTA - Now links to #contact */}

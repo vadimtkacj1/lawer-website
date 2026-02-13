@@ -41,66 +41,66 @@ export default function Hero() {
       </div>
 
       {/* --- TEXT CONTENT SECTION --- */}
-      <div className="container mx-auto px-6 md:px-12 relative z-30">
-        <div className="flex flex-col items-start text-right justify-start pt-[52vh] pb-12 lg:justify-start lg:pt-40 lg:pb-24 min-h-[100dvh]">
-          
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-30">
+        <div className="flex flex-col items-start text-right justify-start pt-[45vh] sm:pt-[48vh] md:pt-[50vh] pb-8 sm:pb-10 md:pb-12 lg:justify-start lg:pt-40 lg:pb-24 min-h-[100dvh]">
+
           <div className="w-full lg:w-[65%] lg:ml-auto relative">
             
             {/* --- PROFESSIONAL HIGHLIGHTS (Badges) --- */}
-            <div className="flex flex-wrap gap-2 mb-5">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-5">
               {[
-                "מעל 7 שנות ניסיון", 
+                "מעל 7 שנות ניסיון",
                 "יוצא מערכת הבנקאות",
                 "חבר התאחדות יועצי המשכנתאות"
               ].map((text, index) => (
-                <div 
+                <div
                   key={index}
                   className="
-                    flex items-center gap-1.5 px-3 py-1 rounded-full
+                    flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full
                     text-white bg-[#0f3244]/50 backdrop-blur-md border border-white/20
                     lg:text-[#0f3244] lg:bg-transparent lg:border-none lg:p-0 lg:backdrop-blur-none
-                    text-[11px] md:text-sm lg:text-base font-bold drop-shadow-sm
+                    text-[10px] sm:text-[11px] md:text-sm lg:text-base font-bold drop-shadow-sm
                   "
                 >
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#F1662A] lg:w-4 lg:h-4" />
+                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#F1662A] lg:w-4 lg:h-4" />
                   <span>{text}</span>
                 </div>
               ))}
             </div>
 
             {/* --- MAIN HEADLINE --- */}
-            <h1 className="font-black leading-[1.2] mb-6 text-[#0f3244] drop-shadow-sm [text-shadow:_0_1px_20px_rgb(255_255_255_/_40%)]">
-              <span className="block text-[1.5rem] md:text-5xl xl:text-6xl 3xl:text-7xl 4xl:text-8xl 5xl:text-[8.5rem]">
+            <h1 className="font-black leading-[1.15] sm:leading-[1.2] mb-4 sm:mb-5 md:mb-6 text-[#0f3244] drop-shadow-sm [text-shadow:_0_1px_20px_rgb(255_255_255_/_40%)]">
+              <span className="block text-[1.35rem] sm:text-[1.65rem] md:text-5xl xl:text-6xl 3xl:text-7xl 4xl:text-8xl 5xl:text-[8.5rem]">
                 משכנתא לא חייבת להיות הימור
               </span>
-              <span className="block text-[#F1662A] text-[1.5rem] md:text-5xl xl:text-6xl 3xl:text-7xl 4xl:text-8xl 5xl:text-[8.5rem]">
+              <span className="block text-[#F1662A] text-[1.35rem] sm:text-[1.65rem] md:text-5xl xl:text-6xl 3xl:text-7xl 4xl:text-8xl 5xl:text-[8.5rem]">
                 בואו נהפוך אותה לחיסכון המחושב ביותר שלכם
               </span>
             </h1>
 
             {/* --- SUBTEXT DESCRIPTION --- */}
-            <p className="font-medium leading-relaxed mb-8 text-sm md:text-lg lg:text-xl text-[#0f3244] [text-shadow:_0_1px_10px_rgb(255_255_255_/_50%)] max-w-2xl">
-              תכנון משכנתא מדויק וניהול מו״מ מול הבנקים, במטרה להשיג עבורכם פתרון פיננסי נכון יותר, 
+            <p className="font-medium leading-relaxed mb-6 sm:mb-7 md:mb-8 text-[0.9rem] sm:text-base md:text-lg lg:text-xl text-[#0f3244] [text-shadow:_0_1px_10px_rgb(255_255_255_/_50%)] max-w-2xl">
+              תכנון משכנתא מדויק וניהול מו״מ מול הבנקים, במטרה להשיג עבורכם פתרון פיננסי נכון יותר,
               עם תנאים שמשרתים אתכם גם היום וגם בעתיד.
             </p>
 
             {/* --- CALL TO ACTION BUTTONS --- */}
-            <div className="flex flex-col items-start gap-5">
+            <div className="flex flex-col items-start gap-3 sm:gap-4 md:gap-5">
               <div className="w-full sm:w-auto">
                 <a
                   href="#contact"
-                  className="relative inline-flex items-center justify-center gap-3 bg-[#1c3664] text-white px-8 py-4 md:px-12 md:py-5 text-base md:text-xl font-extrabold shadow-lg hover:brightness-110 active:scale-[0.98] transition-all"
+                  className="relative inline-flex items-center justify-center gap-2 sm:gap-3 bg-[#1c3664] text-white px-6 py-3.5 sm:px-8 sm:py-4 md:px-12 md:py-5 text-sm sm:text-base md:text-xl font-extrabold shadow-lg hover:brightness-110 active:scale-[0.98] transition-all w-full sm:w-auto"
                 >
                   <span className="relative z-10">בדיקת זכאות חינם</span>
-                  <svg className="w-5 h-5 md:w-6 md:h-6 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </a>
               </div>
 
-              <a 
-                href="#about-expert" 
-                className="text-[#0f3244] font-bold text-sm md:text-lg hover:text-[#F1662A] transition-colors mr-1 drop-shadow-sm"
+              <a
+                href="#about-expert"
+                className="text-[#0f3244] font-bold text-xs sm:text-sm md:text-lg hover:text-[#F1662A] transition-colors mr-1 drop-shadow-sm"
               >
                 עוד עליי &gt;&gt;
               </a>
