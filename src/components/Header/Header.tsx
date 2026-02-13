@@ -95,7 +95,7 @@ export default function Header() {
         <div className="container mx-auto px-3 sm:px-4 md:px-8">
           <nav className="flex items-center justify-between" dir="rtl">
             <div className="flex items-center gap-2 sm:gap-3 md:gap-8">
-              <Link href="/" className="flex items-center transition-transform hover:scale-105" suppressHydrationWarning>
+              <Link href="/" className="flex items-center" suppressHydrationWarning>
                 <Image
                   src="/images/logo.svg"
                   alt="Avi - Mortgage House"
