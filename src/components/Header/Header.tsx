@@ -3,20 +3,28 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import MenuIcon from "@/components/icons/MenuIcon";
-import CloseIcon from "@/components/icons/CloseIcon";
-import PhoneIcon from "@/components/icons/PhoneIcon";
+
+// --- Internal Icons ---
+const MenuIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+  </svg>
+);
+
+const CloseIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+);
+
+const PhoneIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+  </svg>
+);
 
 const ChevronIcon = ({ className }: { className?: string }) => (
-  <svg 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    className={className} 
-    stroke="currentColor" 
-    strokeWidth="3.5" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-  >
+  <svg viewBox="0 0 24 24" fill="none" className={className} stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
     <polyline points="6 9 12 15 18 9"></polyline>
   </svg>
 );
@@ -46,14 +54,12 @@ export default function Header() {
   const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
-  // Scroll logic for header appearance
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
   }, [isMobileMenuOpen]);
@@ -82,19 +88,19 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-[70] transition-all duration-300
                     ${isScrolled || isMobileMenuOpen
-                      ? "py-3 sm:py-4 bg-cream" 
+                      ? "py-3 sm:py-4 bg-cream shadow-md" 
                       : "py-4 sm:py-6 bg-transparent"
                     }`}
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-8">
-          {/* MOBILE: flex-row-reverse -> Logo Right, Burger Left 
-            DESKTOP (lg): flex-row-reverse -> Keeps Hebrew RTL alignment (Logo right)
+          {/* flex-row-reverse на мобилке меняет местами Лого и Бургер.
+              lg:flex-row возвращает стандартный порядок для десктопа.
           */}
-          <nav className="flex flex-row-reverse items-center justify-between">
+          <nav className="flex flex-row-reverse lg:flex-row items-center justify-between">
             
-            {/* Logo and Desktop Nav Group */}
-            <div className="flex flex-row-reverse items-center gap-2 sm:gap-3 md:gap-8">
-              <Link href="/" className="flex items-center outline-none ring-0" suppressHydrationWarning>
+            {/* Группа Логотипа и Десктопного меню */}
+            <div className="flex flex-row items-center gap-4 md:gap-8">
+              <Link href="/" className="flex items-center outline-none" suppressHydrationWarning>
                 <Image
                   src="/images/logo.svg"
                   alt="Avi - Mortgage House"
@@ -105,7 +111,7 @@ export default function Header() {
                 />
               </Link>
 
-              {/* Desktop Links (Hidden on mobile) */}
+              {/* Desktop Links */}
               <ul className="hidden lg:flex items-center gap-1" dir="rtl">
                 {navLinks.map((link) => (
                   <li 
@@ -129,7 +135,7 @@ export default function Header() {
                     {/* Desktop Dropdown */}
                     {link.hasDropdown && (
                       <div 
-                        className={`absolute top-full right-0 mt-0 w-72 bg-cream rounded-xl overflow-hidden transition-all duration-300 origin-top shadow-xl border-none
+                        className={`absolute top-full right-0 mt-0 w-72 bg-cream rounded-xl overflow-hidden transition-all duration-300 origin-top shadow-xl
                           ${isDesktopDropdownOpen ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}
                       >
                         <div className="py-1.5 flex flex-col">
@@ -151,26 +157,21 @@ export default function Header() {
               </ul>
             </div>
 
-            {/* Burger Menu (Mobile) / Contact Button (Desktop) */}
+            {/* Левая сторона (на мобилке станет правой из-за row-reverse): Бургер или Кнопка */}
             <div className="flex items-center">
-              {/* BURGER BUTTON: 
-                - border-none, bg-transparent, shadow-none removes the 'box' 
-                - outline-none and focus:ring-0 removes selection borders
-              */}
               <button
-                className="lg:hidden relative z-[80] p-0 border-none bg-transparent shadow-none outline-none focus:outline-none focus:ring-0 text-blue-dk hover:text-orange transition-colors"
+                className="lg:hidden relative z-[80] p-0 border-none bg-transparent outline-none focus:ring-0 text-blue-dk hover:text-orange transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label={isMobileMenuOpen ? "סגור תפריט" : "פתח תפריט"}
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               >
                 {isMobileMenuOpen ? <CloseIcon className="w-9 h-9 sm:w-10 sm:h-10" /> : <MenuIcon className="w-9 h-9 sm:w-10 sm:h-10" />}
               </button>
 
-              {/* Desktop Contact CTA */}
               <div className="hidden lg:flex items-center gap-2">
                 <a 
                   href="#contact"
                   onClick={(e) => handleNavClick(e, "#contact")}
-                  className="flex items-center gap-2 text-sm px-6 py-2.5 transition-all hover:bg-blue-dk/90 active:scale-95 text-white bg-blue-dk rounded-full font-bold shadow-none border-none outline-none"
+                  className="flex items-center gap-2 text-sm px-6 py-2.5 transition-all hover:bg-blue-dk/90 active:scale-95 text-white bg-blue-dk rounded-full font-bold"
                 >
                   <PhoneIcon className="w-4 h-4" />
                   <span>צור קשר</span>
@@ -184,7 +185,7 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       <div 
-        className={`lg:hidden fixed inset-0 bg-cream z-[60] flex flex-col transition-all duration-500 ease-in-out transform border-none shadow-none ${
+        className={`lg:hidden fixed inset-0 bg-cream z-[60] flex flex-col transition-all duration-500 ease-in-out transform ${
           isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
         }`}
         dir="rtl"
@@ -197,7 +198,7 @@ export default function Header() {
                   <div className="flex flex-col items-center">
                     <button
                       onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                      className="flex items-center justify-center gap-3 text-blue-dk font-bold text-4xl hover:text-orange transition-colors outline-none bg-transparent border-none"
+                      className="flex items-center justify-center gap-3 text-blue-dk font-bold text-4xl hover:text-orange transition-colors bg-transparent border-none outline-none"
                     >
                       {link.label}
                       <ChevronIcon className={`w-8 h-8 transition-transform duration-300 ${isMobileServicesOpen ? "rotate-180" : ""}`} />
@@ -209,7 +210,7 @@ export default function Header() {
                           key={subLink.href}
                           href={subLink.href}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="text-blue-dk/60 font-medium text-2xl hover:text-orange outline-none"
+                          className="text-blue-dk/60 font-medium text-2xl hover:text-orange"
                         >
                           {subLink.label}
                         </Link>
@@ -219,7 +220,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={link.href}
-                    className="block text-blue-dk font-bold text-4xl hover:text-orange transition-colors outline-none"
+                    className="block text-blue-dk font-bold text-4xl hover:text-orange transition-colors"
                     onClick={(e) => handleNavClick(e, link.href)}
                   >
                     {link.label}
@@ -233,7 +234,7 @@ export default function Header() {
             <a 
               href="#contact"
               onClick={(e) => handleNavClick(e, "#contact")}
-              className="bg-blue-dk text-white flex items-center justify-center gap-3 px-12 py-5 text-2xl w-fit rounded-xl font-bold active:scale-95 transition-transform border-none outline-none"
+              className="bg-blue-dk text-white flex items-center justify-center gap-3 px-12 py-5 text-2xl w-fit rounded-xl font-bold active:scale-95 transition-transform"
             >
               <PhoneIcon className="w-7 h-7" />
               <span>צור קשר</span>
