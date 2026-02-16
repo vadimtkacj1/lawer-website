@@ -6,11 +6,7 @@ import Link from "next/link";
 import MenuIcon from "@/components/icons/MenuIcon";
 import CloseIcon from "@/components/icons/CloseIcon";
 import PhoneIcon from "@/components/icons/PhoneIcon";
-import { PHONE_NUMBER_RAW } from "@/lib/phone";
 
-/**
- * A clean Chevron icon (arrowhead only) for the dropdown.
- */
 const ChevronIcon = ({ className }: { className?: string }) => (
   <svg 
     viewBox="0 0 24 24" 
@@ -50,19 +46,18 @@ export default function Header() {
   const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
-  // Manage header background on scroll
+  // Scroll logic for header appearance
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is active
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
   }, [isMobileMenuOpen]);
 
-  // Smooth scroll logic for anchor links
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("#")) {
       e.preventDefault();
@@ -87,14 +82,19 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-[70] transition-all duration-300
                     ${isScrolled || isMobileMenuOpen
-                      ? "shadow-md py-3 sm:py-4 border-b border-blue-dk/10 bg-cream"
-                      : "py-4 sm:py-6 border-b-0 bg-transparent"
+                      ? "py-3 sm:py-4 bg-cream" 
+                      : "py-4 sm:py-6 bg-transparent"
                     }`}
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-8">
-          <nav className="flex items-center justify-between" dir="rtl">
-            <div className="flex items-center gap-2 sm:gap-3 md:gap-8">
-              <Link href="/" className="flex items-center" suppressHydrationWarning>
+          {/* MOBILE: flex-row-reverse -> Logo Right, Burger Left 
+            DESKTOP (lg): flex-row-reverse -> Keeps Hebrew RTL alignment (Logo right)
+          */}
+          <nav className="flex flex-row-reverse items-center justify-between">
+            
+            {/* Logo and Desktop Nav Group */}
+            <div className="flex flex-row-reverse items-center gap-2 sm:gap-3 md:gap-8">
+              <Link href="/" className="flex items-center outline-none ring-0" suppressHydrationWarning>
                 <Image
                   src="/images/logo.svg"
                   alt="Avi - Mortgage House"
@@ -105,22 +105,20 @@ export default function Header() {
                 />
               </Link>
 
-              {/* Desktop Nav */}
-              <ul className="hidden lg:flex items-center gap-1">
+              {/* Desktop Links (Hidden on mobile) */}
+              <ul className="hidden lg:flex items-center gap-1" dir="rtl">
                 {navLinks.map((link) => (
                   <li 
                     key={link.href}
                     className="relative"
                     onMouseEnter={() => link.hasDropdown && setIsDesktopDropdownOpen(true)}
                     onMouseLeave={() => link.hasDropdown && setIsDesktopDropdownOpen(false)}
-                    suppressHydrationWarning
                   >
                     <Link
                       href={link.href}
                       onClick={(e) => handleNavClick(e, link.href)}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 text-blue-dk font-bold text-lg xl:text-xl transition-all duration-300 hover:text-orange
+                      className={`flex items-center gap-1.5 px-3 py-1.5 text-blue-dk font-bold text-lg xl:text-xl transition-all duration-300 hover:text-orange outline-none
                         ${link.hasDropdown && isDesktopDropdownOpen ? "text-orange" : ""}`}
-                      suppressHydrationWarning
                     >
                       {link.label}
                       {link.hasDropdown && (
@@ -128,10 +126,10 @@ export default function Header() {
                       )}
                     </Link>
 
-                    {/* Desktop Premium Dropdown */}
+                    {/* Desktop Dropdown */}
                     {link.hasDropdown && (
                       <div 
-                        className={`absolute top-full right-0 mt-0 w-72 bg-cream shadow-xl rounded-xl border border-blue-dk/5 overflow-hidden transition-all duration-300 origin-top
+                        className={`absolute top-full right-0 mt-0 w-72 bg-cream rounded-xl overflow-hidden transition-all duration-300 origin-top shadow-xl border-none
                           ${isDesktopDropdownOpen ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}
                       >
                         <div className="py-1.5 flex flex-col">
@@ -139,7 +137,7 @@ export default function Header() {
                             <Link
                               key={service.href}
                               href={service.href}
-                              className="px-5 py-2 text-base font-semibold text-blue-dk hover:bg-orange/5 hover:text-orange transition-all duration-200 border-b border-blue-dk/5 last:border-0 text-right flex items-center justify-between group"
+                              className="px-5 py-2 text-base font-semibold text-blue-dk hover:bg-orange/5 hover:text-orange transition-all duration-200 text-right flex items-center justify-between group outline-none"
                             >
                               {service.label}
                               <div className="w-1 h-1 rounded-full bg-orange opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -153,35 +151,43 @@ export default function Header() {
               </ul>
             </div>
 
-            {/* Mobile Toggle */}
-            <button
-              className="lg:hidden relative z-[80] p-2 text-blue-dk hover:text-orange transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label={isMobileMenuOpen ? "סגור תפריט" : "פתח תפריט"}
-            >
-              {isMobileMenuOpen ? <CloseIcon className="w-9 h-9 sm:w-10 sm:h-10" /> : <MenuIcon className="w-9 h-9 sm:w-10 sm:h-10" />}
-            </button>
-
-            {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center gap-2">
-              <a 
-                href="#contact"
-                onClick={(e) => handleNavClick(e, "#contact")}
-                className="flex items-center gap-2 text-sm px-6 py-2.5 transition-all hover:bg-blue-dk/90 active:scale-95 text-white bg-blue-dk rounded-full font-bold"
+            {/* Burger Menu (Mobile) / Contact Button (Desktop) */}
+            <div className="flex items-center">
+              {/* BURGER BUTTON: 
+                - border-none, bg-transparent, shadow-none removes the 'box' 
+                - outline-none and focus:ring-0 removes selection borders
+              */}
+              <button
+                className="lg:hidden relative z-[80] p-0 border-none bg-transparent shadow-none outline-none focus:outline-none focus:ring-0 text-blue-dk hover:text-orange transition-colors"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label={isMobileMenuOpen ? "סגור תפריט" : "פתח תפריט"}
               >
-                <PhoneIcon className="w-4 h-4" />
-                <span>צור קשר</span>
-              </a>
+                {isMobileMenuOpen ? <CloseIcon className="w-9 h-9 sm:w-10 sm:h-10" /> : <MenuIcon className="w-9 h-9 sm:w-10 sm:h-10" />}
+              </button>
+
+              {/* Desktop Contact CTA */}
+              <div className="hidden lg:flex items-center gap-2">
+                <a 
+                  href="#contact"
+                  onClick={(e) => handleNavClick(e, "#contact")}
+                  className="flex items-center gap-2 text-sm px-6 py-2.5 transition-all hover:bg-blue-dk/90 active:scale-95 text-white bg-blue-dk rounded-full font-bold shadow-none border-none outline-none"
+                >
+                  <PhoneIcon className="w-4 h-4" />
+                  <span>צור קשר</span>
+                </a>
+              </div>
             </div>
+
           </nav>
         </div>
       </header>
 
       {/* Mobile Menu Overlay */}
       <div 
-        className={`lg:hidden fixed inset-0 bg-cream z-[60] flex flex-col transition-all duration-500 ease-in-out transform ${
+        className={`lg:hidden fixed inset-0 bg-cream z-[60] flex flex-col transition-all duration-500 ease-in-out transform border-none shadow-none ${
           isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
         }`}
+        dir="rtl"
       >
         <div className="container mx-auto px-6 pt-40 pb-10 flex flex-col items-center overflow-y-auto">
           <ul className="flex flex-col gap-8 items-center w-full">
@@ -191,7 +197,7 @@ export default function Header() {
                   <div className="flex flex-col items-center">
                     <button
                       onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                      className="flex items-center justify-center gap-3 text-blue-dk font-bold text-4xl hover:text-orange transition-colors"
+                      className="flex items-center justify-center gap-3 text-blue-dk font-bold text-4xl hover:text-orange transition-colors outline-none bg-transparent border-none"
                     >
                       {link.label}
                       <ChevronIcon className={`w-8 h-8 transition-transform duration-300 ${isMobileServicesOpen ? "rotate-180" : ""}`} />
@@ -203,7 +209,7 @@ export default function Header() {
                           key={subLink.href}
                           href={subLink.href}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="text-blue-dk/60 font-medium text-2xl hover:text-orange"
+                          className="text-blue-dk/60 font-medium text-2xl hover:text-orange outline-none"
                         >
                           {subLink.label}
                         </Link>
@@ -213,7 +219,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={link.href}
-                    className="block text-blue-dk font-bold text-4xl hover:text-orange transition-colors"
+                    className="block text-blue-dk font-bold text-4xl hover:text-orange transition-colors outline-none"
                     onClick={(e) => handleNavClick(e, link.href)}
                   >
                     {link.label}
@@ -227,7 +233,7 @@ export default function Header() {
             <a 
               href="#contact"
               onClick={(e) => handleNavClick(e, "#contact")}
-              className="bg-blue-dk text-white flex items-center justify-center gap-3 px-12 py-5 text-2xl w-fit rounded-xl font-bold shadow-lg active:scale-95 transition-transform"
+              className="bg-blue-dk text-white flex items-center justify-center gap-3 px-12 py-5 text-2xl w-fit rounded-xl font-bold active:scale-95 transition-transform border-none outline-none"
             >
               <PhoneIcon className="w-7 h-7" />
               <span>צור קשר</span>

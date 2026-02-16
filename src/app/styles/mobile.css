@@ -119,12 +119,6 @@
     backface-visibility: hidden;
   }
 
-  /* Simplify shadows on mobile - except essential ones */
-  button:not(.hero-cta-button),
-  .card,
-  .shadow-lg:not(.hero-cta-button) {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
-  }
 
   /* Better touch targets for links */
   a {
