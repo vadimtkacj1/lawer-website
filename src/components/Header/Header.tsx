@@ -106,7 +106,7 @@ export default function Header() {
                   alt="Avi - Mortgage House"
                   width={220}
                   height={110}
-                  className="h-[60px] w-auto xs:h-[68px] sm:h-[75px] md:h-[80px] lg:h-[85px]"
+                  className="h-[48px] w-auto xs:h-[55px] sm:h-[62px] md:h-[68px] lg:h-[72px]"
                   priority
                 />
               </Link>
