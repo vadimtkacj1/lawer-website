@@ -30,7 +30,15 @@ const reasons = [
   },
   {
     title: "ראייה פיננסית רחבה",
-    description: "אני בוחן את כדאיות שילוב משכנתת השיפוץ עם מיחזור המשכנתא הקיימת – מה שעשוי לחסוך לכם עשרות אלפי שקלים בשתי ההלוואות במקביל.",
+    description: (
+      <>
+        אני בוחן את כדאיות שילוב משכנתת השיפוץ עם{" "}
+        <a href="https://www.avi-mashkanta.com/services/loan-consolidation" className="hyper-link" title="מחזור ואיחוד הלוואות | אבי בוקעי - הבית למשכנתאות" target="_blank" rel="noopener noreferrer">
+          מיחזור המשכנתא
+        </a>
+        {" "}הקיימת – מה שעשוי לחסוך לכם עשרות אלפי שקלים בשתי ההלוואות במקביל.
+      </>
+    ),
     icon: (
       <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="1.2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
