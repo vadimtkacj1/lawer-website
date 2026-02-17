@@ -303,3 +303,15 @@
     z-index: 999999 !important;
   }
 }
+
+.hyper-link {
+  color: rgb(240, 138, 22) !important;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.hyper-link:hover {
+  color: rgb(49, 87, 255) !important;
+  text-decoration: underline;
+
+}

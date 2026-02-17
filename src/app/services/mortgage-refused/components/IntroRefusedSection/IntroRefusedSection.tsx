@@ -18,7 +18,7 @@ export default function IntroRefusedSection() {
             variants={staggerItem}
             className="text-base md:text-2xl lg:text-3xl text-white/90 font-light leading-relaxed max-w-6xl"
           >
-            אין תחושה מתסכלת יותר מזו: מצאתם את דירת החלומות, כבר ראיתם את עצמכם גרים בה, הגשתם בקשה למשכנתא בביטחון מלא - ואז קיבלתם טלפון מהפקיד שאומר: "מצטערים, הבקשה סורבה". או גרוע מזה - קיבלתם "סירוב עקרוני" עוד בשלב המחשב.
+            אין תחושה מתסכלת יותר מזו: מצאתם את <a href="https://www.avi-mashkanta.com/services/mortgage-for-purchase" className="hyper-link" target="_blank" title="משכנתא לרכישת דירה | אבי בוקעי - הבית למשכנתאות">דירת החלומות</a>, כבר ראיתם את עצמכם גרים בה, הגשתם בקשה למשכנתא בביטחון מלא - ואז קיבלתם טלפון מהפקיד שאומר: "מצטערים, הבקשה סורבה". או גרוע מזה - קיבלתם "סירוב עקרוני" עוד בשלב המחשב.
           </motion.p>
           
           <motion.p 

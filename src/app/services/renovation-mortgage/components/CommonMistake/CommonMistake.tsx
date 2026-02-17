@@ -85,7 +85,11 @@ export default function CommonMistake() {
               הפתרון של משכנתא לשיפוץ:
             </h3>
             <p className="font-noto-sans-hebrew text-lg md:text-xl text-white/90 max-w-4xl mx-auto">
-              מכיוון שיש לכם נכס (הבית שלכם), אנחנו יכולים להרחיב את המשכנתא הקיימת (או לקחת חדשה אם אין). מה היתרונות?
+              מכיוון שיש לכם נכס (הבית שלכם), אנחנו יכולים{" "}
+              <a href="https://www.avi-mashkanta.com/services/debt-consolidation" className="hyper-link" title="משכנתא לכל מטרה | אבי בוקעי - הבית למשכנתאות" target="_blank" rel="noopener noreferrer">
+                להרחיב את המשכנתא הקיימת
+              </a>
+              {" "}(או לקחת חדשה אם אין). מה היתרונות?
             </p>
           </motion.div>
 
