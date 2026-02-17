@@ -100,13 +100,13 @@ export default function Header() {
             
             {/* Группа Логотипа и Десктопного меню */}
             <div className="flex flex-row items-center gap-4 md:gap-8">
-              <Link href="/" className="flex items-center outline-none" suppressHydrationWarning>
+              <Link href="/" className="flex items-center" suppressHydrationWarning>
                 <Image
                   src="/images/logo.svg"
                   alt="Avi - Mortgage House"
                   width={220}
                   height={110}
-                  className="h-[60px] w-auto xs:h-[68px] sm:h-[75px] md:h-[80px] lg:h-[85px] transition-all duration-300"
+                  className="h-[60px] w-auto xs:h-[68px] sm:h-[75px] md:h-[80px] lg:h-[85px]"
                   priority
                 />
               </Link>
