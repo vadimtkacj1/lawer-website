@@ -1,52 +1,39 @@
 "use client";
 
-import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 
-/**
- * HERO COMPONENT
- * Focused on mortgage consulting services.
- */
 export default function Hero() {
   return (
     <section
       className="relative w-full min-h-[100dvh] overflow-hidden bg-cream"
       dir="rtl"
     >
-      {/* --- BACKGROUND IMAGE SECTION --- */}
       <div className="absolute inset-y-0 left-0 w-full lg:w-1/2 z-10 pointer-events-none select-none">
         <div className="relative w-full h-full">
-          {/* Mobile Overlay: Fades the bottom of the image into the background color */}
           <div className="absolute inset-0 z-20 bg-gradient-to-t from-cream via-cream/95 via-35% to-transparent to-60% lg:hidden" />
-
-          {/* Desktop Overlay: Fades the right side of the image into the background color */}
           <div className="absolute inset-y-0 right-0 w-1/2 z-20 bg-gradient-to-l from-cream to-transparent hidden lg:block" />
 
-          <Image
-            src="/images/expert.jpeg"
-            alt="Expert Mortgage Advisor"
-            fill
-            priority
-            loading="eager"
-            className="object-cover object-top"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            quality={85}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="/images/expert-poster.jpg"
+            className="w-full h-full object-cover object-top"
             style={{
               transform: 'translate3d(0, 0, 0)',
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden'
             }}
-          />
+          >
+            <source src="/images/new-expert.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
 
-      {/* --- TEXT CONTENT SECTION --- */}
       <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-30">
         <div className="flex flex-col items-start text-right justify-start pt-[45vh] sm:pt-[48vh] md:pt-[50vh] pb-8 sm:pb-10 md:pb-12 lg:justify-start lg:pt-40 lg:pb-24 min-h-[100dvh]">
-
           <div className="w-full lg:w-[65%] lg:ml-auto relative">
-            
-            {/* --- PROFESSIONAL HIGHLIGHTS (Badges) --- */}
             <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-5">
               {[
                 "מעל 7 שנות ניסיון",
@@ -68,7 +55,6 @@ export default function Hero() {
               ))}
             </div>
 
-            {/* --- MAIN HEADLINE --- */}
             <h1 className="font-black leading-[1.15] sm:leading-[1.2] mb-4 sm:mb-5 md:mb-6 text-[#0f3244] drop-shadow-sm [text-shadow:_0_1px_20px_rgb(255_255_255_/_40%)]">
               <span className="block text-[1.35rem] sm:text-[1.65rem] md:text-5xl xl:text-6xl 3xl:text-7xl 4xl:text-8xl 5xl:text-[8.5rem]">
                 משכנתא לא חייבת להיות הימור
@@ -78,13 +64,11 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* --- SUBTEXT DESCRIPTION --- */}
             <p className="font-medium leading-relaxed mb-6 sm:mb-7 md:mb-8 text-[0.9rem] sm:text-base md:text-lg lg:text-xl text-[#0f3244] [text-shadow:_0_1px_10px_rgb(255_255_255_/_50%)] max-w-2xl">
               תכנון משכנתא מדויק וניהול מו״מ מול הבנקים, במטרה להשיג עבורכם פתרון פיננסי נכון יותר,
               עם תנאים שמשרתים אתכם גם היום וגם בעתיד.
             </p>
 
-            {/* --- CALL TO ACTION BUTTONS --- */}
             <div className="flex flex-col items-start gap-3 sm:gap-4 md:gap-5">
               <div className="w-full sm:w-auto">
                 <a
@@ -105,7 +89,6 @@ export default function Hero() {
                 עוד עליי &gt;&gt;
               </a>
             </div>
-
           </div>
         </div>
       </div>
