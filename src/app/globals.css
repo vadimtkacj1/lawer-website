@@ -19,6 +19,7 @@
     background-color: #f9f7f4;
   }
 
+
   /* Header height variable for spacing */
   :root {
     --header-height: 90px;
@@ -283,6 +284,7 @@
     text-shadow: none !important;
   }
 }
+
 
 /* EqualWeb Accessibility Widget - Ensure visibility on all devices */
 #interdeal-button,
