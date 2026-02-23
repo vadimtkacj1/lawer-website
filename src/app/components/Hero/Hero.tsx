@@ -18,6 +18,7 @@ export default function Hero() {
             loop
             muted
             playsInline
+            preload="metadata"
             poster="/images/expert-poster.jpg"
             className="w-full h-full object-cover object-top"
             style={{

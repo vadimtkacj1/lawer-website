@@ -45,12 +45,13 @@ export default function ExpertBio() {
           >
             <div className="relative inline-block w-full">
               <Image
-                src="/images/second_expert.jpg"
+                src="/images/avi_photo.png"
                 alt="Avi Bukai - Professional Bio"
                 width={520} 
                 height={650}
                 priority
-                className="w-full h-auto object-cover rounded-[35px] shadow-2xl"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 480px, 520px"
+                className="w-full h-auto"
               />
 
               {/* Плашки на фото */}

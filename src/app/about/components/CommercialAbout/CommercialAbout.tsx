@@ -94,6 +94,7 @@ export default function CommercialAbout() {
                   alt="Avi Bukai - Mortgage Consultant"
                   width={500}
                   height={600}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 400px, 500px"
                   className="w-full aspect-[5/6] object-cover rounded-3xl shadow-2xl relative z-10"
                   priority
                 />
