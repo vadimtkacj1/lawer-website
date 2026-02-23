@@ -25,18 +25,18 @@ export const metadata: Metadata = {
     "ייעוץ משכנתאות מקצועי",
   ],
   alternates: {
-    canonical: "https://avi-home.co.il",
+    canonical: "https://avi-mashkanta.com",
   },
   openGraph: {
     title: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
     description: "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז. חיסכון ממוצע של 180,000 ש״ח למשפחה.",
-    url: "https://avi-home.co.il",
+    url: "https://avi-mashkanta.com",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
     type: "website",
     images: [
       {
-        url: "https://avi-home.co.il/images/og-image.jpg",
+        url: "https://avi-mashkanta.com/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "אבי - הבית למשכנתאות - ייעוץ משכנתאות מקצועי",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
     description: "ייעוץ משכנתאות מקצועי ואובייקטיבי. חיסכון ממוצע של 180,000 ש״ח למשפחה.",
-    images: ["https://avi-home.co.il/images/og-image.jpg"],
+    images: ["https://avi-mashkanta.com/images/og-image.jpg"],
   },
 };
 
@@ -59,12 +59,12 @@ function JsonLd() {
       // Organization
       {
         "@type": "Organization",
-        "@id": "https://avi-home.co.il/#organization",
+        "@id": "https://avi-mashkanta.com/#organization",
         name: "אבי - הבית למשכנתאות",
-        url: "https://avi-home.co.il",
+        url: "https://avi-mashkanta.com",
         logo: {
           "@type": "ImageObject",
-          url: "https://avi-home.co.il/images/logo.svg",
+          url: "https://avi-mashkanta.com/images/logo.svg",
         },
         contactPoint: {
           "@type": "ContactPoint",
@@ -81,11 +81,11 @@ function JsonLd() {
       // LocalBusiness
       {
         "@type": "FinancialService",
-        "@id": "https://avi-home.co.il/#business",
+        "@id": "https://avi-mashkanta.com/#business",
         name: "אבי - הבית למשכנתאות",
         description:
           "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז",
-        url: "https://avi-home.co.il",
+        url: "https://avi-mashkanta.com",
         telephone: "+972-50-000-0000",
         email: "assistant@avi-mashkanta.com",
         address: {
@@ -115,36 +115,36 @@ function JsonLd() {
       // Website
       {
         "@type": "WebSite",
-        "@id": "https://avi-home.co.il/#website",
-        url: "https://avi-home.co.il",
+        "@id": "https://avi-mashkanta.com/#website",
+        url: "https://avi-mashkanta.com",
         name: "אבי - הבית למשכנתאות",
         description: "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז",
         inLanguage: "he-IL",
-        publisher: { "@id": "https://avi-home.co.il/#organization" },
+        publisher: { "@id": "https://avi-mashkanta.com/#organization" },
       },
       // WebPage
       {
         "@type": "WebPage",
-        "@id": "https://avi-home.co.il/#webpage",
-        url: "https://avi-home.co.il",
+        "@id": "https://avi-mashkanta.com/#webpage",
+        url: "https://avi-mashkanta.com",
         name: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
         description:
           "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז",
-        isPartOf: { "@id": "https://avi-home.co.il/#website" },
-        about: { "@id": "https://avi-home.co.il/#business" },
+        isPartOf: { "@id": "https://avi-mashkanta.com/#website" },
+        about: { "@id": "https://avi-mashkanta.com/#business" },
         inLanguage: "he-IL",
-        breadcrumb: { "@id": "https://avi-home.co.il/#breadcrumb" },
+        breadcrumb: { "@id": "https://avi-mashkanta.com/#breadcrumb" },
       },
       // BreadcrumbList
       {
         "@type": "BreadcrumbList",
-        "@id": "https://avi-home.co.il/#breadcrumb",
+        "@id": "https://avi-mashkanta.com/#breadcrumb",
         itemListElement: [
           {
             "@type": "ListItem",
             position: 1,
             name: "דף הבית",
-            item: "https://avi-home.co.il",
+            item: "https://avi-mashkanta.com",
           },
         ],
       },

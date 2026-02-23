@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://avi-home.co.il';
+  const baseUrl = 'https://avi-mashkanta.com';
   const currentDate = new Date();
 
   return [

@@ -5,14 +5,14 @@ import InfiniteMarquee from "@/components/ui/InfiniteMarquee";
 import { fadeInUpFast, viewportOptions } from "@/lib/animations";
 
 const banks = [
-  "/images/bank1.png",
-  "/images/bank2.png",
-  "/images/bank3.svg",
-  "/images/bank4.png",
-  "/images/bank5.png",
-  "/images/bank6.png",
-  "/images/bank7.png",
-  "/images/bank8.png",
+  { src: "/images/bank1.png", width: 1200, height: 510, alt: "Bank 1" },
+  { src: "/images/bank2.png", width: 200, height: 35, alt: "Bank 2" },
+  { src: "/images/bank3.svg", width: 200, height: 50, alt: "Bank 3" },
+  { src: "/images/bank4.png", width: 427, height: 118, alt: "Bank 4" },
+  { src: "/images/bank5.png", width: 320, height: 209, alt: "Bank 5" },
+  { src: "/images/bank6.png", width: 200, height: 80, alt: "Bank 6" },
+  { src: "/images/bank7.png", width: 200, height: 60, alt: "Bank 7" },
+  { src: "/images/bank8.png", width: 220, height: 110, alt: "Bank 8" },
 ];
 
 export default function BankLogos() {

@@ -44,10 +44,10 @@ const Widgets = dynamic(() => import("@/components/ui/Widgets"), {
 export default function HomeLazySections() {
   return (
     <>
-      <LazyMount rootMargin="800px 0px">
+      <LazyMount rootMargin="400px 0px">
         <BankLogos />
       </LazyMount>
-      <LazyMount rootMargin="600px 0px">
+      <LazyMount rootMargin="400px 0px">
         <ExpertBio />
       </LazyMount>
       <LazyMount>
