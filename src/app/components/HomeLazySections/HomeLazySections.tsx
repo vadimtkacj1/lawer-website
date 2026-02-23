@@ -3,18 +3,43 @@
 import dynamic from "next/dynamic";
 import LazyMount from "@/components/ui/LazyMount";
 
-const BankLogos = dynamic(() => import("@/app/components/BankLogos"), {});
-const ExpertBio = dynamic(() => import("@/app/components/ExpertBio"), {});
-const Quote = dynamic(() => import("@/components/Quote"), {});
-const WhyChooseAvi = dynamic(() => import("@/app/components/WhyChooseAvi"), {});
-const Services = dynamic(() => import("@/components/Services"), {});
-const Testimonials = dynamic(() => import("@/app/components/Testimonials"), {});
-const HowItWorks = dynamic(() => import("@/app/components/HowItWorks"), {});
-const Contact = dynamic(() => import("@/components/Contact"), {});
-const MortgageCalculator = dynamic(() => import("@/components/MortgageCalculator"), {});
-const FAQ = dynamic(() => import("@/components/FAQ"), {});
-const Footer = dynamic(() => import("@/components/Footer"), {});
-const Widgets = dynamic(() => import("@/components/ui/Widgets"), {});
+// Optimized dynamic imports with loading states for better UX
+const BankLogos = dynamic(() => import("@/app/components/BankLogos"), {
+  loading: () => <div className="h-32" />, // Placeholder height
+});
+const ExpertBio = dynamic(() => import("@/app/components/ExpertBio"), {
+  loading: () => <div className="h-96" />,
+});
+const Quote = dynamic(() => import("@/components/Quote"), {
+  loading: () => <div className="h-64" />,
+});
+const WhyChooseAvi = dynamic(() => import("@/app/components/WhyChooseAvi"), {
+  loading: () => <div className="h-96" />,
+});
+const Services = dynamic(() => import("@/components/Services"), {
+  loading: () => <div className="h-96" />,
+});
+const Testimonials = dynamic(() => import("@/app/components/Testimonials"), {
+  loading: () => <div className="h-96" />,
+});
+const HowItWorks = dynamic(() => import("@/app/components/HowItWorks"), {
+  loading: () => <div className="h-96" />,
+});
+const Contact = dynamic(() => import("@/components/Contact"), {
+  loading: () => <div className="h-96" />,
+});
+const MortgageCalculator = dynamic(() => import("@/components/MortgageCalculator"), {
+  loading: () => <div className="h-96" />,
+});
+const FAQ = dynamic(() => import("@/components/FAQ"), {
+  loading: () => <div className="h-96" />,
+});
+const Footer = dynamic(() => import("@/components/Footer"), {
+  loading: () => <div className="h-32" />,
+});
+const Widgets = dynamic(() => import("@/components/ui/Widgets"), {
+  ssr: false, // Widgets don't need SSR
+});
 
 export default function HomeLazySections() {
   return (

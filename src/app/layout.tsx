@@ -13,6 +13,8 @@ const notoSansHebrew = localFont({
   variable: "--font-noto-sans-hebrew",
   display: "swap",
   preload: true,
+  fallback: ["system-ui", "arial"],
+  adjustFontFallback: false,
 });
 
 // Viewport configuration for mobile optimization
@@ -110,6 +112,17 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/favicon.ico" />
         {/* Preload critical assets */}
         <link rel="preload" href="/images/logo.svg" as="image" type="image/svg+xml" />
+        {/* Preload critical font */}
+        <link
+          rel="preload"
+          href="/fonts/NotoSansHebrew-VariableFont_wdth,wght.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+        {/* Preconnect to external domains for faster loading */}
+        <link rel="preconnect" href="https://cdn.equalweb.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://access.equalweb.com" crossOrigin="anonymous" />
         {/* DNS prefetch for social media */}
         <link rel="dns-prefetch" href="https://www.facebook.com" />
         <link rel="dns-prefetch" href="https://www.instagram.com" />
@@ -117,10 +130,10 @@ export default function RootLayout({
         {/* EqualWeb Accessibility Widget - now loaded via client component to prevent hydration issues */}
       </head>
       <body className={`${notoSansHebrew.variable} font-noto-sans-hebrew antialiased`}>
-        {/* EqualWeb Accessibility Widget - configured for mobile support */}
+        {/* EqualWeb Accessibility Widget - loaded with lazy strategy for better performance */}
         <Script
           id="equalweb-config"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
@@ -148,13 +161,22 @@ export default function RootLayout({
                   }
                 };
                 
-                var script = document.createElement('script');
-                script.src = 'https://cdn.equalweb.com/core/5.2.5/accessibility.js';
-                script.defer = true;
-                script.integrity = 'sha512-Zamp30ps601kXvZTcIYv1sytUc090mrEJD9rLuoWzEGqmB6t0XdLRgC/g5TznUleEBIMm6T3c6Baf/ExIYh/Hw==';
-                script.crossOrigin = 'anonymous';
-                script.setAttribute('data-cfasync', 'true');
-                (document.body || document.head).appendChild(script);
+                // Load script only after page is interactive
+                if (document.readyState === 'complete') {
+                  loadEqualWeb();
+                } else {
+                  window.addEventListener('load', loadEqualWeb, { once: true });
+                }
+                
+                function loadEqualWeb() {
+                  var script = document.createElement('script');
+                  script.src = 'https://cdn.equalweb.com/core/5.2.5/accessibility.js';
+                  script.defer = true;
+                  script.integrity = 'sha512-Zamp30ps601kXvZTcIYv1sytUc090mrEJD9rLuoWzEGqmB6t0XdLRgC/g5TznUleEBIMm6T3c6Baf/ExIYh/Hw==';
+                  script.crossOrigin = 'anonymous';
+                  script.setAttribute('data-cfasync', 'true');
+                  (document.body || document.head).appendChild(script);
+                }
               })();
             `,
           }}

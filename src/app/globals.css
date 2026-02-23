@@ -34,6 +34,12 @@
   /* Optimize image loading */
   img {
     content-visibility: auto;
+    loading: lazy;
+  }
+  
+  /* Optimize video loading */
+  video {
+    content-visibility: auto;
   }
 
   /* GPU acceleration for better performance on mobile */

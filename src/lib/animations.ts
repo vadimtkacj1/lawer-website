@@ -7,16 +7,18 @@ const isMobile = typeof window !== 'undefined' && (
   window.innerWidth <= 768
 );
 
-// Log animation status for debugging
-if (typeof window !== 'undefined') {
-  console.log('🎬 Animation System:', isMobile ? '📱 Mobile Mode - Animations DISABLED' : '🖥️ Desktop Mode - Animations ENABLED');
-}
+// Check for reduced motion preference
+const prefersReducedMotion = typeof window !== 'undefined' && 
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Fade in from bottom with scale - DISABLED on mobile for performance
+// Disable animations if user prefers reduced motion
+const shouldAnimate = !isMobile && !prefersReducedMotion;
+
+// Fade in from bottom with scale - DISABLED on mobile and reduced motion for performance
 export const fadeInUp: Variants = {
   hidden: {
-    opacity: isMobile ? 1 : 0,
-    y: isMobile ? 0 : 50,
+    opacity: shouldAnimate ? 0 : 1,
+    y: shouldAnimate ? 50 : 0,
     scale: 1,
   },
   visible: {
@@ -24,17 +26,17 @@ export const fadeInUp: Variants = {
     y: 0,
     scale: 1,
     transition: {
-      duration: isMobile ? 0 : 0.4,
+      duration: shouldAnimate ? 0.4 : 0,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Fade in from bottom - faster version for headings - DISABLED on mobile
+// Fade in from bottom - faster version for headings - DISABLED on mobile and reduced motion
 export const fadeInUpFast: Variants = {
   hidden: {
-    opacity: isMobile ? 1 : 0,
-    y: isMobile ? 0 : 30,
+    opacity: shouldAnimate ? 0 : 1,
+    y: shouldAnimate ? 30 : 0,
     scale: 1,
   },
   visible: {
@@ -42,104 +44,104 @@ export const fadeInUpFast: Variants = {
     y: 0,
     scale: 1,
     transition: {
-      duration: isMobile ? 0 : 0.5,
+      duration: shouldAnimate ? 0.5 : 0,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Fade in from right (for RTL Hebrew sites) - DISABLED on mobile
+// Fade in from right (for RTL Hebrew sites) - DISABLED on mobile and reduced motion
 export const fadeInRight: Variants = {
   hidden: {
-    opacity: isMobile ? 1 : 0,
+    opacity: shouldAnimate ? 0 : 1,
     x: 0,
   },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: isMobile ? 0 : 0.5,
+      duration: shouldAnimate ? 0.5 : 0,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Fade in from left (for RTL Hebrew sites) - DISABLED on mobile
+// Fade in from left (for RTL Hebrew sites) - DISABLED on mobile and reduced motion
 export const fadeInLeft: Variants = {
   hidden: {
-    opacity: isMobile ? 1 : 0,
+    opacity: shouldAnimate ? 0 : 1,
     x: 0,
   },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: isMobile ? 0 : 0.5,
+      duration: shouldAnimate ? 0.5 : 0,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Simple fade in - DISABLED on mobile
+// Simple fade in - DISABLED on mobile and reduced motion
 export const fadeIn: Variants = {
   hidden: {
-    opacity: isMobile ? 1 : 0,
+    opacity: shouldAnimate ? 0 : 1,
   },
   visible: {
     opacity: 1,
     transition: {
-      duration: isMobile ? 0 : 0.4,
+      duration: shouldAnimate ? 0.4 : 0,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Scale and fade in - for images - DISABLED on mobile
+// Scale and fade in - for images - DISABLED on mobile and reduced motion
 export const scaleIn: Variants = {
   hidden: {
-    opacity: isMobile ? 1 : 0,
+    opacity: shouldAnimate ? 0 : 1,
     scale: 1,
   },
   visible: {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: isMobile ? 0 : 0.5,
+      duration: shouldAnimate ? 0.5 : 0,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Stagger container - for lists of items - DISABLED on mobile
+// Stagger container - for lists of items - DISABLED on mobile and reduced motion
 export const staggerContainer: Variants = {
-  hidden: { opacity: isMobile ? 1 : 0 },
+  hidden: { opacity: shouldAnimate ? 0 : 1 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: isMobile ? 0 : 0.08,
-      delayChildren: isMobile ? 0 : 0.05,
+      staggerChildren: shouldAnimate ? 0.08 : 0,
+      delayChildren: shouldAnimate ? 0.05 : 0,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Fast stagger for many items - DISABLED on mobile
+// Fast stagger for many items - DISABLED on mobile and reduced motion
 export const staggerContainerFast: Variants = {
-  hidden: { opacity: isMobile ? 1 : 0 },
+  hidden: { opacity: shouldAnimate ? 0 : 1 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: isMobile ? 0 : 0.1,
-      delayChildren: isMobile ? 0 : 0.08,
+      staggerChildren: shouldAnimate ? 0.1 : 0,
+      delayChildren: shouldAnimate ? 0.08 : 0,
       ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-// Item to be used inside stagger container - DISABLED on mobile
+// Item to be used inside stagger container - DISABLED on mobile and reduced motion
 export const staggerItem: Variants = {
   hidden: {
-    opacity: isMobile ? 1 : 0,
+    opacity: shouldAnimate ? 0 : 1,
     y: 0,
     scale: 1,
   },
@@ -148,7 +150,7 @@ export const staggerItem: Variants = {
     y: 0,
     scale: 1,
     transition: {
-      duration: isMobile ? 0 : 0.5,
+      duration: shouldAnimate ? 0.5 : 0,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -168,8 +170,8 @@ export const parallaxVariants = (speed: number = 0.5): Variants => ({
 // View transition helper for scroll-triggered animations - optimized for performance
 export const viewportOptions = {
   once: true, // Only animate once for better performance
-  margin: isMobile ? "0px" : "0px", // Reduced margin for better performance
-  amount: isMobile ? 0.1 : 0.2, // Less strict trigger for mobile
+  margin: shouldAnimate ? "0px" : "0px", // Reduced margin for better performance
+  amount: shouldAnimate ? 0.2 : 0.1, // Less strict trigger when animations disabled
 };
 
 // Aggressive viewport for elements that should animate early

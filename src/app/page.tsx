@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
 };
 
-// JSON-LD Structured Data for SEO
+// JSON-LD Structured Data for SEO - optimized for performance
 function JsonLd() {
   const structuredData = {
     "@context": "https://schema.org",
@@ -181,10 +181,13 @@ function JsonLd() {
     ],
   };
 
+  // Use JSON.stringify with space 0 for minimal size
+  const jsonString = JSON.stringify(structuredData);
+  
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      dangerouslySetInnerHTML={{ __html: jsonString }}
     />
   );
 }
