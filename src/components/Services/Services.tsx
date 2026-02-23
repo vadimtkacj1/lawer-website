@@ -76,26 +76,39 @@ const services = [
 export default function Services() {
   const { shouldDisableAnimations, isMobile } = usePerformanceSettings();
 
-  /**
-   * SHARED RENDER LOGIC for both versions
-   * Handles layout for Mobile (2 cols), Tablet (3 cols), and 3K screens (9 cols)
-   */
   const renderServiceCard = (service: any, index: number, isAnimated: boolean) => {
     const content = (
       <Link href={service.href} className="group block h-full relative">
         <div className="flex flex-col items-center justify-center p-3 sm:p-4 xl:p-6 min-h-[220px] sm:min-h-[250px] 3xl:min-h-[320px] transition-all duration-300 hover:bg-orange/[0.03] text-center relative">
+          {/* ICON: larger on mobile (w-12 h-12), same as before on sm+ */}
           <div className="text-orange mb-3 transition-transform duration-300 group-hover:scale-110">
-            <service.Icon className="w-8 h-8 sm:w-10 sm:h-10 3xl:w-14 3xl:h-14" />
+            <service.Icon className="w-12 h-12 sm:w-10 sm:h-10 3xl:w-14 3xl:h-14" />
           </div>
-          <h3 className="text-blue-dk font-black text-[10px] sm:text-xs xl:text-sm 3xl:text-lg text-center leading-tight transition-colors duration-300 group-hover:text-orange mb-2 font-noto-sans-hebrew">
+
+          {/* TITLE: slightly larger on mobile */}
+          <h3 className="text-blue-dk font-black text-xs sm:text-xs xl:text-sm 3xl:text-lg text-center leading-tight transition-colors duration-300 group-hover:text-orange mb-2 font-noto-sans-hebrew">
             {service.title}
           </h3>
-          <div className="h-0 group-hover:h-20 3xl:group-hover:h-24 transition-all duration-300 overflow-hidden">
-            <p className="text-blue-dk/70 text-[10px] sm:text-xs 3xl:text-base text-center leading-snug opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-1 font-noto-sans-hebrew">
+
+          {/*
+            DESCRIPTION:
+            - Mobile (default): always visible, no height animation
+            - sm and above: hidden by default, revealed on hover (original behaviour)
+          */}
+          <div className="
+            /* Mobile: always visible */
+            h-auto opacity-100
+            /* sm+: hidden, revealed on hover */
+            sm:h-0 sm:opacity-0 sm:group-hover:h-20 3xl:sm:group-hover:h-24 sm:group-hover:opacity-100
+            sm:overflow-hidden sm:transition-all sm:duration-300
+          ">
+            <p className="text-blue-dk/70 text-[11px] sm:text-xs 3xl:text-base text-center leading-snug px-1 font-noto-sans-hebrew">
               {service.description}
             </p>
           </div>
-          <div className="mt-2 text-orange opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1">
+
+          {/* ARROW: always visible on mobile, hover-only on desktop */}
+          <div className="mt-2 text-orange opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1">
             <ArrowIcon className="w-4 h-4 rotate-180" />
           </div>
         </div>
@@ -103,8 +116,6 @@ export default function Services() {
     );
 
     const commonClasses = "relative bg-white border border-blue-dk/5 md:border-0 shadow-sm md:shadow-none transition-all";
-    
-    // Grid logic: 2 cols on mobile, 3 cols on tablet/laptop, 9 items in one row on 3K (ultra-wide)
     const responsiveClasses = "w-[calc(50%-6px)] md:w-[calc(33.333%-16px)] lg:w-[calc(33.333%)] 2xl:flex-1";
 
     if (!isAnimated) {
@@ -122,7 +133,6 @@ export default function Services() {
         className={`${commonClasses} ${responsiveClasses} md:rounded-none`}
       >
         {content}
-        {/* Divider logic: only show on Desktop when items are in one row */}
         {index !== services.length - 1 && (
           <div className="hidden 2xl:block absolute left-0 top-1/2 -translate-y-1/2 w-[1px] h-[40%] bg-blue-dk/10" />
         )}
@@ -167,7 +177,6 @@ export default function Services() {
           השירותים שלנו
         </motion.h2>
 
-        {/* 3K MONITOR OPTIMIZATION: max-width increased to 2200px for ultra-wide displays */}
         <div className="max-w-[1400px] 2xl:max-w-[1800px] 3xl:max-w-[2200px] mx-auto">
           <motion.nav
             key="services-nav"
