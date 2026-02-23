@@ -28,7 +28,7 @@ export const viewport: Viewport = {
 
 // Base metadata - can be extended per page
 export const metadata: Metadata = {
-  metadataBase: new URL("https://avi-home.co.il"),
+  metadataBase: new URL("https://avi-mashkanta.com"),
   title: {
     default: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
     template: "%s | אבי - הבית למשכנתאות",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "he_IL",
-    url: "https://avi-home.co.il",
+    url: "https://avi-mashkanta.com",
     siteName: "אבי - הבית למשכנתאות",
     title: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
     description:
@@ -112,14 +112,6 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/favicon.ico" />
         {/* Preload critical assets */}
         <link rel="preload" href="/images/logo.svg" as="image" type="image/svg+xml" />
-        {/* Preload critical font */}
-        <link
-          rel="preload"
-          href="/fonts/NotoSansHebrew-VariableFont_wdth,wght.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
         {/* Preconnect to external domains for faster loading */}
         <link rel="preconnect" href="https://cdn.equalweb.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://access.equalweb.com" crossOrigin="anonymous" />

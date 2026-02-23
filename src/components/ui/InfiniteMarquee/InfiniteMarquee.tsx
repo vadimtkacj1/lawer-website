@@ -3,8 +3,15 @@ import React, { useMemo, memo } from "react";
 import { motion } from "framer-motion";
 import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
 
+interface MarqueeItem {
+  src: string;
+  width?: number;
+  height?: number;
+  alt?: string;
+}
+
 interface MarqueeProps {
-  dataArray: string[];
+  dataArray: (string | MarqueeItem)[];
   dataType?: "image" | "text";
   speed?: number;
   direction?: "left" | "right";
@@ -52,8 +59,10 @@ function InfiniteMarquee({
           <div key={index} className="flex-shrink-0 flex items-center justify-center">
             {dataType === "image" ? (
               <img
-                src={item}
-                alt=""
+                src={typeof item === 'string' ? item : item.src}
+                alt={typeof item === 'string' ? "" : (item.alt || "")}
+                width={typeof item !== 'string' ? item.width : undefined}
+                height={typeof item !== 'string' ? item.height : undefined}
                 className={`h-8 md:h-14 w-auto object-contain transition-all duration-500 
                   ${preserveColors ? "grayscale-0 opacity-100" : "grayscale opacity-60 hover:grayscale-0 hover:opacity-100"}
                   hover:scale-110 active:scale-110`}
@@ -61,7 +70,7 @@ function InfiniteMarquee({
               />
             ) : (
               <p className="whitespace-nowrap rounded-full border border-white/20 bg-[#141414] px-6 py-3 font-semibold text-white md:text-lg">
-                {item}
+                {typeof item === 'string' ? item : ''}
               </p>
             )}
           </div>

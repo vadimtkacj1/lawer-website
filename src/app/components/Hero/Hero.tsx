@@ -19,7 +19,7 @@ export default function Hero() {
             muted
             playsInline
             preload="metadata"
-            poster="/images/expert-poster.jpg"
+            poster="/images/expert-poster.webp"
             className="w-full h-full object-cover object-top"
             style={{
               transform: 'translate3d(0, 0, 0)',
@@ -27,6 +27,7 @@ export default function Hero() {
               WebkitBackfaceVisibility: 'hidden'
             }}
           >
+            <source src="/images/new-expert-optimized.mp4" type="video/mp4" media="(max-width: 768px)" />
             <source src="/images/new-expert.mp4" type="video/mp4" />
           </video>
         </div>

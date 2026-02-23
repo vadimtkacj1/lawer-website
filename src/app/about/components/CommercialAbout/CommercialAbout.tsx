@@ -89,15 +89,31 @@ export default function CommercialAbout() {
               <div className="relative">
                 {/* Visual shadow anchor */}
                 <div className="absolute -inset-4 bg-blue-dk/5 blur-3xl rounded-full -z-10" />
-                <Image
-                  src="/images/expert-with-table.png"
-                  alt="Avi Bukai - Mortgage Consultant"
-                  width={500}
-                  height={600}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 400px, 500px"
-                  className="w-full aspect-[5/6] object-cover rounded-3xl shadow-2xl relative z-10"
-                  priority
-                />
+                
+                {/* Mobile Image - Optimized */}
+                <div className="lg:hidden">
+                  <Image
+                    src="/images/expert-with-table.webp"
+                    alt="Avi Bukai - Mortgage Consultant"
+                    width={500}
+                    height={600}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 400px, 500px"
+                    className="w-full aspect-[5/6] object-cover rounded-3xl shadow-2xl relative z-10"
+                  />
+                </div>
+                
+                {/* Desktop Image - Original Quality */}
+                <div className="hidden lg:block">
+                  <Image
+                    src="/images/expert-with-table.png"
+                    alt="Avi Bukai - Mortgage Consultant"
+                    width={500}
+                    height={600}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 400px, 500px"
+                    className="w-full aspect-[5/6] object-cover rounded-3xl shadow-2xl relative z-10"
+                    quality={100}
+                  />
+                </div>
               </div>
             </motion.div>
 

@@ -57,7 +57,7 @@ export default function ServicesHero() {
       {/* --- Mobile View --- */}
       <div className="lg:hidden absolute inset-0">
         <Image
-          src="/images/expert.jpeg"
+          src="/images/expert-jpeg.webp"
           alt="אבי - יועץ משכנתאות מומחה"
           fill
           priority
@@ -125,6 +125,7 @@ export default function ServicesHero() {
               sizes="50vw"
               className="object-cover"
               style={{ objectPosition: 'center 5%' }}
+              quality={100}
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-cream/10 via-transparent to-transparent pointer-events-none" />
