@@ -32,10 +32,8 @@ export default function ExpertBio() {
     <section id="about-expert" dir="rtl" className="relative py-12 md:py-24 overflow-hidden bg-[#f9f7f4]">
       <div className="container mx-auto px-6 sm:px-8 relative z-10">
         
-        {/* Центрирующий контейнер для всей секции */}
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
           
-          {/* --- ПРАВАЯ СТОРОНА: ФОТО (Чуть больше, центрировано в своей колонке) --- */}
           <motion.div
             className="relative w-full max-w-[380px] sm:max-w-[480px] lg:max-w-[520px] flex-1 flex justify-center"
             initial="hidden"
@@ -47,7 +45,7 @@ export default function ExpertBio() {
               {/* Mobile Image - Optimized */}
               <div className="lg:hidden">
                 <Image
-                  src="/images/avi_photo.webp"
+                  src="/images/avi_photo.png"
                   alt="Avi Bukai - Professional Bio"
                   width={520} 
                   height={650}
