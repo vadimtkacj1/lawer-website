@@ -9,7 +9,7 @@ export default function Hero() {
       dir="rtl"
     >
       <div className="absolute inset-y-0 left-0 w-full lg:w-1/2 z-10 pointer-events-none select-none">
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full flex items-center justify-center">
           <div className="absolute inset-0 z-20 bg-gradient-to-t from-cream via-cream/95 via-35% to-transparent to-60% lg:hidden" />
           <div className="absolute inset-y-0 right-0 w-1/2 z-20 bg-gradient-to-l from-cream to-transparent hidden lg:block" />
 
@@ -20,7 +20,7 @@ export default function Hero() {
             playsInline
             preload="metadata"
             poster="/images/expert-poster.webp"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-contain md:object-cover scale-[0.8] sm:scale-[0.85] lg:scale-100 object-center transition-transform duration-700"
             style={{
               transform: 'translate3d(0, 0, 0)',
               backfaceVisibility: 'hidden',
