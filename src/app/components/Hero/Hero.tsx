@@ -20,6 +20,7 @@ export default function Hero() {
         playsInline
         preload="metadata"
         poster="/images/expert-poster.webp"
+        aria-label="וידאו הצגת המומחה שלנו"
         className="w-full h-full object-cover scale-[1.05] sm:scale-100 lg:scale-100 object-top lg:object-center transition-transform duration-700"
         style={{
           transformOrigin: 'top center',
@@ -30,6 +31,7 @@ export default function Hero() {
       >
         <source src="/images/new-expert-optimized.mp4" type="video/mp4" media="(max-width: 768px)" />
         <source src="/images/new-expert.mp4" type="video/mp4" />
+        {/* Note: Video is decorative and muted, no captions needed as it contains no essential audio content */}
       </video>
 
       <div className="absolute bottom-0 left-0 right-0 h-[20vh] z-[25] lg:hidden">
@@ -84,9 +86,10 @@ export default function Hero() {
                 <a
                   href="#contact"
                   className="relative inline-flex items-center justify-center gap-2 sm:gap-3 bg-[#1c3664] text-white px-6 py-3.5 sm:px-8 sm:py-4 md:px-12 md:py-5 text-sm sm:text-base md:text-xl font-extrabold shadow-lg hover:brightness-110 active:scale-[0.98] transition-all w-full sm:w-auto"
+                  aria-label="בדיקת זכאות חינם - מעבר לטופס יצירת קשר"
                 >
                   <span className="relative z-10">בדיקת זכאות חינם</span>
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </a>
@@ -95,6 +98,7 @@ export default function Hero() {
               <a
                 href="#about-expert"
                 className="text-[#0f3244] font-bold text-xs sm:text-sm md:text-lg hover:text-[#F1662A] transition-colors mr-1 drop-shadow-sm"
+                aria-label="עוד עליי - מעבר לסעיף אודות המומחה"
               >
                 עוד עליי &gt;&gt;
               </a>
