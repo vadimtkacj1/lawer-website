@@ -8,40 +8,50 @@ export default function Hero() {
       className="relative w-full min-h-[100vh] sm:min-h-[105vh] lg:min-h-[100dvh] overflow-hidden bg-cream"
       dir="rtl"
     >
-      <div className="absolute inset-y-0 left-0 w-full lg:w-1/2 z-10 pointer-events-none select-none">
-        <div className="relative w-full h-full flex items-start lg:items-center justify-center">
-          
-          {/* НАДЕЖНЫЙ БЛЮР И ГРАДИЕНТ ДЛЯ МОБИЛОК */}
-          <div className="absolute bottom-0 left-0 right-0 h-[25vh] z-[25] lg:hidden">
-            {/* Размытие с маской */}
-            <div className="absolute inset-0 backdrop-blur-md [mask-image:linear-gradient(to_top,black_10%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_top,black_10%,transparent_100%)]" />
-            {/* Градиент в цвет фона (cream) */}
-            <div className="absolute inset-0 bg-gradient-to-t from-cream via-cream/80 to-transparent" />
-          </div>
+  <div className="absolute inset-y-0 left-0 w-full lg:w-1/2 z-10 pointer-events-none select-none">
+  <div className="relative w-full h-full flex items-start lg:items-center justify-center">
+    
+    {/* 1. ОБЕРТКА ДЛЯ ВИДЕО И БЛЮРА */}
+    {/* Переносим сюда высоту h-[60vh] для мобилок и h-full для десктопа */}
+    <div className="relative w-full h-[60vh] md:h-full">
+      
+      {/* 2. ВИДЕО */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        poster="/images/expert-poster.webp"
+        /* Здесь теперь h-full, так как высота задается родителем выше */
+        className="w-full h-full object-cover scale-[1.05] sm:scale-100 lg:scale-100 object-top lg:object-center transition-transform duration-700"
+        style={{
+          transformOrigin: 'top center',
+          transform: 'translate3d(0, 0, 0)',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden'
+        }}
+      >
+        <source src="/images/new-expert-optimized.mp4" type="video/mp4" media="(max-width: 768px)" />
+        <source src="/images/new-expert.mp4" type="video/mp4" />
+      </video>
 
-          <div className="absolute inset-y-0 right-0 w-1/2 z-20 bg-gradient-to-l from-cream to-transparent hidden lg:block" />
-
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            poster="/images/expert-poster.webp"
-            /* Уменьшен scale до 1.05, немного уменьшена высота видео для мобилок */
-            className="w-full h-[60vh] md:h-full object-cover scale-[1.05] sm:scale-100 lg:scale-100 object-top lg:object-center transition-transform duration-700"
-            style={{
-              transformOrigin: 'top center',
-              transform: 'translate3d(0, 0, 0)',
-              backfaceVisibility: 'hidden',
-              WebkitBackfaceVisibility: 'hidden'
-            }}
-          >
-            <source src="/images/new-expert-optimized.mp4" type="video/mp4" media="(max-width: 768px)" />
-            <source src="/images/new-expert.mp4" type="video/mp4" />
-          </video>
-        </div>
+      {/* 3. НАДЕЖНЫЙ БЛЮР И ГРАДИЕНТ ДЛЯ МОБИЛОК */}
+      {/* Теперь он стоит ПОСЛЕ видео и привязан к bottom-0 общего контейнера */}
+      <div className="absolute bottom-0 left-0 right-0 h-[25vh] z-[25] lg:hidden">
+        {/* Размытие с маской */}
+        <div className="absolute inset-0 backdrop-blur-md [mask-image:linear-gradient(to_top,black_10%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_top,black_10%,transparent_100%)]" />
+        {/* Градиент в цвет фона (cream) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-cream via-cream/80 to-transparent" />
       </div>
+
+    </div>
+
+    {/* Градиент для десктопа (остается на уровне корневого флекса) */}
+    <div className="absolute inset-y-0 right-0 w-1/2 z-20 bg-gradient-to-l from-cream to-transparent hidden lg:block" />
+
+  </div>
+</div>
 
       <div className="container mx-auto px-3 sm:px-6 md:px-12 relative z-30">
         {/* Изменен pt-[40vh] на pt-[55vh] чтобы опустить текст ниже */}
