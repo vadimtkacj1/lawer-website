@@ -112,7 +112,7 @@ const nextConfig = {
       },
       {
         key: 'Content-Security-Policy',
-        value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.equalweb.com https://access.equalweb.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://cdn.equalweb.com https://access.equalweb.com https://grainy-gradients.vercel.app; font-src 'self' data:; connect-src 'self' https://cdn.equalweb.com https://access.equalweb.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; block-all-mixed-content; upgrade-insecure-requests;"
+        value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.equalweb.com https://access.equalweb.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://cdn.equalweb.com https://access.equalweb.com https://grainy-gradients.vercel.app https://www.google-analytics.com https://www.googletagmanager.com; font-src 'self' data:; connect-src 'self' https://cdn.equalweb.com https://access.equalweb.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; block-all-mixed-content; upgrade-insecure-requests;"
       }
     ];
 
