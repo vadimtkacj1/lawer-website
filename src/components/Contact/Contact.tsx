@@ -82,12 +82,77 @@ export default function Contact() {
     }));
   };
 
+  // Форматирование и ограничение телефонного номера
+  const formatPhone = (value: string) => {
+    // Разрешаем только цифры и +
+    const cleaned = value.replace(/[^\d+]/g, "");
+
+    // Строгое ограничение длины
+    if (cleaned.startsWith('+972')) {
+      // +972 + максимум 9 цифр
+      const digits = cleaned.slice(4, 13); // берем только цифры после +972
+      const limited = '+972' + digits;
+
+      // Форматирование: +972-XX-XXX-XXXX
+      const match = limited.match(/^(\+972)(\d{0,2})(\d{0,3})(\d{0,4})$/);
+      if (match) {
+        return [match[1], match[2], match[3], match[4]]
+          .filter(Boolean)
+          .join('-');
+      }
+      return limited;
+    } else if (cleaned.startsWith('0')) {
+      // 0 + максимум 9 цифр (всего 10)
+      const limited = cleaned.slice(0, 10);
+
+      // Форматирование: 0XX-XXX-XXXX
+      const match = limited.match(/^(0\d{0,2})(\d{0,3})(\d{0,4})$/);
+      if (match) {
+        return [match[1], match[2], match[3]]
+          .filter(Boolean)
+          .join('-');
+      }
+      return limited;
+    } else if (cleaned.startsWith('+')) {
+      // Если начинается с +, но не +972
+      return cleaned.slice(0, 13);
+    }
+
+    // Если не начинается ни с 0, ни с +, ограничиваем 10 цифрами
+    return cleaned.slice(0, 10);
+  };
+
+  // Блокировка недопустимых символов при вводе телефона
+  const handlePhoneKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const allowedKeys = [
+      'Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight',
+      'Home', 'End', 'Enter'
+    ];
+    const allowedChars = /^[0-9+]$/;
+
+    if (!allowedKeys.includes(e.key) && !allowedChars.test(e.key)) {
+      e.preventDefault();
+    }
+  };
+
+  // Обработка вставки текста в поле телефона
+  const handlePhonePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const pastedText = e.clipboardData.getData('text');
+    const formatted = formatPhone(pastedText);
+    setFormData((prev) => ({ ...prev, phone: formatted }));
+    if (touched.phone) {
+      setErrors((prev) => ({ ...prev, phone: validatePhone(formatted) }));
+    }
+  };
+
   const handleChange = (field: "name" | "phone", value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    const processedValue = field === "phone" ? formatPhone(value) : value;
+    setFormData((prev) => ({ ...prev, [field]: processedValue }));
     if (touched[field]) {
       setErrors((prev) => ({
         ...prev,
-        [field]: field === "name" ? validateName(value) : validatePhone(value),
+        [field]: field === "name" ? validateName(processedValue) : validatePhone(processedValue),
       }));
     }
   };
@@ -278,12 +343,19 @@ export default function Contact() {
 
                     <FormInput
                       type="tel"
-                      placeholder="מספר טלפון *"
+                      inputMode="tel"
+                      placeholder="054-472-9513"
                       value={formData.phone}
                       error={errors.phone}
                       touched={touched.phone}
-                      onChange={(e) => handleChange("phone", e.target.value)}
+                      onChange={(e) => {
+                        const formatted = formatPhone(e.target.value);
+                        handleChange("phone", formatted);
+                      }}
                       onBlur={() => handleBlur("phone")}
+                      onKeyDown={handlePhoneKeyDown}
+                      onPaste={handlePhonePaste}
+                      dir="ltr"
                     />
 
                     <button
