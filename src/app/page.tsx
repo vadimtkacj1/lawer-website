@@ -87,7 +87,7 @@ function JsonLd() {
           "מחפשים משכנתא חסכונית? אבי - הבית למשכנתאות חוסך לכם זמן, בירוקרטיה ועשרות אלפי שקלים. התמחות באיחוד הלוואות, מחיר למשתכן ומשכנתא הפוכה. שירות בפריסה ארצית.",
         url: "https://avi-mashkanta.com",
         telephone: "+972-50-000-0000",
-        email: "assistant@avi-mashkanta.com",
+        email: "office@avi-mashkanta.com",
         address: {
           "@type": "PostalAddress",
           addressLocality: "חולון",
