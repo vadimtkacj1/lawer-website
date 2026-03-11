@@ -43,6 +43,7 @@ export default function CalculatorPage() {
           <MortgageCalculator />
         </main>
       </div>
+      
       <Footer />
     </>
   );
