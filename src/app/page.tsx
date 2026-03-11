@@ -7,7 +7,7 @@ import HomeLazySections from "@/app/components/HomeLazySections";
 export const metadata: Metadata = {
   title: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
   description:
-    "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז. חיסכון ממוצע של 180,000 ש״ח למשפחה. ליווי משפטי מלא, התמחות במסורבי בנק.",
+    "מחפשים משכנתא חסכונית? אבי - הבית למשכנתאות חוסך לכם זמן, בירוקרטיה ועשרות אלפי שקלים. התמחות באיחוד הלוואות, מחיר למשתכן ומשכנתא הפוכה. שירות בפריסה ארצית.",
   keywords: [
     "יועץ משכנתאות",
     "משכנתא",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
-    description: "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז. חיסכון ממוצע של 180,000 ש״ח למשפחה.",
+    description: "מחפשים משכנתא חסכונית? אבי - הבית למשכנתאות חוסך לכם זמן, בירוקרטיה ועשרות אלפי שקלים. התמחות באיחוד הלוואות, מחיר למשתכן ומשכנתא הפוכה. שירות בפריסה ארצית.",
     url: "https://avi-mashkanta.com",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
-    description: "ייעוץ משכנתאות מקצועי ואובייקטיבי. חיסכון ממוצע של 180,000 ש״ח למשפחה.",
+    description: "מחפשים משכנתא חסכונית? אבי - הבית למשכנתאות חוסך לכם זמן, בירוקרטיה ועשרות אלפי שקלים. התמחות באיחוד הלוואות, מחיר למשתכן ומשכנתא הפוכה. שירות בפריסה ארצית.",
     images: ["https://avi-mashkanta.com/images/og-image.jpg"],
   },
 };
@@ -84,10 +84,10 @@ function JsonLd() {
         "@id": "https://avi-mashkanta.com/#business",
         name: "אבי - הבית למשכנתאות",
         description:
-          "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז",
+          "מחפשים משכנתא חסכונית? אבי - הבית למשכנתאות חוסך לכם זמן, בירוקרטיה ועשרות אלפי שקלים. התמחות באיחוד הלוואות, מחיר למשתכן ומשכנתא הפוכה. שירות בפריסה ארצית.",
         url: "https://avi-mashkanta.com",
         telephone: "+972-50-000-0000",
-        email: "assistant@avi-mashkanta.com",
+        email: "office@avi-mashkanta.com",
         address: {
           "@type": "PostalAddress",
           addressLocality: "חולון",
@@ -118,7 +118,7 @@ function JsonLd() {
         "@id": "https://avi-mashkanta.com/#website",
         url: "https://avi-mashkanta.com",
         name: "אבי - הבית למשכנתאות",
-        description: "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז",
+        description: "מחפשים משכנתא חסכונית? אבי - הבית למשכנתאות חוסך לכם זמן, בירוקרטיה ועשרות אלפי שקלים. התמחות באיחוד הלוואות, מחיר למשתכן ומשכנתא הפוכה. שירות בפריסה ארצית.",
         inLanguage: "he-IL",
         publisher: { "@id": "https://avi-mashkanta.com/#organization" },
       },
@@ -129,7 +129,7 @@ function JsonLd() {
         url: "https://avi-mashkanta.com",
         name: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
         description:
-          "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז",
+          "מחפשים משכנתא חסכונית? אבי - הבית למשכנתאות חוסך לכם זמן, בירוקרטיה ועשרות אלפי שקלים. התמחות באיחוד הלוואות, מחיר למשתכן ומשכנתא הפוכה. שירות בפריסה ארצית.",
         isPartOf: { "@id": "https://avi-mashkanta.com/#website" },
         about: { "@id": "https://avi-mashkanta.com/#business" },
         inLanguage: "he-IL",

@@ -134,6 +134,12 @@
 
 /* Landscape orientation optimizations */
 @media (max-width: 900px) and (orientation: landscape) {
+  /* Reduce vertical spacing in landscape */
+  section {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
   /* Make hero section fit better in landscape */
   .min-h-\[100dvh\] {
     min-height: auto;

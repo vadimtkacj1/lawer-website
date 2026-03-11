@@ -45,7 +45,6 @@ const navLinks = [
   { href: "/", label: "דף הבית" },
   { href: "#services", label: "שירותים", hasDropdown: true },
   { href: "/about", label: "אודות" },
-  { href: "/calculator", label: "מחשבון משכנתא" },
   { href: "#contact", label: "צור קשר" },
 ];
 
@@ -169,10 +168,11 @@ export default function Header() {
               </button>
 
               <div className="hidden lg:flex items-center gap-2">
-                <a 
+                <a
                   href="#contact"
                   onClick={(e) => handleNavClick(e, "#contact")}
                   className="flex items-center gap-2 text-sm px-6 py-2.5 transition-all hover:bg-blue-dk/90 active:scale-95 text-white bg-blue-dk rounded-full font-bold"
+                  aria-label="צור קשר - ניווט מהיר לטופס יצירת קשר"
                 >
                   <PhoneIcon className="w-4 h-4" />
                   <span>צור קשר</span>
@@ -232,10 +232,11 @@ export default function Header() {
           </ul>
 
           <div className="mt-16 w-full flex justify-center">
-            <a 
+            <a
               href="#contact"
               onClick={(e) => handleNavClick(e, "#contact")}
               className="bg-blue-dk text-white flex items-center justify-center gap-3 px-12 py-5 text-2xl w-fit rounded-xl font-bold active:scale-95 transition-transform"
+              aria-label="צור קשר מהתפריט הנייד - מעבר לטופס יצירת קשר"
             >
               <PhoneIcon className="w-7 h-7" />
               <span>צור קשר</span>
