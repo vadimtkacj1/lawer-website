@@ -45,6 +45,7 @@ const navLinks = [
   { href: "/", label: "דף הבית" },
   { href: "#services", label: "שירותים", hasDropdown: true },
   { href: "/about", label: "אודות" },
+  { href: "/calculator", label: "מחשבון משכנתא" },
   { href: "#contact", label: "צור קשר" },
 ];
 
