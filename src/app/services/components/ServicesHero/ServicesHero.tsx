@@ -247,10 +247,9 @@ export default function ServicesHero() {
                 <Link
                   href="#contact"
                   className="inline-flex items-center gap-3 bg-blue-dk text-white px-8 py-4 lg:px-12 lg:py-5 text-xl lg:text-2xl font-black shadow-lg transition-[brightness,transform] duration-200 hover:brightness-110 hover:scale-105"
-                  aria-label="צרו קשר - מעבר לטופס יצירת קשר"
                 >
                   צרו קשר
-                  <svg className="w-6 h-6 rotate-180" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                  <svg className="w-6 h-6 rotate-180" fill="currentColor" viewBox="0 0 16 16">
                     <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                   </svg>
                 </Link>
