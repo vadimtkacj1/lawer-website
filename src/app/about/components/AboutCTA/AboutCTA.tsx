@@ -34,7 +34,6 @@ export default function AboutCTA() {
               className="inline-flex items-center justify-center px-8 py-4 text-lg md:text-xl font-black
                        bg-orange text-white rounded-full hover:bg-orange/90 transition-all duration-300
                        hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl w-full sm:w-auto"
-              aria-label="השאירו פרטים - מעבר לטופס יצירת קשר"
             >
               השאירו פרטים
             </Link>

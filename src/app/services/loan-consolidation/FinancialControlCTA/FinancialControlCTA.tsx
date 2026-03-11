@@ -40,10 +40,9 @@ export default function FinancialControlCTA() {
 
           {/* Button Link */}
           <motion.div variants={staggerItem} className="w-full sm:w-auto">
-            <a
-              href="#contact"
+            <a 
+              href="#contact" 
               className="inline-block w-full sm:w-auto text-center py-6 px-12 bg-[#1c3664] text-white rounded-2xl font-bold text-xl shadow-xl shadow-[#1c3664]/20 hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
-              aria-label="בואו נבדוק כמה תחסכו בחודש הבא - מעבר לטופס יצירת קשר"
             >
               בואו נבדוק כמה תחסכו בחודש הבא
             </a>
