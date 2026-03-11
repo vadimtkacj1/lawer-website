@@ -150,7 +150,7 @@ export default function ContactForm({ calculatorData }: ContactFormProps) {
             exit={{ opacity: 0 }}
           >
             <h3 className="text-lg md:text-xl font-black text-blue-dk mb-2">
-              קבלו ייעוץ אישי מעורך דין
+              קבלו ייעוץ משכנתאות אישי
             </h3>
             <p className="text-blue-dk/70 font-bold mb-4 text-xs">
               השאירו פרטים ונחזור אליכם תוך 24 שעות עם הצעה מותאמת אישית

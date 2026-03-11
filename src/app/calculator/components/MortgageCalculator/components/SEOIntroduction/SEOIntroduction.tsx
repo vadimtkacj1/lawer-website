@@ -15,12 +15,19 @@ export default function SEOIntroduction() {
       dir="rtl"
     >
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-blue-dk pb-5 md:pb-6 leading-tight">
-        מחשבון משכנתא מתקדם - קבלו הערכה ראשונית תוך שניות
+       מחשבון משכנתא פשוט ומהיר: גלו את ההחזר החודשי שלכם
       </h1>
       <p className="text-base md:text-lg text-blue-dk/70 leading-relaxed max-w-3xl mx-auto">
-        רוצים לדעת כמה תוכלו לקחת במשכנתא? המחשבון שלנו נותן לכם הערכה ראשונית מהירה.
-        אבל חשוב לדעת - <span className="font-bold text-orange">כל מקצוע ומצב תעסוקתי מקבלים תנאים שונים לגמרי</span>.
-        רופאים, מורים, עובדי מדינה, עצמאים - לכל אחד יש אחוזי ריבית ותנאים ייחודיים.
+        מתכננים קניית דירה? בעזרת מחשבון משכנתא פשוט וידידותי, תוכלו לבצע חישוב משכנתא אמין ולקבל תמונת מצב מיידית. בניגוד אל מחשבון הלוואות בסיסי, מחשבון משכנתאות זה מותאם במיוחד לרכישת נכסים ולתכנון ההון העצמי הנדרש. הזינו את הנתונים אל מחשבון משכנתא למטה וקבלו הערכה ראשונית.
+
+        <p> 
+                               
+        </p>
+
+        <p className="text-base md:text-lg text-blue-dk/70 leading-relaxed max-w-3xl mx-auto">
+        זכרו: <span className="font-bold text-orange">כדי להשיג את הריביות הטובות ביותר שמותאמות בדיוק לפרופיל ולמקצוע שלכם, אנחנו כאן בשבילכם! </span>
+        </p>
+        
       </p>
     </motion.div>
   );

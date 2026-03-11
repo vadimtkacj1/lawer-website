@@ -17,7 +17,7 @@ export default function WhyCallAviSection() {
         dir="rtl"
       >
         <h3 className="text-3xl md:text-4xl font-black mb-8 text-center text-white">
-          למה חשוב לדבר עם אבי לפני שמחליטים?
+          למה חשוב לדבר עם יועץ משכנתאות לפני שמחליטים?
         </h3>
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           <div className="bg-[#d95a1c] rounded-2xl p-6 border-2 border-white">
