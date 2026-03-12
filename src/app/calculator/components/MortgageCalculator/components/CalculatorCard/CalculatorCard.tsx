@@ -34,7 +34,6 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
   const salaryTooltip = `חישוב: ${formatNumber(apartmentPrice)} * 0.00975 = ${formatNumber(salaryNeeded)}`;
   const downPaymentTooltip = `חישוב: ${formatNumber(apartmentPrice)} * 0.2795 + 15,000 = ${formatNumber(downPaymentNeeded)}`;
 
-  // Notify parent of data changes
   React.useEffect(() => {
     onDataChange?.({
       apartmentPrice,
@@ -55,7 +54,6 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
       variants={fadeInUpFast}
       dir="rtl"
     >
-      {/* Header */}
       <div className="flex flex-col items-center mb-6 relative" dir="rtl">
         <div className="w-12 h-12 rounded-xl bg-orange/10 flex items-center justify-center mb-2">
           <Calculator className="text-orange w-6 h-6" />
@@ -64,9 +62,7 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
       </div>
 
       <div className="space-y-8">
-        {/* Section 1: Monthly Payment Calculator */}
         <div className="space-y-6">
-          {/* Apartment Price Slider */}
           <div className="space-y-3">
             <div className="flex flex-col items-center" dir="rtl">
               <span className="text-blue-dk/60 font-black text-xs md:text-sm uppercase tracking-[0.15em] mb-1">מחיר הנכס</span>
@@ -84,7 +80,10 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
                 step={STEP}
                 value={apartmentPrice}
                 onChange={(e) => setApartmentPrice(Number(e.target.value))}
-                className="w-full h-4 bg-blue-dk/10 appearance-none cursor-pointer accent-orange outline-none rounded-full"
+                className="w-full h-4 appearance-none cursor-pointer outline-none rounded-full"
+                style={{
+                  background: `linear-gradient(to right, #f26722 0%, #f26722 ${(apartmentPrice / MAX_PROPERTY) * 100}%, rgba(15, 32, 67, 0.1) ${(apartmentPrice / MAX_PROPERTY) * 100}%, rgba(15, 32, 67, 0.1) 100%)`
+                }}
               />
               <div className="flex justify-between text-[11px] text-blue-dk/30 font-bold mt-3 tabular-nums uppercase tracking-widest">
                 <span>0 ILS</span>
@@ -93,7 +92,6 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
             </div>
           </div>
 
-          {/* Equity Slider */}
           <div className="space-y-3">
             <div className="flex flex-col items-center" dir="rtl">
               <span className="text-blue-dk/60 font-black text-xs md:text-sm uppercase tracking-[0.15em] mb-1">הון עצמי</span>
@@ -111,7 +109,10 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
                 step={STEP}
                 value={equity}
                 onChange={(e) => setEquity(Number(e.target.value))}
-                className="w-full h-4 bg-blue-dk/10 appearance-none cursor-pointer accent-orange outline-none rounded-full"
+                className="w-full h-4 appearance-none cursor-pointer outline-none rounded-full"
+                style={{
+                  background: `linear-gradient(to right, #f26722 0%, #f26722 ${(equity / MAX_EQUITY) * 100}%, rgba(15, 32, 67, 0.1) ${(equity / MAX_EQUITY) * 100}%, rgba(15, 32, 67, 0.1) 100%)`
+                }}
               />
               <div className="flex justify-between text-[11px] text-blue-dk/30 font-bold mt-3 tabular-nums uppercase tracking-widest">
                 <span>START</span>
@@ -120,7 +121,6 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
             </div>
           </div>
 
-          {/* Loan Term Selection */}
           <div className="space-y-3" dir="rtl">
             <div className="text-center">
               <span className="text-blue-dk/60 font-black text-xs md:text-sm uppercase tracking-wider">
@@ -145,7 +145,6 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
             <div className="text-center text-xs text-blue-dk/40 font-bold">שנים</div>
           </div>
 
-          {/* Results Grid */}
           <div className="grid grid-cols-2 gap-4 pt-6 border-t-2 border-blue-dk/5" dir="rtl">
             <div className="text-center border-l-2 border-blue-dk/5" title={mortgageAmountTooltip}>
               <p className="text-blue-dk/60 text-xs md:text-sm font-black uppercase tracking-wider mb-2">סכום המשכנתא</p>
@@ -163,7 +162,6 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
             </div>
           </div>
 
-          {/* Additional Results */}
           <div className="grid grid-cols-2 gap-4 pt-4" dir="rtl">
             <div className="text-center border-l-2 border-blue-dk/5" title={salaryTooltip}>
               <p className="text-blue-dk/60 text-xs md:text-sm font-black uppercase tracking-wider mb-2">משכורת נדרשת</p>
@@ -181,7 +179,6 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
             </div>
           </div>
 
-          {/* Disclaimer */}
           <div className="text-center pt-6 px-2" dir="rtl">
             <p className="text-blue-dk/50 text-xs leading-relaxed">
               <span className="text-orange font-black text-sm">*</span> זהו חישוב לדוגמה בלבד. פרמטרים רבים משפיעים על התוצאה הסופית, ורק יועץ משכנתאות מקצועי יכול לספק לך מידע מדויק ומותאם אישית.
@@ -193,7 +190,34 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        input[type='range']::-webkit-slider-thumb {
+          appearance: none;
+          height: 28px;
+          width: 28px;
+          border-radius: 50%;
+          background: #f26722;
+          cursor: pointer;
+          border: 4px solid white;
+          box-shadow: 0 4px 10px rgba(242, 103, 34, 0.4);
+          transition: transform 0.2s ease;
+        }
+
+        input[type='range']::-webkit-slider-thumb:hover {
+          transform: scale(1.1);
+        }
+
+        input[type='range']::-moz-range-thumb {
+          height: 28px;
+          width: 28px;
+          border-radius: 50%;
+          background: #f26722;
+          cursor: pointer;
+          border: 4px solid white;
+          box-shadow: 0 4px 10px rgba(242, 103, 34, 0.4);
+        }
+      `}</style>
     </motion.div>
   );
 }
-

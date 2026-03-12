@@ -38,28 +38,34 @@ export default function MortgageCalculator() {
       </div>
 
       <style jsx>{`
+        /* Webkit-specific style for slider thumb */
         input[type='range']::-webkit-slider-thumb {
           appearance: none;
-          height: 38px;
-          width: 38px;
+          /* Збільшено розмір до 100px */
+          height: 100px;
+          width: 100px;
           border-radius: 50%;
           background: #f26722;
           cursor: pointer;
-          border: 5px solid white;
-          box-shadow: 0 6px 15px rgba(242, 103, 34, 0.3);
+          /* Додано товстіший білий border 15px */
+          border: 15px solid white;
+          /* Модифікована тінь для відповідності розміру */
+          box-shadow: 0 16px 40px rgba(242, 103, 34, 0.7);
           transition: transform 0.2s ease;
         }
         input[type='range']::-webkit-slider-thumb:hover {
           transform: scale(1.1);
         }
+
+        /* Moz-specific style for slider thumb (must be identical) */
         input[type='range']::-moz-range-thumb {
-          height: 38px;
-          width: 38px;
+          height: 100px;
+          width: 100px;
           border-radius: 50%;
           background: #f26722;
           cursor: pointer;
-          border: 5px solid white;
-          box-shadow: 0 6px 15px rgba(242, 103, 34, 0.3);
+          border: 15px solid white;
+          box-shadow: 0 16px 40px rgba(242, 103, 34, 0.7);
         }
       `}</style>
     </section>
