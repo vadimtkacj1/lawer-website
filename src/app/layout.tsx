@@ -92,9 +92,13 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Add your verification codes here
+    // Add your verification codes here when you get them from:
+    // Google Search Console: https://search.google.com/search-console
+    // Yandex Webmaster: https://webmaster.yandex.com
     // google: "your-google-verification-code",
+    // yandex: "your-yandex-verification-code",
   },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
@@ -111,11 +115,15 @@ export default function RootLayout({
         {/* Favicon - multiple formats for better browser support */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/favicon.ico" />
+        {/* PWA Manifest */}
+        <link rel="manifest" href="/manifest.json" />
         {/* Preload critical assets */}
         <link rel="preload" href="/images/logo.svg" as="image" type="image/svg+xml" />
         {/* Preconnect to external domains for faster loading */}
         <link rel="preconnect" href="https://cdn.equalweb.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://access.equalweb.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         {/* DNS prefetch for social media */}
         <link rel="dns-prefetch" href="https://www.facebook.com" />
         <link rel="dns-prefetch" href="https://www.instagram.com" />

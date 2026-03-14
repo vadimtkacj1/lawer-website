@@ -36,12 +36,20 @@ export const metadata: Metadata = {
     canonical: "https://avi-mashkanta.com/services/reverse-mortgage",
   },
   openGraph: {
-    title: " משכנתא לשיפוץ - אבי - הבית למשכנתאות ",
-    description: "שדרגו את הבית ללא הלוואות יקרות. משכנתא לשיפוץ בריביות נמוכות עם טיפול מלא בשמאויות ושחרור כספים.",
+    title: " משכנתא הפוכה - אבי - הבית למשכנתאות ",
+    description: "משכנתא הפוכה לגיל הפנסיה. קבלו הכנסה חודשית מהבית שלכם בלי למכור אותו.",
     url: "https://avi-mashkanta.com/services/reverse-mortgage",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
     type: "website",
+    images: [
+      {
+        url: "https://avi-mashkanta.com/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "משכנתא הפוכה - אבי הבית למשכנתאות",
+      },
+    ],
   },
 };
 
