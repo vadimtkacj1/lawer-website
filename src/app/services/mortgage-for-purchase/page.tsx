@@ -31,12 +31,12 @@ export const metadata: Metadata = {
     "שמאות משכנתא",
   ],
   alternates: {
-    canonical: "https://avi-home.co.il/services/mortgage-for-purchase",
+    canonical: "https://avi-mashkanta.com/services/mortgage-for-purchase",
   },
   openGraph: {
     title: "משכנתא לרכישת דירה בחולון והמרכז | אבי - הבית למשכנתאות",
     description: "משכנתא לרכישת דירה עם תמהיל מותאם אישית. ליווי מלא מאישור עקרוני ועד המפתח.",
-    url: "https://avi-home.co.il/services/mortgage-for-purchase",
+    url: "https://avi-mashkanta.com/services/mortgage-for-purchase",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
     type: "website",
@@ -50,11 +50,11 @@ function JsonLd() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://avi-home.co.il/services/mortgage-for-purchase#service",
+        "@id": "https://avi-mashkanta.com/services/mortgage-for-purchase#service",
         name: "משכנתא לרכישת דירה",
         description: "משכנתא לרכישת דירה עם תמהיל מותאם אישית. אישור עקרוני, תכנון פיננסי ומכרז ריביות. ליווי מלא מאישור עקרוני ועד המפתח.",
         provider: {
-          "@id": "https://avi-home.co.il/#organization"
+          "@id": "https://avi-mashkanta.com/#organization"
         },
         areaServed: [
           { "@type": "City", name: "חולון" },
@@ -67,12 +67,12 @@ function JsonLd() {
       },
       {
         "@type": "WebPage",
-        "@id": "https://avi-home.co.il/services/mortgage-for-purchase#webpage",
-        url: "https://avi-home.co.il/services/mortgage-for-purchase",
+        "@id": "https://avi-mashkanta.com/services/mortgage-for-purchase#webpage",
+        url: "https://avi-mashkanta.com/services/mortgage-for-purchase",
         name: "משכנתא לרכישת דירה | אבי - הבית למשכנתאות",
         description: "משכנתא לרכישת דירה עם תמהיל מותאם אישית. ליווי מלא מאישור עקרוני ועד המפתח.",
         inLanguage: "he-IL",
-        isPartOf: { "@id": "https://avi-home.co.il/#website" },
+        isPartOf: { "@id": "https://avi-mashkanta.com/#website" },
         breadcrumb: {
           "@type": "BreadcrumbList",
           itemListElement: [
@@ -80,19 +80,19 @@ function JsonLd() {
               "@type": "ListItem",
               position: 1,
               name: "דף הבית",
-              item: "https://avi-home.co.il"
+              item: "https://avi-mashkanta.com"
             },
             {
               "@type": "ListItem",
               position: 2,
               name: "שירותים",
-              item: "https://avi-home.co.il/services"
+              item: "https://avi-mashkanta.com/services"
             },
             {
               "@type": "ListItem",
               position: 3,
               name: "משכנתא לרכישת דירה",
-              item: "https://avi-home.co.il/services/mortgage-for-purchase"
+              item: "https://avi-mashkanta.com/services/mortgage-for-purchase"
             }
           ]
         }

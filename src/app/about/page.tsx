@@ -30,12 +30,12 @@ export const metadata: Metadata = {
     "בדיקת כדאיות למיחזור",
   ],
   alternates: {
-    canonical: "https://avi-home.co.il/about",
+    canonical: "https://avi-mashkanta.com/about",
   },
   openGraph: {
     title: " ייעוץ משכנתאות - אבי - הבית למשכנתאות ",
     description: "המומחיות של יוצא מערכת הבנקאות. איחוד הלוואות, מיחזור משכנתא, פתרונות למסורבי בנקים.",
-    url: "https://avi-home.co.il/about",
+    url: "https://avi-mashkanta.com/about",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
     type: "website",
@@ -49,11 +49,11 @@ function JsonLd() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://avi-home.co.il/about#service",
+        "@id": "https://avi-mashkanta.com/about#service",
         name: "יועץ משכנתאות בחולון והמרכז",
         description: "איחוד הלוואות, מיחזור משכנתא, פתרונות למסורבי בנקים ובעלי דירוג אשראי שלילי",
         provider: {
-          "@id": "https://avi-home.co.il/#organization"
+          "@id": "https://avi-mashkanta.com/#organization"
         },
         areaServed: [
           { "@type": "City", name: "חולון" },
@@ -66,12 +66,12 @@ function JsonLd() {
       },
       {
         "@type": "WebPage",
-        "@id": "https://avi-home.co.il/about#webpage",
-        url: "https://avi-home.co.il/about",
+        "@id": "https://avi-mashkanta.com/about#webpage",
+        url: "https://avi-mashkanta.com/about",
         name: "יועץ משכנתאות בחולון והמרכז | אבי - הבית למשכנתאות",
         description: "איחוד הלוואות, מיחזור משכנתא, פתרונות למסורבי בנקים",
         inLanguage: "he-IL",
-        isPartOf: { "@id": "https://avi-home.co.il/#website" },
+        isPartOf: { "@id": "https://avi-mashkanta.com/#website" },
         breadcrumb: {
           "@type": "BreadcrumbList",
           itemListElement: [
@@ -79,19 +79,19 @@ function JsonLd() {
               "@type": "ListItem",
               position: 1,
               name: "דף הבית",
-              item: "https://avi-home.co.il"
+              item: "https://avi-mashkanta.com"
             },
             {
               "@type": "ListItem",
               position: 2,
               name: "שירותים",
-              item: "https://avi-home.co.il/services"
+              item: "https://avi-mashkanta.com/services"
             },
             {
               "@type": "ListItem",
               position: 3,
               name: "יועץ משכנתאות",
-              item: "https://avi-home.co.il/about"
+              item: "https://avi-mashkanta.com/about"
             }
           ]
         }
