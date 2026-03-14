@@ -40,6 +40,14 @@ export const metadata: Metadata = {
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
     type: "website",
+    images: [
+      {
+        url: "https://avi-mashkanta.com/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "משכנתא לרכישת דירה - אבי הבית למשכנתאות",
+      },
+    ],
   },
 };
 
