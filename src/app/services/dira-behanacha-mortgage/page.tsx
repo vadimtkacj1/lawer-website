@@ -31,12 +31,12 @@ export const metadata: Metadata = {
     "משכנתא למשתכן",
   ],
   alternates: {
-    canonical: "https://avi-home.co.il/services/dira-behanacha-mortgage",
+    canonical: "https://avi-mashkanta.com/services/dira-behanacha-mortgage",
   },
   openGraph: {
     title: "משכנתא לדירה בהנחה (מחיר למשתכן) | אבי - הבית למשכנתאות",
     description: "זכיתם בדירה בהנחה? מדריך מלא למשכנתא לזוכים עם אסטרטגיית מימון חכמה וליווי מקצועי.",
-    url: "https://avi-home.co.il/services/dira-behanacha-mortgage",
+    url: "https://avi-mashkanta.com/services/dira-behanacha-mortgage",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
     type: "website",
@@ -50,11 +50,11 @@ function JsonLd() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://avi-home.co.il/services/dira-behanacha-mortgage#service",
+        "@id": "https://avi-mashkanta.com/services/dira-behanacha-mortgage#service",
         name: "משכנתא לדירה בהנחה",
         description: "משכנתא מותאמת לזוכים בדירה בהנחה (מחיר למשתכן). ליווי מקצועי, הקדמת תשלומים, טיפול במדד תשומות הבנייה והלוואת זכאות.",
         provider: {
-          "@id": "https://avi-home.co.il/#organization"
+          "@id": "https://avi-mashkanta.com/#organization"
         },
         areaServed: [
           { "@type": "City", name: "חולון" },
@@ -67,12 +67,12 @@ function JsonLd() {
       },
       {
         "@type": "WebPage",
-        "@id": "https://avi-home.co.il/services/dira-behanacha-mortgage#webpage",
-        url: "https://avi-home.co.il/services/dira-behanacha-mortgage",
+        "@id": "https://avi-mashkanta.com/services/dira-behanacha-mortgage#webpage",
+        url: "https://avi-mashkanta.com/services/dira-behanacha-mortgage",
         name: "משכנתא לדירה בהנחה | אבי - הבית למשכנתאות",
         description: "משכנתא מותאמת לזוכים בדירה בהנחה עם ליווי מקצועי והקדמת תשלומים.",
         inLanguage: "he-IL",
-        isPartOf: { "@id": "https://avi-home.co.il/#website" },
+        isPartOf: { "@id": "https://avi-mashkanta.com/#website" },
         breadcrumb: {
           "@type": "BreadcrumbList",
           itemListElement: [
@@ -80,19 +80,19 @@ function JsonLd() {
               "@type": "ListItem",
               position: 1,
               name: "דף הבית",
-              item: "https://avi-home.co.il"
+              item: "https://avi-mashkanta.com"
             },
             {
               "@type": "ListItem",
               position: 2,
               name: "שירותים",
-              item: "https://avi-home.co.il/services"
+              item: "https://avi-mashkanta.com/services"
             },
             {
               "@type": "ListItem",
               position: 3,
               name: "משכנתא לדירה בהנחה",
-              item: "https://avi-home.co.il/services/dira-behanacha-mortgage"
+              item: "https://avi-mashkanta.com/services/dira-behanacha-mortgage"
             }
           ]
         }

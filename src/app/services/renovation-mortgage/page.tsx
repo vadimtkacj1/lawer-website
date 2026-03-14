@@ -30,12 +30,12 @@ export const metadata: Metadata = {
     "מיחזור משכנתא לשיפוץ",
   ],
   alternates: {
-    canonical: "https://avi-home.co.il/services/renovation-mortgage",
+    canonical: "https://avi-mashkanta.com/services/renovation-mortgage",
   },
   openGraph: {
     title: " משכנתא לשיפוץ - אבי - הבית למשכנתאות ",
     description: "שדרגו את הבית ללא הלוואות יקרות. משכנתא לשיפוץ בריביות נמוכות עם טיפול מלא בשמאויות ושחרור כספים.",
-    url: "https://avi-home.co.il/services/renovation-mortgage",
+    url: "https://avi-mashkanta.com/services/renovation-mortgage",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
     type: "website",
@@ -49,11 +49,11 @@ function JsonLd() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://avi-home.co.il/services/renovation-mortgage#service",
+        "@id": "https://avi-mashkanta.com/services/renovation-mortgage#service",
         name: "משכנתא לשיפוץ",
         description: "משכנתא לשיפוץ בריביות נמוכות. שדרגו את הבית ללא הלוואות יקרות. טיפול מלא בשמאויות ושחרור כספים.",
         provider: {
-          "@id": "https://avi-home.co.il/#organization"
+          "@id": "https://avi-mashkanta.com/#organization"
         },
         areaServed: [
           { "@type": "City", name: "חולון" },
@@ -66,12 +66,12 @@ function JsonLd() {
       },
       {
         "@type": "WebPage",
-        "@id": "https://avi-home.co.il/services/renovation-mortgage#webpage",
-        url: "https://avi-home.co.il/services/renovation-mortgage",
+        "@id": "https://avi-mashkanta.com/services/renovation-mortgage#webpage",
+        url: "https://avi-mashkanta.com/services/renovation-mortgage",
         name: "משכנתא לשיפוץ | אבי - הבית למשכנתאות",
         description: "משכנתא לשיפוץ בריביות נמוכות. טיפול מלא בשמאויות ושחרור כספים.",
         inLanguage: "he-IL",
-        isPartOf: { "@id": "https://avi-home.co.il/#website" },
+        isPartOf: { "@id": "https://avi-mashkanta.com/#website" },
         breadcrumb: {
           "@type": "BreadcrumbList",
           itemListElement: [
@@ -79,19 +79,19 @@ function JsonLd() {
               "@type": "ListItem",
               position: 1,
               name: "דף הבית",
-              item: "https://avi-home.co.il"
+              item: "https://avi-mashkanta.com"
             },
             {
               "@type": "ListItem",
               position: 2,
               name: "שירותים",
-              item: "https://avi-home.co.il/services"
+              item: "https://avi-mashkanta.com/services"
             },
             {
               "@type": "ListItem",
               position: 3,
               name: "משכנתא לשיפוץ",
-              item: "https://avi-home.co.il/services/renovation-mortgage"
+              item: "https://avi-mashkanta.com/services/renovation-mortgage"
             }
           ]
         }
