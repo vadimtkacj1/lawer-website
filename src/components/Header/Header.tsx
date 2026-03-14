@@ -36,7 +36,6 @@ const servicesLinks = [
   { href: "/services/reverse-mortgage", label: "משכנתא הפוכה" },
   { href: "/services/mortgage-refused", label: "מסורבי בנקים ומורכבות" },
   { href: "/services/renovation-mortgage", label: "משכנתא לשיפוץ" },
-  { href: "/services/apartment-mortgage", label: "משכנתא לדירה" },
   { href: "/services/foreign-mortgages", label: "משכנתא לתושבי חוץ" },
   { href: "/services/debt-consolidation", label: "משכנתא לכל מטרה" },
 ];

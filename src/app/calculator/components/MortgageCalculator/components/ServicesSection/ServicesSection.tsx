@@ -9,7 +9,6 @@ import ReceiptPercentIcon from "@/components/icons/ReceiptPercentIcon";
 import ArrowIcon from "@/components/icons/ArrowIcon";
 
 const services = [
-  { href: "/services/apartment-mortgage", Icon: BuildingIcon, title: "משכנתא לדירה קיימת", desc: "פתרונות לדירה שנייה, השקעה או שדרוג תנאים לעסקה קיימת" },
   { href: "/services/dira-behanacha-mortgage", Icon: BuildingIcon, title: "מחיר למשתכן", desc: "ליווי ייעודי עם היכרות מעמיקה של המסלולים וההתאמות" },
   { href: "/services/debt-consolidation", Icon: ReceiptPercentIcon, title: "משכנתא לכל מטרה", desc: "הפיכת הלוואות יקרות לתשלום חודשי אחד נמוך ומשתלם" }
 ];
