@@ -48,7 +48,11 @@ const navLinks = [
   { href: "#contact", label: "צור קשר" },
 ];
 
-export default function Header() {
+interface HeaderProps {
+  alwaysWithBackground?: boolean;
+}
+
+export default function Header({ alwaysWithBackground = false }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false);
@@ -87,8 +91,8 @@ export default function Header() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-[70] transition-all duration-300
-                    ${isScrolled || isMobileMenuOpen
-                      ? "py-3 sm:py-4 bg-cream shadow-md" 
+                    ${isScrolled || isMobileMenuOpen || alwaysWithBackground
+                      ? "py-3 sm:py-4 bg-cream shadow-md"
                       : "py-4 sm:py-6 bg-transparent"
                     }`}
       >

@@ -36,9 +36,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-start">
           {/* About */}
           <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
-            <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">
+            <div className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">
               אבי - הבית למשכנתאות
-            </h3>
+            </div>
             <p className="text-white/70 text-sm sm:text-base md:text-lg font-semibold leading-relaxed max-w-sm">
               ליווי מקצועי ואובייקטיבי בתהליך לקיחת המשכנתא. אנחנו עובדים
               בשבילכם, לא בשביל הבנק, כדי להבטיח את התנאים המשתלמים ביותר.
@@ -47,7 +47,7 @@ export default function Footer() {
 
           {/* Services */}
           <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
-            <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">שירותים</h3>
+            <div className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">שירותים</div>
             <nav className="flex flex-col space-y-1.5 sm:space-y-2 w-full">
               {serviceLinks.map((link) => (
                 <Link
@@ -63,7 +63,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
-            <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">צרו קשר</h3>
+            <div className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">צרו קשר</div>
             <address className="not-italic space-y-1.5 sm:space-y-2 text-white/70 text-sm sm:text-base md:text-lg font-semibold w-full">
               <p className="flex items-center gap-2 justify-center sm:justify-start lg:justify-center">
                 <LocationIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -90,29 +90,29 @@ export default function Footer() {
 
           {/* Legal Links */}
           <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center sm:col-span-2 lg:col-span-1">
-            <h3 className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">מידע משפטי</h3>
+            <div className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">מידע משפטי</div>
             <nav className="flex flex-col space-y-1.5 sm:space-y-2 w-full">
-              <a
-                href="/pdfs/accessibility.pdf"
-                download
+              <Link
+                href="/accessibility"
+                rel="nofollow"
                 className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
               >
                 הצהרת נגישות
-              </a>
-              <a
-                href="/pdfs/privacy.pdf"
-                download
+              </Link>
+              <Link
+                href="/privacy"
+                rel="nofollow"
                 className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
               >
                 מדיניות פרטיות
-              </a>
-              <a
-                href="/pdfs/terms.pdf"
-                download
+              </Link>
+              <Link
+                href="/terms"
+                rel="nofollow"
                 className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
               >
                 תנאי שימוש
-              </a>
+              </Link>
             </nav>
           </div>
         </div>
@@ -124,7 +124,16 @@ export default function Footer() {
             שמורות. תכנון נכון שחוסך לכם כסף.
           </p>
           <p className="text-white/50 text-xs sm:text-sm mt-3 sm:mt-4">
-            נבנה על ידי Aiterra | פתרונות דיגיטליים לעסקים
+            נבנה על ידי{" "}
+            <a
+              href="https://aiterra.agency/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors underline"
+            >
+              Aiterra
+            </a>
+            {" "}| פתרונות דיגיטליים לעסקים
           </p>
         </div>
       </div>
