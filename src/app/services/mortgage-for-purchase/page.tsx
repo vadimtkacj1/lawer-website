@@ -148,7 +148,7 @@ export default function MortgageForPurchasePage() {
   return (
     <>
       <JsonLd />
-      <Header alwaysWithBackground />
+      <Header />
       <main>
         <PurchaseHero />
         <Breadcrumbs items={breadcrumbItems} />

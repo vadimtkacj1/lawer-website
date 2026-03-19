@@ -149,7 +149,7 @@ export default function MortgageRefusedPage() {
   return (
     <>
       <JsonLd />
-      <Header alwaysWithBackground />
+      <Header />
       <main>
         <RefusedHero />
         <Breadcrumbs items={breadcrumbItems} />

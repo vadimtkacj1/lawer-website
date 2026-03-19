@@ -148,7 +148,7 @@ export default function RenovationMortgagePage() {
   return (
     <>
       <JsonLd />
-      <Header alwaysWithBackground />
+      <Header />
       <main>
         <ConsultantHero />
         <Breadcrumbs items={breadcrumbItems} />

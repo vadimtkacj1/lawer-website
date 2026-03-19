@@ -148,7 +148,7 @@ export default function DiraBehanaChaMortgagePage() {
   return (
     <>
       <JsonLd />
-      <Header alwaysWithBackground />
+      <Header />
       <main>
         <DiraHero />
         <Breadcrumbs items={breadcrumbItems} />

@@ -155,7 +155,7 @@ export default function DebtConsolidationPage() {
   return (
     <>
       <JsonLd />
-      <Header alwaysWithBackground />
+      <Header />
       <main>
         <DebtHero/>
         <Breadcrumbs items={breadcrumbItems} />
