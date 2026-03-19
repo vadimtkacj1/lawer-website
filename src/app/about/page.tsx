@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Header from "@/components/Header";
 import CommercialHero from "@/app/about/components/CommercialHero";
 import CommercialAbout from "@/app/about/components/CommercialAbout";
@@ -117,6 +118,39 @@ export default function CommercialPage() {
         <CommercialAbout />
         <CommercialWhySection />
         <CommercialServicesSection />
+
+        {/* Certificates Section */}
+        <section className="relative bg-cream py-24 lg:py-40">
+          <div className="container mx-auto px-6 lg:px-12">
+            <div className="max-w-6xl mx-auto">
+              {/* Title Section */}
+              <div className="text-center mb-24 lg:mb-40">
+                <h2 className="text-5xl lg:text-8xl font-noto-sans-hebrew font-black text-blue-dk leading-tight">
+                  תעודות <span className="text-orange">והסמכות</span>
+                </h2>
+
+                {/* Orange Line */}
+                <div className="mt-10 w-32 h-2.5 bg-orange mx-auto rounded-full shadow-sm" />
+              </div>
+
+              {/* Certificates Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {[1, 2, 3, 4].map((num) => (
+                  <div key={num} className="relative aspect-[3/4]">
+                    <Image
+                      src={`/images/cert${num}.jpeg`}
+                      alt={`תעודה ${num}`}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         <AboutCTA />
         <Contact />
         <AboutFAQ />

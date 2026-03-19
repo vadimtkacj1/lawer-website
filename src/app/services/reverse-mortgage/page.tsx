@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
+import Breadcrumbs from "@/components/SEO/Breadcrumbs";
 import RenovationHero from "./components/ReverseHero";
 import ReverseHero from "./components/ReverseHero";
 import RetirementProblemSection from "./components/RetirementProblemSection";
@@ -45,16 +46,22 @@ export const metadata: Metadata = {
   },
 };
 
-// JSON-LD Structured Data for Renovation Mortgage Service
+// JSON-LD Structured Data for Reverse Mortgage Service
 function JsonLd() {
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Service",
+<<<<<<< Updated upstream
         "@id": "https://avi-home.co.il/services/renovation-mortgage#service",
         name: "משכנתא לשיפוץ",
         description: "משכנתא לשיפוץ בריביות נמוכות. שדרגו את הבית ללא הלוואות יקרות. טיפול מלא בשמאויות ושחרור כספים.",
+=======
+        "@id": "https://avi-mashkanta.com/services/reverse-mortgage#service",
+        name: "משכנתא הפוכה",
+        description: "משכנתא הפוכה לגיל הפנסיה. קבלו הכנסה חודשית מהבית שלכם בלי למכור אותו. ליווי מקצועי ותכנון פיננסי חכם.",
+>>>>>>> Stashed changes
         provider: {
           "@id": "https://avi-home.co.il/#organization"
         },
@@ -65,14 +72,21 @@ function JsonLd() {
           { "@type": "City", name: "תל אביב" }
         ],
         serviceType: "Financial Service",
-        category: "Renovation Mortgage"
+        category: "Reverse Mortgage"
       },
       {
         "@type": "WebPage",
+<<<<<<< Updated upstream
         "@id": "https://avi-home.co.il/services/renovation-mortgage#webpage",
         url: "https://avi-home.co.il/services/renovation-mortgage",
         name: "משכנתא לשיפוץ | אבי - הבית למשכנתאות",
         description: "משכנתא לשיפוץ בריביות נמוכות. טיפול מלא בשמאויות ושחרור כספים.",
+=======
+        "@id": "https://avi-mashkanta.com/services/reverse-mortgage#webpage",
+        url: "https://avi-mashkanta.com/services/reverse-mortgage",
+        name: "משכנתא הפוכה | אבי - הבית למשכנתאות",
+        description: "משכנתא הפוכה לגיל הפנסיה. קבלו הכנסה חודשית מהבית שלכם.",
+>>>>>>> Stashed changes
         inLanguage: "he-IL",
         isPartOf: { "@id": "https://avi-home.co.il/#website" },
         breadcrumb: {
@@ -93,11 +107,53 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 3,
+<<<<<<< Updated upstream
               name: "משכנתא לשיפוץ",
               item: "https://avi-home.co.il/services/renovation-mortgage"
+=======
+              name: "משכנתא הפוכה",
+              item: "https://avi-mashkanta.com/services/reverse-mortgage"
+>>>>>>> Stashed changes
             }
           ]
         }
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "מהי משכנתא הפוכה?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "משכנתא הפוכה היא הלוואה שמאפשרת לנצל את ערך הבית שלכם, מבלי לוותר על הבעלות או לעבור דירה. הכסף ניתן לשימוש אישי, ולרוב אין צורך בהחזר חודשי – החוב נצבר ומשולם רק במכירת הבית או באמצעים אחרים."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "מי זכאי למשכנתא הפוכה?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "הלוואה זו מיועדת לבעלי נכס מעל גיל 55 – יחיד או זוג (גם הצעיר מבין הזוג צריך להיות מעל גיל 55). הנכס שברשותכם משמש כבטוחה להלוואה."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "למה כדאי לקחת משכנתא הפוכה דווקא עם יועץ פרטי?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "יועץ פרטי בונה את העסקה לפי האיפיון הכלכלי שלכם, בודק חלופות זולות יותר, שומר על הנכס שתרצו להשאיר לילדים ומטפל בבירוקרטיה – כך שאתם מקבלים תכנון מותאם אישית ושקט נפשי."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "האם חייבים להחזיר כסף מיד?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "לא. ברוב המקרים אין החזרים חודשיים. ניתן לשלם ריבית בלבד או להחזיר קרן וריבית, לפי המסלול שתבחרו. ההלוואה נפרעת בדרך כלל בעת מכירת הבית או באמצעים אחרים."
+            }
+          }
+        ]
       }
     ]
   };
@@ -111,12 +167,19 @@ function JsonLd() {
 }
 
 export default function RenovationMortgagePage() {
+  const breadcrumbItems = [
+    { label: "דף הבית", href: "/" },
+    { label: "שירותים", href: "/#services" },
+    { label: "משכנתא הפוכה", href: "/services/reverse-mortgage" },
+  ];
+
   return (
     <>
       <JsonLd />
-      <Header />
+      <Header alwaysWithBackground />
       <main>
         <ReverseHero />
+        <Breadcrumbs items={breadcrumbItems} />
         <RetirementProblemSection/>
         <AviAdvantageReverse/>
         <ReverseMortgageBenefits

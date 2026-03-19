@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
+import Breadcrumbs from "@/components/SEO/Breadcrumbs";
 import DebtFAQ from "./DebtFAQ";
 import DebtHero from "./DebtHero";
 import FinancialPressureSection from "./FinancialPressureSection";
@@ -95,6 +96,43 @@ function JsonLd() {
             }
           ]
         }
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "האם אני מסכן את הבית שלי?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "כל עוד עומדים בהחזרים החודשיים, הבית לא בסכנה. להפך - במקרים רבים, לקיחת הלוואות קצרות טווח שחונקות את העו״ש היא זו שמובילה לקריסה כלכלית. פריסה ארוכה במשכנתא לכל מטרה דווקא מייצרת יציבות וביטחון."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "כמה מהר אפשר לקבל את הכסף?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "מכיוון שמדובר במשכנתא, זה לוקח יותר זמן מהלוואה באפליקציה. בדרך כלל בין שבועיים לחודש. אבל ההמתנה הזו שווה לכם עשרות אלפי שקלים בחיסכון ריביות."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "האם אפשר לפרוע את ההלוואה לפני הזמן?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "בוודאי. אני בונה את התמהיל כך שיהיו בו תחנות יציאה גמישות או מסלולים ללא עמלת פירעון מוקדם, למקרה שיתפנה לכם כסף בעתיד (קרן השתלמות, ירושה וכו׳)."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "למה לא פשוט לקחת הלוואה רגילה מהבנק?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "הלוואה רגילה מגיעה עם ריבית גבוהה ב-3%-5% לפחות, ופריסה של 5-7 שנים בלבד. זה אומר החזר חודשי גבוה מאוד שחונק את התזרים. משכנתא לכל מטרה נותנת לכם ריבית נמוכה משמעותית, פריסה של 20-30 שנה, והחזר חודשי שמאפשר לכם לחיות."
+            }
+          }
+        ]
       }
     ]
   };
@@ -108,12 +146,19 @@ function JsonLd() {
 }
 
 export default function DebtConsolidationPage() {
+  const breadcrumbItems = [
+    { label: "דף הבית", href: "/" },
+    { label: "שירותים", href: "/#services" },
+    { label: "משכנתא לכל מטרה", href: "/services/debt-consolidation" },
+  ];
+
   return (
     <>
       <JsonLd />
-      <Header />
+      <Header alwaysWithBackground />
       <main>
         <DebtHero/>
+        <Breadcrumbs items={breadcrumbItems} />
         <FinancialPressureSection/>
         <DebtConsolidationGenius/>
         <MortgageRecycleSection/>

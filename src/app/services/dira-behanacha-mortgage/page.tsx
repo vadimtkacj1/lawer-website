@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
+import Breadcrumbs from "@/components/SEO/Breadcrumbs";
 import DiraHero from "./components/DiraHero";
 import IntroDiraSection from "./components/IntroDiraSection";
 import BigSecretSection from "./components/BigSecretSection";
@@ -96,6 +97,35 @@ function JsonLd() {
             }
           ]
         }
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "מתי צריך להתחיל את תהליך המשכנתא?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "מיד לאחר הכנס הזוכים ובחירת הדירה. יש לכם לו\"ז צפוף לחתימת חוזה ותשלום ראשון. אל תחכו לרגע האחרון, כי אישורים עקרוניים בפרויקטים האלו לוקחים זמן."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "האם אפשר למכור את הדירה?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "ברוב תוכניות \"דירה בהנחה\" חל איסור למכור את הדירה במשך 5 שנים מקבלת המפתח או 7 שנים מהזכייה (המוקדם מביניהם). עם זאת, ניתן להשכיר אותה. אני עוזר לכם לחשב את הכדאיות הכלכלית של המהלך לטווח הארוך."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "האם כדאי לקחת את הלוואת הזכאות של משרד השיכון?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "כמעט תמיד כן. הלוואת הזכאות נותנת ריבית צמודה אך נמוכה יחסית, וחשוב מכך - היא מאפשרת פירעון מוקדם ללא קנסות. אני אבדוק עבורכם את גובה הזכאות המדויק ואשלב אותה בתמהיל."
+            }
+          }
+        ]
       }
     ]
   };
@@ -109,12 +139,19 @@ function JsonLd() {
 }
 
 export default function DiraBehanaChaMortgagePage() {
+  const breadcrumbItems = [
+    { label: "דף הבית", href: "/" },
+    { label: "שירותים", href: "/#services" },
+    { label: "מחיר למשתכן", href: "/services/dira-behanacha-mortgage" },
+  ];
+
   return (
     <>
       <JsonLd />
-      <Header />
+      <Header alwaysWithBackground />
       <main>
         <DiraHero />
+        <Breadcrumbs items={breadcrumbItems} />
         <IntroDiraSection />
         <BigSecretSection />
         <TrapSection />

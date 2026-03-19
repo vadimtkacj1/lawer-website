@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
+import Breadcrumbs from "@/components/SEO/Breadcrumbs";
 // import RenovationHero from "./components/RenovationHero";
 // import RenovationIntro from "./components/RenovationIntro";
 // import CommonMistake from "./components/CommonMistake";
@@ -100,6 +101,35 @@ function JsonLd() {
             }
           ]
         }
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "האם אני חייב להגיע לישראל פיזית כדי לקחת משכנתא?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "ברוב השלבים – לא. את רוב התהליך (אישור עקרוני, מו\"מ על ריביות) אני מבצע עבורכם באמצעות ייפוי כוח. בדרך כלל תצטרכו להגיע פעם אחת לחתימות סופיות בבנק ופתיחת חשבון, או לבצע זאת באמצעות קונסוליה/ייפוי כוח נוטריוני ספציפי (תלוי במדיניות הבנק הספציפי)."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "באיזה מטבע כדאי לקחת את המשכנתא?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "שאלה מצוינת. אם ההכנסה שלכם היא בדולר או ביורו, יש היגיון לשקול מסלול משכנתא צמוד למט\"ח כדי להימנע מסיכוני שער חליפין (שההחזר החודשי יקפוץ פתאום בשקלים). מצד שני, הריביות השקליות לעיתים אטרקטיביות יותר. אני בונה לכם תמהיל שמגן עליכם מתנודות מטבע קיצוניות."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "כמה זמן לוקח התהליך?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "עבור תושבי חוץ, התהליך ארוך יותר מאשר לישראלים בגלל בדיקות הלבנת הון ואימות מסמכים. לכן קריטי לפנות אליי לפני שחותמים על חוזה הרכישה, כדי שנקבל אישור עקרוני מראש ולא תהיו בלחץ זמנים."
+            }
+          }
+        ]
       }
     ]
   };
@@ -113,12 +143,19 @@ function JsonLd() {
 }
 
 export default function RenovationMortgagePage() {
+  const breadcrumbItems = [
+    { label: "דף הבית", href: "/" },
+    { label: "שירותים", href: "/#services" },
+    { label: "משכנתא לתושבי חוץ", href: "/services/foreign-mortgages" },
+  ];
+
   return (
     <>
       <JsonLd />
-      <Header />
+      <Header alwaysWithBackground />
       <main>
         <ForeignHero/>
+        <Breadcrumbs items={breadcrumbItems} />
         <ProblemSection/>
         <DifferencesSection/>
         <WhyChooseAvi/>

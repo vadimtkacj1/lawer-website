@@ -72,6 +72,33 @@ export default function Footer() {
               </p>
             </address>
 
+            {/* Working Hours */}
+            <div className="mt-4 sm:mt-5 md:mt-6 space-y-1 text-white/70 text-sm sm:text-base md:text-lg font-semibold w-full">
+              <div className="text-orange font-black text-sm sm:text-base md:text-lg mb-2">שעות פעילות</div>
+              <p>ראשון - חמישי: 9:00 - 20:00</p>
+              <p>שישי: סגור</p>
+              <p>שבת: סגור</p>
+            </div>
+
+            {/* Google Map */}
+            <div className="mt-4 sm:mt-5 md:mt-6 w-full">
+              <iframe
+                src={
+                  process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+                    ? `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent("Yehoshua Hankin 83, Holon, Israel")}&zoom=15&language=he`
+                    : "https://maps.google.com/maps?q=32.0185696,34.7787344&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                }
+                width="100%"
+                height="200"
+                style={{ border: 0, borderRadius: '8px' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="מיקום המשרד - חנקין 83 חולון"
+                className="shadow-lg"
+              />
+            </div>
+
             {/* Social Links */}
             {/* <div className="flex gap-3 sm:gap-4 mt-4 sm:mt-5 md:mt-6 justify-center sm:justify-start lg:justify-center w-full">
               {socialLinks.map((social) => (
