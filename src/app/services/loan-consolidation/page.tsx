@@ -51,15 +51,9 @@ function JsonLd() {
     "@graph": [
       {
         "@type": "Service",
-<<<<<<< Updated upstream
-        "@id": "https://avi-home.co.il/services/renovation-mortgage#service",
-        name: "משכנתא לשיפוץ",
-        description: "משכנתא לשיפוץ בריביות נמוכות. שדרגו את הבית ללא הלוואות יקרות. טיפול מלא בשמאויות ושחרור כספים.",
-=======
         "@id": "https://avi-mashkanta.com/services/loan-consolidation#service",
         name: "איחוד הלוואות ומחזור משכנתא",
         description: "איחוד הלוואות ומחזור משכנתא לחיסכון משמעותי. הורדת החזרים חודשיים, ריביות נמוכות יותר וניהול כלכלי נכון.",
->>>>>>> Stashed changes
         provider: {
           "@id": "https://avi-home.co.il/#organization"
         },
@@ -74,17 +68,10 @@ function JsonLd() {
       },
       {
         "@type": "WebPage",
-<<<<<<< Updated upstream
-        "@id": "https://avi-home.co.il/services/renovation-mortgage#webpage",
-        url: "https://avi-home.co.il/services/renovation-mortgage",
-        name: "משכנתא לשיפוץ | אבי - הבית למשכנתאות",
-        description: "משכנתא לשיפוץ בריביות נמוכות. טיפול מלא בשמאויות ושחרור כספים.",
-=======
         "@id": "https://avi-mashkanta.com/services/loan-consolidation#webpage",
         url: "https://avi-mashkanta.com/services/loan-consolidation",
         name: "איחוד הלוואות ומחזור משכנתא | אבי - הבית למשכנתאות",
         description: "איחוד הלוואות ומחזור משכנתא לחיסכון משמעותי והורדת החזרים חודשיים.",
->>>>>>> Stashed changes
         inLanguage: "he-IL",
         isPartOf: { "@id": "https://avi-home.co.il/#website" },
         breadcrumb: {
@@ -105,13 +92,8 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 3,
-<<<<<<< Updated upstream
-              name: "משכנתא לשיפוץ",
-              item: "https://avi-home.co.il/services/renovation-mortgage"
-=======
               name: "איחוד הלוואות ומחזור משכנתא",
               item: "https://avi-mashkanta.com/services/loan-consolidation"
->>>>>>> Stashed changes
             }
           ]
         }

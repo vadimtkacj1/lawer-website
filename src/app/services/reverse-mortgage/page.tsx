@@ -53,15 +53,9 @@ function JsonLd() {
     "@graph": [
       {
         "@type": "Service",
-<<<<<<< Updated upstream
-        "@id": "https://avi-home.co.il/services/renovation-mortgage#service",
-        name: "משכנתא לשיפוץ",
-        description: "משכנתא לשיפוץ בריביות נמוכות. שדרגו את הבית ללא הלוואות יקרות. טיפול מלא בשמאויות ושחרור כספים.",
-=======
         "@id": "https://avi-mashkanta.com/services/reverse-mortgage#service",
         name: "משכנתא הפוכה",
         description: "משכנתא הפוכה לגיל הפנסיה. קבלו הכנסה חודשית מהבית שלכם בלי למכור אותו. ליווי מקצועי ותכנון פיננסי חכם.",
->>>>>>> Stashed changes
         provider: {
           "@id": "https://avi-home.co.il/#organization"
         },
@@ -76,17 +70,10 @@ function JsonLd() {
       },
       {
         "@type": "WebPage",
-<<<<<<< Updated upstream
-        "@id": "https://avi-home.co.il/services/renovation-mortgage#webpage",
-        url: "https://avi-home.co.il/services/renovation-mortgage",
-        name: "משכנתא לשיפוץ | אבי - הבית למשכנתאות",
-        description: "משכנתא לשיפוץ בריביות נמוכות. טיפול מלא בשמאויות ושחרור כספים.",
-=======
         "@id": "https://avi-mashkanta.com/services/reverse-mortgage#webpage",
         url: "https://avi-mashkanta.com/services/reverse-mortgage",
         name: "משכנתא הפוכה | אבי - הבית למשכנתאות",
         description: "משכנתא הפוכה לגיל הפנסיה. קבלו הכנסה חודשית מהבית שלכם.",
->>>>>>> Stashed changes
         inLanguage: "he-IL",
         isPartOf: { "@id": "https://avi-home.co.il/#website" },
         breadcrumb: {
@@ -107,13 +94,8 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 3,
-<<<<<<< Updated upstream
-              name: "משכנתא לשיפוץ",
-              item: "https://avi-home.co.il/services/renovation-mortgage"
-=======
               name: "משכנתא הפוכה",
               item: "https://avi-mashkanta.com/services/reverse-mortgage"
->>>>>>> Stashed changes
             }
           ]
         }
