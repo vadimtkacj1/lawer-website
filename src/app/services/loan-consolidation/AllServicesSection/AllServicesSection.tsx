@@ -10,7 +10,7 @@ const recyclingSigns = [
   },
   { 
     t: "ההכנסות שלכם גדלו משמעותית?", 
-    d: "(אפשר לקצר שנים ולחסוך ריביות)." 
+    d: "(אפשר לקצר שנים ולחסוך ריביות בתהליך של מחזור משכנתא)." 
   },
   { 
     t: "המשכנתא שלכם צמודה למדד והקרן לא יורדת?", 
@@ -43,14 +43,14 @@ export default function AllServicesSection() {
           <motion.div variants={staggerItem} className="mb-12 md:mb-24 max-w-4xl ml-auto">
             <h2 className="font-noto-sans-hebrew font-black text-3xl md:text-6xl lg:text-7xl 3xl:text-8xl text-[#1c3664] leading-tight mb-6">
               מתי כדאי לעשות <br />
-              <span className="text-orange border-b-4 md:border-b-8 border-orange pb-2">מיחזור משכנתא?</span>
+              <span className="text-orange border-b-4 md:border-b-8 border-orange pb-2">מחזור משכנתא?</span>
             </h2>
             <p className="text-lg md:text-2xl text-[#1c3664]/90 font-medium leading-relaxed mb-8">
               גם אם אין לכם הלוואות נוספות, ייתכן שהמשכנתא שלכם פשוט לא מותאמת למציאות של היום. 
-              מיחזור משכנתא הוא תהליך שבו אנחנו מחליפים את המשכנתא הישנה בחדשה, בתנאים טובים יותר.
+              מחזור משכנתא הוא תהליך שבו אנחנו מחליפים את המשכנתא הישנה בחדשה, בתנאים טובים יותר.
             </p>
             <h3 className="font-noto-sans-hebrew font-bold text-xl md:text-3xl text-[#1c3664]">
-              סימנים שאתם חייבים לבדוק כדאיות מיחזור:
+              סימנים שאתם חייבים לבדוק כדאיות מחזור משכנתא:
             </h3>
           </motion.div>
 

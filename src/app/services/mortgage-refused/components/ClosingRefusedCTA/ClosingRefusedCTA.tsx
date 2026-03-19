@@ -25,7 +25,7 @@ export default function ClosingRefusedCTA() {
             variants={staggerItem}
             className="text-lg md:text-2xl lg:text-3xl text-white/90 font-light leading-relaxed max-w-5xl mx-auto"
           >
-            המערכת הבנקאית חזקה, אבל היא לא תמיד צודקת. אם קיבלתם סירוב, אם אתם מרגישים שהפקיד לא הקשיב לכם, או אם אתם יודעים שיש לכם בעיה ב-BDI ורוצים להקדים תרופה למכה - דברו איתי. <span className="font-black text-orange">יש דרך להפוך את ה"לא" ל"כן".</span>
+            המערכת הבנקאית חזקה, אבל היא לא תמיד צודקת. אם קיבלתם סירוב והפכתם למסורבי משכנתא, אם אתם מרגישים שהפקיד לא הקשיב לכם, או אם אתם יודעים שיש לכם בעיה ב-BDI ורוצים להקדים תרופה למכה - דברו איתי. <span className="font-black text-orange">יש דרך להפוך את ה"לא" ל"כן" ולהשיג משכנתא למסורבי בנקים.</span>
           </motion.p>
 
           <motion.div 

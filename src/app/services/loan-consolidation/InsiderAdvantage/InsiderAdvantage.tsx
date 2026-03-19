@@ -56,7 +56,7 @@ export default function InsiderAdvantage() {
                 <h3 className="text-3xl font-bold text-white">הפתרון שלי:</h3>
               </div>
               <p className="text-xl text-white/80 leading-relaxed">
-                אנחנו לוקחים את כל ההלוואות הקטנות והמעיקות האלו, ומכניסים אותן לתוך המשכנתא של הבית. 
+                בתהליך של איחוד הלוואות, אנחנו לוקחים את כל ההלוואות הקטנות והמעיקות האלו, ומכניסים אותן לתוך המשכנתא של הבית. 
                 <span className="text-orange font-bold mr-2">למה זה גאוני?</span>
               </p>
             </motion.div>

@@ -24,7 +24,7 @@ const advantages = [
   },
   {
     title: "החזר חודשי נמוך",
-    description: "במקום לשלם 4,000 ₪ בחודש על הלוואה קצרה, תשלמו כמה מאות שקלים בודדים בחודש בתוך המשכנתא.",
+    description: "במקום לשלם 4,000 ₪ בחודש על הלוואה קצרה, תשלמו כמה מאות שקלים בודדים בחודש בתוך מסלול של משכנתא לשיפוץ.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path>
@@ -33,7 +33,7 @@ const advantages = [
   },
   {
     title: "ריבית זולה",
-    description: 'הריביות במשכנתא לדיור/שיפוץ נמוכות משמעותית מריביות של "הלוואות לכל מטרה".',
+    description: 'הריביות עבור משכנתא לשיפוץ נמוכות משמעותית מריביות של "הלוואות לכל מטרה".',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
@@ -69,7 +69,7 @@ export default function CommonMistake() {
           {/* Header Section from Image */}
           <motion.div variants={staggerItem} className="text-center mb-16">
             <h2 className="font-noto-sans-hebrew font-black text-4xl md:text-6xl text-white mb-6">
-              הלוואה בנקאית רגילה מול משכנתא
+              הלוואה בנקאית רגילה מול משכנתא לשיפוץ הבית
             </h2>
             <p className="font-noto-sans-hebrew text-xl md:text-2xl text-white/90 max-w-5xl mx-auto leading-relaxed">
               כשאתם לוקחים הלוואה בנקאית רגילה לשיפוץ, הבנק בדרך כלל ידרוש מכם להחזיר אותה תוך 5 עד 7 שנים. התוצאה? החזר חודשי מטורף שחונק את העו"ש, ובריבית גבוהה יחסית.
@@ -89,7 +89,7 @@ export default function CommonMistake() {
               <a href="https://www.avi-mashkanta.com/services/debt-consolidation" className="hyper-link" title="משכנתא לכל מטרה | אבי בוקעי - הבית למשכנתאות" target="_blank" rel="noopener noreferrer">
                 להרחיב את המשכנתא הקיימת
               </a>
-              {" "}(או לקחת חדשה אם אין). מה היתרונות?
+              {" "}(או לקחת חדשה אם אין). לקיחת משכנתא לשיפוץ בית מציעה יתרונות אדירים:
             </p>
           </motion.div>
 

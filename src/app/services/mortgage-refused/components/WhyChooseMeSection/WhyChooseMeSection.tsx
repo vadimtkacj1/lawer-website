@@ -32,7 +32,7 @@ export default function WhyChooseMeSection() {
             className="space-y-8 md:space-y-12 max-w-6xl"
           >
             <p className="text-xl md:text-3xl text-[#1c3664] font-medium leading-relaxed">
-              בתיקים של מסורבים, <span className="font-black text-orange">אין מקום לניסוי וטעייה</span>. יועץ לא מנוסה יכול לגרום נזק בלתי הפיך לדירוג האשראי שלכם.
+              בתיקים של מסורבי משכנתא, <span className="font-black text-orange">אין מקום לניסוי וטעייה</span>. יועץ לא מנוסה יכול לגרום נזק בלתי הפיך לדירוג האשראי שלכם.
             </p>
 
             <motion.div 
@@ -40,7 +40,8 @@ export default function WhyChooseMeSection() {
               className="border-r-4 md:border-r-8 border-orange pr-6 md:pr-12 py-6 md:py-8 bg-white/50 rounded-lg"
             >
               <p className="text-xl md:text-3xl text-[#1c3664] font-medium leading-relaxed">
-                ההיכרות שלי עם המערכת הבנקאית מבפנים מאפשרת לי לדעת איזה בנק "סלחן" יותר לחריגות בחשבון, ואיזה בנק מעדיף להימנע מלקוחות עם בעיות בעבר. אני לא "יורה באפלה", אלא מגיש את התיק בדיוק למקום שבו הסיכוי לאישור הוא הגבוה ביותר.
+                ההיכרות שלי עם המערכת הבנקאית מבפנים מאפשרת לי לדעת איזה בנק "סלחן" יותר לחריגות בחשבון, ואיזה בנק מעדיף להימנע מלקוחות עם בעיות בעבר. אני לא "יורה באפלה", אלא מגיש את התיק בדיוק למקום שבו הסיכוי לאישור הוא הגבוה ביותר, ומייצר פתרון למסורבי משכנתא שמותאם אישית למידותיכם.
+
               </p>
             </motion.div>
           </motion.div>

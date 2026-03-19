@@ -22,7 +22,7 @@ export default function AviAdvantageClosing() {
               <span className="text-orange">"אבי - הבית למשכנתאות"?</span>
             </h2>
             <p className="text-base md:text-xl lg:text-2xl text-white/80 font-light leading-relaxed max-w-4xl">
-              לקחת משכנתא לכל מטרה זה לא "זבנג וגמרנו". יש כאן רגולציה ומגבלות שצריך להכיר.
+              לקחת משכנתא לכל מטרה זה לא "זבנג וגמרנו".  יש כאן רגולציה ומגבלות שצריך להכיר כשמבקשים הלוואה לכל מטרה כנגד שיעבוד דירה.
             </p>
           </motion.div>
 

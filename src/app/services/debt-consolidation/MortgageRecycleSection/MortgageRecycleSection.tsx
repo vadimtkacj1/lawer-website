@@ -22,7 +22,7 @@ export default function MortgageRecycleSection() {
               </span>
             </h2>
             <p className="text-base md:text-2xl lg:text-3xl text-[#1c3664]/80 font-light leading-relaxed mt-6 md:mt-12 max-w-5xl">
-              כמי שמלווה מאות משפחות באיזור המרכז והסביבה, אני רואה 3 שימושים עיקריים ונפוצים:
+              כמי שמלווה מאות משפחות באיזור המרכז והסביבה, אני רואה 3 שימושים עיקריים ונפוצים ללקיחת משכנתא כנגד נכס קיים:
             </p>
           </motion.div>
 

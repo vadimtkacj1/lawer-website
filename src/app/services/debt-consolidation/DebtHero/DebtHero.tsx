@@ -60,8 +60,8 @@ export default function DebtHero() {
               variants={staggerItem}
             >
               משכנתא לכל מטרה: <br/>
-              להפוך את הבית לכספומט <br/>
-              הכי זול שתפגשו
+              הלוואה כנגד נכס קיים <br/>
+              שהופכת את הבית לכספומט שלכם
             </motion.h1>
           </div>
         </motion.div>

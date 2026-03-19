@@ -28,7 +28,7 @@ export default function TrapSection() {
             variants={staggerItem}
             className="text-lg md:text-2xl lg:text-3xl text-white/90 font-light leading-relaxed max-w-6xl"
           >
-            האתגר הגדול ביותר בפרויקטים האלו הוא שלרוב הדירה תהיה מוכנה רק בעוד 3, 4 או 5 שנים. בזמן הזה אתם חשופים לשתי סכנות:
+            האתגר הגדול ביותר ברכישת דירה למשתכן הוא שלרוב הדירה תהיה מוכנה רק בעוד 3, 4 או 5 שנים. בזמן הזה אתם חשופים לשתי סכנות:
           </motion.p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-6xl">

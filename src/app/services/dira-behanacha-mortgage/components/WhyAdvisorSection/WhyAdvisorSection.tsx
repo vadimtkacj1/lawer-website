@@ -29,7 +29,7 @@ export default function WhyAdvisorSection() {
           
           <motion.div variants={staggerItem} className="mb-14 md:mb-20">
             <h2 className="font-noto-sans-hebrew font-black text-3xl md:text-6xl lg:text-7xl text-[#1c3664] leading-tight">
-              למה לקחת יועץ פרטי<br />
+              למה לקחת יועץ משכנתאות פרטי<br />
               <span className="text-orange border-b-2 md:border-b-8 border-orange pb-2 inline-block mt-2">
                 אם "זכיתי במחיר קבוע"?
               </span>
@@ -45,7 +45,7 @@ export default function WhyAdvisorSection() {
             </p>
 
             <p className="text-lg md:text-2xl lg:text-3xl text-[#1c3664]/80 font-light leading-relaxed">
-              בנקים מסוימים פחות אוהבים את הפרויקטים האלו ומקשיחים עמדות. אחרים נותנים תנאים מועדפים לזוכים. כמי שמכיר את המערכת מבפנים, אני יודע:
+              בנקים מסוימים פחות אוהבים את הפרויקטים האלו ומקשיחים עמדות. אחרים נותנים תנאים מועדפים לזוכים של מחיר למשתכן. כמי שמכיר את המערכת מבפנים, אני יודע:
             </p>
 
             <div className="space-y-6">

@@ -64,7 +64,7 @@ export default function WhyRefusedSection() {
               className="border-r-4 md:border-r-8 border-orange pr-6 md:pr-12 py-6 md:py-8 bg-white/50 rounded-lg"
             >
               <p className="text-xl md:text-3xl text-[#1c3664] font-medium leading-relaxed">
-                הבעיה היא שהמערכת הבנקאית היא <span className="font-black text-orange">אוטומטית וקרה</span>. היא יכולה לפסול אתכם בגלל צ'ק אחד שחזר לפני שנתיים בטעות, בגלל הוראת קבע שלא כובדה כי המשכורת נכנסה יום באיחור, או בגלל ניצול גבוה של מסגרת האשראי. מבחינת המחשב של הבנק אתם "לקוח מסוכן". <span className="font-black not-italic">מבחינתי? אתם משפחה נורמטיבית שקרתה לה תקלה נקודתית שאפשר להסביר אותה.</span>
+                הבעיה היא שהמערכת הבנקאית היא <span className="font-black text-orange">אוטומטית וקרה</span>. היא יכולה לפסול אתכם בגלל צ'ק אחד שחזר לפני שנתיים בטעות, בגלל הוראת קבע שלא כובדה כי המשכורת נכנסה יום באיחור, או בגלל ניצול גבוה של מסגרת האשראי. מבחינת המחשב של הבנק אתם "לקוח מסוכן" ועוד מספר בסטטיסטיקה של מסורבי בנקים. <span className="font-black not-italic">מבחינתי? אתם משפחה נורמטיבית שקרתה לה תקלה נקודתית שאפשר להסביר אותה.</span>
               </p>
             </motion.div>
           </motion.div>

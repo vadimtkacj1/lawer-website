@@ -46,10 +46,13 @@ export default function ExpertSection() {
                 <p className="text-[#1c3664] font-bold">
                   הבית שלכם הוא הכלי הפיננסי הכי חזק שיש לכם כדי למחוק את המינוס ולהקטין את ההוצאות ב-3,000 עד 5,000 ש"ח בחודש.
                 </p>
+                 <p className="text-[#1c3664] font-bold">
+                  איך עושים את זה? באמצעות תהליך מקצועי של איחוד הלוואות ומחזור משכנתא.
+                </p>
               </div>
               <div className="pt-6 mt-8 border-t border-[#1c3664]/10 flex justify-start">
                 <span className="text-orange font-bold text-xl 3xl:text-3xl italic">
-                  איחוד הלוואות ומיחזור משכנתא
+                  איחוד הלוואות ומחזור משכנתא
                 </span>
               </div>
             </div>
