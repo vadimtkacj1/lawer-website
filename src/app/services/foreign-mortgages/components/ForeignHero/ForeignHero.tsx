@@ -57,7 +57,9 @@ export default function ForeignHero() {
                          relative px-4 py-2"
               variants={staggerItem}
             >
-משכנתא<br />לתושבי חוץ:<br />לקנות נכס בישראל            </motion.h1>
+              משכנתא לתושבי חוץ: <br/>
+              הדרך הבטוחה לקנות נכס בישראל        
+            </motion.h1>
           </div>
         </motion.div>
       </div>

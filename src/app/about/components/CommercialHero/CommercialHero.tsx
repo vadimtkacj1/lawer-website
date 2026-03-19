@@ -107,8 +107,8 @@ export default function CommercialHero() {
                          relative px-4 py-2"
               variants={staggerItem}
             >
-              אודות אבי בוקעי <br/>
-"אבי הבית למשכנתאות"
+              אודות אבי בוקעי –<br/>
+יועץ משכנתאות מומחה ומתכנן פיננסי אישי
             </motion.h1>
           </div>
         </motion.div>

@@ -48,7 +48,7 @@ export default function ProblemSection() {
 
             <div className="space-y-8">
               <p className="text-xl md:text-2xl text-[#1c3664] font-light leading-relaxed max-w-3xl">
-                ההחלטה לקנות דירה בישראל היא צעד כלכלי משמעותי עבור תושבי חו"ל רבים. בין אם אתם מחפשים "דירת מפלט" לחופשות, נכס להשקעה שמניב תשואה שקלית, או מתכננים מגורים עתידיים – שוק הנדל"ן הישראלי מציע הזדמנויות רבות.
+                ההחלטה לקנות דירה בישראל היא צעד כלכלי משמעותי עבור תושבי חו"ל רבים. בין אם אתם מחפשים "דירת מפלט" לחופשות, נכס להשקעה שמניב תשואה שקלית, או מתכננים מגורים עתידיים – שוק הנדל"ן הישראלי מציע הזדמנויות רבות, ולכן הביקוש עבור משכנתאות לתושבי חוץ רק הולך וגדל.
               </p>
               <p className="text-xl md:text-2xl text-[#1c3664]/80 font-light leading-relaxed max-w-3xl border-r-2 border-[#F1662A]/30 pr-6">
                 אבל אז מגיעה המציאות: הבנקים בישראל עובדים אחרת לגמרי ממה שאתם מכירים בארה"ב, צרפת או אנגליה. השפה שונה, הרגולציה נוקשה, והפרשי השעות הופכים כל בירור קטן למבצע לוגיסטי מורכב.
@@ -61,8 +61,8 @@ export default function ProblemSection() {
             <div className="relative pr-8 border-r-4 border-[#F1662A]">
               <div className="space-y-8">
                 <div className="space-y-2">
-                  <p className="text-[#F1662A] font-bold text-xl tracking-wide italic">נעים להכיר, אני</p>
-                  <h3 className="text-4xl md:text-5xl font-black text-[#1c3664]">אבי בוקעי</h3>
+                  <p className="text-[#F1662A] font-bold text-xl tracking-wide italic">נעים להכיר, </p>
+                  <h3 className="text-4xl md:text-5xl font-black text-[#1c3664]">אני אבי בוקעי</h3>
                   <p className="text-[#1c3664]/60 font-bold text-lg">הבעלים של "אבי - הבית למשכנתאות"</p>
                 </div>
                 
@@ -71,7 +71,7 @@ export default function ProblemSection() {
                     כיוצא המערכת הבנקאית וכמי שמכיר את המערכת הבנקאית הישראלית מבפנים, אני משמש כ"עיניים" של תושבי חוץ רבים שרוצים לקנות נכס באיזור המרכז (חולון, בת ים, ראשון לציון, תל אביב והסביבה).
                   </p>
                   <p className="text-lg md:text-xl lg:text-2xl text-[#1c3664]/70 font-light leading-relaxed">
-                    אני כאן כדי לגשר על המרחק ולוודא שהעסקה שלכם תעבור חלק, גם אם אתם נמצאים אלפי קילומטרים מכאן.
+                    אני כאן כדי לגשר על המרחק ולוודא שהעסקה שלכם תעבור חלק, גם אם אתם נמצאים אלפי קילומטרים מכאן וזקוקים לפתרון של משכנתא לתושבי חוץ.
                   </p>
                 </div>
 

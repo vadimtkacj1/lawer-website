@@ -20,10 +20,6 @@ export default function SEOIntroduction() {
       <p className="text-base md:text-lg text-blue-dk/70 leading-relaxed max-w-3xl mx-auto">
         מתכננים קניית דירה? בעזרת מחשבון משכנתא פשוט וידידותי, תוכלו לבצע חישוב משכנתא אמין ולקבל תמונת מצב מיידית. בניגוד אל מחשבון הלוואות בסיסי, מחשבון משכנתאות זה מותאם במיוחד לרכישת נכסים ולתכנון ההון העצמי הנדרש. הזינו את הנתונים אל מחשבון משכנתא למטה וקבלו הערכה ראשונית.
 
-        <p> 
-                               
-        </p>
-
         <p className="text-base md:text-lg text-blue-dk/70 leading-relaxed max-w-3xl mx-auto">
         זכרו: <span className="font-bold text-orange">כדי להשיג את הריביות הטובות ביותר שמותאמות בדיוק לפרופיל ולמקצוע שלכם, אנחנו כאן בשבילכם! </span>
         </p>

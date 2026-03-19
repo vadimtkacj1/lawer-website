@@ -57,7 +57,7 @@ export default function ConsultantHero() {
                          relative px-4 py-2"
               variants={staggerItem}
             >
-איחוד הלוואות ומיחזור משכנתא: הדרך <br/>היחידה להחזיר את האוויר לנשימה
+             איחוד הלוואות ומחזור משכנתא
             </motion.h1>
           </div>
         </motion.div>

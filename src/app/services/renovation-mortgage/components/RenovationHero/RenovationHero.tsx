@@ -59,7 +59,7 @@ export default function RenovationHero() {
                          relative px-4 py-2"
               variants={staggerItem}
             >
-              משכנתא לשיפוץ <br/>
+              ייעוץ משכנתא לשיפוץ: <br/>
               איך לשדרג את הבית <br/>
               בלי להיחנק מהלוואות יקרות
             </motion.h1>

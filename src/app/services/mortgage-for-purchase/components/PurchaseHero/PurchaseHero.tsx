@@ -61,10 +61,10 @@ export default function PurchaseHero() {
                          relative px-4 py-2"
               variants={staggerItem}
             >
-              משכנתא לרכישת דירה:<br />
-              <span className="block md:inline">להפוך את החוב הגדול בחיים </span>
+              משכנתא לדירה ראשונה או חלופית: <br />
+              <span className="block md:inline">המדריך המלא לתכנון משכנתא חכמה</span>
               <br className="hidden md:block" />
-              <span className="text-orange-600">לנכס חכם</span>
+              <span className="text-orange-600"></span>
             </motion.h1>
           </div>
         </motion.div>

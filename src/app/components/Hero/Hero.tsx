@@ -67,16 +67,15 @@ export default function Hero() {
 
             <h1 className="font-black leading-[1.15] sm:leading-[1.2] mb-2 sm:mb-5 md:mb-6 text-[#0f3244] drop-shadow-sm [text-shadow:_0_1px_20px_rgb(255_255_255_/_40%)]">
               <span className="block text-[1.35rem] sm:text-[1.65rem] md:text-5xl xl:text-6xl 3xl:text-7xl 4xl:text-8xl 5xl:text-[8.5rem]">
-                משכנתא לא חייבת להיות הימור
+                אבי – יועץ משכנתאות מומחה:
               </span>
               <span className="block text-[#F1662A] text-[1.35rem] sm:text-[1.65rem] md:text-5xl xl:text-6xl 3xl:text-7xl 4xl:text-8xl 5xl:text-[8.5rem]">
-                בואו נהפוך אותה לחיסכון המחושב ביותר שלכם
+                הופכים את המשכנתא שלכם לחיסכון המחושב ביותר
               </span>
             </h1>
 
             <p className="font-medium leading-relaxed mb-3 sm:mb-7 md:mb-8 text-[0.9rem] sm:text-base md:text-lg lg:text-xl text-[#0f3244] [text-shadow:_0_1px_10px_rgb(255_255_255_/_50%)] max-w-2xl">
-              תכנון משכנתא מדויק וניהול מו״מ מול הבנקים, במטרה להשיג עבורכם פתרון פיננסי נכון יותר,
-              עם תנאים שמשרתים אתכם גם היום וגם בעתיד.
+              שירותי ייעוץ משכנתאות המעניקים לכם שקט נפשי. בתור יועץ משכנתא אישי, אבי מבצע תכנון פיננסי מדויק וניהול מו״מ קשוח מול הבנקים, במטרה להשיג עבורכם את התנאים והריביות הטובים ביותר שמשרתים אתכם גם היום וגם בעתיד.
             </p>
 
             <div className="flex flex-col items-start gap-2 sm:gap-4 md:gap-5">

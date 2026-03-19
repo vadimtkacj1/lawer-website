@@ -61,8 +61,8 @@ export default function DiraHero() {
                          relative px-4 py-2"
               variants={staggerItem}
             >
-              משכנתא ל"דירה בהנחה" (מחיר למשתכן):<br />
-              המדריך לזוכים המאושרים
+              זכיתם ב"דירה בהנחה"?<br />
+              המדריך המלא לקבלת משכנתא לדירה במחיר למשתכן
             </motion.h1>
           </div>
         </motion.div>

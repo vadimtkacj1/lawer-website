@@ -36,7 +36,8 @@ export default function BiggestMistakeSection() {
             className="border-r-2 md:border-r-8 border-orange pr-4 md:pr-10 py-4 md:py-6 bg-orange/10 rounded-lg max-w-4xl"
           >
             <p className="text-xl md:text-3xl lg:text-4xl text-white font-black leading-snug">
-              קיבלתם סירוב? עצרו הכל ופנו אלינו לייעוץ מקצועי.
+              קיבלתם סירוב? עצרו הכל ופנו אלינו לייעוץ מקצועי למציאת פתרון למסורבי משכנתא.
+
             </p>
           </motion.div>
         </motion.div>

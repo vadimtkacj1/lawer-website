@@ -33,8 +33,8 @@ export const metadata: Metadata = {
     canonical: "https://avi-mashkanta.com/services/debt-consolidation",
   },
   openGraph: {
-    title: "משכנתא לכל מטרה בחולון והמרכז | אבי - הבית למשכנתאות",
-    description: "הפכו את הבית לכספומט זול. משכנתא לכל מטרה בריביות נמוכות לעזרה לילדים, איחוד הלוואות וסגירת מינוס.",
+    title: "משכנתא לכל מטרה: הלוואה כנגד נכס קיים בתנאים הטובים ביותר | אבי - הבית למשכנתאות",
+    description: "צריכים מימון לפרויקט, עזרה לילדים או סגירת חובות? משכנתא לכל מטרה מאפשרת לכם לקבל הלוואה זולה ונוחה כנגד נכס קיים. פנו לאבי לייעוץ וגלו איך למנף את הבית שלכם בחוכמה ובבטחה.",
     url: "https://avi-mashkanta.com/services/debt-consolidation",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",

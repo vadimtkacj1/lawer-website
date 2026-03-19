@@ -36,8 +36,8 @@ export const metadata: Metadata = {
     canonical: "https://avi-mashkanta.com/services/reverse-mortgage",
   },
   openGraph: {
-    title: " משכנתא הפוכה - אבי - הבית למשכנתאות ",
-    description: "משכנתא הפוכה לגיל הפנסיה. קבלו הכנסה חודשית מהבית שלכם בלי למכור אותו.",
+    title: "שכנתא הפוכה לגיל השלישי – ייעוץ ותכנון פיננסי | אבי - הבית למשכנתאות",
+    description: "משכנתא הפוכה לגיל השלישי היא הפתרון החכם לשמור על רמת החיים, לעזור לילדים או לממן הוצאות. קבלו ליווי וייעוץ מקצועי מאבי להתאמת המסלול הבטוח ביותר עבורכם.",
     url: "https://avi-mashkanta.com/services/reverse-mortgage",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",

@@ -61,7 +61,7 @@ export default function RefusedHero() {
                          relative px-4 py-2"
               variants={staggerItem}
             >
-              מסורבי משכנתא: כשהבנק אומר "לא" – אני כאן כדי להפוך את זה ל"כן"
+            מסורבי משכנתא: כשהבנק אומר "לא", הדרך לקבלת משכנתא למסורבי בנקים עדיין פתוחה
             </motion.h1>
           </div>
         </motion.div>
