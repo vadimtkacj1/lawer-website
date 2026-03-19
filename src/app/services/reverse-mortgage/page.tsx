@@ -34,15 +34,23 @@ export const metadata: Metadata = {
     "מיחזור משכנתא לשיפוץ",
   ],
   alternates: {
-    canonical: "https://avi-home.co.il/services/renovation-mortgage",
+    canonical: "https://avi-mashkanta.com/services/reverse-mortgage",
   },
   openGraph: {
-    title: " משכנתא לשיפוץ - אבי - הבית למשכנתאות ",
-    description: "שדרגו את הבית ללא הלוואות יקרות. משכנתא לשיפוץ בריביות נמוכות עם טיפול מלא בשמאויות ושחרור כספים.",
-    url: "https://avi-home.co.il/services/renovation-mortgage",
+    title: " משכנתא הפוכה - אבי - הבית למשכנתאות ",
+    description: "משכנתא הפוכה לגיל הפנסיה. קבלו הכנסה חודשית מהבית שלכם בלי למכור אותו.",
+    url: "https://avi-mashkanta.com/services/reverse-mortgage",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
     type: "website",
+    images: [
+      {
+        url: "https://avi-mashkanta.com/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "משכנתא הפוכה - אבי הבית למשכנתאות",
+      },
+    ],
   },
 };
 
@@ -57,7 +65,7 @@ function JsonLd() {
         name: "משכנתא הפוכה",
         description: "משכנתא הפוכה לגיל הפנסיה. קבלו הכנסה חודשית מהבית שלכם בלי למכור אותו. ליווי מקצועי ותכנון פיננסי חכם.",
         provider: {
-          "@id": "https://avi-home.co.il/#organization"
+          "@id": "https://avi-mashkanta.com/#organization"
         },
         areaServed: [
           { "@type": "City", name: "חולון" },
@@ -75,7 +83,7 @@ function JsonLd() {
         name: "משכנתא הפוכה | אבי - הבית למשכנתאות",
         description: "משכנתא הפוכה לגיל הפנסיה. קבלו הכנסה חודשית מהבית שלכם.",
         inLanguage: "he-IL",
-        isPartOf: { "@id": "https://avi-home.co.il/#website" },
+        isPartOf: { "@id": "https://avi-mashkanta.com/#website" },
         breadcrumb: {
           "@type": "BreadcrumbList",
           itemListElement: [
@@ -83,13 +91,13 @@ function JsonLd() {
               "@type": "ListItem",
               position: 1,
               name: "דף הבית",
-              item: "https://avi-home.co.il"
+              item: "https://avi-mashkanta.com"
             },
             {
               "@type": "ListItem",
               position: 2,
               name: "שירותים",
-              item: "https://avi-home.co.il/services"
+              item: "https://avi-mashkanta.com/services"
             },
             {
               "@type": "ListItem",

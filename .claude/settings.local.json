@@ -23,7 +23,8 @@
       "Bash(curl:*)",
       "Bash(pnpm add:*)",
       "WebFetch(domain:cdn.jsdelivr.net)",
-      "WebFetch(domain:www.npmjs.com)"
+      "WebFetch(domain:www.npmjs.com)",
+      "Bash(find src/app -type d -name [*])"
     ]
   }
 }

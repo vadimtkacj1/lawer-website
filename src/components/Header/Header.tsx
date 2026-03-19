@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// --- Internal Icons ---
 const MenuIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
     <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -36,7 +35,6 @@ const servicesLinks = [
   { href: "/services/reverse-mortgage", label: "משכנתא הפוכה" },
   { href: "/services/mortgage-refused", label: "מסורבי בנקים ומורכבות" },
   { href: "/services/renovation-mortgage", label: "משכנתא לשיפוץ" },
-  { href: "/services/apartment-mortgage", label: "משכנתא לדירה" },
   { href: "/services/foreign-mortgages", label: "משכנתא לתושבי חוץ" },
   { href: "/services/debt-consolidation", label: "משכנתא לכל מטרה" },
 ];
@@ -46,10 +44,13 @@ const navLinks = [
   { href: "#services", label: "שירותים", hasDropdown: true },
   { href: "/about", label: "אודות" },
   { href: "/calculator", label: "מחשבון משכנתא" },
-  { href: "#contact", label: "צור קשר" },
 ];
 
-export default function Header() {
+interface HeaderProps {
+  alwaysWithBackground?: boolean;
+}
+
+export default function Header({ alwaysWithBackground = false }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false);
@@ -87,19 +88,15 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-[70] transition-all duration-300
-                    ${isScrolled || isMobileMenuOpen
-                      ? "py-3 sm:py-4 bg-cream shadow-md" 
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300
+                    ${isScrolled || isMobileMenuOpen || alwaysWithBackground
+                      ? "py-3 sm:py-4 bg-cream shadow-md"
                       : "py-4 sm:py-6 bg-transparent"
                     }`}
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-8">
-          {/* flex-row-reverse на мобилке меняет местами Лого и Бургер.
-              lg:flex-row возвращает стандартный порядок для десктопа.
-          */}
           <nav className="flex flex-row-reverse lg:flex-row items-center justify-between">
             
-            {/* Группа Логотипа и Десктопного меню */}
             <div className="flex flex-row items-center gap-4 md:gap-8">
               <Link href="/" className="flex items-center" suppressHydrationWarning>
                 <Image
@@ -112,7 +109,6 @@ export default function Header() {
                 />
               </Link>
 
-              {/* Desktop Links */}
               <ul className="hidden lg:flex items-center gap-1" dir="rtl">
                 {navLinks.map((link) => (
                   <li 
@@ -133,7 +129,6 @@ export default function Header() {
                       )}
                     </Link>
 
-                    {/* Desktop Dropdown */}
                     {link.hasDropdown && (
                       <div 
                         className={`absolute top-full right-0 mt-0 w-72 bg-cream rounded-xl overflow-hidden transition-all duration-300 origin-top shadow-xl
@@ -158,10 +153,9 @@ export default function Header() {
               </ul>
             </div>
 
-            {/* Левая сторона (на мобилке станет правой из-за row-reverse): Бургер или Кнопка */}
             <div className="flex items-center">
               <button
-                className="lg:hidden relative z-[80] p-0 border-none bg-transparent outline-none focus:ring-0 text-blue-dk hover:text-orange transition-colors"
+                className="lg:hidden relative p-0 border-none bg-transparent outline-none focus:ring-0 text-blue-dk hover:text-orange transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               >
@@ -184,34 +178,40 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
       <div 
-        className={`lg:hidden fixed inset-0 bg-cream z-[60] flex flex-col transition-all duration-500 ease-in-out transform ${
-          isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
+        className={`lg:hidden fixed inset-0 bg-black/50 z-[80] transition-opacity duration-300 ${
+          isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
+
+      <div 
+        className={`lg:hidden fixed top-0 right-0 bottom-0 w-[75vw] max-w-[300px] bg-cream shadow-2xl z-[90] flex flex-col transition-transform duration-300 ease-in-out transform ${
+          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
         dir="rtl"
       >
-        <div className="container mx-auto px-6 pt-40 pb-10 flex flex-col items-center overflow-y-auto">
-          <ul className="flex flex-col gap-8 items-center w-full">
+        <div className="px-6 pt-[100px] pb-8 flex flex-col overflow-y-auto w-full h-full">
+          <ul className="flex flex-col gap-5 w-full">
             {navLinks.map((link) => (
-              <li key={link.href} className="w-full text-center">
+              <li key={link.href} className="w-full">
                 {link.hasDropdown ? (
-                  <div className="flex flex-col items-center">
+                  <div className="flex flex-col w-full">
                     <button
                       onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                      className="flex items-center justify-center gap-3 text-blue-dk font-bold text-4xl hover:text-orange transition-colors bg-transparent border-none outline-none"
+                      className="w-full flex items-center justify-start gap-2 text-blue-dk font-semibold text-lg hover:text-orange transition-colors bg-transparent border-none outline-none text-right"
                     >
-                      {link.label}
-                      <ChevronIcon className={`w-8 h-8 transition-transform duration-300 ${isMobileServicesOpen ? "rotate-180" : ""}`} />
+                      <span>{link.label}</span>
+                      <ChevronIcon className={`w-4 h-4 transition-transform duration-300 ${isMobileServicesOpen ? "rotate-180" : ""}`} />
                     </button>
-                    
-                    <div className={`flex flex-col gap-6 mt-6 overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? "max-h-[700px] opacity-100" : "max-h-0 opacity-0"}`}>
+
+                    <div className={`flex flex-col gap-3 mt-3 pr-4 overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}>
                       {servicesLinks.map((subLink) => (
                         <Link
                           key={subLink.href}
                           href={subLink.href}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="text-blue-dk/60 font-medium text-2xl hover:text-orange"
+                          className="block text-blue-dk/80 font-medium text-base hover:text-orange transition-colors text-right w-full"
                         >
                           {subLink.label}
                         </Link>
@@ -221,7 +221,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={link.href}
-                    className="block text-blue-dk font-bold text-4xl hover:text-orange transition-colors"
+                    className="text-blue-dk font-semibold text-lg hover:text-orange transition-colors block text-right w-full"
                     onClick={(e) => handleNavClick(e, link.href)}
                   >
                     {link.label}
@@ -231,13 +231,13 @@ export default function Header() {
             ))}
           </ul>
 
-          <div className="mt-16 w-full flex justify-center">
-            <a 
+          <div className="mt-auto pt-10 w-full">
+            <a
               href="#contact"
               onClick={(e) => handleNavClick(e, "#contact")}
-              className="bg-blue-dk text-white flex items-center justify-center gap-3 px-12 py-5 text-2xl w-fit rounded-xl font-bold active:scale-95 transition-transform"
+              className="bg-blue-dk text-white flex items-center justify-center gap-2 px-6 py-3 text-base rounded-full font-semibold hover:bg-blue-dk/90 active:scale-95 transition-all w-full"
             >
-              <PhoneIcon className="w-7 h-7" />
+              <PhoneIcon className="w-5 h-5" />
               <span>צור קשר</span>
             </a>
           </div>

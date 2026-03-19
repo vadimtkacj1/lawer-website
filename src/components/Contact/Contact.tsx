@@ -29,7 +29,7 @@ const FormInput = ({
   <div className="relative w-full">
     <input
       {...props}
-      className={`w-full bg-white border-2 rounded-2xl px-5 py-4 text-right text-[#1c3664] font-bold shadow-sm outline-none transition-all placeholder:text-[#1c3664]/40 ${
+      className={`w-full bg-white border-2 rounded-2xl px-4 py-3 text-right text-[#1c3664] font-semibold text-base shadow-sm outline-none transition-all placeholder:text-[#1c3664]/40 ${
         error && touched
           ? "border-red-500"
           : "border-transparent focus:border-[#1c3664]/20"
@@ -56,6 +56,7 @@ export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState({ name: "", phone: "" });
   const [touched, setTouched] = useState({ name: false, phone: false });
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
 
   // Валидация
   const validateName = (name: string) => {
@@ -98,7 +99,7 @@ export default function Contact() {
     const nameErr = validateName(formData.name);
     const phoneErr = validatePhone(formData.phone);
 
-    if (nameErr || phoneErr) {
+    if (nameErr || phoneErr || !agreedToTerms) {
       setErrors({ name: nameErr, phone: phoneErr });
       setTouched({ name: true, phone: true });
       return;
@@ -115,6 +116,7 @@ export default function Contact() {
         setIsSubmitted(true);
         setFormData({ name: "", phone: "" });
         setTouched({ name: false, phone: false });
+        setAgreedToTerms(false);
       }
     } catch (error) {
       console.error("Submission error:", error);
@@ -128,7 +130,7 @@ export default function Contact() {
     "bg-[#1c3664] rounded-xl text-white shadow-md group-hover:scale-110 transition-transform w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shrink-0";
   const iconSvgClass = "w-5 h-5 sm:w-6 sm:h-6";
   const textClass =
-    "text-[16px] xs:text-[18px] sm:text-2xl md:text-3xl font-black text-[#1c3664] whitespace-nowrap leading-none";
+    "text-[16px] xs:text-[18px] sm:text-xl md:text-2xl lg:text-xl font-black text-[#1c3664] leading-none";
 
   return (
     <section
@@ -287,10 +289,29 @@ export default function Contact() {
                       onBlur={() => handleBlur("phone")}
                     />
 
+                    <label className="flex items-start gap-3 text-right cursor-pointer -mt-3">
+                      <input
+                        type="checkbox"
+                        checked={agreedToTerms}
+                        onChange={(e) => setAgreedToTerms(e.target.checked)}
+                        className="mt-1 w-4 h-4 rounded border-2 border-[#1c3664]/30 text-[#1c3664] focus:ring-2 focus:ring-[#1c3664]/20 cursor-pointer shrink-0"
+                      />
+                      <span className="text-xs sm:text-sm text-[#1c3664]/80 font-medium">
+                        הנכם מאשרים את{" "}
+                        <Link href="/privacy" className="text-[#1c3664] font-bold hover:text-orange transition-colors underline">
+                          מדיניות פרטיות
+                        </Link>
+                        {" "}ו
+                        <Link href="/terms" className="text-[#1c3664] font-bold hover:text-orange transition-colors underline">
+                          תנאי שימוש
+                        </Link>
+                      </span>
+                    </label>
+
                     <button
                       type="submit"
-                      disabled={isSubmitting}
-                      className="w-full mt-2 py-4 text-2xl font-black bg-[#1c3664] text-white rounded-2xl hover:bg-[#152a4d] transition-all shadow-xl active:scale-95 disabled:opacity-50"
+                      disabled={isSubmitting || !agreedToTerms}
+                      className="w-full mt-2 py-3 text-lg sm:text-xl font-bold bg-[#1c3664] text-white rounded-2xl hover:bg-[#152a4d] transition-all shadow-xl active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? "שולח..." : "שלח הודעה"}
                     </button>

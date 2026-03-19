@@ -32,15 +32,23 @@ export const metadata: Metadata = {
     "מיחזור משכנתא לשיפוץ",
   ],
   alternates: {
-    canonical: "https://avi-home.co.il/services/renovation-mortgage",
+    canonical: "https://avi-mashkanta.com/services/loan-consolidation",
   },
   openGraph: {
     title: " איחוד הלוואות ומחזור משכנתא - אבי - הבית למשכנתאות ",
     description: "שדרגו את הבית ללא הלוואות יקרות. משכנתא לשיפוץ בריביות נמוכות עם טיפול מלא בשמאויות ושחרור כספים.",
-    url: "https://avi-home.co.il/services/renovation-mortgage",
+    url: "https://avi-mashkanta.com/services/loan-consolidation",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
     type: "website",
+    images: [
+      {
+        url: "https://avi-mashkanta.com/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "איחוד הלוואות ומחזור משכנתא - אבי הבית למשכנתאות",
+      },
+    ],
   },
 };
 
@@ -55,7 +63,7 @@ function JsonLd() {
         name: "איחוד הלוואות ומחזור משכנתא",
         description: "איחוד הלוואות ומחזור משכנתא לחיסכון משמעותי. הורדת החזרים חודשיים, ריביות נמוכות יותר וניהול כלכלי נכון.",
         provider: {
-          "@id": "https://avi-home.co.il/#organization"
+          "@id": "https://avi-mashkanta.com/#organization"
         },
         areaServed: [
           { "@type": "City", name: "חולון" },
@@ -73,7 +81,7 @@ function JsonLd() {
         name: "איחוד הלוואות ומחזור משכנתא | אבי - הבית למשכנתאות",
         description: "איחוד הלוואות ומחזור משכנתא לחיסכון משמעותי והורדת החזרים חודשיים.",
         inLanguage: "he-IL",
-        isPartOf: { "@id": "https://avi-home.co.il/#website" },
+        isPartOf: { "@id": "https://avi-mashkanta.com/#website" },
         breadcrumb: {
           "@type": "BreadcrumbList",
           itemListElement: [
@@ -81,13 +89,13 @@ function JsonLd() {
               "@type": "ListItem",
               position: 1,
               name: "דף הבית",
-              item: "https://avi-home.co.il"
+              item: "https://avi-mashkanta.com"
             },
             {
               "@type": "ListItem",
               position: 2,
               name: "שירותים",
-              item: "https://avi-home.co.il/services"
+              item: "https://avi-mashkanta.com/services"
             },
             {
               "@type": "ListItem",

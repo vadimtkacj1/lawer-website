@@ -33,15 +33,23 @@ export const metadata: Metadata = {
     "פושטי רגל משכנתא",
   ],
   alternates: {
-    canonical: "https://avi-home.co.il/services/mortgage-refused",
+    canonical: "https://avi-mashkanta.com/services/mortgage-refused",
   },
   openGraph: {
     title: "מסורבי משכנתא - פתרונות לסירובים | אבי - הבית למשכנתאות",
     description: "קיבלתם סירוב למשכנתא? אני יודע איך להפוך את ה'לא' ל'כן'. מומחה לטיפול בתיקים מורכבים ומסורבי משכנתא.",
-    url: "https://avi-home.co.il/services/mortgage-refused",
+    url: "https://avi-mashkanta.com/services/mortgage-refused",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
     type: "website",
+    images: [
+      {
+        url: "https://avi-mashkanta.com/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "מסורבי משכנתא - פתרונות - אבי הבית למשכנתאות",
+      },
+    ],
   },
 };
 
@@ -52,11 +60,11 @@ function JsonLd() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://avi-home.co.il/services/mortgage-refused#service",
+        "@id": "https://avi-mashkanta.com/services/mortgage-refused#service",
         name: "מסורבי משכנתא",
         description: "פתרונות מקצועיים למסורבי משכנתא. טיפול בתיקים מורכבים, ניתוח דוח אשראי, והפיכת סירוב לאישור משכנתא.",
         provider: {
-          "@id": "https://avi-home.co.il/#organization"
+          "@id": "https://avi-mashkanta.com/#organization"
         },
         areaServed: [
           { "@type": "City", name: "חולון" },
@@ -69,12 +77,12 @@ function JsonLd() {
       },
       {
         "@type": "WebPage",
-        "@id": "https://avi-home.co.il/services/mortgage-refused#webpage",
-        url: "https://avi-home.co.il/services/mortgage-refused",
+        "@id": "https://avi-mashkanta.com/services/mortgage-refused#webpage",
+        url: "https://avi-mashkanta.com/services/mortgage-refused",
         name: "מסורבי משכנתא | אבי - הבית למשכנתאות",
         description: "פתרונות מקצועיים למסורבי משכנתא. טיפול בתיקים מורכבים והפיכת סירוב לאישור.",
         inLanguage: "he-IL",
-        isPartOf: { "@id": "https://avi-home.co.il/#website" },
+        isPartOf: { "@id": "https://avi-mashkanta.com/#website" },
         breadcrumb: {
           "@type": "BreadcrumbList",
           itemListElement: [
@@ -82,19 +90,19 @@ function JsonLd() {
               "@type": "ListItem",
               position: 1,
               name: "דף הבית",
-              item: "https://avi-home.co.il"
+              item: "https://avi-mashkanta.com"
             },
             {
               "@type": "ListItem",
               position: 2,
               name: "שירותים",
-              item: "https://avi-home.co.il/services"
+              item: "https://avi-mashkanta.com/services"
             },
             {
               "@type": "ListItem",
               position: 3,
               name: "מסורבי משכנתא",
-              item: "https://avi-home.co.il/services/mortgage-refused"
+              item: "https://avi-mashkanta.com/services/mortgage-refused"
             }
           ]
         }
