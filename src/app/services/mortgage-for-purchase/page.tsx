@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
+import Breadcrumbs from "@/components/SEO/Breadcrumbs";
 import PurchaseHero from "./components/PurchaseHero";
 import IntroSection from "./components/IntroSection";
 import InterestRateSection from "./components/InterestRateSection";
@@ -104,6 +105,35 @@ function JsonLd() {
             }
           ]
         }
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "כמה הון עצמי אני צריך להביא?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "לפי הנחיות בנק ישראל: דירה ראשונה: מינימום 25% הון עצמי (75% משכנתא). משפרי דיור (מחליפים דירה): מינימום 30% הון עצמי (70% משכנתא). דירה להשקעה (דירה שנייה ומעלה): מינימום 50% הון עצמי. תוכנית \"דירה בהנחה\": ניתן להגיע להון עצמי נמוך יותר (לעיתים 10% או 100K ₪), תלוי בשווי השוק של הדירה."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "מה קורה אם השמאי מעריך את הדירה בפחות מהמחיר ששילמתי?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "זוהי \"מלכודת השמאות\". הבנק נותן משכנתא לפי הנמוך מבין השניים (החוזה או השמאות). אם השמאי העריך נמוך, תצטרכו להשלים כסף מהבית. הפתרון שלי: בגלל ההיכרות שלי עם השטח והמחירים (במיוחד באזור המרכז), אני אעזור לכם לבצע הערכה מקדימה (שמאות מוקדמת) כדי למנוע הפתעות לא נעימות כאלו."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "האם כדאי לקחת \"מסלול פריים\" מלא?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "פעם זה היה הלהיט, היום זה סיכון. מסלול הפריים תנודתי מאוד. תמהיל נכון חייב להיות מאוזן בין פריים (גמיש אך תנודתי) לבין מסלולים קבועים (יציבים אך לעיתים יקרים יותר או עם קנסות יציאה). האיזון המדויק תלוי ב\"פרופיל הסיכון\" שלכם."
+            }
+          }
+        ]
       }
     ]
   };
@@ -117,12 +147,19 @@ function JsonLd() {
 }
 
 export default function MortgageForPurchasePage() {
+  const breadcrumbItems = [
+    { label: "דף הבית", href: "/" },
+    { label: "שירותים", href: "/#services" },
+    { label: "משכנתא לרכישת דירה", href: "/services/mortgage-for-purchase" },
+  ];
+
   return (
     <>
       <JsonLd />
       <Header />
       <main>
         <PurchaseHero />
+        <Breadcrumbs items={breadcrumbItems} />
         <IntroSection />
         <InterestRateSection />
         <WorkStepsSection />

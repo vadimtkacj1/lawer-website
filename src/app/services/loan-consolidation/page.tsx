@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
+import Breadcrumbs from "@/components/SEO/Breadcrumbs";
 import ConsultantHero from "./ConsultantHero";
 import ConsultantFAQ from "./ConsultantFAQ";
 import AllServicesSection from "./AllServicesSection";
@@ -51,16 +52,16 @@ export const metadata: Metadata = {
   },
 };
 
-// JSON-LD Structured Data for Renovation Mortgage Service
+// JSON-LD Structured Data for Loan Consolidation Service
 function JsonLd() {
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://avi-mashkanta.com/services/renovation-mortgage#service",
-        name: "משכנתא לשיפוץ",
-        description: "משכנתא לשיפוץ בריביות נמוכות. שדרגו את הבית ללא הלוואות יקרות. טיפול מלא בשמאויות ושחרור כספים.",
+        "@id": "https://avi-mashkanta.com/services/loan-consolidation#service",
+        name: "איחוד הלוואות ומחזור משכנתא",
+        description: "איחוד הלוואות ומחזור משכנתא לחיסכון משמעותי. הורדת החזרים חודשיים, ריביות נמוכות יותר וניהול כלכלי נכון.",
         provider: {
           "@id": "https://avi-mashkanta.com/#organization"
         },
@@ -71,14 +72,14 @@ function JsonLd() {
           { "@type": "City", name: "תל אביב" }
         ],
         serviceType: "Financial Service",
-        category: "Renovation Mortgage"
+        category: "Loan Consolidation"
       },
       {
         "@type": "WebPage",
-        "@id": "https://avi-mashkanta.com/services/renovation-mortgage#webpage",
-        url: "https://avi-mashkanta.com/services/renovation-mortgage",
-        name: "משכנתא לשיפוץ | אבי - הבית למשכנתאות",
-        description: "משכנתא לשיפוץ בריביות נמוכות. טיפול מלא בשמאויות ושחרור כספים.",
+        "@id": "https://avi-mashkanta.com/services/loan-consolidation#webpage",
+        url: "https://avi-mashkanta.com/services/loan-consolidation",
+        name: "איחוד הלוואות ומחזור משכנתא | אבי - הבית למשכנתאות",
+        description: "איחוד הלוואות ומחזור משכנתא לחיסכון משמעותי והורדת החזרים חודשיים.",
         inLanguage: "he-IL",
         isPartOf: { "@id": "https://avi-mashkanta.com/#website" },
         breadcrumb: {
@@ -99,11 +100,40 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 3,
-              name: "משכנתא לשיפוץ",
-              item: "https://avi-mashkanta.com/services/renovation-mortgage"
+              name: "איחוד הלוואות ומחזור משכנתא",
+              item: "https://avi-mashkanta.com/services/loan-consolidation"
             }
           ]
         }
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "אבי, האם איחוד הלוואות לא מגדיל את סך החוב שלי בסופו של דבר?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "שאלה מצוינת. כשפורסים הלוואה להרבה שנים, סך תשלום הריבית אכן עולה (\"ריבית דריבית\"). אבל, וזה אבל גדול – האלטרנטיבה היא להישאר במינוס שבו הריבית רצחנית, או לקרוס כלכלית. המטרה באיחוד היא לייצר יציבות תזרימית עכשיו. במקרים רבים, החיסכון המיידי בריביות \"הלא יעילות\" (של האוברדרפט והאשראי) מקזז את העלות לטווח הארוך."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "כמה עולה לבדוק אם כדאי לי למחזר?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "אצלי ב\"אבי - הבית למשכנתאות\", בדיקת הכדאיות הראשונית היא ללא עלות וללא התחייבות. אני מזין את הנתונים למחשבון, ואם אין חיסכון משמעותי – אני אהיה הראשון להגיד לכם \"אל תיגעו במשכנתא\"."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "האם חייבים להגיע לסניף הבנק?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "את העבודה הקשה והבירוקרטיה אני עושה עבורכם מול הבנקים והמערכות הדיגיטליות. אתם מגיעים לחתימות הסופיות."
+            }
+          }
+        ]
       }
     ]
   };
@@ -117,12 +147,19 @@ function JsonLd() {
 }
 
 export default function RenovationMortgagePage() {
+  const breadcrumbItems = [
+    { label: "דף הבית", href: "/" },
+    { label: "שירותים", href: "/#services" },
+    { label: "מחזור ואיחוד הלוואות", href: "/services/loan-consolidation" },
+  ];
+
   return (
     <>
       <JsonLd />
       <Header />
       <main>
         <ConsultantHero />
+        <Breadcrumbs items={breadcrumbItems} />
         <ExpertSection/>
         <InsiderAdvantage/>
         <AllServicesSection/>

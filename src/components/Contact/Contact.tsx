@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 import DecorativeShapes from "@/components/ui/DecorativeShapes";
+import GoogleMap from "@/components/GoogleMap/GoogleMap";
 import Link from "next/link";
 import { PHONE_NUMBER_RAW, PHONE_NUMBER } from "@/lib/phone";
 
@@ -348,6 +349,17 @@ export default function Contact() {
               </AnimatePresence>
             </div>
           </motion.div>
+        </motion.div>
+
+        {/* Google Map Section */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={staggerContainer}
+          className="mt-16 max-w-6xl mx-auto"
+        >
+          <GoogleMap />
         </motion.div>
       </div>
     </section>

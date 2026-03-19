@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
+import Breadcrumbs from "@/components/SEO/Breadcrumbs";
 import RefusedHero from "./components/RefusedHero";
 import IntroRefusedSection from "./components/IntroRefusedSection";
 import WhyRefusedSection from "./components/WhyRefusedSection";
@@ -105,6 +106,35 @@ function JsonLd() {
             }
           ]
         }
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "האם זה אומר שלעולם לא אקבל משכנתא?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "ממש לא. נתוני האשראי השליליים נשמרים ל-3 שנים. אבל גם בתוך התקופה הזו, ניתן לקבל משכנתא אם יודעים להציג \"בטוחות\" חזקות או ערבים תומכים."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "האם הריבית שלי תהיה גבוהה יותר?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "בכנות? כן. בגלל שהבנק רואה בכם \"סיכון\", הריבית הראשונית עשויה להיות גבוהה מהממוצע. אבל - וזה אבל חשוב: המטרה שלי היא להכניס אתכם לנכס. בעוד שנתיים, כשההתנהלות שלכם תהיה תקינה, אנחנו נבצע מיחזור משכנתא ונחזיר את הריביות לרמה רגילה. זה עדיף מלוותר על הדירה."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "האם אתה מטפל גם בפושטי רגל?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "אלו מקרים מורכבים מאוד, אך יש פתרונות. גם לאחר פשיטת רגל (חדלות פירעון), ניתן לחזור למעגל האשראי לאחר תקופת צינון מסוימת ועם בנייה נכונה של פרופיל הלקוח."
+            }
+          }
+        ]
       }
     ]
   };
@@ -118,12 +148,19 @@ function JsonLd() {
 }
 
 export default function MortgageRefusedPage() {
+  const breadcrumbItems = [
+    { label: "דף הבית", href: "/" },
+    { label: "שירותים", href: "/#services" },
+    { label: "מסורבי בנקים ומורכבות", href: "/services/mortgage-refused" },
+  ];
+
   return (
     <>
       <JsonLd />
       <Header />
       <main>
         <RefusedHero />
+        <Breadcrumbs items={breadcrumbItems} />
         <IntroRefusedSection />
         <WhyRefusedSection />
         <BiggestMistakeSection />
