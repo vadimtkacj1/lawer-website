@@ -30,10 +30,7 @@ export const viewport: Viewport = {
 // Base metadata - can be extended per page
 export const metadata: Metadata = {
   metadataBase: new URL("https://avi-mashkanta.com"),
-  title: {
-    default: "אבי - הבית למשכנתאות | ייעוץ משכנתאות מקצועי וחכם",
-    template: "%s | אבי - הבית למשכנתאות",
-  },
+  title: "אבי - הבית למשכנתאות | ייעוץ משכנתאות מקצועי וחכם",
   description:
     "מחפשים יועץ משכנתאות מקצועי? אנו מתמחים בתכנון משכנתא חכם, ניהול משא ומתן מול הבנקים והשגת פתרונות פיננסיים מותאמים אישית. בואו לחסוך זמן וכסף עם מומחה משכנתאות שעובד בשבילכם.",
   keywords: [

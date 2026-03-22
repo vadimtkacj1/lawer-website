@@ -36,8 +36,6 @@ export const metadata: Metadata = {
     canonical: "https://avi-mashkanta.com/services/mortgage-refused",
   },
   openGraph: {
-    title: "מסורבי משכנתא - פתרונות משכנתא למסורבי בנקים | אבי - הבית למשכנתאות",
-    description: "גם אם אתם מוגדרים מסורבי משכנתא, יש מה לעשות. בעזרת תכנון נכון וליווי צמוד, אפשר לקבל משכנתא למסורבי בנקים בתנאים הוגנים. פנו לאבי לבדיקת התיק ללא התחייבות.",
     url: "https://avi-mashkanta.com/services/mortgage-refused",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",

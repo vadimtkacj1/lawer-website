@@ -34,8 +34,6 @@ export const metadata: Metadata = {
     canonical: "https://avi-mashkanta.com/services/renovation-mortgage",
   },
   openGraph: {
-    title: " משכנתא לשיפוץ - אבי - הבית למשכנתאות ",
-    description: "שדרגו את הבית ללא הלוואות יקרות. משכנתא לשיפוץ בריביות נמוכות עם טיפול מלא בשמאויות ושחרור כספים.",
     url: "https://avi-mashkanta.com/services/renovation-mortgage",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",

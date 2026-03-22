@@ -35,8 +35,6 @@ export const metadata: Metadata = {
     canonical: "https://avi-mashkanta.com/services/loan-consolidation",
   },
   openGraph: {
-    title: " איחוד הלוואות ומחזור משכנתא - אבי - הבית למשכנתאות ",
-    description: "שדרגו את הבית ללא הלוואות יקרות. משכנתא לשיפוץ בריביות נמוכות עם טיפול מלא בשמאויות ושחרור כספים.",
     url: "https://avi-mashkanta.com/services/loan-consolidation",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",

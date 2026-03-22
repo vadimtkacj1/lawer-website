@@ -35,8 +35,6 @@ export const metadata: Metadata = {
     canonical: "https://avi-mashkanta.com/services/dira-behanacha-mortgage",
   },
   openGraph: {
-    title: "משכנתא לדירה בהנחה (מחיר למשתכן) | אבי - הבית למשכנתאות",
-    description: "זכיתם בדירה בהנחה? מדריך מלא למשכנתא לזוכים עם אסטרטגיית מימון חכמה וליווי מקצועי.",
     url: "https://avi-mashkanta.com/services/dira-behanacha-mortgage",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",

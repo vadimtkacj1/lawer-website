@@ -24,9 +24,6 @@ export const metadata: Metadata = {
     canonical: "https://avi-mashkanta.com/calculator",
   },
   openGraph: {
-    title: "מחשבון משכנתא | אבי - הבית למשכנתאות",
-    description:
-      "מחשבון משכנתא מתקדם - חשבו החזר חודשי, משכורת נדרשת ומקדמה נדרשת. קבלו ייעוץ חינם מאבי - מומחה למשכנתאות.",
     url: "https://avi-mashkanta.com/calculator",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",

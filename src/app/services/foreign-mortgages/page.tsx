@@ -39,8 +39,6 @@ export const metadata: Metadata = {
     canonical: "https://avi-mashkanta.com/services/foreign-mortgages",
   },
   openGraph: {
-    title: "משכנתא לתושבי חוץ - אבי - הבית למשכנתאות ",
-    description: "משכנתא לתושבי חוץ והשקעות בנדל״ן בישראל. ליווי מקצועי בתהליך המורכב עם הבנקים.",
     url: "https://avi-mashkanta.com/services/foreign-mortgages",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",

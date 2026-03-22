@@ -35,8 +35,6 @@ export const metadata: Metadata = {
     canonical: "https://avi-mashkanta.com/services/mortgage-for-purchase",
   },
   openGraph: {
-    title: "משכנתא לרכישת דירה בחולון והמרכז | אבי - הבית למשכנתאות",
-    description: "משכנתא לרכישת דירה עם תמהיל מותאם אישית. ליווי מלא מאישור עקרוני ועד המפתח.",
     url: "https://avi-mashkanta.com/services/mortgage-for-purchase",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",

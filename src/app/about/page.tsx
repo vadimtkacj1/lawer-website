@@ -34,8 +34,6 @@ export const metadata: Metadata = {
     canonical: "https://avi-mashkanta.com/about",
   },
   openGraph: {
-    title: " ייעוץ משכנתאות - אבי - הבית למשכנתאות ",
-    description: "המומחיות של יוצא מערכת הבנקאות. איחוד הלוואות, מיחזור משכנתא, פתרונות למסורבי בנקים.",
     url: "https://avi-mashkanta.com/about",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",

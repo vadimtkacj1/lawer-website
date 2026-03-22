@@ -28,8 +28,6 @@ export const metadata: Metadata = {
     canonical: "https://avi-mashkanta.com",
   },
   openGraph: {
-    title: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
-    description: "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז. חיסכון ממוצע של 180,000 ש״ח למשפחה.",
     url: "https://avi-mashkanta.com",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
@@ -45,8 +43,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
-    description: "ייעוץ משכנתאות מקצועי ואובייקטיבי. חיסכון ממוצע של 180,000 ש״ח למשפחה.",
     images: ["https://avi-mashkanta.com/images/og-image.jpg"],
   },
 };
