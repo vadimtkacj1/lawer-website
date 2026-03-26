@@ -89,12 +89,6 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
-              name: "שירותים",
-              item: "https://avi-mashkanta.com/services"
-            },
-            {
-              "@type": "ListItem",
-              position: 3,
               name: "משכנתא הפוכה",
               item: "https://avi-mashkanta.com/services/reverse-mortgage"
             }
@@ -152,7 +146,6 @@ function JsonLd() {
 export default function RenovationMortgagePage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
-    { label: "שירותים", href: "/services" },
     { label: "משכנתא הפוכה", href: "/services/reverse-mortgage" },
   ];
 

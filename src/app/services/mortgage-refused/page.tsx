@@ -93,12 +93,6 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
-              name: "שירותים",
-              item: "https://avi-mashkanta.com/services"
-            },
-            {
-              "@type": "ListItem",
-              position: 3,
               name: "מסורבי משכנתא",
               item: "https://avi-mashkanta.com/services/mortgage-refused"
             }
@@ -148,7 +142,6 @@ function JsonLd() {
 export default function MortgageRefusedPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
-    { label: "שירותים", href: "/services" },
     { label: "מסורבי בנקים ומורכבות", href: "/services/mortgage-refused" },
   ];
 

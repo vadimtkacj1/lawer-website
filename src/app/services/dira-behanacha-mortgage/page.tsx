@@ -92,12 +92,6 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
-              name: "שירותים",
-              item: "https://avi-mashkanta.com/services"
-            },
-            {
-              "@type": "ListItem",
-              position: 3,
               name: "משכנתא לדירה בהנחה",
               item: "https://avi-mashkanta.com/services/dira-behanacha-mortgage"
             }
@@ -147,7 +141,6 @@ function JsonLd() {
 export default function DiraBehanaChaMortgagePage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
-    { label: "שירותים", href: "/services" },
     { label: "מחיר למשתכן", href: "/services/dira-behanacha-mortgage" },
   ];
 

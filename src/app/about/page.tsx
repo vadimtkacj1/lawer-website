@@ -92,13 +92,7 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
-              name: "שירותים",
-              item: "https://avi-mashkanta.com/services"
-            },
-            {
-              "@type": "ListItem",
-              position: 3,
-              name: "יועץ משכנתאות",
+              name: "אודות",
               item: "https://avi-mashkanta.com/about"
             }
           ]

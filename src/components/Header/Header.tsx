@@ -29,7 +29,6 @@ const ChevronIcon = ({ className }: { className?: string }) => (
 );
 
 const servicesLinks = [
-  { href: "/services", label: "כל השירותים" },
   { href: "/services/mortgage-for-purchase", label: "משכנתא לרכישת דירה" },
   { href: "/services/dira-behanacha-mortgage", label: "מחיר למשתכן" },
   { href: "/services/loan-consolidation", label: "מחזור ואיחוד הלוואות" },
@@ -130,17 +129,24 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
                       onMouseEnter={() => link.hasDropdown && setActiveDesktopDropdown(link.dropdownType || null)}
                       onMouseLeave={() => link.hasDropdown && setActiveDesktopDropdown(null)}
                     >
-                      <Link
-                        href={link.href}
-                        onClick={(e) => handleNavClick(e, link.href)}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 text-blue-dk font-bold text-lg xl:text-xl transition-all duration-300 hover:text-orange outline-none
-                          ${isActive ? "text-orange" : ""}`}
-                      >
-                        {link.label}
-                        {link.hasDropdown && (
+                      {link.hasDropdown ? (
+                        <button
+                          onClick={(e) => e.preventDefault()}
+                          className={`flex items-center gap-1.5 px-3 py-1.5 text-blue-dk font-bold text-lg xl:text-xl transition-all duration-300 hover:text-orange outline-none bg-transparent border-none cursor-pointer
+                            ${isActive ? "text-orange" : ""}`}
+                        >
+                          {link.label}
                           <ChevronIcon className={`w-3.5 h-3.5 transition-transform duration-300 ${isActive ? "rotate-180" : ""}`} />
-                        )}
-                      </Link>
+                        </button>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          onClick={(e) => handleNavClick(e, link.href)}
+                          className="flex items-center gap-1.5 px-3 py-1.5 text-blue-dk font-bold text-lg xl:text-xl transition-all duration-300 hover:text-orange outline-none"
+                        >
+                          {link.label}
+                        </Link>
+                      )}
 
                       {link.hasDropdown && (
                         <div

@@ -6,7 +6,6 @@ import FacebookIcon from "@/components/icons/FacebookIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
 
 const serviceLinks = [
-  { href: "/services", label: "כל השירותים" },
   { href: "/services/mortgage-for-purchase", label: "משכנתא לרכישת דירה" },
   { href: "/service-areas/mortgage-advisor-holon", label: "יועץ משכנתאות בחולון" },
   { href: "/service-areas/mortgage-advisor-bat-yam", label: "יועץ משכנתאות בבת ים" },

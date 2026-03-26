@@ -26,6 +26,9 @@ const nextConfig = {
 
   // Output configuration for Docker
   output: 'standalone',
+
+  // Set project directory as root to avoid lockfile warnings
+  outputFileTracingRoot: process.cwd(),
   
   // Disable source maps in production for smaller bundle size
   productionBrowserSourceMaps: false,

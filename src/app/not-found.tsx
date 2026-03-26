@@ -84,11 +84,11 @@ export default function NotFound() {
             </Link>
 
             <Link
-              href="/services"
+              href="/calculator"
               className="group inline-flex items-center gap-2 px-8 py-4 bg-blue-dk hover:bg-opacity-90 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto justify-center"
             >
               <FileText className="w-5 h-5" />
-              <span>כל השירותים</span>
+              <span>מחשבון משכנתא</span>
             </Link>
           </div>
 

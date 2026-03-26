@@ -95,12 +95,6 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
-              name: "שירותים",
-              item: "https://avi-mashkanta.com/services"
-            },
-            {
-              "@type": "ListItem",
-              position: 3,
               name: "משכנתא לתושבי חוץ",
               item: "https://avi-mashkanta.com/services/foreign-mortgages"
             }
@@ -150,7 +144,6 @@ function JsonLd() {
 export default function ForeignMortgagesPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
-    { label: "שירותים", href: "/services" },
     { label: "משכנתא לתושבי חוץ", href: "/services/foreign-mortgages" },
   ];
 

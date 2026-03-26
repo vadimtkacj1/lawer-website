@@ -87,12 +87,6 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
-              name: "שירותים",
-              item: "https://avi-mashkanta.com/services",
-            },
-            {
-              "@type": "ListItem",
-              position: 3,
               name: "יועץ משכנתאות בראשון לציון",
               item: "https://avi-mashkanta.com/service-areas/mortgage-advisor-rishon-lezion",
             },
@@ -134,7 +128,6 @@ function JsonLd() {
 export default function MortgageAdvisorRishonLezionPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
-    { label: "שירותים", href: "/services" },
     { label: "יועץ משכנתאות בראשון לציון", href: "/service-areas/mortgage-advisor-rishon-lezion" },
   ];
 

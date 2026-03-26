@@ -91,12 +91,6 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
-              name: "שירותים",
-              item: "https://avi-mashkanta.com/services"
-            },
-            {
-              "@type": "ListItem",
-              position: 3,
               name: "משכנתא לשיפוץ",
               item: "https://avi-mashkanta.com/services/renovation-mortgage"
             }
@@ -146,7 +140,6 @@ function JsonLd() {
 export default function RenovationMortgagePage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
-    { label: "שירותים", href: "/services" },
     { label: "משכנתא לשיפוץ", href: "/services/renovation-mortgage" },
   ];
 
