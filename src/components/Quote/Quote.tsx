@@ -99,13 +99,13 @@ export default function Quote() {
                 className="text-[1.15rem] sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-blue-dk/90 leading-[1.6] sm:leading-[1.7] text-center font-noto-sans-hebrew" 
                 dir="rtl"
               >
-                לקיחת משכנתא היא כנראה{" "}
+                בעולם של משכנתאות, לקיחת משכנתא היא כנראה{" "}
                 <span className="relative inline-block text-orange font-black">
                   העסקה הכלכלית הגדולה ביותר
                   {/* Underline highlight */}
                   <span className="absolute bottom-1.5 left-0 w-full h-2 sm:h-3 bg-orange/10 -z-10 rounded-full"></span>
                 </span>{" "}
-                שתעשו בחייכם. בין אם אתם זוג צעיר, משפחה שזקוקה לאיחוד הלוואות, או משקיעים – אתם צריכים מישהו שמדבר את השפה של הבנק, אבל{" "}
+               בין אם אתם זוג צעיר, משפחה שזקוקה לאיחוד הלוואות, או משקיעים – בתהליך של ייעוץ משכנתאות אתם צריכים מישהו שמדבר את השפה של הבנק, אבל{" "}
                 <span className="text-orange font-black">עובד בשבילכם</span>.
               </p>
             </div>
