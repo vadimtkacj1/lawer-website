@@ -1,0 +1,116 @@
+"use client";
+
+import { useState } from "react";
+import DecorativeShapes from "@/components/ui/DecorativeShapes";
+
+const faqItems = [
+  {
+    question: "האם כדי לקבל תנאים טובים כדאי לגשת לסניפי בנק בראשון לציון בלבד?",
+    answer:
+      "ממש לא. כחלק משירות ייעוץ למשכנתא, אנו מבצעים מכרז ריביות בפריסה ארצית. לעיתים סניף בנק בצפון או בדרום יכול לתת הצעה טובה יותר עבור נכס בראשון לציון, ואנו נדע להשיג לכם אותה.",
+  },
+  {
+    question: "כמה הון עצמי נדרש למשפרי דיור בראשון לציון?",
+    answer:
+      "משפרי דיור נדרשים להביא 30% הון עצמי. בתהליך של ייעוץ משכנתאות בראשון לציון, אנו בודקים האם ניתן למנף את הדירה הקיימת שלכם כדי להקל על המעבר לדירה החדשה מבלי להוציא כספים מהחסכונות.",
+  },
+];
+
+interface AccordionItemProps {
+  question: string;
+  answer: string;
+  index: number;
+  isOpen: boolean;
+  onToggle: () => void;
+  total: number;
+}
+
+function AccordionItem({ question, answer, index, isOpen, onToggle, total }: AccordionItemProps) {
+  return (
+    <div className={`border-b-2 border-blue-dk/10 ${index === total - 1 ? "border-b-0" : ""}`}>
+      <button
+        type="button"
+        onClick={onToggle}
+        className="w-full flex items-center justify-between gap-3 sm:gap-4 py-3 sm:py-4 md:py-5 text-right
+                   transition-colors hover:text-orange focus:outline-none active:text-orange"
+        aria-expanded={isOpen}
+      >
+        <span className="flex-grow text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-black text-blue-dk pe-2 sm:pe-3 md:pe-4 leading-tight sm:leading-normal">
+          {index + 1}. {question}
+        </span>
+        <span
+          className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-blue-dk text-white
+                      flex items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95"
+        >
+          {isOpen ? (
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+            </svg>
+          ) : (
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+            </svg>
+          )}
+        </span>
+      </button>
+
+      <div
+        className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out
+                    ${isOpen ? "max-h-[2000px] opacity-100 pb-4 sm:pb-5" : "max-h-0 opacity-0"}`}
+      >
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-blue-dk/85 leading-relaxed pe-2 sm:pe-4 md:pe-8 lg:pe-12">
+          {answer}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default function RishonFAQ() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggleItem = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <section id="faq" className="relative pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-24 lg:pb-32" style={{ backgroundColor: "#FAF7F2" }}>
+      <DecorativeShapes variant="default" />
+      <div className="container mx-auto px-4 md:px-6 relative z-10 text-right" dir="rtl">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-10 items-start">
+            <div className="w-full lg:w-1/3 lg:sticky lg:top-24 self-start z-30">
+              <div className="h-fit text-center lg:text-right">
+                <div className="flex items-center gap-2 mb-3 md:mb-4 justify-center lg:justify-start">
+                  <svg className="w-5 h-5 md:w-6 md:h-6 text-orange" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                  </svg>
+                  <span className="text-xs md:text-sm font-semibold text-orange uppercase tracking-wider">שאלות ותשובות</span>
+                </div>
+
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-blue-dk mb-3 sm:mb-4 md:mb-6 leading-[1.1] lg:leading-[1.05]">
+                  שאלות נפוצות של רוכשי דירות בראשון לציון (FAQ)
+                </h2>
+              </div>
+            </div>
+
+            <div className="w-full lg:w-2/3 order-2 min-h-[200px]">
+              {faqItems.map((item, index) => (
+                <AccordionItem
+                  key={index}
+                  question={item.question}
+                  answer={item.answer}
+                  index={index}
+                  isOpen={openIndex === index}
+                  onToggle={() => toggleItem(index)}
+                  total={faqItems.length}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

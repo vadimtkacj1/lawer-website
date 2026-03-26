@@ -8,6 +8,15 @@ const Widgets = dynamic(() => import("@/components/ui/Widgets"));
 export const metadata: Metadata = {
   title: "מדיניות פרטיות - אבי הבית למשכנתאות",
   description: "מדיניות הפרטיות המלאה של אבי - הבית למשכנתאות. מידע מפורט על איסוף, שמירה, שימוש והגנה על המידע האישי שלכם.",
+  alternates: {
+    canonical: "https://avi-mashkanta.com/privacy",
+  },
+  openGraph: {
+    url: "https://avi-mashkanta.com/privacy",
+    siteName: "אבי - הבית למשכנתאות",
+    locale: "he_IL",
+    type: "website",
+  },
   robots: {
     index: false,
     follow: false,

@@ -146,7 +146,7 @@ function JsonLd() {
 export default function RenovationMortgagePage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
-    { label: "שירותים", href: "/#services" },
+    { label: "שירותים", href: "/services" },
     { label: "משכנתא לשיפוץ", href: "/services/renovation-mortgage" },
   ];
 

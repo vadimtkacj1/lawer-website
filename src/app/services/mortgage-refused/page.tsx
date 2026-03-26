@@ -148,7 +148,7 @@ function JsonLd() {
 export default function MortgageRefusedPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
-    { label: "שירותים", href: "/#services" },
+    { label: "שירותים", href: "/services" },
     { label: "מסורבי בנקים ומורכבות", href: "/services/mortgage-refused" },
   ];
 

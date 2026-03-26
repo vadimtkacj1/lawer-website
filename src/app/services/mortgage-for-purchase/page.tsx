@@ -147,7 +147,7 @@ function JsonLd() {
 export default function MortgageForPurchasePage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
-    { label: "שירותים", href: "/#services" },
+    { label: "שירותים", href: "/services" },
     { label: "משכנתא לרכישת דירה", href: "/services/mortgage-for-purchase" },
   ];
 

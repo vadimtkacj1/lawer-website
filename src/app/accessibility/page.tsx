@@ -8,6 +8,15 @@ const Widgets = dynamic(() => import("@/components/ui/Widgets"));
 export const metadata: Metadata = {
   title: "הצהרת נגישות - אבי הבית למשכנתאות",
   description: "הצהרת נגישות מלאה של אתר אבי - הבית למשכנתאות. האתר עומד בדרישות תקן ת״י 5568 ו-WCAG 2.1 ברמת AA.",
+  alternates: {
+    canonical: "https://avi-mashkanta.com/accessibility",
+  },
+  openGraph: {
+    url: "https://avi-mashkanta.com/accessibility",
+    siteName: "אבי - הבית למשכנתאות",
+    locale: "he_IL",
+    type: "website",
+  },
   robots: {
     index: false,
     follow: false,

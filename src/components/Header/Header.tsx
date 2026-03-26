@@ -29,7 +29,11 @@ const ChevronIcon = ({ className }: { className?: string }) => (
 );
 
 const servicesLinks = [
+  { href: "/services", label: "כל השירותים" },
   { href: "/services/mortgage-for-purchase", label: "משכנתא לרכישת דירה" },
+  { href: "/services/mortgage-advisor-holon", label: "יועץ משכנתאות בחולון" },
+  { href: "/services/mortgage-advisor-bat-yam", label: "יועץ משכנתאות בבת ים" },
+  { href: "/services/mortgage-advisor-rishon-lezion", label: "יועץ משכנתאות בראשון לציון" },
   { href: "/services/dira-behanacha-mortgage", label: "מחיר למשתכן" },
   { href: "/services/loan-consolidation", label: "מחזור ואיחוד הלוואות" },
   { href: "/services/reverse-mortgage", label: "משכנתא הפוכה" },

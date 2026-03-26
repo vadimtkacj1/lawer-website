@@ -24,16 +24,13 @@ export const metadata: Metadata = {
   description:
     "מתכננים לקנות נכס בארץ? קבלו ייעוץ מקצועי עבור משכנתא לתושבי חוץ. תכנון פיננסי חכם, ניהול משא ומתן וליווי אישי שיחסוך לכם זמן וכסף, גם כשאתם מעבר לים. השאירו פרטים.",
   keywords: [
-    "משכנתא לשיפוץ",
-    "משכנתא לשיפוץ דירה",
-    "הלוואה לשיפוץ",
-    "מימון שיפוץ",
-    "שיפוץ דירה משכנתא",
-    "הרחבת משכנתא לשיפוץ",
-    "משכנתא לשיפוץ בחולון",
-    "יועץ משכנתאות שיפוץ",
-    "שמאות לשיפוץ",
-    "מיחזור משכנתא לשיפוץ",
+    "משכנתא לתושבי חוץ",
+    "משכנתא לזרים",
+    "רכישת דירה בישראל מחו\"ל",
+    "יועץ משכנתאות תושבי חוץ",
+    "משקיעים בנדל\"ן ישראל",
+    "מימון נכס בישראל",
+    "ייפוי כוח משכנתא",
   ],
   alternates: {
     canonical: "https://avi-mashkanta.com/services/foreign-mortgages",
@@ -54,16 +51,17 @@ export const metadata: Metadata = {
   },
 };
 
-// JSON-LD Structured Data for Renovation Mortgage Service
+// JSON-LD Structured Data for Foreign / non-resident mortgages
 function JsonLd() {
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://avi-mashkanta.com/services/renovation-mortgage#service",
-        name: "משכנתא לשיפוץ",
-        description: "משכנתא לשיפוץ בריביות נמוכות. שדרגו את הבית ללא הלוואות יקרות. טיפול מלא בשמאויות ושחרור כספים.",
+        "@id": "https://avi-mashkanta.com/services/foreign-mortgages#service",
+        name: "משכנתא לתושבי חוץ",
+        description:
+          "ייעוץ וליווי משכנתא לתושבי חוץ ומשקיעים ברכישת נכס בישראל. ניהול בירוקרטיה מול הבנקים ומשא ומתן",
         provider: {
           "@id": "https://avi-mashkanta.com/#organization"
         },
@@ -74,14 +72,15 @@ function JsonLd() {
           { "@type": "City", name: "תל אביב" }
         ],
         serviceType: "Financial Service",
-        category: "Renovation Mortgage"
+        category: "Foreign resident mortgage"
       },
       {
         "@type": "WebPage",
-        "@id": "https://avi-mashkanta.com/services/renovation-mortgage#webpage",
-        url: "https://avi-mashkanta.com/services/renovation-mortgage",
-        name: "משכנתא לשיפוץ | אבי - הבית למשכנתאות",
-        description: "משכנתא לשיפוץ בריביות נמוכות. טיפול מלא בשמאויות ושחרור כספים.",
+        "@id": "https://avi-mashkanta.com/services/foreign-mortgages#webpage",
+        url: "https://avi-mashkanta.com/services/foreign-mortgages",
+        name: "משכנתא לתושבי חוץ: קונים נכס בישראל בראש שקט | אבי - הבית למשכנתאות",
+        description:
+          "מתכננים לקנות נכס בארץ? קבלו ייעוץ מקצועי עבור משכנתא לתושבי חוץ. תכנון פיננסי חכם, ניהול משא ומתן וליווי אישי.",
         inLanguage: "he-IL",
         isPartOf: { "@id": "https://avi-mashkanta.com/#website" },
         breadcrumb: {
@@ -102,8 +101,8 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 3,
-              name: "משכנתא לשיפוץ",
-              item: "https://avi-mashkanta.com/services/renovation-mortgage"
+              name: "משכנתא לתושבי חוץ",
+              item: "https://avi-mashkanta.com/services/foreign-mortgages"
             }
           ]
         }
@@ -148,10 +147,10 @@ function JsonLd() {
   );
 }
 
-export default function RenovationMortgagePage() {
+export default function ForeignMortgagesPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
-    { label: "שירותים", href: "/#services" },
+    { label: "שירותים", href: "/services" },
     { label: "משכנתא לתושבי חוץ", href: "/services/foreign-mortgages" },
   ];
 

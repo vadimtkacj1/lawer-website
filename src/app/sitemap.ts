@@ -24,6 +24,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    },
 
     // Services - Primary (most popular)
     {
@@ -31,6 +37,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/mortgage-advisor-holon`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/services/mortgage-advisor-bat-yam`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/services/mortgage-advisor-rishon-lezion`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
     },
     {
       url: `${baseUrl}/services/loan-consolidation`,

@@ -20,16 +20,14 @@ export const metadata: Metadata = {
   description:
     "ההחזרים החודשיים חונקים? הגיע הזמן לחזור לנשום. תהליך מקצועי של איחוד הלוואות יחד עם מחזור משכנתא יאפשר לכם להוריד את הלחץ הכלכלי. פנו לאבי לבדיקת כדאיות.",
   keywords: [
-    "משכנתא לשיפוץ",
-    "משכנתא לשיפוץ דירה",
-    "הלוואה לשיפוץ",
-    "מימון שיפוץ",
-    "שיפוץ דירה משכנתא",
-    "הרחבת משכנתא לשיפוץ",
-    "משכנתא לשיפוץ בחולון",
-    "יועץ משכנתאות שיפוץ",
-    "שמאות לשיפוץ",
-    "מיחזור משכנתא לשיפוץ",
+    "איחוד הלוואות",
+    "מחזור משכנתא",
+    "מיחזור משכנתא",
+    "יועץ משכנתאות",
+    "הורדת החזר חודשי",
+    "סגירת מינוס",
+    "משכנתא בחולון",
+    "משכנתא במרכז",
   ],
   alternates: {
     canonical: "https://avi-mashkanta.com/services/loan-consolidation",
@@ -147,7 +145,7 @@ function JsonLd() {
 export default function RenovationMortgagePage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
-    { label: "שירותים", href: "/#services" },
+    { label: "שירותים", href: "/services" },
     { label: "מחזור ואיחוד הלוואות", href: "/services/loan-consolidation" },
   ];
 

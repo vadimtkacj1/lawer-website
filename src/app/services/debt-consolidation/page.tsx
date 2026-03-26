@@ -154,7 +154,7 @@ function JsonLd() {
 export default function DebtConsolidationPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
-    { label: "שירותים", href: "/#services" },
+    { label: "שירותים", href: "/services" },
     { label: "משכנתא לכל מטרה", href: "/services/debt-consolidation" },
   ];
 

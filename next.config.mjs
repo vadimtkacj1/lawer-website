@@ -79,6 +79,18 @@ const nextConfig = {
     return config;
   },
 
+  // Canonical host: www → apex (fixes GSC "Alternate page with proper canonical" for www duplicates)
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.avi-mashkanta.com' }],
+        destination: 'https://avi-mashkanta.com/:path*',
+        permanent: true,
+      },
+    ];
+  },
+
   // Headers for caching and security
   async headers() {
     const securityHeaders = [

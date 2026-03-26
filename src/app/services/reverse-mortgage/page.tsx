@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Breadcrumbs from "@/components/SEO/Breadcrumbs";
-import RenovationHero from "./components/ReverseHero";
 import ReverseHero from "./components/ReverseHero";
 import RetirementProblemSection from "./components/RetirementProblemSection";
 import AviAdvantageReverse from "./components/AviAdvantageReverse";
@@ -22,16 +21,12 @@ export const metadata: Metadata = {
   description:
     "משכנתא לשיפוץ בריביות נמוכות. שדרגו את הבית ללא הלוואות יקרות. טיפול מלא בשמאויות ושחרור כספים. מומחה משכנתאות מנוסה בחולון והמרכז.",
   keywords: [
-    "משכנתא לשיפוץ",
-    "משכנתא לשיפוץ דירה",
-    "הלוואה לשיפוץ",
-    "מימון שיפוץ",
-    "שיפוץ דירה משכנתא",
-    "הרחבת משכנתא לשיפוץ",
-    "משכנתא לשיפוץ בחולון",
-    "יועץ משכנתאות שיפוץ",
-    "שמאות לשיפוץ",
-    "מיחזור משכנתא לשיפוץ",
+    "משכנתא הפוכה",
+    "משכנתא הפוכה לגיל השלישי",
+    "ייעוץ משכנתא הפוכה",
+    "משכנתא הפוכה בחולון",
+    "נזילות מנכס",
+    "גיל פרישה משכנתא",
   ],
   alternates: {
     canonical: "https://avi-mashkanta.com/services/reverse-mortgage",
@@ -157,7 +152,7 @@ function JsonLd() {
 export default function RenovationMortgagePage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
-    { label: "שירותים", href: "/#services" },
+    { label: "שירותים", href: "/services" },
     { label: "משכנתא הפוכה", href: "/services/reverse-mortgage" },
   ];
 

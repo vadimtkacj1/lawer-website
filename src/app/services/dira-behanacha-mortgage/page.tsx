@@ -58,8 +58,8 @@ function JsonLd() {
       {
         "@type": "Service",
         "@id": "https://avi-mashkanta.com/services/dira-behanacha-mortgage#service",
-        name: "משכנתא לדירה בהנחה",
-        description: "משכנתא מותאמת לזוכים בדירה בהנחה (מחיר למשתכן). ליווי מקצועי, הקדמת תשלומים, טיפול במדד תשומות הבנייה והלוואת זכאות.",
+        name: "משכנתא לדירה בהנחה ומחיר למשתכן | אבי - הבית למשכנתאות",
+        description: "מחפשים יועץ משכנתאות מחיר למשתכן? הכירו את אבי, יועץ מומחה שילווה אתכם משלב הזכייה בדירה בהנחה ועד מפתח, להשגת הריביות והתנאים הטובים ביותר מול הבנקים.",
         provider: {
           "@id": "https://avi-mashkanta.com/#organization"
         },
@@ -76,8 +76,8 @@ function JsonLd() {
         "@type": "WebPage",
         "@id": "https://avi-mashkanta.com/services/dira-behanacha-mortgage#webpage",
         url: "https://avi-mashkanta.com/services/dira-behanacha-mortgage",
-        name: "משכנתא לדירה בהנחה | אבי - הבית למשכנתאות",
-        description: "משכנתא מותאמת לזוכים בדירה בהנחה עם ליווי מקצועי והקדמת תשלומים.",
+        name: "משכנתא לדירה בהנחה ומחיר למשתכן | אבי - הבית למשכנתאות",
+        description: "מחפשים יועץ משכנתאות מחיר למשתכן? הכירו את אבי, יועץ מומחה שילווה אתכם משלב הזכייה בדירה בהנחה ועד מפתח, להשגת הריביות והתנאים הטובים ביותר מול הבנקים.",
         inLanguage: "he-IL",
         isPartOf: { "@id": "https://avi-mashkanta.com/#website" },
         breadcrumb: {
@@ -147,7 +147,7 @@ function JsonLd() {
 export default function DiraBehanaChaMortgagePage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
-    { label: "שירותים", href: "/#services" },
+    { label: "שירותים", href: "/services" },
     { label: "מחיר למשתכן", href: "/services/dira-behanacha-mortgage" },
   ];
 

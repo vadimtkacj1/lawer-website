@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import Hero from "@/app/components/Hero";
 import HomeLazySections from "@/app/components/HomeLazySections";
 
-// Page-specific metadata with enhanced SEO
 export const metadata: Metadata = {
   title: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
   description:
@@ -47,12 +46,10 @@ export const metadata: Metadata = {
   },
 };
 
-// JSON-LD Structured Data for SEO - optimized for performance
 function JsonLd() {
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
-      // Organization
       {
         "@type": "Organization",
         "@id": "https://avi-mashkanta.com/#organization",
@@ -74,7 +71,6 @@ function JsonLd() {
           "https://www.instagram.com/avihome",
         ],
       },
-      // LocalBusiness
       {
         "@type": "FinancialService",
         "@id": "https://avi-mashkanta.com/#business",
@@ -108,7 +104,6 @@ function JsonLd() {
           reviewCount: "150",
         },
       },
-      // Website
       {
         "@type": "WebSite",
         "@id": "https://avi-mashkanta.com/#website",
@@ -118,7 +113,6 @@ function JsonLd() {
         inLanguage: "he-IL",
         publisher: { "@id": "https://avi-mashkanta.com/#organization" },
       },
-      // WebPage
       {
         "@type": "WebPage",
         "@id": "https://avi-mashkanta.com/#webpage",
@@ -131,7 +125,6 @@ function JsonLd() {
         inLanguage: "he-IL",
         breadcrumb: { "@id": "https://avi-mashkanta.com/#breadcrumb" },
       },
-      // BreadcrumbList
       {
         "@type": "BreadcrumbList",
         "@id": "https://avi-mashkanta.com/#breadcrumb",
@@ -144,7 +137,6 @@ function JsonLd() {
           },
         ],
       },
-      // FAQPage
       {
         "@type": "FAQPage",
         mainEntity: [
@@ -177,7 +169,6 @@ function JsonLd() {
     ],
   };
 
-  // Use JSON.stringify with space 0 for minimal size
   const jsonString = JSON.stringify(structuredData);
   
   return (

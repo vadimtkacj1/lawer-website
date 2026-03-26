@@ -26,10 +26,10 @@ export default function ExpertSection() {
         >
           {/* Main Title Section */}
           <div className="lg:col-span-7 space-y-10">
-            <h1 className="font-noto-sans-hebrew font-black text-4xl md:text-6xl lg:text-7xl 3xl:text-8xl text-[#1c3664] leading-[1.1]">
+            <h2 className="font-noto-sans-hebrew font-black text-4xl md:text-6xl lg:text-7xl 3xl:text-8xl text-[#1c3664] leading-[1.1]">
               ה-1 או ה-10 לחודש מגיע, <br />
               <span className="text-orange border-b-[10px] 3xl:border-b-[16px] border-orange pb-3 inline-block">ואיתו הלחץ בחזה</span>
-            </h1>
+            </h2>
             <p className="text-xl md:text-2xl lg:text-2xl 3xl:text-3xl text-[#1c3664] font-light leading-relaxed max-w-4xl">
               המשכנתא יורדת, ואחריה ההלוואה של הרכב, ההלוואה שלקחתם לשיפוץ, המינוס בבנק והתשלומים בכרטיסי האשראי. אתם עובדים קשה, מרוויחים יפה, אבל בסוף החודש נשארים עם הלשון בחוץ. <span className="font-bold underline decoration-orange/40">נשמע מוכר?</span>
             </p>
@@ -38,7 +38,7 @@ export default function ExpertSection() {
           {/* Expert Card */}
           <div className="lg:col-span-5 relative">
             <div className="relative p-10 md:p-14 border-r-[8px] 3xl:border-r-[15px] border-orange bg-white/40 backdrop-blur-sm shadow-2xl">
-              <h2 className="text-3xl lg:text-4xl 3xl:text-5xl font-black text-[#1c3664] mb-6">נעים להכיר, אני אבי בוקעי</h2>
+              <h3 className="text-3xl lg:text-4xl 3xl:text-5xl font-black text-[#1c3664] mb-6">נעים להכיר, אני אבי בוקעי</h3>
               <div className="space-y-6 text-lg lg:text-xl 3xl:text-2xl text-[#1c3664]/80 font-medium leading-relaxed">
                 <p>
                   הבעלים של "אבי - הבית למשכנתאות". כמי שעבד בתוך המערכת הבנקאית, ראיתי אלפי משפחות שנמצאות בדיוק במצב הזה.

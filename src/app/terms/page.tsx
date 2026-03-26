@@ -8,6 +8,15 @@ const Widgets = dynamic(() => import("@/components/ui/Widgets"));
 export const metadata: Metadata = {
   title: "תנאי שימוש - אבי הבית למשכנתאות",
   description: "תנאי השימוש המלאים באתר אבי - הבית למשכנתאות. כללים, זכויות, התחייבויות והתניות מפורטות לשימוש בשירותים ובאתר.",
+  alternates: {
+    canonical: "https://avi-mashkanta.com/terms",
+  },
+  openGraph: {
+    url: "https://avi-mashkanta.com/terms",
+    siteName: "אבי - הבית למשכנתאות",
+    locale: "he_IL",
+    type: "website",
+  },
   robots: {
     index: false,
     follow: false,
