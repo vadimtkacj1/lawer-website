@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import { Home, FileText, Phone } from "lucide-react";
+import { PHONE_NUMBER, PHONE_NUMBER_RAW } from "@/lib/phone";
 
 export const metadata: Metadata = {
   title: "404 - הדף לא נמצא | אבי - הבית למשכנתאות",
@@ -131,11 +132,11 @@ export default function NotFound() {
               צריכים עזרה? אנחנו כאן בשבילכם
             </p>
             <a
-              href="tel:+972-50-000-0000"
+              href={`tel:${PHONE_NUMBER_RAW}`}
               className="inline-flex items-center gap-2 text-orange hover:text-orange-hover font-bold transition-colors duration-200"
             >
               <Phone className="w-5 h-5" />
-              <span className="text-lg">050-000-0000</span>
+              <span className="text-lg">{PHONE_NUMBER}</span>
             </a>
           </div>
         </div>
