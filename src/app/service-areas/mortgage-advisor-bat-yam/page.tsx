@@ -30,10 +30,10 @@ export const metadata: Metadata = {
     "משכנתא להשקעה בת ים",
   ],
   alternates: {
-    canonical: "https://avi-mashkanta.com/services/mortgage-advisor-bat-yam",
+    canonical: "https://avi-mashkanta.com/service-areas/mortgage-advisor-bat-yam",
   },
   openGraph: {
-    url: "https://avi-mashkanta.com/services/mortgage-advisor-bat-yam",
+    url: "https://avi-mashkanta.com/service-areas/mortgage-advisor-bat-yam",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
     type: "website",
@@ -54,7 +54,7 @@ function JsonLd() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://avi-mashkanta.com/services/mortgage-advisor-bat-yam#service",
+        "@id": "https://avi-mashkanta.com/service-areas/mortgage-advisor-bat-yam#service",
         name: "ייעוץ משכנתאות בבת ים",
         description:
           "ייעוץ משכנתאות מומלץ בבת ים: תכנון משכנתא חכמה, מכרז ריביות, איחוד הלוואות ומחזור – ליווי מלא מול הבנקים.",
@@ -67,8 +67,8 @@ function JsonLd() {
       },
       {
         "@type": "WebPage",
-        "@id": "https://avi-mashkanta.com/services/mortgage-advisor-bat-yam#webpage",
-        url: "https://avi-mashkanta.com/services/mortgage-advisor-bat-yam",
+        "@id": "https://avi-mashkanta.com/service-areas/mortgage-advisor-bat-yam#webpage",
+        url: "https://avi-mashkanta.com/service-areas/mortgage-advisor-bat-yam",
         name: "יועץ משכנתאות מומלץ בבת ים | בונים לכם משכנתא חכמה | אבי",
         description:
           "מחפשים יועץ משכנתאות מומלץ בבת ים? אבי בוקעי, יוצא המערכת הבנקאית, מציע ייעוץ למשכנתא שיחסוך לכם המון כסף. מומחיות בתכנון משכנתא חכמה, איחוד הלוואות בבת ים ועוד.",
@@ -93,7 +93,7 @@ function JsonLd() {
               "@type": "ListItem",
               position: 3,
               name: "יועץ משכנתאות בבת ים",
-              item: "https://avi-mashkanta.com/services/mortgage-advisor-bat-yam",
+              item: "https://avi-mashkanta.com/service-areas/mortgage-advisor-bat-yam",
             },
           ],
         },
@@ -134,7 +134,7 @@ export default function MortgageAdvisorBatYamPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
     { label: "שירותים", href: "/services" },
-    { label: "יועץ משכנתאות בבת ים", href: "/services/mortgage-advisor-bat-yam" },
+    { label: "יועץ משכנתאות בבת ים", href: "/service-areas/mortgage-advisor-bat-yam" },
   ];
 
   return (

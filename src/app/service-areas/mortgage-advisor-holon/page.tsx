@@ -29,10 +29,10 @@ export const metadata: Metadata = {
     "משכנתא חכמה",
   ],
   alternates: {
-    canonical: "https://avi-mashkanta.com/services/mortgage-advisor-holon",
+    canonical: "https://avi-mashkanta.com/service-areas/mortgage-advisor-holon",
   },
   openGraph: {
-    url: "https://avi-mashkanta.com/services/mortgage-advisor-holon",
+    url: "https://avi-mashkanta.com/service-areas/mortgage-advisor-holon",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
     type: "website",
@@ -53,7 +53,7 @@ function JsonLd() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://avi-mashkanta.com/services/mortgage-advisor-holon#service",
+        "@id": "https://avi-mashkanta.com/service-areas/mortgage-advisor-holon#service",
         name: "ייעוץ משכנתאות בחולון",
         description:
           "ייעוץ משכנתאות מומלץ בחולון: תכנון משכנתא חכמה, מכרז ריביות, איחוד הלוואות ומחזור – ליווי מלא מול הבנקים.",
@@ -66,8 +66,8 @@ function JsonLd() {
       },
       {
         "@type": "WebPage",
-        "@id": "https://avi-mashkanta.com/services/mortgage-advisor-holon#webpage",
-        url: "https://avi-mashkanta.com/services/mortgage-advisor-holon",
+        "@id": "https://avi-mashkanta.com/service-areas/mortgage-advisor-holon#webpage",
+        url: "https://avi-mashkanta.com/service-areas/mortgage-advisor-holon",
         name: "יועץ משכנתאות מומלץ בחולון | בונים לכם משכנתא חכמה | אבי",
         description:
           "מחפשים יועץ משכנתאות בחולון? אבי בוקעי, בנקאי לשעבר, מציע ייעוץ למשכנתא שיחסוך לכם המון כסף. מומחיות בתכנון משכנתא חכמה, איחוד הלוואות ועוד.",
@@ -92,7 +92,7 @@ function JsonLd() {
               "@type": "ListItem",
               position: 3,
               name: "יועץ משכנתאות בחולון",
-              item: "https://avi-mashkanta.com/services/mortgage-advisor-holon",
+              item: "https://avi-mashkanta.com/service-areas/mortgage-advisor-holon",
             },
           ],
         },
@@ -133,7 +133,7 @@ export default function MortgageAdvisorHolonPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
     { label: "שירותים", href: "/services" },
-    { label: "יועץ משכנתאות בחולון", href: "/services/mortgage-advisor-holon" },
+    { label: "יועץ משכנתאות בחולון", href: "/service-areas/mortgage-advisor-holon" },
   ];
 
   return (

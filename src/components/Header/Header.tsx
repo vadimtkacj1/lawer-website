@@ -31,9 +31,6 @@ const ChevronIcon = ({ className }: { className?: string }) => (
 const servicesLinks = [
   { href: "/services", label: "כל השירותים" },
   { href: "/services/mortgage-for-purchase", label: "משכנתא לרכישת דירה" },
-  { href: "/services/mortgage-advisor-holon", label: "יועץ משכנתאות בחולון" },
-  { href: "/services/mortgage-advisor-bat-yam", label: "יועץ משכנתאות בבת ים" },
-  { href: "/services/mortgage-advisor-rishon-lezion", label: "יועץ משכנתאות בראשון לציון" },
   { href: "/services/dira-behanacha-mortgage", label: "מחיר למשתכן" },
   { href: "/services/loan-consolidation", label: "מחזור ואיחוד הלוואות" },
   { href: "/services/reverse-mortgage", label: "משכנתא הפוכה" },
@@ -43,9 +40,16 @@ const servicesLinks = [
   { href: "/services/debt-consolidation", label: "משכנתא לכל מטרה" },
 ];
 
+const serviceAreasLinks = [
+  { href: "/service-areas/mortgage-advisor-holon", label: "יועץ משכנתאות בחולון" },
+  { href: "/service-areas/mortgage-advisor-bat-yam", label: "יועץ משכנתאות בבת ים" },
+  { href: "/service-areas/mortgage-advisor-rishon-lezion", label: "יועץ משכנתאות בראשון לציון" },
+];
+
 const navLinks = [
   { href: "/", label: "דף הבית" },
-  { href: "#services", label: "שירותים", hasDropdown: true },
+  { href: "/services", label: "שירותים", hasDropdown: true, dropdownType: "services" },
+  { href: "/service-areas", label: "איזורי שירות", hasDropdown: true, dropdownType: "service-areas" },
   { href: "/about", label: "אודות" },
   { href: "/calculator", label: "מחשבון משכנתא" },
 ];
@@ -57,8 +61,9 @@ interface HeaderProps {
 export default function Header({ alwaysWithBackground = false }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false);
+  const [activeDesktopDropdown, setActiveDesktopDropdown] = useState<string | null>(null);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [isMobileServiceAreasOpen, setIsMobileServiceAreasOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 50);
@@ -78,12 +83,12 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
 
       if (targetElement) {
         setIsMobileMenuOpen(false);
-        setIsDesktopDropdownOpen(false);
+        setActiveDesktopDropdown(null);
         const offsetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 100;
         window.scrollTo({ top: offsetPosition, behavior: "smooth" });
       } else {
         setIsMobileMenuOpen(false);
-        setIsDesktopDropdownOpen(false);
+        setActiveDesktopDropdown(null);
         window.location.href = `/${href}`;
       }
     }
@@ -114,46 +119,51 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
               </Link>
 
               <ul className="hidden lg:flex items-center gap-1" dir="rtl">
-                {navLinks.map((link) => (
-                  <li 
-                    key={link.href}
-                    className="relative"
-                    onMouseEnter={() => link.hasDropdown && setIsDesktopDropdownOpen(true)}
-                    onMouseLeave={() => link.hasDropdown && setIsDesktopDropdownOpen(false)}
-                  >
-                    <Link
-                      href={link.href}
-                      onClick={(e) => handleNavClick(e, link.href)}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 text-blue-dk font-bold text-lg xl:text-xl transition-all duration-300 hover:text-orange outline-none
-                        ${link.hasDropdown && isDesktopDropdownOpen ? "text-orange" : ""}`}
-                    >
-                      {link.label}
-                      {link.hasDropdown && (
-                        <ChevronIcon className={`w-3.5 h-3.5 transition-transform duration-300 ${isDesktopDropdownOpen ? "rotate-180" : ""}`} />
-                      )}
-                    </Link>
+                {navLinks.map((link) => {
+                  const isActive = link.hasDropdown && activeDesktopDropdown === link.dropdownType;
+                  const dropdownLinks = link.dropdownType === "services" ? servicesLinks : serviceAreasLinks;
 
-                    {link.hasDropdown && (
-                      <div 
-                        className={`absolute top-full right-0 mt-0 w-72 bg-cream rounded-xl overflow-hidden transition-all duration-300 origin-top shadow-xl
-                          ${isDesktopDropdownOpen ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}
+                  return (
+                    <li
+                      key={link.href}
+                      className="relative"
+                      onMouseEnter={() => link.hasDropdown && setActiveDesktopDropdown(link.dropdownType || null)}
+                      onMouseLeave={() => link.hasDropdown && setActiveDesktopDropdown(null)}
+                    >
+                      <Link
+                        href={link.href}
+                        onClick={(e) => handleNavClick(e, link.href)}
+                        className={`flex items-center gap-1.5 px-3 py-1.5 text-blue-dk font-bold text-lg xl:text-xl transition-all duration-300 hover:text-orange outline-none
+                          ${isActive ? "text-orange" : ""}`}
                       >
-                        <div className="py-1.5 flex flex-col">
-                          {servicesLinks.map((service) => (
-                            <Link
-                              key={service.href}
-                              href={service.href}
-                              className="px-5 py-2 text-base font-semibold text-blue-dk hover:bg-orange/5 hover:text-orange transition-all duration-200 text-right flex items-center justify-between group outline-none"
-                            >
-                              {service.label}
-                              <div className="w-1 h-1 rounded-full bg-orange opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </Link>
-                          ))}
+                        {link.label}
+                        {link.hasDropdown && (
+                          <ChevronIcon className={`w-3.5 h-3.5 transition-transform duration-300 ${isActive ? "rotate-180" : ""}`} />
+                        )}
+                      </Link>
+
+                      {link.hasDropdown && (
+                        <div
+                          className={`absolute top-full right-0 mt-0 w-72 bg-cream rounded-xl overflow-hidden transition-all duration-300 origin-top shadow-xl
+                            ${isActive ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}
+                        >
+                          <div className="py-1.5 flex flex-col">
+                            {dropdownLinks.map((item) => (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className="px-5 py-2 text-base font-semibold text-blue-dk hover:bg-orange/5 hover:text-orange transition-all duration-200 text-right flex items-center justify-between group outline-none"
+                              >
+                                {item.label}
+                                <div className="w-1 h-1 rounded-full bg-orange opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                              </Link>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </li>
-                ))}
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
@@ -197,42 +207,51 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
       >
         <div className="px-6 pt-[100px] pb-8 flex flex-col overflow-y-auto w-full h-full">
           <ul className="flex flex-col gap-5 w-full">
-            {navLinks.map((link) => (
-              <li key={link.href} className="w-full">
-                {link.hasDropdown ? (
-                  <div className="flex flex-col w-full">
-                    <button
-                      onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                      className="w-full flex items-center justify-start gap-2 text-blue-dk font-semibold text-lg hover:text-orange transition-colors bg-transparent border-none outline-none text-right"
-                    >
-                      <span>{link.label}</span>
-                      <ChevronIcon className={`w-4 h-4 transition-transform duration-300 ${isMobileServicesOpen ? "rotate-180" : ""}`} />
-                    </button>
+            {navLinks.map((link) => {
+              const isServicesDropdown = link.dropdownType === "services";
+              const isOpen = isServicesDropdown ? isMobileServicesOpen : isMobileServiceAreasOpen;
+              const toggleOpen = isServicesDropdown
+                ? () => setIsMobileServicesOpen(!isMobileServicesOpen)
+                : () => setIsMobileServiceAreasOpen(!isMobileServiceAreasOpen);
+              const dropdownLinks = isServicesDropdown ? servicesLinks : serviceAreasLinks;
 
-                    <div className={`flex flex-col gap-3 mt-3 pr-4 overflow-hidden transition-all duration-300 ${isMobileServicesOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}>
-                      {servicesLinks.map((subLink) => (
-                        <Link
-                          key={subLink.href}
-                          href={subLink.href}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          className="block text-blue-dk/80 font-medium text-base hover:text-orange transition-colors text-right w-full"
-                        >
-                          {subLink.label}
-                        </Link>
-                      ))}
+              return (
+                <li key={link.href} className="w-full">
+                  {link.hasDropdown ? (
+                    <div className="flex flex-col w-full">
+                      <button
+                        onClick={toggleOpen}
+                        className="w-full flex items-center justify-start gap-2 text-blue-dk font-semibold text-lg hover:text-orange transition-colors bg-transparent border-none outline-none text-right"
+                      >
+                        <span>{link.label}</span>
+                        <ChevronIcon className={`w-4 h-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+                      </button>
+
+                      <div className={`flex flex-col gap-3 mt-3 pr-4 overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}>
+                        {dropdownLinks.map((subLink) => (
+                          <Link
+                            key={subLink.href}
+                            href={subLink.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block text-blue-dk/80 font-medium text-base hover:text-orange transition-colors text-right w-full"
+                          >
+                            {subLink.label}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ) : (
-                  <Link
-                    href={link.href}
-                    className="text-blue-dk font-semibold text-lg hover:text-orange transition-colors block text-right w-full"
-                    onClick={(e) => handleNavClick(e, link.href)}
-                  >
-                    {link.label}
-                  </Link>
-                )}
-              </li>
-            ))}
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-blue-dk font-semibold text-lg hover:text-orange transition-colors block text-right w-full"
+                      onClick={(e) => handleNavClick(e, link.href)}
+                    >
+                      {link.label}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
           </ul>
 
           <div className="mt-auto pt-10 w-full">

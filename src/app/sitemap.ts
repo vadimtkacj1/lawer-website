@@ -39,19 +39,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/services/mortgage-advisor-holon`,
+      url: `${baseUrl}/service-areas/mortgage-advisor-holon`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.75,
     },
     {
-      url: `${baseUrl}/services/mortgage-advisor-bat-yam`,
+      url: `${baseUrl}/service-areas/mortgage-advisor-bat-yam`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.75,
     },
     {
-      url: `${baseUrl}/services/mortgage-advisor-rishon-lezion`,
+      url: `${baseUrl}/service-areas/mortgage-advisor-rishon-lezion`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.75,

@@ -33,19 +33,19 @@ const services = [
     description: "ליווי לדירה ראשונה, להשקעה או דירה חליפית בתכנון נכון",
   },
   {
-    href: "/services/mortgage-advisor-holon",
+    href: "/service-areas/mortgage-advisor-holon",
     Icon: LocationPinIcon,
     title: "יועץ משכנתאות בחולון",
     description: "מדריך מלא: תכנון משכנתא חכמה, שכונות, שמאות והליך ייעוץ מקומי",
   },
   {
-    href: "/services/mortgage-advisor-bat-yam",
+    href: "/service-areas/mortgage-advisor-bat-yam",
     Icon: LocationHomeIcon,
     title: "יועץ משכנתאות בבת ים",
     description: "רכבת קלה, התחדשות עירונית, משקיעים ותושבי חוץ – ייעוץ ומימון מותאם לעיר החוף",
   },
   {
-    href: "/services/mortgage-advisor-rishon-lezion",
+    href: "/service-areas/mortgage-advisor-rishon-lezion",
     Icon: LocationStarIcon,
     title: "יועץ משכנתאות בראשון לציון",
     description: "נרקיסים, רקפות, מחיר למשתכן, מחזור ואיחוד – ייעוץ מקומי לעיר המבוקשת",

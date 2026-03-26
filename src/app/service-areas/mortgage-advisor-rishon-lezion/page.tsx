@@ -31,10 +31,10 @@ export const metadata: Metadata = {
     "משכנתא חכמה",
   ],
   alternates: {
-    canonical: "https://avi-mashkanta.com/services/mortgage-advisor-rishon-lezion",
+    canonical: "https://avi-mashkanta.com/service-areas/mortgage-advisor-rishon-lezion",
   },
   openGraph: {
-    url: "https://avi-mashkanta.com/services/mortgage-advisor-rishon-lezion",
+    url: "https://avi-mashkanta.com/service-areas/mortgage-advisor-rishon-lezion",
     siteName: "אבי - הבית למשכנתאות",
     locale: "he_IL",
     type: "website",
@@ -55,7 +55,7 @@ function JsonLd() {
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://avi-mashkanta.com/services/mortgage-advisor-rishon-lezion#service",
+        "@id": "https://avi-mashkanta.com/service-areas/mortgage-advisor-rishon-lezion#service",
         name: "ייעוץ משכנתאות בראשון לציון",
         description:
           "ייעוץ משכנתאות בראשון לציון: תכנון משכנתא חכמה, מחיר למשתכן, מכרז ריביות, איחוד הלוואות ומחזור – ליווי מלא מול הבנקים.",
@@ -68,8 +68,8 @@ function JsonLd() {
       },
       {
         "@type": "WebPage",
-        "@id": "https://avi-mashkanta.com/services/mortgage-advisor-rishon-lezion#webpage",
-        url: "https://avi-mashkanta.com/services/mortgage-advisor-rishon-lezion",
+        "@id": "https://avi-mashkanta.com/service-areas/mortgage-advisor-rishon-lezion#webpage",
+        url: "https://avi-mashkanta.com/service-areas/mortgage-advisor-rishon-lezion",
         name: "יועץ משכנתאות בראשון לציון | בונים לכם משכנתא חכמה | אבי",
         description:
           'מחפשים יועץ משכנתאות מומלץ בראשון לציון? אבי בוקעי, בנקאי לשעבר, מציע ייעוץ משכנתאות בראשון לציון שיחסוך לכם המון כסף. מומחיות ב"דירה בהנחה", איחוד הלוואות בראשון לציון ומחזור.',
@@ -94,7 +94,7 @@ function JsonLd() {
               "@type": "ListItem",
               position: 3,
               name: "יועץ משכנתאות בראשון לציון",
-              item: "https://avi-mashkanta.com/services/mortgage-advisor-rishon-lezion",
+              item: "https://avi-mashkanta.com/service-areas/mortgage-advisor-rishon-lezion",
             },
           ],
         },
@@ -135,7 +135,7 @@ export default function MortgageAdvisorRishonLezionPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
     { label: "שירותים", href: "/services" },
-    { label: "יועץ משכנתאות בראשון לציון", href: "/services/mortgage-advisor-rishon-lezion" },
+    { label: "יועץ משכנתאות בראשון לציון", href: "/service-areas/mortgage-advisor-rishon-lezion" },
   ];
 
   return (
