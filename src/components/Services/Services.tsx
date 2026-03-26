@@ -18,7 +18,9 @@ import BuildingIcon from "@/components/icons/BuildingIcon";
 import SettingsIcon from "@/components/icons/SettingsIcon";
 import ShieldIcon from "@/components/icons/ShieldIcon";
 import GlobeIcon from "@/components/icons/GlobeIcon";
-import LocationIcon from "@/components/icons/LocationIcon";
+import LocationPinIcon from "@/components/icons/LocationPinIcon";
+import LocationHomeIcon from "@/components/icons/LocationHomeIcon";
+import LocationStarIcon from "@/components/icons/LocationStarIcon";
 import ReceiptPercentIcon from "@/components/icons/ReceiptPercentIcon";
 import ArrowIcon from "@/components/icons/ArrowIcon";
 import CitySkylineBackground from "@/components/icons/backgrounds/CitySkylineBackground";
@@ -32,19 +34,19 @@ const services = [
   },
   {
     href: "/services/mortgage-advisor-holon",
-    Icon: LocationIcon,
+    Icon: LocationPinIcon,
     title: "יועץ משכנתאות בחולון",
     description: "מדריך מלא: תכנון משכנתא חכמה, שכונות, שמאות והליך ייעוץ מקומי",
   },
   {
     href: "/services/mortgage-advisor-bat-yam",
-    Icon: LocationIcon,
+    Icon: LocationHomeIcon,
     title: "יועץ משכנתאות בבת ים",
     description: "רכבת קלה, התחדשות עירונית, משקיעים ותושבי חוץ – ייעוץ ומימון מותאם לעיר החוף",
   },
   {
     href: "/services/mortgage-advisor-rishon-lezion",
-    Icon: LocationIcon,
+    Icon: LocationStarIcon,
     title: "יועץ משכנתאות בראשון לציון",
     description: "נרקיסים, רקפות, מחיר למשתכן, מחזור ואיחוד – ייעוץ מקומי לעיר המבוקשת",
   },

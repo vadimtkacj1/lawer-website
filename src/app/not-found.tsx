@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
+import { Home, FileText, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "404 - הדף לא נמצא | אבי - הבית למשכנתאות",
@@ -11,52 +12,47 @@ export const metadata: Metadata = {
   },
 };
 
-const HomeIcon = () => (
-  <svg
-    className="w-5 h-5"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth="2"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-    />
-  </svg>
-);
+const NotFoundIllustration = () => (
+  <div className="relative w-full max-w-md mx-auto mb-8">
+    <svg
+      viewBox="0 0 400 300"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-auto"
+    >
+      <circle cx="200" cy="150" r="120" fill="#f26722" opacity="0.1" />
+      <circle cx="200" cy="150" r="90" fill="#1c3664" opacity="0.05" />
 
-const ServicesIcon = () => (
-  <svg
-    className="w-5 h-5"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth="2"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-    />
-  </svg>
-);
+      <g transform="translate(150, 80)">
+        <rect x="10" y="60" width="80" height="60" fill="#1c3664" rx="4" />
+        <path d="M50 30 L5 65 L95 65 Z" fill="#f26722" />
+        <rect x="35" y="85" width="30" height="35" fill="#f9f7f4" rx="2" />
+        <rect x="20" y="70" width="15" height="15" fill="#f9f7f4" rx="1" />
+        <rect x="65" y="70" width="15" height="15" fill="#f9f7f4" rx="1" />
+        <circle cx="60" cy="105" r="2" fill="#1c3664" />
+      </g>
 
-const PhoneIcon = () => (
-  <svg
-    className="w-5 h-5"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth="2"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-    />
-  </svg>
+      <g transform="translate(240, 140)">
+        <circle cx="0" cy="0" r="25" stroke="#f26722" strokeWidth="4" fill="none" />
+        <line x1="18" y1="18" x2="35" y2="35" stroke="#f26722" strokeWidth="4" strokeLinecap="round" />
+        <text x="-8" y="8" fontSize="24" fill="#1c3664" fontWeight="bold">?</text>
+      </g>
+
+      <g opacity="0.3">
+        <rect x="50" y="40" width="30" height="40" fill="#1c3664" rx="2" transform="rotate(-15 65 60)" />
+        <line x1="58" y1="50" x2="72" y2="50" stroke="#f9f7f4" strokeWidth="2" />
+        <line x1="58" y1="58" x2="72" y2="58" stroke="#f9f7f4" strokeWidth="2" />
+        <line x1="58" y1="66" x2="72" y2="66" stroke="#f9f7f4" strokeWidth="2" />
+      </g>
+
+      <g opacity="0.3">
+        <rect x="300" y="200" width="30" height="40" fill="#f26722" rx="2" transform="rotate(10 315 220)" />
+        <line x1="308" y1="210" x2="322" y2="210" stroke="#f9f7f4" strokeWidth="2" />
+        <line x1="308" y1="218" x2="322" y2="218" stroke="#f9f7f4" strokeWidth="2" />
+        <line x1="308" y1="226" x2="322" y2="226" stroke="#f9f7f4" strokeWidth="2" />
+      </g>
+    </svg>
+  </div>
 );
 
 export default function NotFound() {
@@ -65,31 +61,24 @@ export default function NotFound() {
       <Header />
       <main className="min-h-screen bg-cream flex items-center justify-center px-4 py-16">
         <div className="max-w-2xl w-full text-center">
-          {/* 404 Number */}
-          <div className="mb-8">
-            <h1 className="text-[120px] md:text-[180px] lg:text-[220px] font-black leading-none text-blue-dk opacity-20 select-none">
-              404
-            </h1>
-          </div>
+          <NotFoundIllustration />
 
-          {/* Main Message */}
-          <div className="mb-12 -mt-16 md:-mt-24 lg:-mt-32">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-blue-dk mb-4">
+          <div className="mb-12">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-blue-dk mb-4">
               אופס! הדף לא נמצא
-            </h2>
+            </h1>
             <p className="text-lg md:text-xl text-blue-muted max-w-lg mx-auto leading-relaxed">
               נראה שהדף שחיפשת לא קיים או שהוסר. אבל אל דאגה - אנחנו כאן כדי לעזור
               לך למצוא את מה שאתה מחפש!
             </p>
           </div>
 
-          {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Link
               href="/"
               className="group inline-flex items-center gap-2 px-8 py-4 bg-orange hover:bg-orange-hover text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto justify-center"
             >
-              <HomeIcon />
+              <Home className="w-5 h-5" />
               <span>חזרה לדף הבית</span>
             </Link>
 
@@ -97,12 +86,11 @@ export default function NotFound() {
               href="/services"
               className="group inline-flex items-center gap-2 px-8 py-4 bg-blue-dk hover:bg-opacity-90 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto justify-center"
             >
-              <ServicesIcon />
+              <FileText className="w-5 h-5" />
               <span>כל השירותים</span>
             </Link>
           </div>
 
-          {/* Quick Links */}
           <div className="border-t border-blue-dk/10 pt-8">
             <p className="text-sm text-blue-muted mb-4 font-semibold">
               דפים פופולריים:
@@ -138,7 +126,6 @@ export default function NotFound() {
             </div>
           </div>
 
-          {/* Contact Section */}
           <div className="mt-12 p-6 bg-white-card rounded-xl shadow-md border border-blue-dk/5">
             <p className="text-blue-dk font-semibold mb-3">
               צריכים עזרה? אנחנו כאן בשבילכם
@@ -147,7 +134,7 @@ export default function NotFound() {
               href="tel:+972-50-000-0000"
               className="inline-flex items-center gap-2 text-orange hover:text-orange-hover font-bold transition-colors duration-200"
             >
-              <PhoneIcon />
+              <Phone className="w-5 h-5" />
               <span className="text-lg">050-000-0000</span>
             </a>
           </div>
