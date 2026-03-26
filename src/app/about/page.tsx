@@ -4,6 +4,7 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import CommercialHero from "@/app/about/components/CommercialHero";
 import CommercialAbout from "@/app/about/components/CommercialAbout";
+import StorySection from "@/app/about/components/StorySection";
 import CommercialWhySection from "@/app/about/components/CommercialWhySection";
 import CommercialServicesSection from "@/app/about/components/CommercialServicesSection";
 import AboutFAQ from "@/app/about/components/AboutFAQ";
@@ -122,6 +123,7 @@ export default function CommercialPage() {
       <main>
         <CommercialHero />
         <CommercialAbout />
+        <StorySection />
         <CommercialWhySection />
         <CommercialServicesSection />
 
