@@ -77,6 +77,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Service Areas (Regional Pages)
     {
+      url: `${baseUrl}/service-areas`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/service-areas/mortgage-advisor-holon`,
       lastModified: currentDate,
       changeFrequency: 'monthly' as const,
