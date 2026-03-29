@@ -179,7 +179,7 @@ export default function Contact() {
                 בטוחה.
               </p>
               <Link
-                href="/wise"
+                href="https://app.wisecard.co.il/c/SimulatorPDF/22ea4dade30f?fbclid=IwY2xjawQ1H7NleHRuA2FlbQIxMABicmlkETFqcjltTlNNMnhnalZwbUhCc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHo91iAiUiRK8AG6wrakrYZmOCZUYdmkqndwGtAMH0F9UTAgQqqFPGpO3wox5_aem_N5nDpRDOa-fPEgVD28BzWQ"
                 className="group inline-flex items-center gap-4 text-[#1c3664] font-black transition-all hover:opacity-80"
               >
                 <span className="text-xl sm:text-2xl md:text-3xl border-b-4 border-transparent group-hover:border-[#1c3664] transition-all text-center">
