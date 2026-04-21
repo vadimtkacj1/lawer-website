@@ -19,8 +19,14 @@ services:
     networks:
       - app-network
     healthcheck:
-      # Check if the app is responding on port 80
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80"]
+      # Node is always in the image; wget/curl are not (Alpine) — avoids false "unhealthy"
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "require('http').get('http://127.0.0.1:80',(r)=>process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))",
+        ]
       interval: 30s
       timeout: 10s
       retries: 3

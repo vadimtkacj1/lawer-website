@@ -34,9 +34,6 @@ const MortgageCalculator = dynamic(() => import("@/components/MortgageCalculator
 const FAQ = dynamic(() => import("@/components/FAQ"), {
   loading: () => <div className="h-96" />,
 });
-const Footer = dynamic(() => import("@/components/Footer"), {
-  loading: () => <div className="h-32" />,
-});
 const Widgets = dynamic(() => import("@/components/ui/Widgets"), {
   ssr: false, // Widgets don't need SSR
 });
@@ -73,9 +70,6 @@ export default function HomeLazySections() {
       </LazyMount>
       <LazyMount>
         <FAQ />
-      </LazyMount>
-      <LazyMount rootMargin="1000px 0px">
-        <Footer />
       </LazyMount>
       <Widgets />
     </>

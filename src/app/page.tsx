@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Hero from "@/app/components/Hero";
 import HomeLazySections from "@/app/components/HomeLazySections";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
@@ -188,6 +189,7 @@ export default function HomePage() {
         <Hero />
         <HomeLazySections />
       </main>
+      <Footer />
     </>
   );
 }

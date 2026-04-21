@@ -82,9 +82,27 @@ const nextConfig = {
     return config;
   },
 
-  // Canonical host: www → apex (fixes GSC "Alternate page with proper canonical" for www duplicates)
+  // HTTPS + canonical host (order matters: HTTP rules first so www+http becomes one hop to apex)
   async redirects() {
     return [
+      {
+        source: '/:path*',
+        has: [
+          { type: 'header', key: 'x-forwarded-proto', value: 'http' },
+          { type: 'host', value: 'avi-mashkanta.com' },
+        ],
+        destination: 'https://avi-mashkanta.com/:path*',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [
+          { type: 'header', key: 'x-forwarded-proto', value: 'http' },
+          { type: 'host', value: 'www.avi-mashkanta.com' },
+        ],
+        destination: 'https://avi-mashkanta.com/:path*',
+        permanent: true,
+      },
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'www.avi-mashkanta.com' }],
@@ -127,7 +145,8 @@ const nextConfig = {
       },
       {
         key: 'Content-Security-Policy',
-        value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.equalweb.com https://access.equalweb.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://cdn.equalweb.com https://access.equalweb.com https://grainy-gradients.vercel.app https://www.google-analytics.com https://www.googletagmanager.com https://*.googleapis.com https://*.gstatic.com; font-src 'self' data:; connect-src 'self' https://cdn.equalweb.com https://access.equalweb.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://region1.google-analytics.com; frame-src 'self' https://www.google.com https://maps.google.com https://maps.googleapis.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;"
+        // No upgrade-insecure-requests: on HTTP-only hosts (e.g. IP:80) it forces https:// and breaks assets (connection refused on :443).
+        value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.equalweb.com https://access.equalweb.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://cdn.equalweb.com https://access.equalweb.com https://grainy-gradients.vercel.app https://www.google-analytics.com https://www.googletagmanager.com https://*.googleapis.com https://*.gstatic.com; font-src 'self' data:; connect-src 'self' https://cdn.equalweb.com https://access.equalweb.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://region1.google-analytics.com; frame-src 'self' https://www.google.com https://maps.google.com https://maps.googleapis.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';"
       }
     ];
 
