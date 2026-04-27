@@ -14,7 +14,7 @@ const faqItems = [
     answer: (
       <>
         בכנות? כן. בגלל שהבנק רואה בכם "סיכון", הריבית הראשונית של משכנתא למסורבי בנקים עשויה להיות גבוהה מהממוצע. אבל - וזה אבל חשוב: המטרה שלי היא להכניס אתכם לנכס. בעוד שנתיים, כשההתנהלות שלכם תהיה תקינה, אנחנו נבצע{" "}
-        <a href="https://www.avi-mashkanta.com/services/loan-consolidation" className="hyper-link" title="מיחזור משכנתא | אבי הבית למשכנתאות" target="_blank">
+        <a href="https://avi-mashkanta.com/services/loan-consolidation" className="hyper-link" title="מיחזור משכנתא | אבי הבית למשכנתאות" target="_blank">
           מיחזור משכנתא
         </a>
         {" "}ונחזיר את הריביות לרמה רגילה. זה עדיף מלוותר על הדירה.

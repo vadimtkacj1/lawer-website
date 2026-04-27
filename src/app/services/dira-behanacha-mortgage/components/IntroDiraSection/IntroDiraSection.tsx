@@ -25,7 +25,7 @@ export default function IntroDiraSection() {
             variants={staggerItem}
             className="text-base md:text-2xl lg:text-3xl text-white/90 font-light leading-relaxed max-w-6xl"
           >
-            אבל רגע אחרי השמפניות, מגיעה המציאות: משכנתא בפרויקטים של "דירה בהנחה" (או בשמה הקודם "מחיר למשתכן") היא חיה אחרת לגמרי מ<a href="https://www.avi-mashkanta.com/services/mortgage-for-purchase" className="hyper-link" title="משכנתא לקניית דירה | אבי הבית למשכנתאות" target="_blank">משכנתא רגילה</a>. קניית דירה למשתכן מביאה איתה הזדמנויות מימון מטורפות שאין בשוק החופשי, אבל גם "מוקשים" (כמו מדד תשומות הבנייה) שיכולים לאכול לכם את כל הרווח אם לא תתכננו נכון.
+            אבל רגע אחרי השמפניות, מגיעה המציאות: משכנתא בפרויקטים של "דירה בהנחה" (או בשמה הקודם "מחיר למשתכן") היא חיה אחרת לגמרי מ<a href="https://avi-mashkanta.com/services/mortgage-for-purchase" className="hyper-link" title="משכנתא לקניית דירה | אבי הבית למשכנתאות" target="_blank">משכנתא רגילה</a>. קניית דירה למשתכן מביאה איתה הזדמנויות מימון מטורפות שאין בשוק החופשי, אבל גם "מוקשים" (כמו מדד תשומות הבנייה) שיכולים לאכול לכם את כל הרווח אם לא תתכננו נכון.
           </motion.p>
 
           <motion.div 

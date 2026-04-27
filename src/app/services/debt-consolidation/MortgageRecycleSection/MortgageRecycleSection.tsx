@@ -44,7 +44,7 @@ export default function MortgageRecycleSection() {
                 <span className="font-black text-2xl md:text-4xl">2</span>
               </div>
               <h3 className="font-noto-sans-hebrew font-bold text-lg md:text-2xl lg:text-3xl text-[#1c3664] mb-3 md:mb-4">
-               <a href="https://www.avi-mashkanta.com/services/loan-consolidation" className="hyper-link" target="_blank" title="מחזור ואיחוד הלוואות | אבי בוקעי - הבית למשכנתאות">איחוד הלוואות </a>(סגירת מינוס)
+               <a href="https://avi-mashkanta.com/services/loan-consolidation" className="hyper-link" target="_blank" title="מחזור ואיחוד הלוואות | אבי בוקעי - הבית למשכנתאות">איחוד הלוואות </a>(סגירת מינוס)
               </h3>
               <p className="text-base md:text-lg lg:text-xl text-[#1c3664]/70 font-light leading-relaxed">
                 אם צברתם הלוואות קטנות ויקרות, זה הפתרון הקלאסי "לנקות שולחן" ולהתחיל מחדש עם תזרים חיובי.
@@ -56,7 +56,7 @@ export default function MortgageRecycleSection() {
                 <span className="font-black text-2xl md:text-4xl">3</span>
               </div>
               <h3 className="font-noto-sans-hebrew font-bold text-lg md:text-2xl lg:text-3xl text-[#1c3664] mb-3 md:mb-4">
-               <a href="https://www.avi-mashkanta.com/services/mortgage-for-purchase" className="hyper-link" target="_blank" title="משכנתא לרכישת דירה | אבי בוקעי - הבית למשכנתאות">השקעה עסקיות או נדל"ן</a>
+               <a href="https://avi-mashkanta.com/services/mortgage-for-purchase" className="hyper-link" target="_blank" title="משכנתא לרכישת דירה | אבי בוקעי - הבית למשכנתאות">השקעה עסקיות או נדל"ן</a>
               </h3>
               <p className="text-base md:text-lg lg:text-xl text-[#1c3664]/70 font-light leading-relaxed">
                 שימוש בכסף זול מהבית הפרטי כדי למנף השקעה שמניבה תשואה גבוהה יותר מהריבית שאתם משלמים.

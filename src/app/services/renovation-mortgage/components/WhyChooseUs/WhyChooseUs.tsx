@@ -33,7 +33,7 @@ const reasons = [
     description: (
       <>
         אני בוחן את כדאיות שילוב משכנתת השיפוץ עם{" "}
-        <a href="https://www.avi-mashkanta.com/services/loan-consolidation" className="hyper-link" title="מחזור ואיחוד הלוואות | אבי בוקעי - הבית למשכנתאות" target="_blank" rel="noopener noreferrer">
+        <a href="https://avi-mashkanta.com/services/loan-consolidation" className="hyper-link" title="מחזור ואיחוד הלוואות | אבי בוקעי - הבית למשכנתאות" target="_blank" rel="noopener noreferrer">
           מיחזור המשכנתא
         </a>
         {" "}הקיימת – מה שעשוי לחסוך לכם עשרות אלפי שקלים בשתי ההלוואות במקביל.

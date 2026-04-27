@@ -39,7 +39,7 @@ export default function FinancialPressureSection() {
               variants={staggerItem}
               className="text-base md:text-2xl lg:text-3xl text-white/90 font-light leading-relaxed max-w-5xl mt-4"
             >
-             <a href="https://www.avi-mashkanta.com/services/mortgage-for-purchase" className="hyper-link" target="_blank" title="משכנתא לרכישת דירה | אבי בוקעי - הבית למשכנתאות">בין אם אתם רוצים לעזור לילד עם הון עצמי לדירה משלו</a>, לממן אירוע משפחתי גדול, לסגור מינוס לוחץ או לקנות רכב חדש - הבנק ישמח לתת לכם הלוואה "רגילה". הבעיה? הריבית תהיה גבוהה, וההחזר החודשי יחנוק אתכם כי הפריסה קצרה (בדרך כלל עד 5-7 שנים). הפתרון החכם יותר הוא משכנתא כנגד נכס קיים.
+             <a href="https://avi-mashkanta.com/services/mortgage-for-purchase" className="hyper-link" target="_blank" title="משכנתא לרכישת דירה | אבי בוקעי - הבית למשכנתאות">בין אם אתם רוצים לעזור לילד עם הון עצמי לדירה משלו</a>, לממן אירוע משפחתי גדול, לסגור מינוס לוחץ או לקנות רכב חדש - הבנק ישמח לתת לכם הלוואה "רגילה". הבעיה? הריבית תהיה גבוהה, וההחזר החודשי יחנוק אתכם כי הפריסה קצרה (בדרך כלל עד 5-7 שנים). הפתרון החכם יותר הוא משכנתא כנגד נכס קיים.
             </motion.p>
           </div>
 
