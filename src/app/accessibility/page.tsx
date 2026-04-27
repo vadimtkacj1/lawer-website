@@ -17,10 +17,6 @@ export const metadata: Metadata = {
     locale: "he_IL",
     type: "website",
   },
-  robots: {
-    index: false,
-    follow: false,
-  },
 };
 
 export default function AccessibilityPage() {
