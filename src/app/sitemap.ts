@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // This prevents Google from seeing constant changes and helps with indexation
   const homePageDate = new Date('2026-03-20'); // Update when homepage changes
   const servicesDate = new Date('2026-03-20'); // Update when service pages change
+  const serviceAreasDate = new Date('2026-04-30'); // Fresh signal for regional pages
   const staticPagesDate = new Date('2026-03-20'); // Update when static pages change
 
   return [
@@ -83,21 +84,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Service Areas (Regional Pages)
     {
       url: `${baseUrl}/service-areas/mortgage-advisor-holon`,
-      lastModified: servicesDate,
+      lastModified: serviceAreasDate,
       changeFrequency: 'monthly' as const,
-      priority: 0.75,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/service-areas/mortgage-advisor-bat-yam`,
-      lastModified: servicesDate,
+      lastModified: serviceAreasDate,
       changeFrequency: 'monthly' as const,
-      priority: 0.75,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/service-areas/mortgage-advisor-rishon-lezion`,
-      lastModified: servicesDate,
+      lastModified: serviceAreasDate,
       changeFrequency: 'monthly' as const,
-      priority: 0.75,
+      priority: 0.85,
     },
 
     // Legal pages
