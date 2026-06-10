@@ -10,6 +10,24 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://avi-mashkanta.com/services",
   },
+  openGraph: {
+    url: "https://avi-mashkanta.com/services",
+    siteName: "אבי - הבית למשכנתאות",
+    locale: "he_IL",
+    type: "website",
+    images: [
+      {
+        url: "https://avi-mashkanta.com/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "כל שירותי המשכנתאות - אבי הבית למשכנתאות",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["https://avi-mashkanta.com/images/og-image.jpg"],
+  },
 };
 
 const services = [

@@ -15,7 +15,7 @@ const Footer = dynamic(() => import("@/components/Footer"));
 const Widgets = dynamic(() => import("@/components/ui/Widgets"));
 
 export const metadata: Metadata = {
-  title: "משכנתא לשיפוץ: לשדרג את הבית בלי הלוואות יקרות | אבי - הבית למשכנתאות",
+  title: "משכנתא לשיפוץ | ייעוץ מקצועי | אבי - הבית למשכנתאות",
   description:
     "יש לכם משכנתא ורוצים לשפץ? הדרך החכמה ביותר היא הגדלת המשכנתא לטובת שיפוצים. קבלו ייעוץ מקצועי להשגת משכנתא לשיפוץ בתנאים הטובים ביותר מול הבנק.",
   keywords: [
@@ -91,6 +91,12 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
+              name: "שירותים",
+              item: "https://avi-mashkanta.com/services"
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
               name: "משכנתא לשיפוץ",
               item: "https://avi-mashkanta.com/services/renovation-mortgage"
             }
@@ -140,6 +146,7 @@ function JsonLd() {
 export default function RenovationMortgagePage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
+    { label: "שירותים", href: "/services" },
     { label: "משכנתא לשיפוץ", href: "/services/renovation-mortgage" },
   ];
 

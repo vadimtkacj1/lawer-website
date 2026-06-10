@@ -146,17 +146,17 @@ const MarqueeRow = ({
   duration?: number,
   isMobile?: boolean 
 }) => {
-  // Use a 3x duplication strategy to ensure the line is always filled during infinite transit.
-  // We animate from 0% to -33.33% (the first full set of items).
-  const tripleItems = useMemo(() => [...items, ...items, ...items], [items]);
-  
+  // 2x duplication — one full copy animates off-screen and loops seamlessly.
+  // We animate from 0% to -50% (left) or -50% to 0% (right).
+  const doubleItems = useMemo(() => [...items, ...items], [items]);
+
   return (
     <div className="flex w-full overflow-hidden" style={{ direction: 'ltr' }}>
       <motion.div
         key={`testimonials-marquee-${direction}-${duration}`}
         className="flex gap-6 md:gap-8 py-4"
-        initial={{ x: direction === "left" ? "0%" : "-33.33%" }}
-        animate={{ x: direction === "left" ? "-33.33%" : "0%" }}
+        initial={{ x: direction === "left" ? "0%" : "-50%" }}
+        animate={{ x: direction === "left" ? "-50%" : "0%" }}
         transition={{
           duration: isMobile ? duration * 1.8 : duration, // Much slower on mobile for better performance
           ease: "linear",
@@ -166,7 +166,7 @@ const MarqueeRow = ({
         // We disable it for mobile users.
         whileHover={!isMobile ? { animationPlayState: "paused" } : {}}
       >
-        {tripleItems.map((item, i) => (
+        {doubleItems.map((item, i) => (
           <TestimonialCard key={`testimonial-card-${direction}-${i}`} item={item} />
         ))}
       </motion.div>

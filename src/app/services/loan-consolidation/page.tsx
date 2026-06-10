@@ -90,6 +90,12 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
+              name: "שירותים",
+              item: "https://avi-mashkanta.com/services"
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
               name: "איחוד הלוואות ומחזור משכנתא",
               item: "https://avi-mashkanta.com/services/loan-consolidation"
             }
@@ -139,6 +145,7 @@ function JsonLd() {
 export default function LoanConsolidationPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
+    { label: "שירותים", href: "/services" },
     { label: "מחזור ואיחוד הלוואות", href: "/services/loan-consolidation" },
   ];
 

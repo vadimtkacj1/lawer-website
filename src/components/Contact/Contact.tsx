@@ -8,15 +8,6 @@ import GoogleMap from "@/components/GoogleMap/GoogleMap";
 import Link from "next/link";
 import { PHONE_NUMBER_RAW, PHONE_NUMBER } from "@/lib/phone";
 
-// Оптимизация для плавности анимаций на мобилках
-const gpuStyle = {
-  willChange: "transform, opacity",
-  WebkitBackfaceVisibility: "hidden" as const,
-  backfaceVisibility: "hidden" as const,
-  perspective: 1000,
-  transform: "translate3d(0,0,0)",
-};
-
 // Вспомогательный компонент для инпутов, чтобы не дублировать стили
 const FormInput = ({
   error,
@@ -160,7 +151,6 @@ export default function Contact() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={staggerContainer}
-          style={gpuStyle}
         >
           {/* Promotional Content */}
           <motion.div

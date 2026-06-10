@@ -83,6 +83,12 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
+              name: "אזורי שירות",
+              item: "https://avi-mashkanta.com/service-areas",
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
               name: "יועץ משכנתאות בתל אביב",
               item: "https://avi-mashkanta.com/service-areas/mortgage-advisor-tel-aviv",
             },
@@ -206,6 +212,7 @@ const processSteps = [
 export default function MortgageAdvisorTelAvivPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
+    { label: "אזורי שירות", href: "/service-areas" },
     { label: "יועץ משכנתאות בתל אביב", href: "/service-areas/mortgage-advisor-tel-aviv" },
   ];
 

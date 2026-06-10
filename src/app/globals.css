@@ -40,21 +40,6 @@
     content-visibility: auto;
   }
 
-  /* GPU acceleration for better performance on mobile */
-  @media (hover: none) and (pointer: coarse) {
-    body {
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-    }
-
-    /* Force hardware acceleration only for critical elements */
-    img, video, picture {
-      will-change: auto;
-      transform: translateZ(0);
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-    }
-  }
 
 
   h1, h2, h3, h4, h5, h6 {

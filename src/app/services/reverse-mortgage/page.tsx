@@ -17,7 +17,7 @@ const Footer = dynamic(() => import("@/components/Footer"));
 const Widgets = dynamic(() => import("@/components/ui/Widgets"));
 
 export const metadata: Metadata = {
-  title: "משכנתא הפוכה לגיל השלישי | קבלו נזילות מהבית | אבי - הבית למשכנתאות",
+  title: "משכנתא הפוכה לגיל השלישי | אבי - הבית למשכנתאות",
   description:
     "מעל גיל 55 ובעלי דירה? משכנתא הפוכה מאפשרת לכם לקבל כסף מהבית בלי למכור ובלי החזר חודשי. ליווי מקצועי עם אבי בוקעי, מומחה משכנתאות בחולון והמרכז.",
   keywords: [
@@ -89,6 +89,12 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
+              name: "שירותים",
+              item: "https://avi-mashkanta.com/services"
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
               name: "משכנתא הפוכה",
               item: "https://avi-mashkanta.com/services/reverse-mortgage"
             }
@@ -146,6 +152,7 @@ function JsonLd() {
 export default function RenovationMortgagePage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
+    { label: "שירותים", href: "/services" },
     { label: "משכנתא הפוכה", href: "/services/reverse-mortgage" },
   ];
 

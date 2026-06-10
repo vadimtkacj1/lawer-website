@@ -125,7 +125,6 @@ export default function ServicesHero() {
               sizes="50vw"
               className="object-cover"
               style={{ objectPosition: 'center 5%' }}
-              quality={100}
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-cream/10 via-transparent to-transparent pointer-events-none" />

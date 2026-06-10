@@ -86,6 +86,12 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
+              name: "אזורי שירות",
+              item: "https://avi-mashkanta.com/service-areas",
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
               name: "יועץ משכנתאות בבת ים",
               item: "https://avi-mashkanta.com/service-areas/mortgage-advisor-bat-yam",
             },
@@ -127,6 +133,7 @@ function JsonLd() {
 export default function MortgageAdvisorBatYamPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
+    { label: "אזורי שירות", href: "/service-areas" },
     { label: "יועץ משכנתאות בבת ים", href: "/service-areas/mortgage-advisor-bat-yam" },
   ];
 

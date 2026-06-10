@@ -91,6 +91,12 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
+              name: "שירותים",
+              item: "https://avi-mashkanta.com/services"
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
               name: "משכנתא לכל מטרה",
               item: "https://avi-mashkanta.com/services/debt-consolidation"
             }
@@ -148,6 +154,7 @@ function JsonLd() {
 export default function DebtConsolidationPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
+    { label: "שירותים", href: "/services" },
     { label: "משכנתא לכל מטרה", href: "/services/debt-consolidation" },
   ];
 

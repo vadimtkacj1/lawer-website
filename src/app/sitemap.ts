@@ -4,10 +4,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://avi-mashkanta.com';
 
   // Last modified timestamps - bump when content meaningfully changes
-  const homePageDate = new Date('2026-03-20');
+  const homePageDate = new Date('2026-06-10');
   const staticPagesDate = new Date('2026-03-20');
-  const servicesDate = new Date('2026-05-06');
-  const serviceAreasDate = new Date('2026-05-06');
+  const servicesDate = new Date('2026-06-10');
+  const serviceAreasDate = new Date('2026-06-10');
 
   return [
     // Main pages

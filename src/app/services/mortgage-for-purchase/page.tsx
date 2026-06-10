@@ -92,6 +92,12 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
+              name: "שירותים",
+              item: "https://avi-mashkanta.com/services"
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
               name: "משכנתא לרכישת דירה",
               item: "https://avi-mashkanta.com/services/mortgage-for-purchase"
             }
@@ -141,6 +147,7 @@ function JsonLd() {
 export default function MortgageForPurchasePage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
+    { label: "שירותים", href: "/services" },
     { label: "משכנתא לרכישת דירה", href: "/services/mortgage-for-purchase" },
   ];
 

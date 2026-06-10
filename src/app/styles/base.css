@@ -43,12 +43,7 @@
 
   /* Performance optimizations for all sections */
   section {
-    /* Contain layout changes within sections */
     contain: layout style paint;
-    /* Force GPU acceleration */
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
   }
 
   /* Pattern background for renovation sections */

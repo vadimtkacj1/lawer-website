@@ -85,6 +85,12 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
+              name: "אזורי שירות",
+              item: "https://avi-mashkanta.com/service-areas",
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
               name: "יועץ משכנתאות בחולון",
               item: "https://avi-mashkanta.com/service-areas/mortgage-advisor-holon",
             },
@@ -126,6 +132,7 @@ function JsonLd() {
 export default function MortgageAdvisorHolonPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
+    { label: "אזורי שירות", href: "/service-areas" },
     { label: "יועץ משכנתאות בחולון", href: "/service-areas/mortgage-advisor-holon" },
   ];
 

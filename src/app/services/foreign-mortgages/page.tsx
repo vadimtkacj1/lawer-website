@@ -20,7 +20,7 @@ const Footer = dynamic(() => import("@/components/Footer"));
 const Widgets = dynamic(() => import("@/components/ui/Widgets"));
 
 export const metadata: Metadata = {
-  title: "משכנתא לתושבי חוץ: קונים נכס בישראל בראש שקט | אבי - הבית למשכנתאות",
+  title: "משכנתא לתושבי חוץ | קניית נכס בישראל | אבי - הבית למשכנתאות",
   description:
     "מתכננים לקנות נכס בארץ? קבלו ייעוץ מקצועי עבור משכנתא לתושבי חוץ. תכנון פיננסי חכם, ניהול משא ומתן וליווי אישי שיחסוך לכם זמן וכסף, גם כשאתם מעבר לים. השאירו פרטים.",
   keywords: [
@@ -95,6 +95,12 @@ function JsonLd() {
             {
               "@type": "ListItem",
               position: 2,
+              name: "שירותים",
+              item: "https://avi-mashkanta.com/services"
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
               name: "משכנתא לתושבי חוץ",
               item: "https://avi-mashkanta.com/services/foreign-mortgages"
             }
@@ -144,6 +150,7 @@ function JsonLd() {
 export default function ForeignMortgagesPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
+    { label: "שירותים", href: "/services" },
     { label: "משכנתא לתושבי חוץ", href: "/services/foreign-mortgages" },
   ];
 
