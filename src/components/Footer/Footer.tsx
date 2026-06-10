@@ -1,9 +1,8 @@
-"use client";
-
 import Link from "next/link";
 import LocationIcon from "@/components/icons/LocationIcon";
 import FacebookIcon from "@/components/icons/FacebookIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
+import MapFacade from "./MapFacade";
 
 const serviceLinks = [
   { href: "/services/mortgage-for-purchase", label: "משכנתא לרכישת דירה" },
@@ -85,21 +84,7 @@ export default function Footer() {
 
             {/* Google Map */}
             <div className="mt-4 sm:mt-5 md:mt-6 w-full">
-              <iframe
-                src={
-                  process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
-                    ? `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=${encodeURIComponent("Yehoshua Hankin 83, Holon, Israel")}&zoom=15&language=he`
-                    : "https://maps.google.com/maps?q=32.0185696,34.7787344&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                }
-                width="100%"
-                height="200"
-                style={{ border: 0, borderRadius: '8px' }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="מיקום המשרד - חנקין 83 חולון"
-                className="shadow-lg"
-              />
+              <MapFacade />
             </div>
 
             {/* Social Links */}
