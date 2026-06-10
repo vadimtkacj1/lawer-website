@@ -92,7 +92,7 @@ export default function CommercialAbout() {
                 
                 <Image
                   src="/images/avi_photo.webp"
-                  alt="Avi Bukai - Mortgage Consultant"
+                  alt="אבי בוקאי - יועץ משכנתאות"
                   width={500}
                   height={600}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 400px, 500px"

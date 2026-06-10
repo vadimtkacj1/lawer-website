@@ -44,7 +44,7 @@ export default function ExpertBio() {
             <div className="relative inline-block w-full">
               <Image
                 src="/images/avi_photo.webp"
-                alt="Avi Bukai - Professional Bio"
+                alt="אבי בוקאי - ביוגרפיה מקצועית"
                 width={520}
                 height={650}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 480px, 520px"

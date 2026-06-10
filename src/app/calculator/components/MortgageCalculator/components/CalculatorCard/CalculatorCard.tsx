@@ -115,7 +115,7 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
                 }}
               />
               <div className="flex justify-between text-[11px] text-blue-dk/30 font-bold mt-3 tabular-nums uppercase tracking-widest">
-                <span>START</span>
+                <span>0</span>
                 <span>{formatNumber(MAX_EQUITY)}</span>
               </div>
             </div>

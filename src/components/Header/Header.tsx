@@ -110,7 +110,7 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
               <Link href="/" className="flex items-center" suppressHydrationWarning>
                 <Image
                   src="/images/logo.svg"
-                  alt="Avi - Mortgage House"
+                  alt="אבי - בית למשכנתאות"
                   width={220}
                   height={110}
                   className="h-[48px] w-auto xs:h-[55px] sm:h-[62px] md:h-[68px] lg:h-[72px]"
@@ -178,7 +178,7 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
               <button
                 className="lg:hidden relative p-0 border-none bg-transparent outline-none focus:ring-0 text-blue-dk hover:text-orange transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-label={isMobileMenuOpen ? "סגור תפריט" : "פתח תפריט"}
               >
                 {isMobileMenuOpen ? <CloseIcon className="w-9 h-9 sm:w-10 sm:h-10" /> : <MenuIcon className="w-9 h-9 sm:w-10 sm:h-10" />}
               </button>

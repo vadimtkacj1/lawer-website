@@ -27,7 +27,7 @@ const ChevronIcon = ({ className }: { className?: string }) => (
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <nav
-      aria-label="breadcrumb"
+      aria-label="נתיב ניווט"
       className="bg-cream/50 py-3 sm:py-4"
       dir="rtl"
     >
