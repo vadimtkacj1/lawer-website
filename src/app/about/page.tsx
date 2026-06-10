@@ -16,7 +16,7 @@ const Footer = dynamic(() => import("@/components/Footer"));
 const Widgets = dynamic(() => import("@/components/ui/Widgets"));
 
 export const metadata: Metadata = {
-  title: " אבי - הבית למשכנתאות | יועץ משכנתאות מקצועי ",
+  title: "אבי - הבית למשכנתאות | יועץ משכנתאות מקצועי",
   description:
     "הכירו את אבי, יועץ משכנתאות בעל ניסיון עשיר של עשרות תיקים מוצלחים. בואו לקרוא על הדרך, המקצועיות והמחויבות האישית להשיג עבורכם את המשכנתא המשתלמת ביותר.",
   keywords: [

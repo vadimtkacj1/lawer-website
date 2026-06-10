@@ -42,29 +42,14 @@ export default function ExpertBio() {
             variants={fadeInRight}
           >
             <div className="relative inline-block w-full">
-              {/* Mobile Image - Optimized */}
-              <div className="lg:hidden">
-                <Image
-                  src="/images/avi_photo.png"
-                  alt="Avi Bukai - Professional Bio"
-                  width={520} 
-                  height={650}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 480px, 520px"
-                  className="w-full h-auto"
-                />
-              </div>
-              {/* Desktop Image - Original Quality */}
-              <div className="hidden lg:block">
-                <Image
-                  src="/images/avi_photo.png"
-                  alt="Avi Bukai - Professional Bio"
-                  width={520} 
-                  height={650}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 480px, 520px"
-                  className="w-full h-auto"
-                  quality={100}
-                />
-              </div>
+              <Image
+                src="/images/avi_photo.webp"
+                alt="Avi Bukai - Professional Bio"
+                width={520}
+                height={650}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 480px, 520px"
+                className="w-full h-auto"
+              />
 
               {/* Плашки на фото */}
               <motion.div

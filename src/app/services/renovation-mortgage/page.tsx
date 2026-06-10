@@ -15,7 +15,7 @@ const Footer = dynamic(() => import("@/components/Footer"));
 const Widgets = dynamic(() => import("@/components/ui/Widgets"));
 
 export const metadata: Metadata = {
-  title: " משכנתא לשיפוץ: לשדרג את הבית בלי הלוואות יקרות | אבי - הבית למשכנתאות ",
+  title: "משכנתא לשיפוץ: לשדרג את הבית בלי הלוואות יקרות | אבי - הבית למשכנתאות",
   description:
     "יש לכם משכנתא ורוצים לשפץ? הדרך החכמה ביותר היא הגדלת המשכנתא לטובת שיפוצים. קבלו ייעוץ מקצועי להשגת משכנתא לשיפוץ בתנאים הטובים ביותר מול הבנק.",
   keywords: [

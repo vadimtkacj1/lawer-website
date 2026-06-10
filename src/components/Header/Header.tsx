@@ -40,6 +40,7 @@ const servicesLinks = [
 ];
 
 const serviceAreasLinks = [
+  { href: "/service-areas/mortgage-advisor-tel-aviv", label: "יועץ משכנתאות בתל אביב" },
   { href: "/service-areas/mortgage-advisor-holon", label: "יועץ משכנתאות בחולון" },
   { href: "/service-areas/mortgage-advisor-bat-yam", label: "יועץ משכנתאות בבת ים" },
   { href: "/service-areas/mortgage-advisor-rishon-lezion", label: "יועץ משכנתאות בראשון לציון" },
@@ -47,8 +48,8 @@ const serviceAreasLinks = [
 
 const navLinks = [
   { href: "/", label: "דף הבית" },
-  { href: "#", label: "שירותים", hasDropdown: true, dropdownType: "services" },
-  { href: "#", label: "איזורי שירות", hasDropdown: true, dropdownType: "service-areas" },
+  { href: "/services", label: "שירותים", hasDropdown: true, dropdownType: "services" },
+  { href: "/service-areas", label: "איזורי שירות", hasDropdown: true, dropdownType: "service-areas" },
   { href: "/about", label: "אודות" },
   { href: "/calculator", label: "מחשבון משכנתא" },
 ];
@@ -130,14 +131,14 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
                       onMouseLeave={() => link.hasDropdown && setActiveDesktopDropdown(null)}
                     >
                       {link.hasDropdown ? (
-                        <button
-                          onClick={(e) => e.preventDefault()}
-                          className={`flex items-center gap-1.5 px-3 py-1.5 text-blue-dk font-bold text-lg xl:text-xl transition-all duration-300 hover:text-orange outline-none bg-transparent border-none cursor-pointer
+                        <Link
+                          href={link.href}
+                          className={`flex items-center gap-1.5 px-3 py-1.5 text-blue-dk font-bold text-lg xl:text-xl transition-all duration-300 hover:text-orange outline-none
                             ${isActive ? "text-orange" : ""}`}
                         >
                           {link.label}
                           <ChevronIcon className={`w-3.5 h-3.5 transition-transform duration-300 ${isActive ? "rotate-180" : ""}`} />
-                        </button>
+                        </Link>
                       ) : (
                         <Link
                           href={link.href}

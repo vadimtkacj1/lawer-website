@@ -6,7 +6,6 @@
 @layer base {
   html {
     direction: rtl;
-    scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     overflow-y: scroll;
     scroll-padding-top: var(--header-height);
@@ -34,7 +33,6 @@
   /* Optimize image loading */
   img {
     content-visibility: auto;
-    loading: lazy;
   }
   
   /* Optimize video loading */
@@ -47,11 +45,6 @@
     body {
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
-    }
-
-    /* Disable all non-essential animations on mobile */
-    * {
-      animation-play-state: paused !important;
     }
 
     /* Force hardware acceleration only for critical elements */
@@ -70,12 +63,7 @@
 
   /* Performance optimizations for all sections */
   section {
-    /* Contain layout changes within sections */
     contain: layout style paint;
-    /* Force GPU acceleration */
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
   }
 
 }
@@ -117,16 +105,6 @@
     @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl 4xl:text-9xl font-black text-blue-dk text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12 3xl:mb-16 4xl:mb-20;
   }
 
-  /* Hero section noise overlay */
-  .hero-noise::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: 0.4;
-    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-    pointer-events: none;
-    z-index: 0;
-  }
 }
 
 /* Custom utilities */

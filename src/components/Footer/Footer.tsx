@@ -7,6 +7,7 @@ import InstagramIcon from "@/components/icons/InstagramIcon";
 
 const serviceLinks = [
   { href: "/services/mortgage-for-purchase", label: "משכנתא לרכישת דירה" },
+  { href: "/service-areas/mortgage-advisor-tel-aviv", label: "יועץ משכנתאות בתל אביב" },
   { href: "/service-areas/mortgage-advisor-holon", label: "יועץ משכנתאות בחולון" },
   { href: "/service-areas/mortgage-advisor-bat-yam", label: "יועץ משכנתאות בבת ים" },
   { href: "/service-areas/mortgage-advisor-rishon-lezion", label: "יועץ משכנתאות בראשון לציון" },
@@ -156,7 +157,7 @@ export default function Footer() {
           <p className="text-white/50 text-xs sm:text-sm mt-3 sm:mt-4">
             נבנה על ידי{" "}
             <a
-              href="https://aiterra.agency/"
+              href="https://aiterra.co.il/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors underline"

@@ -41,34 +41,34 @@ const Widgets = dynamic(() => import("@/components/ui/Widgets"), {
 export default function HomeLazySections() {
   return (
     <>
-      <LazyMount rootMargin="400px 0px">
+      <LazyMount rootMargin="400px 0px" placeholder={<div className="h-28" />}>
         <BankLogos />
       </LazyMount>
-      <LazyMount rootMargin="400px 0px">
+      <LazyMount rootMargin="400px 0px" placeholder={<div className="h-[500px]" />}>
         <ExpertBio />
       </LazyMount>
-      <LazyMount>
+      <LazyMount placeholder={<div className="h-64" />}>
         <Quote />
       </LazyMount>
-      <LazyMount>
+      <LazyMount placeholder={<div className="h-[500px]" />}>
         <WhyChooseAvi />
       </LazyMount>
-      <LazyMount>
+      <LazyMount placeholder={<div className="h-[500px]" />}>
         <Services />
       </LazyMount>
-      <LazyMount>
+      <LazyMount placeholder={<div className="h-[500px]" />}>
         <Testimonials />
       </LazyMount>
-      <LazyMount>
+      <LazyMount placeholder={<div className="h-[500px]" />}>
         <HowItWorks />
       </LazyMount>
-      <LazyMount>
+      <LazyMount placeholder={<div className="h-[500px]" />}>
         <Contact />
       </LazyMount>
-      <LazyMount>
+      <LazyMount placeholder={<div className="h-[500px]" />}>
         <MortgageCalculator />
       </LazyMount>
-      <LazyMount>
+      <LazyMount placeholder={<div className="h-[500px]" />}>
         <FAQ />
       </LazyMount>
       <Widgets />

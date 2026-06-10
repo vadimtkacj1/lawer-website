@@ -16,7 +16,7 @@ const Footer = dynamic(() => import("@/components/Footer"));
 const Widgets = dynamic(() => import("@/components/ui/Widgets"));
 
 export const metadata: Metadata = {
-  title: " איחוד הלוואות ומחזור משכנתא | אבי - הבית למשכנתאות ",
+  title: "איחוד הלוואות ומחזור משכנתא | אבי - הבית למשכנתאות",
   description:
     "ההחזרים החודשיים חונקים? הגיע הזמן לחזור לנשום. תהליך מקצועי של איחוד הלוואות יחד עם מחזור משכנתא יאפשר לכם להוריד את הלחץ הכלכלי. פנו לאבי לבדיקת כדאיות.",
   keywords: [
@@ -136,7 +136,7 @@ function JsonLd() {
   );
 }
 
-export default function RenovationMortgagePage() {
+export default function LoanConsolidationPage() {
   const breadcrumbItems = [
     { label: "דף הבית", href: "/" },
     { label: "מחזור ואיחוד הלוואות", href: "/services/loan-consolidation" },

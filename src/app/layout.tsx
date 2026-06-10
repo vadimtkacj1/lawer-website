@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./styles/mobile.css";
 import { MotionConfig } from "framer-motion";
-import FullScreenLoader from "@/components/ui/FullScreenLoader";
 import ClientEffects from "@/components/ui/ClientEffects";
 import localFont from "next/font/local";
 import Script from "next/script";
@@ -15,7 +14,6 @@ const notoSansHebrew = localFont({
   display: "swap",
   preload: true,
   fallback: ["system-ui", "arial"],
-  adjustFontFallback: false,
 });
 
 // Viewport configuration for mobile optimization
@@ -72,10 +70,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
-    description:
-      "ייעוץ משכנתאות מקצועי ואובייקטיבי. חיסכון ממוצע של 180,000 ש״ח למשפחה.",
-    images: ["/images/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -89,9 +83,6 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Add your verification codes here when you get them from:
-    // Google Search Console: https://search.google.com/search-console
-    // Yandex Webmaster: https://webmaster.yandex.com
     // google: "your-google-verification-code",
     // yandex: "your-yandex-verification-code",
   },
@@ -109,23 +100,21 @@ export default function RootLayout({
       dir="rtl"
     >
       <head>
-        {/* Favicon - multiple formats for better browser support */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
         {/* PWA Manifest */}
         <link rel="manifest" href="/manifest.json" />
-        {/* Preload critical assets */}
+        {/* Preload critical above-fold assets */}
         <link rel="preload" href="/images/logo.svg" as="image" type="image/svg+xml" />
-        {/* Preconnect to external domains for faster loading */}
-        <link rel="preconnect" href="https://cdn.equalweb.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://access.equalweb.com" crossOrigin="anonymous" />
+        <link rel="preload" href="/images/expert-poster.webp" as="image" fetchPriority="high" />
+        {/* Preconnect to GA/GTM — loaded on every page */}
         <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        {/* EqualWeb loads lazily after window.load — preconnect still warms the socket */}
+        <link rel="preconnect" href="https://cdn.equalweb.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://access.equalweb.com" crossOrigin="anonymous" />
         {/* DNS prefetch for social media */}
         <link rel="dns-prefetch" href="https://www.facebook.com" />
         <link rel="dns-prefetch" href="https://www.instagram.com" />
         <link rel="dns-prefetch" href="https://wa.me" />
-        {/* EqualWeb Accessibility Widget - now loaded via client component to prevent hydration issues */}
       </head>
       <body className={`${notoSansHebrew.variable} font-noto-sans-hebrew antialiased`}>
         <GoogleAnalytics gaId="G-6SXKQPB2B8" />
@@ -159,14 +148,13 @@ export default function RootLayout({
                     }
                   }
                 };
-                
-                // Load script only after page is interactive
+
                 if (document.readyState === 'complete') {
                   loadEqualWeb();
                 } else {
                   window.addEventListener('load', loadEqualWeb, { once: true });
                 }
-                
+
                 function loadEqualWeb() {
                   var script = document.createElement('script');
                   script.src = 'https://cdn.equalweb.com/core/5.2.5/accessibility.js';
@@ -181,7 +169,6 @@ export default function RootLayout({
           }}
         />
         <MotionConfig reducedMotion="user">
-          <FullScreenLoader />
           <ClientEffects />
           {children}
         </MotionConfig>

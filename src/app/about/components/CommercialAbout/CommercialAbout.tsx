@@ -90,30 +90,14 @@ export default function CommercialAbout() {
                 {/* Visual shadow anchor */}
                 <div className="absolute -inset-4 rounded-full -z-10" />
                 
-                {/* Mobile Image - Optimized */}
-                <div className="lg:hidden">
-                  <Image
-                    src="/images/avi_photo.png"
-                    alt="Avi Bukai - Mortgage Consultant"
-                    width={500}
-                    height={600}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 400px, 500px"
-                    className="w-full aspect-[5/6] object-cover rounded-3xl relative z-10"
-                  />
-                </div>
-                
-                {/* Desktop Image - Original Quality */}
-                <div className="hidden lg:block">
-                  <Image
-                    src="/images/avi_photo.png"
-                    alt="Avi Bukai - Mortgage Consultant"
-                    width={500}
-                    height={600}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 400px, 500px"
-                    className="w-full aspect-[5/6] object-cover rounded-3xl relative z-10"
-                    quality={100}
-                  />
-                </div>
+                <Image
+                  src="/images/avi_photo.webp"
+                  alt="Avi Bukai - Mortgage Consultant"
+                  width={500}
+                  height={600}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 400px, 500px"
+                  className="w-full aspect-[5/6] object-cover rounded-3xl relative z-10"
+                />
               </div>
             </motion.div>
 

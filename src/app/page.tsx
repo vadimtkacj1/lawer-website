@@ -56,21 +56,18 @@ function JsonLd() {
         "@id": "https://avi-mashkanta.com/#organization",
         name: "אבי - הבית למשכנתאות",
         url: "https://avi-mashkanta.com",
+        telephone: "+972544729513",
         logo: {
           "@type": "ImageObject",
           url: "https://avi-mashkanta.com/images/logo.svg",
         },
         contactPoint: {
           "@type": "ContactPoint",
-          telephone: "+972-50-000-0000",
+          telephone: "+972544729513",
           contactType: "customer service",
           areaServed: "IL",
           availableLanguage: "Hebrew",
         },
-        sameAs: [
-          "https://www.facebook.com/avihome",
-          "https://www.instagram.com/avihome",
-        ],
       },
       {
         "@type": "FinancialService",
@@ -79,8 +76,7 @@ function JsonLd() {
         description:
           "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז",
         url: "https://avi-mashkanta.com",
-        telephone: "+972-50-000-0000",
-        email: "assistant@avi-mashkanta.com",
+        telephone: "+972544729513",
         address: {
           "@type": "PostalAddress",
           addressLocality: "חולון",
@@ -99,11 +95,6 @@ function JsonLd() {
           { "@type": "City", name: "תל אביב" },
         ],
         priceRange: "$$",
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "5",
-          reviewCount: "150",
-        },
       },
       {
         "@type": "WebSite",
