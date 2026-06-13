@@ -67,6 +67,18 @@ function JsonLd({ slug }: { slug: string }) {
     "@context": "https://schema.org",
     "@graph": [
       {
+        // Defined on-page so the BlogPosting `publisher` @id reference resolves
+        // (cross-page @id refs don't resolve; Article rich results need publisher name+logo)
+        "@type": "Organization",
+        "@id": `${BASE_URL}/#organization`,
+        name: "אבי - הבית למשכנתאות",
+        url: BASE_URL,
+        logo: {
+          "@type": "ImageObject",
+          url: `${BASE_URL}/images/logo.svg`,
+        },
+      },
+      {
         "@type": "BlogPosting",
         "@id": `${url}#article`,
         headline: article.title,
