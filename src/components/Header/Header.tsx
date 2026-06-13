@@ -51,6 +51,7 @@ const navLinks = [
   { href: "/services", label: "שירותים", hasDropdown: true, dropdownType: "services" },
   { href: "/service-areas", label: "איזורי שירות", hasDropdown: true, dropdownType: "service-areas" },
   { href: "/about", label: "אודות" },
+  { href: "/blog", label: "בלוג" },
   { href: "/calculator", label: "מחשבון משכנתא" },
 ];
 

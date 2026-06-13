@@ -7,6 +7,7 @@ import DecorativeShapes from "@/components/ui/DecorativeShapes";
 import GoogleMap from "@/components/GoogleMap/GoogleMap";
 import Link from "next/link";
 import { PHONE_NUMBER_RAW, PHONE_NUMBER } from "@/lib/phone";
+import { sendGAEvent } from "@next/third-parties/google";
 
 // Вспомогательный компонент для инпутов, чтобы не дублировать стили
 const FormInput = ({
@@ -104,6 +105,7 @@ export default function Contact() {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
+        sendGAEvent("event", "generate_lead", { form_location: "homepage_contact" });
         setIsSubmitted(true);
         setFormData({ name: "", phone: "" });
         setTouched({ name: false, phone: false });

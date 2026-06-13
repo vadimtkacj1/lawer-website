@@ -6,6 +6,7 @@ import { CheckCircle2 } from "lucide-react";
 import { fadeInUpFast, viewportOptions } from "@/lib/animations";
 import type { CalculatorData } from "../../types";
 import FormInput from "./FormInput";
+import { sendGAEvent } from "@next/third-parties/google";
 
 interface ContactFormProps {
   calculatorData?: CalculatorData;
@@ -123,6 +124,7 @@ export default function ContactForm({ calculatorData }: ContactFormProps) {
         }),
       });
       if (response.ok) {
+        sendGAEvent("event", "generate_lead", { form_location: "calculator_page" });
         setIsSubmitted(true);
         setFormData({ name: "", phone: "" });
         setTouched({ name: false, phone: false });

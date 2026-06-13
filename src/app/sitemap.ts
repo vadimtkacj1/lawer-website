@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { articles } from './blog/data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://avi-mashkanta.com';
@@ -8,6 +9,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPagesDate = new Date('2026-03-20');
   const servicesDate = new Date('2026-06-10');
   const serviceAreasDate = new Date('2026-06-10');
+  const blogIndexDate = new Date('2026-06-13');
+
+  const blogPosts: MetadataRoute.Sitemap = articles.map((a) => ({
+    url: `${baseUrl}/blog/${a.slug}`,
+    lastModified: new Date(a.dateModified),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
 
   return [
     // Main pages
@@ -41,6 +50,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: blogIndexDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+
+    // Blog articles
+    ...blogPosts,
 
     // Services
     {

@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Calculator } from "lucide-react";
+import { sendGAEvent } from "@next/third-parties/google";
 import { fadeInUpFast, viewportOptions } from "@/lib/animations";
 import type { LoanTerm } from "../../types";
 import { LOAN_MULTIPLIERS, MAX_PROPERTY, MAX_EQUITY, STEP } from "../../constants";
@@ -22,6 +23,14 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
   const [apartmentPrice, setApartmentPrice] = useState<number>(0);
   const [equity, setEquity] = useState<number>(0);
   const [selectedTerm, setSelectedTerm] = useState<LoanTerm>(20);
+  const hasTrackedUse = useRef(false);
+
+  // Fire once per page view so slider dragging doesn't flood GA
+  const trackCalculatorUse = () => {
+    if (hasTrackedUse.current) return;
+    hasTrackedUse.current = true;
+    sendGAEvent("event", "calculator_use", { page_path: "/calculator" });
+  };
 
   const mortgageAmount = calculateMortgageAmount(apartmentPrice, equity);
   const monthlyPayment = calculateMonthlyPayment(mortgageAmount, selectedTerm);
@@ -79,7 +88,10 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
                 max={MAX_PROPERTY}
                 step={STEP}
                 value={apartmentPrice}
-                onChange={(e) => setApartmentPrice(Number(e.target.value))}
+                onChange={(e) => {
+                  trackCalculatorUse();
+                  setApartmentPrice(Number(e.target.value));
+                }}
                 className="w-full h-4 appearance-none cursor-pointer outline-none rounded-full"
                 style={{
                   background: `linear-gradient(to right, #f26722 0%, #f26722 ${(apartmentPrice / MAX_PROPERTY) * 100}%, rgba(15, 32, 67, 0.1) ${(apartmentPrice / MAX_PROPERTY) * 100}%, rgba(15, 32, 67, 0.1) 100%)`
@@ -108,7 +120,10 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
                 max={MAX_EQUITY}
                 step={STEP}
                 value={equity}
-                onChange={(e) => setEquity(Number(e.target.value))}
+                onChange={(e) => {
+                  trackCalculatorUse();
+                  setEquity(Number(e.target.value));
+                }}
                 className="w-full h-4 appearance-none cursor-pointer outline-none rounded-full"
                 style={{
                   background: `linear-gradient(to right, #f26722 0%, #f26722 ${(equity / MAX_EQUITY) * 100}%, rgba(15, 32, 67, 0.1) ${(equity / MAX_EQUITY) * 100}%, rgba(15, 32, 67, 0.1) 100%)`
@@ -131,7 +146,10 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
               {(Object.keys(LOAN_MULTIPLIERS) as unknown as LoanTerm[]).map((term) => (
                 <button
                   key={term}
-                  onClick={() => setSelectedTerm(term)}
+                  onClick={() => {
+                    trackCalculatorUse();
+                    setSelectedTerm(term);
+                  }}
                   className={`py-2 px-1 rounded-xl font-black text-sm md:text-base transition-all ${
                     selectedTerm === term
                       ? "bg-orange text-white shadow-lg scale-105"

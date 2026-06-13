@@ -17,6 +17,7 @@ const serviceLinks = [
   { href: "/services/renovation-mortgage", label: "משכנתא לשיפוץ" },
   { href: "/services/foreign-mortgages", label: "משכנתא לתושבי חוץ" },
   { href: "/services/debt-consolidation", label: "משכנתא לכל מטרה" },
+  { href: "/blog", label: "בלוג משכנתאות" },
 ];
 
 const socialLinks = [
@@ -110,21 +111,18 @@ export default function Footer() {
             <nav className="flex flex-col space-y-1.5 sm:space-y-2 w-full">
               <Link
                 href="/accessibility"
-                rel="nofollow"
                 className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
               >
                 הצהרת נגישות
               </Link>
               <Link
                 href="/privacy"
-                rel="nofollow"
                 className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
               >
                 מדיניות פרטיות
               </Link>
               <Link
                 href="/terms"
-                rel="nofollow"
                 className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
               >
                 תנאי שימוש

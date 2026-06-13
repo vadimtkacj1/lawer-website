@@ -6,6 +6,7 @@ import ClientEffects from "@/components/ui/ClientEffects";
 import localFont from "next/font/local";
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import AnalyticsEvents from "@/components/analytics/AnalyticsEvents";
 
 // Load local Noto Sans Hebrew variable font
 const notoSansHebrew = localFont({
@@ -118,6 +119,7 @@ export default function RootLayout({
       </head>
       <body className={`${notoSansHebrew.variable} font-noto-sans-hebrew antialiased`}>
         <GoogleAnalytics gaId="G-6SXKQPB2B8" />
+        <AnalyticsEvents />
         {/* EqualWeb Accessibility Widget - loaded with lazy strategy for better performance */}
         <Script
           id="equalweb-config"

@@ -109,6 +109,27 @@ const nextConfig = {
         destination: 'https://avi-mashkanta.com/:path*',
         permanent: true,
       },
+      // Deleted pages that Google still crawls (GSC "Not found" report) → current equivalents
+      {
+        source: '/pdfs/accessibility.pdf',
+        destination: '/accessibility',
+        permanent: true,
+      },
+      {
+        source: '/pdfs/privacy.pdf',
+        destination: '/privacy',
+        permanent: true,
+      },
+      {
+        source: '/pdfs/terms.pdf',
+        destination: '/terms',
+        permanent: true,
+      },
+      {
+        source: '/services/commercial',
+        destination: '/services',
+        permanent: true,
+      },
     ];
   },
 
