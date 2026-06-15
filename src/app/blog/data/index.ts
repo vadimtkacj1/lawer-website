@@ -2,13 +2,21 @@ import type { Article } from "./types";
 import { articles1 } from "./articles-1";
 import { articles2 } from "./articles-2";
 import { articles3 } from "./articles-3";
+import { articles4 } from "./articles-4";
+import { articles5 } from "./articles-5";
+import { articles6 } from "./articles-6";
 
 export type { Article, ContentBlock, ArticleFaq } from "./types";
 
 // All blog articles, newest first
-export const articles: Article[] = [...articles1, ...articles2, ...articles3].sort(
-  (a, b) => (a.datePublished < b.datePublished ? 1 : -1)
-);
+export const articles: Article[] = [
+  ...articles1,
+  ...articles2,
+  ...articles3,
+  ...articles4,
+  ...articles5,
+  ...articles6,
+].sort((a, b) => (a.datePublished < b.datePublished ? 1 : -1));
 
 export function getArticleBySlug(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug);

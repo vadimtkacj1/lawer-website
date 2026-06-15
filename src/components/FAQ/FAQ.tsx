@@ -68,6 +68,8 @@ function AccordionItem({
         className="w-full flex items-center justify-between gap-3 sm:gap-4 py-3 sm:py-4 md:py-5 text-right
                    transition-colors hover:text-orange focus:outline-none active:text-orange"
         aria-expanded={isOpen}
+        aria-controls={`faq-panel-${index}`}
+        id={`faq-trigger-${index}`}
       >
         <span className="flex-grow text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-black text-blue-dk pe-2 sm:pe-3 md:pe-4 leading-tight sm:leading-normal">
           {index + 1}. {question}
@@ -77,11 +79,11 @@ function AccordionItem({
                       flex items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95"
         >
           {isOpen ? (
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 16 16">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
               <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
             </svg>
           ) : (
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 16 16">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
               <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
             </svg>
           )}
@@ -89,6 +91,10 @@ function AccordionItem({
       </button>
 
       <div
+        id={`faq-panel-${index}`}
+        role="region"
+        aria-labelledby={`faq-trigger-${index}`}
+        aria-hidden={!isOpen}
         className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out
                     ${isOpen ? "max-h-[1000px] opacity-100 pb-4 sm:pb-5" : "max-h-0 opacity-0"}`}
       >

@@ -16,7 +16,7 @@ const Footer = dynamic(() => import("@/components/Footer"));
 const Widgets = dynamic(() => import("@/components/ui/Widgets"));
 
 export const metadata: Metadata = {
-  title: "משכנתא לדירה בהנחה ומחיר למשתכן | אבי - הבית למשכנתאות",
+  title: "משכנתא לדירה בהנחה ומחיר למשתכן 2026 | אבי - הבית למשכנתאות",
   description:
     "מחפשים יועץ משכנתאות מחיר למשתכן? הכירו את אבי, יועץ מומחה שילווה אתכם משלב הזכייה בדירה בהנחה ועד מפתח, להשגת הריביות והתנאים הטובים ביותר מול הבנקים.",
   keywords: [
@@ -155,7 +155,7 @@ export default function DiraBehanaChaMortgagePage() {
     <>
       <JsonLd />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <DiraHero />
         <Breadcrumbs items={breadcrumbItems} />
         <IntroDiraSection />

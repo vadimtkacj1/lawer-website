@@ -17,23 +17,46 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = join(__dirname, "..", "public", "images", "blog");
 mkdirSync(OUT, { recursive: true });
 
-// slug -> ordered list of Pexels search queries (first that yields a fresh photo wins)
+// slug -> ordered list of Pexels search queries (first that yields a fresh photo wins).
+//
+// NOTE on "Israeli-looking people" (tested 2026-06):
+//   "israeli ..."        -> flags / stone buildings / landscapes (no usable people)
+//   "middle eastern ..." -> Arab/Muslim (hijab) couples — cultural mismatch here
+//   "jewish couple" / "jewish family" -> AUTHENTIC secular Jewish-Israeli people
+//      at home (some wear a kippah) — the winning query for this audience.
+// People-photo articles below lead with "jewish ..." queries. The current on-disk
+// images for those slugs were hand-picked from these searches (see
+// _jewish-photo-picks.json); re-running fetches similar fresh ones. Real client
+// photos are still best for E-E-A-T. Object/place photos need no people at all.
 const PLAN = [
   ["mortgage-interest-rates-2026", ["interest rate finance chart graph", "stock market graph finance"]],
   ["prime-rate-mortgage-impact", ["bank building finance", "percentage finance calculator"]],
-  ["first-apartment-mortgage-guide", ["happy couple new home keys", "young couple moving home"]],
+  ["first-apartment-mortgage-guide", ["jewish couple new home", "jewish family home", "happy couple new home keys"]],
   ["mortgage-tracks-explained", ["financial planning documents desk", "charts financial report desk"]],
-  ["mortgage-pre-approval-guide", ["signing contract document pen", "business handshake agreement"]],
+  ["mortgage-pre-approval-guide", ["jewish couple home", "jewish couple meeting", "signing contract document pen"]],
   ["down-payment-how-much-equity", ["coins savings stack money", "piggy bank savings"]],
   ["mortgage-refinance-when-worth-it", ["house model money coins", "calculator money house keys"]],
   ["monthly-payment-income-ratio", ["budget calculator money planning", "person calculating finances"]],
   ["common-mortgage-mistakes", ["worried man paperwork stress", "confused person documents"]],
   ["mortgage-for-self-employed", ["freelancer working laptop home office", "small business owner laptop"]],
   ["early-mortgage-repayment-fees", ["cash money payment hands", "money envelope cash"]],
-  ["mortgage-insurance-guide", ["family home protection", "house model umbrella insurance"]],
-  ["mortgage-transfer-moving-home", ["moving boxes new house", "couple carrying moving boxes"]],
+  ["mortgage-insurance-guide", ["jewish family home", "jewish family together home", "family home protection"]],
+  ["mortgage-transfer-moving-home", ["jewish family home", "jewish couple new home", "couple carrying moving boxes"]],
   ["investment-property-mortgage", ["modern apartment building city", "real estate buildings skyline"]],
   ["mortgage-eligibility-certificate", ["document approval stamp paperwork", "official documents signing desk"]],
+  // Batch 4 — current-info / news articles (June 2026)
+  ["bank-of-israel-rate-2026", ["central bank interest rate decision", "finance newspaper interest rates"]],
+  ["mehir-lamishtaken-2026", ["jewish couple new apartment", "jewish couple home", "new apartment building keys couple"]],
+  ["renovation-loan-guide", ["home renovation tools construction", "apartment renovation paint interior"]],
+  ["home-purchase-financing-guide", ["jewish couple reviewing documents home", "jewish couple kitchen", "house keys mortgage money calculator"]],
+  // Batch 5 — high-intent Big-5 articles (concept imagery; no people needed)
+  ["mortgage-advisor-cost", ["money calculator coins desk", "financial advisor fee money"]],
+  ["private-advisor-vs-bank-banker", ["bank building finance", "two paths choice concept finance"]],
+  ["fixed-vs-variable-mortgage-rate", ["financial charts comparison desk", "interest rate graph finance"]],
+  // Batch 6 — problem/solution + service-complement (concept imagery)
+  ["mortgage-refused-how-to-approve", ["loan approved stamp document", "credit report paperwork desk"]],
+  ["reverse-mortgage-guide", ["house model money coins savings", "senior home finance concept"]],
+  ["mortgage-documents-checklist", ["documents checklist paperwork desk", "organized files folder finance"]],
 ];
 
 const usedIds = new Set();

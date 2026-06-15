@@ -5,11 +5,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://avi-mashkanta.com';
 
   // Last modified timestamps - bump when content meaningfully changes
-  const homePageDate = new Date('2026-06-10');
+  const homePageDate = new Date('2026-06-15');
   const staticPagesDate = new Date('2026-03-20');
-  const servicesDate = new Date('2026-06-10');
+  const servicesDate = new Date('2026-06-15');
   const serviceAreasDate = new Date('2026-06-10');
-  const blogIndexDate = new Date('2026-06-13');
+  const blogIndexDate = new Date('2026-06-15');
 
   const blogPosts: MetadataRoute.Sitemap = articles.map((a) => ({
     url: `${baseUrl}/blog/${a.slug}`,

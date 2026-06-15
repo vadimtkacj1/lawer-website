@@ -158,7 +158,7 @@ export default function ForeignMortgagesPage() {
     <>
       <JsonLd />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <ForeignHero/>
         <Breadcrumbs items={breadcrumbItems} />
         <ProblemSection/>

@@ -21,13 +21,13 @@ export const metadata: Metadata = {
   keywords: [
     "משכנתא לכל מטרה",
     "משכנתא לעזרה לילדים",
-    "איחוד הלוואות",
+    "מינוף נכס קיים",
     "סגירת מינוס",
     "הרחבת משכנתא",
     "משכנתא להשקעה",
     "משכנתא לכל מטרה בחולון",
     "יועץ משכנתאות",
-    "מיחזור משכנתא",
+    "הון עצמי מהבית",
     "הלוואה על הבית",
   ],
   alternates: {
@@ -162,7 +162,7 @@ export default function DebtConsolidationPage() {
     <>
       <JsonLd />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <DebtHero/>
         <Breadcrumbs items={breadcrumbItems} />
         <FinancialPressureSection/>

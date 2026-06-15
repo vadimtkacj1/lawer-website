@@ -60,7 +60,7 @@ export default function NotFound() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-cream flex items-center justify-center px-4 py-16">
+      <main id="main-content" tabIndex={-1} className="min-h-screen bg-cream flex items-center justify-center px-4 py-16">
         <div className="max-w-2xl w-full text-center">
           <NotFoundIllustration />
 

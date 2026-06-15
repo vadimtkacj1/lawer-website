@@ -78,7 +78,7 @@ export default function ServiceAreasPage() {
     <>
       <ServiceAreasJsonLd />
       <Header />
-      <main className="bg-cream min-h-screen py-24 px-6" dir="rtl">
+      <main id="main-content" tabIndex={-1} className="bg-cream min-h-screen py-24 px-6" dir="rtl">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl lg:text-6xl font-black text-blue-dk mb-6 leading-tight">
             יועץ משכנתאות לפי אזור

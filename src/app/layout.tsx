@@ -118,6 +118,9 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://wa.me" />
       </head>
       <body className={`${notoSansHebrew.variable} font-noto-sans-hebrew antialiased`}>
+        <a href="#main-content" className="skip-link">
+          דלג לתוכן הראשי
+        </a>
         <GoogleAnalytics gaId="G-6SXKQPB2B8" />
         <AnalyticsEvents />
         {/* EqualWeb Accessibility Widget - loaded with lazy strategy for better performance */}

@@ -16,9 +16,9 @@ const Footer = dynamic(() => import("@/components/Footer"));
 const Widgets = dynamic(() => import("@/components/ui/Widgets"));
 
 export const metadata: Metadata = {
-  title: "אבי - הבית למשכנתאות | יועץ משכנתאות מקצועי",
+  title: "אודות אבי בוקעי – יועץ משכנתאות, בנקאי לשעבר | חולון והמרכז",
   description:
-    "הכירו את אבי, יועץ משכנתאות בעל ניסיון עשיר של עשרות תיקים מוצלחים. בואו לקרוא על הדרך, המקצועיות והמחויבות האישית להשיג עבורכם את המשכנתא המשתלמת ביותר.",
+    "הכירו את אבי בוקעי, בנקאי לשעבר ויועץ משכנתאות שעובד בשבילכם ולא בשביל הבנק. עשרות תיקים מוצלחים, ליווי אישי וחיסכון אמיתי — בחולון, בת ים, ראשון לציון ותל אביב.",
   keywords: [
     "יועץ משכנתאות חולון",
     "יועץ משכנתאות במרכז",
@@ -55,6 +55,25 @@ function JsonLd() {
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://avi-mashkanta.com/#advisor",
+        name: "אבי בוקעי",
+        jobTitle: "יועץ משכנתאות",
+        description:
+          "אבי בוקעי, בנקאי לשעבר ויועץ משכנתאות, מתמחה בתכנון משכנתא חכמה, מחזור ואיחוד הלוואות ופתרונות למסורבי בנקים. מלווה לקוחות בחולון, בת ים, ראשון לציון ותל אביב.",
+        image: "https://avi-mashkanta.com/images/avi_photo.webp",
+        url: "https://avi-mashkanta.com/about",
+        worksFor: { "@id": "https://avi-mashkanta.com/#organization" },
+        knowsAbout: [
+          "משכנתאות",
+          "מחזור משכנתא",
+          "איחוד הלוואות",
+          "תכנון פיננסי",
+          "דירה בהנחה",
+          "מסורבי משכנתא",
+        ],
+      },
       {
         "@type": "Service",
         "@id": "https://avi-mashkanta.com/about#service",
@@ -102,12 +121,13 @@ function JsonLd() {
         ],
       },
       {
-        "@type": "WebPage",
+        "@type": ["WebPage", "ProfilePage"],
         "@id": "https://avi-mashkanta.com/about#webpage",
         url: "https://avi-mashkanta.com/about",
         name: "יועץ משכנתאות בחולון והמרכז | אבי - הבית למשכנתאות",
         description: "איחוד הלוואות, מיחזור משכנתא, פתרונות למסורבי בנקים",
         inLanguage: "he-IL",
+        mainEntity: { "@id": "https://avi-mashkanta.com/#advisor" },
         isPartOf: { "@id": "https://avi-mashkanta.com/#website" },
         breadcrumb: {
           "@type": "BreadcrumbList",
@@ -143,7 +163,7 @@ export default function CommercialPage() {
     <>
       <JsonLd />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <CommercialHero />
         <CommercialAbout />
         <StorySection />

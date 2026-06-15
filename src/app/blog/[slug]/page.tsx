@@ -176,7 +176,7 @@ export default async function ArticlePage({
     <>
       <JsonLd slug={slug} />
       <Header alwaysWithBackground />
-      <main className="bg-cream">
+      <main id="main-content" tabIndex={-1} className="bg-cream">
         <Breadcrumbs items={breadcrumbItems} />
 
         <article className="container mx-auto px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 pb-12 sm:pb-16">

@@ -23,7 +23,7 @@ export default function TermsPage() {
   return (
     <>
       <Header alwaysWithBackground />
-      <main className="min-h-screen bg-white py-16 px-4" dir="rtl">
+      <main id="main-content" tabIndex={-1} className="min-h-screen bg-white py-16 px-4" dir="rtl">
         <div className="container mx-auto max-w-4xl">
           <h1 className="text-4xl font-black text-blue-dk mb-8">
             תנאי שימוש - אבי הבית למשכנתאות

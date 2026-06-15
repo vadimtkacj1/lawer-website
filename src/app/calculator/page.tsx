@@ -107,7 +107,7 @@ export default function CalculatorPage() {
       <JsonLd />
       <div className="bg-cream min-h-screen">
         <Header />
-        <main className="pt-[90px] md:pt-[110px]">
+        <main id="main-content" tabIndex={-1} className="pt-[90px] md:pt-[110px]">
           <MortgageCalculator />
         </main>
       </div>

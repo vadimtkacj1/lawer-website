@@ -154,7 +154,7 @@ export default function RenovationMortgagePage() {
     <>
       <JsonLd />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <RenovationHero />
         <Breadcrumbs items={breadcrumbItems} />
         <RenovationIntro />

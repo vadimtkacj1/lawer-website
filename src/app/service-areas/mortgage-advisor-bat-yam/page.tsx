@@ -141,7 +141,7 @@ export default function MortgageAdvisorBatYamPage() {
     <>
       <JsonLd />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <BatYamHero />
         <Breadcrumbs items={breadcrumbItems} />
         <BatYamIntroSection />

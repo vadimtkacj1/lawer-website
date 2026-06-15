@@ -52,7 +52,7 @@ export default function Footer() {
           {/* Services */}
           <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
             <div className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">שירותים</div>
-            <nav className="flex flex-col space-y-1.5 sm:space-y-2 w-full">
+            <nav aria-label="שירותים" className="flex flex-col space-y-1.5 sm:space-y-2 w-full">
               {serviceLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -71,7 +71,7 @@ export default function Footer() {
             <address className="not-italic space-y-1.5 sm:space-y-2 text-white/70 text-sm sm:text-base md:text-lg font-semibold w-full">
               <p className="flex items-center gap-2 justify-center sm:justify-start lg:justify-center">
                 <LocationIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                חנקין 83 חולון
+                יהושע חנקין 83, חולון
               </p>
             </address>
 
@@ -108,7 +108,7 @@ export default function Footer() {
           {/* Legal Links */}
           <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center sm:col-span-2 lg:col-span-1">
             <div className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">מידע משפטי</div>
-            <nav className="flex flex-col space-y-1.5 sm:space-y-2 w-full">
+            <nav aria-label="מידע משפטי" className="flex flex-col space-y-1.5 sm:space-y-2 w-full">
               <Link
                 href="/accessibility"
                 className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"

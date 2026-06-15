@@ -140,7 +140,7 @@ export default function MortgageAdvisorHolonPage() {
     <>
       <JsonLd />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <HolonHero />
         <Breadcrumbs items={breadcrumbItems} />
         <HolonIntroSection />

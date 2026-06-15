@@ -220,7 +220,7 @@ export default function MortgageAdvisorTelAvivPage() {
     <>
       <JsonLd />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <TelAvivHero />
         <Breadcrumbs items={breadcrumbItems} />
 

@@ -410,6 +410,6 @@ export const articles3: Article[] = [
         a: "לא. התעודה היא אופציה, לא התחייבות — היא מאפשרת לכם לקבל הלוואת זכאות ברכישת דירה העומדת בתנאי התוכנית, ולהירשם להגרלות דירה בהנחה. אתם מחליטים אם ומתי לנצל אותה.",
       },
     ],
-    related: ["first-apartment-mortgage-guide", "down-payment-how-much-equity", "mortgage-pre-approval-guide"],
+    related: ["mehir-lamishtaken-2026", "first-apartment-mortgage-guide", "down-payment-how-much-equity"],
   },
 ];

@@ -13,34 +13,50 @@ import { sendGAEvent } from "@next/third-parties/google";
 const FormInput = ({
   error,
   touched,
+  label,
+  id,
   ...props
 }: {
   error: string;
   touched: boolean;
-} & React.InputHTMLAttributes<HTMLInputElement>) => (
-  <div className="relative w-full">
-    <input
-      {...props}
-      className={`w-full bg-white border-2 rounded-2xl px-4 py-3 text-right text-[#1c3664] font-semibold text-base shadow-sm outline-none transition-all placeholder:text-[#1c3664]/40 ${
-        error && touched
-          ? "border-red-500"
-          : "border-transparent focus:border-[#1c3664]/20"
-      }`}
-    />
-    <AnimatePresence>
-      {error && touched && (
-        <motion.span
-          initial={{ opacity: 0, y: -5 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          className="absolute -bottom-5 right-1 text-red-500 text-xs font-bold"
-        >
-          {error}
-        </motion.span>
-      )}
-    </AnimatePresence>
-  </div>
-);
+  label: string;
+  id: string;
+} & React.InputHTMLAttributes<HTMLInputElement>) => {
+  const showError = Boolean(error && touched);
+  const errorId = `${id}-error`;
+  return (
+    <div className="relative w-full">
+      <label htmlFor={id} className="sr-only">
+        {label}
+      </label>
+      <input
+        {...props}
+        id={id}
+        aria-invalid={showError}
+        aria-describedby={showError ? errorId : undefined}
+        className={`w-full bg-white border-2 rounded-2xl px-4 py-3 text-right text-[#1c3664] font-semibold text-base shadow-sm outline-none transition-all placeholder:text-[#1c3664]/40 ${
+          showError
+            ? "border-red-500"
+            : "border-transparent focus:border-[#1c3664]/20"
+        }`}
+      />
+      <AnimatePresence>
+        {showError && (
+          <motion.span
+            id={errorId}
+            role="alert"
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            className="absolute -bottom-5 right-1 text-red-500 text-xs font-bold"
+          >
+            {error}
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", phone: "" });
@@ -128,10 +144,14 @@ export default function Contact() {
   return (
     <section
       id="contact"
+      aria-labelledby="contact-heading"
       className="relative py-12 md:py-24 overflow-hidden"
       style={{ backgroundColor: "#e8e4df" }}
       dir="rtl"
     >
+      <h2 id="contact-heading" className="sr-only">
+        צרו קשר
+      </h2>
       {/* Background Pattern */}
       <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
         <div
@@ -182,6 +202,7 @@ export default function Contact() {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -224,6 +245,7 @@ export default function Contact() {
                     className={iconSvgClass}
                     fill="currentColor"
                     viewBox="0 0 16 16"
+                    aria-hidden="true"
                   >
                     <path d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
                   </svg>
@@ -242,6 +264,7 @@ export default function Contact() {
                     className={iconSvgClass}
                     fill="currentColor"
                     viewBox="0 0 16 16"
+                    aria-hidden="true"
                   >
                     <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
                   </svg>
@@ -262,8 +285,12 @@ export default function Contact() {
                     noValidate
                   >
                     <FormInput
+                      id="contact-name"
+                      label="שם מלא"
                       type="text"
                       placeholder="שם מלא *"
+                      autoComplete="name"
+                      required
                       value={formData.name}
                       error={errors.name}
                       touched={touched.name}
@@ -272,8 +299,13 @@ export default function Contact() {
                     />
 
                     <FormInput
+                      id="contact-phone"
+                      label="מספר טלפון"
                       type="tel"
                       placeholder="מספר טלפון *"
+                      autoComplete="tel"
+                      inputMode="tel"
+                      required
                       value={formData.phone}
                       error={errors.phone}
                       touched={touched.phone}
@@ -321,6 +353,7 @@ export default function Contact() {
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
+                        aria-hidden="true"
                       >
                         <path
                           strokeLinecap="round"
@@ -330,9 +363,9 @@ export default function Contact() {
                         />
                       </svg>
                     </div>
-                    <h4 className="text-3xl font-black text-[#1c3664]">
+                    <h3 className="text-3xl font-black text-[#1c3664]">
                       תודה!
-                    </h4>
+                    </h3>
                     <p className="text-[#1c3664]/70 font-bold">
                       הפרטים התקבלו בהצלחה.
                     </p>

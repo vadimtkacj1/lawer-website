@@ -16,17 +16,17 @@ const Footer = dynamic(() => import("@/components/Footer"));
 const Widgets = dynamic(() => import("@/components/ui/Widgets"));
 
 export const metadata: Metadata = {
-  title: "איחוד הלוואות ומחזור משכנתא | אבי - הבית למשכנתאות",
+  title: "מחזור משכנתא ואיחוד הלוואות | אבי - הבית למשכנתאות",
   description:
     "ההחזרים החודשיים חונקים? הגיע הזמן לחזור לנשום. תהליך מקצועי של איחוד הלוואות יחד עם מחזור משכנתא יאפשר לכם להוריד את הלחץ הכלכלי. פנו לאבי לבדיקת כדאיות.",
   keywords: [
-    "איחוד הלוואות",
     "מחזור משכנתא",
     "מיחזור משכנתא",
+    "איחוד הלוואות",
+    "מחזור משכנתא בחולון",
     "יועץ משכנתאות",
     "הורדת החזר חודשי",
-    "סגירת מינוס",
-    "משכנתא בחולון",
+    "בדיקת כדאיות למחזור",
     "משכנתא במרכז",
   ],
   alternates: {
@@ -153,7 +153,7 @@ export default function LoanConsolidationPage() {
     <>
       <JsonLd />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <ConsultantHero />
         <Breadcrumbs items={breadcrumbItems} />
         <ExpertSection/>

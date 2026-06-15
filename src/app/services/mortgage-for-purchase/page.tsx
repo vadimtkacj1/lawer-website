@@ -155,7 +155,7 @@ export default function MortgageForPurchasePage() {
     <>
       <JsonLd />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <PurchaseHero />
         <Breadcrumbs items={breadcrumbItems} />
         <IntroSection />

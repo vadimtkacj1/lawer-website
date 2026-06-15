@@ -57,7 +57,7 @@ export default function Hero() {
                   key={index}
                   className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-white bg-[#0f3244]/50 backdrop-blur-md border border-white/20 lg:text-[#0f3244] lg:bg-transparent lg:border-none lg:p-0 lg:backdrop-blur-none text-[10px] sm:text-[11px] md:text-sm lg:text-base font-bold drop-shadow-sm"
                 >
-                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#F1662A] lg:w-4 lg:h-4" />
+                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#F1662A] lg:w-4 lg:h-4" aria-hidden="true" />
                   <span>{text}</span>
                 </div>
               ))}
@@ -65,7 +65,7 @@ export default function Hero() {
 
             <h1 className="font-black leading-[1.15] sm:leading-[1.2] mb-2 sm:mb-5 md:mb-6 text-[#0f3244] drop-shadow-sm [text-shadow:_0_1px_20px_rgb(255_255_255_/_40%)]">
               <span className="block text-[1.35rem] sm:text-[1.65rem] md:text-5xl xl:text-6xl 3xl:text-7xl 4xl:text-8xl 5xl:text-[8.5rem]">
-                אבי – יועץ משכנתאות מומחה:
+                אבי – יועץ משכנתאות בחולון והמרכז:
               </span>
               <span className="block text-[#F1662A] text-[1.35rem] sm:text-[1.65rem] md:text-5xl xl:text-6xl 3xl:text-7xl 4xl:text-8xl 5xl:text-[8.5rem]">
                 הופכים את המשכנתא שלכם לחיסכון המחושב ביותר
@@ -83,7 +83,7 @@ export default function Hero() {
                   className="relative inline-flex items-center justify-center gap-2 sm:gap-3 bg-[#1c3664] text-white px-6 py-3.5 sm:px-8 sm:py-4 md:px-12 md:py-5 text-sm sm:text-base md:text-xl font-extrabold shadow-lg hover:brightness-110 active:scale-[0.98] transition-all w-full sm:w-auto"
                 >
                   <span className="relative z-10">בדיקת זכאות חינם</span>
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </a>

@@ -99,7 +99,7 @@ export default function BlogIndexPage() {
     <>
       <JsonLd />
       <Header alwaysWithBackground />
-      <main className="bg-cream min-h-screen">
+      <main id="main-content" tabIndex={-1} className="bg-cream min-h-screen">
         {/* Hero */}
         <section className="pt-28 sm:pt-32 md:pt-36 pb-8 sm:pb-10 bg-gradient-to-b from-blue-dk to-[#16294d] text-white">
           <div className="container mx-auto px-4 sm:px-6 md:px-8 text-center">

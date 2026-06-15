@@ -5,9 +5,9 @@ import HomeLazySections from "@/app/components/HomeLazySections";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "אבי - הבית למשכנתאות | מומחה לייעוץ וחיסכון",
+  title: "יועץ משכנתאות בחולון והמרכז | אבי - הבית למשכנתאות",
   description:
-    "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז. חיסכון ממוצע של 180,000 ש״ח למשפחה. ליווי משפטי מלא, התמחות במסורבי בנק.",
+    "אבי בוקעי, בנקאי לשעבר, בונה משכנתא חכמה ומנהל מו״מ מול הבנקים — חיסכון ממוצע כ-180,000 ₪ למשפחה. ייעוץ משכנתאות אובייקטיבי בחולון והמרכז, פגישת היכרות ללא עלות.",
   keywords: [
     "יועץ משכנתאות",
     "משכנתא",
@@ -68,26 +68,57 @@ function JsonLd() {
           areaServed: "IL",
           availableLanguage: "Hebrew",
         },
+        founder: { "@id": "https://avi-mashkanta.com/#advisor" },
       },
       {
-        "@type": "FinancialService",
+        "@type": "Person",
+        "@id": "https://avi-mashkanta.com/#advisor",
+        name: "אבי בוקעי",
+        jobTitle: "יועץ משכנתאות",
+        description:
+          "אבי בוקעי, בנקאי לשעבר ויועץ משכנתאות, מלווה לקוחות בחולון והמרכז בתכנון משכנתא חכמה, מחזור ואיחוד הלוואות.",
+        image: "https://avi-mashkanta.com/images/avi_photo.webp",
+        url: "https://avi-mashkanta.com/about",
+        worksFor: { "@id": "https://avi-mashkanta.com/#organization" },
+        knowsAbout: [
+          "משכנתאות",
+          "מחזור משכנתא",
+          "איחוד הלוואות",
+          "תכנון פיננסי",
+          "דירה בהנחה",
+        ],
+      },
+      {
+        "@type": ["FinancialService", "MortgageBroker"],
         "@id": "https://avi-mashkanta.com/#business",
         name: "אבי - הבית למשכנתאות",
         description:
           "ייעוץ משכנתאות מקצועי ואובייקטיבי באזור חולון והמרכז",
         url: "https://avi-mashkanta.com",
         telephone: "+972544729513",
+        image: "https://avi-mashkanta.com/images/og-image.jpg",
+        founder: { "@id": "https://avi-mashkanta.com/#advisor" },
         address: {
           "@type": "PostalAddress",
+          streetAddress: "יהושע חנקין 83",
           addressLocality: "חולון",
           addressRegion: "מחוז תל אביב",
           addressCountry: "IL",
         },
         geo: {
           "@type": "GeoCoordinates",
-          latitude: 32.0167,
-          longitude: 34.7667,
+          latitude: 32.0185696,
+          longitude: 34.7787344,
         },
+        hasMap: "https://www.google.com/maps/dir/?api=1&destination=32.0185696,34.7787344",
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+            opens: "09:00",
+            closes: "20:00",
+          },
+        ],
         areaServed: [
           { "@type": "City", name: "חולון" },
           { "@type": "City", name: "בת ים" },
@@ -95,6 +126,13 @@ function JsonLd() {
           { "@type": "City", name: "תל אביב" },
         ],
         priceRange: "$$",
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "5.0",
+          reviewCount: 17,
+          bestRating: "5",
+          worstRating: "1",
+        },
       },
       {
         "@type": "WebSite",
@@ -176,7 +214,7 @@ export default function HomePage() {
     <>
       <JsonLd />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <HomeLazySections />
       </main>

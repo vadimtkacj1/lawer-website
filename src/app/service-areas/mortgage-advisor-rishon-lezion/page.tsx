@@ -142,7 +142,7 @@ export default function MortgageAdvisorRishonLezionPage() {
     <>
       <JsonLd />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <RishonHero />
         <Breadcrumbs items={breadcrumbItems} />
         <RishonIntroSection />
