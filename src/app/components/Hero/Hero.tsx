@@ -1,4 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
+import HeroVideo from "./HeroVideo";
 
 export default function Hero() {
   return (
@@ -22,23 +23,7 @@ export default function Hero() {
         className="absolute inset-0 w-full h-full object-cover object-top lg:object-center z-0 pointer-events-none select-none"
       />
 
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        className="relative z-[1] hidden md:block w-full h-full object-cover scale-[1.05] sm:scale-100 lg:scale-100 object-top lg:object-center transition-transform duration-700"
-        style={{
-          transformOrigin: 'top center',
-          transform: 'translate3d(0, 0, 0)',
-          backfaceVisibility: 'hidden',
-          WebkitBackfaceVisibility: 'hidden'
-        }}
-      >
-        <source src="/images/new-expert-optimized.mp4" type="video/mp4" media="(max-width: 768px)" />
-        <source src="/images/new-expert.mp4" type="video/mp4" />
-      </video>
+      <HeroVideo />
 
       <div className="absolute bottom-0 left-0 right-0 h-[20vh] z-[25] lg:hidden">
         <div className="absolute inset-0 backdrop-blur-md [mask-image:linear-gradient(to_top,black_5%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_top,black_5%,transparent_100%)]" />

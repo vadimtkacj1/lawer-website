@@ -63,10 +63,11 @@ function InfiniteMarquee({
                 alt={typeof item === 'string' ? "" : (item.alt || "")}
                 width={typeof item !== 'string' ? item.width : undefined}
                 height={typeof item !== 'string' ? item.height : undefined}
-                className={`h-8 md:h-14 w-auto object-contain transition-all duration-500 
+                className={`h-8 md:h-14 w-auto object-contain transition-all duration-500
                   ${preserveColors ? "grayscale-0 opacity-100" : "grayscale opacity-60 hover:grayscale-0 hover:opacity-100"}
                   hover:scale-110 active:scale-110`}
-                loading="eager"
+                loading="lazy"
+                decoding="async"
               />
             ) : (
               <p className="whitespace-nowrap rounded-full border border-white/20 bg-[#141414] px-6 py-3 font-semibold text-white md:text-lg">

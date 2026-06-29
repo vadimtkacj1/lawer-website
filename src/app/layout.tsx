@@ -10,7 +10,7 @@ import AnalyticsEvents from "@/components/analytics/AnalyticsEvents";
 
 // Load local Noto Sans Hebrew variable font
 const notoSansHebrew = localFont({
-  src: "./fonts/NotoSansHebrew-VariableFont_wdth,wght.ttf",
+  src: "./fonts/NotoSansHebrew-Variable.ttf",
   variable: "--font-noto-sans-hebrew",
   display: "swap",
   preload: true,
