@@ -1,6 +1,6 @@
 "use client";
 import React, { useMemo, memo } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
 
 interface MarqueeItem {
@@ -43,7 +43,7 @@ function InfiniteMarquee({
         direction: 'ltr' 
       }}
     >
-      <motion.div
+      <m.div
         className="flex w-max items-center gap-8 md:gap-20"
         initial={{ x: direction === "left" ? 0 : "-33.33%" }}
         animate={{ x: direction === "left" ? "-33.33%" : 0 }}
@@ -75,7 +75,7 @@ function InfiniteMarquee({
             )}
           </div>
         ))}
-      </motion.div>
+      </m.div>
     </div>
   );
 }

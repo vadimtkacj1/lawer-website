@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 /* Ensure these variants exist in your @/lib/animations file */
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
@@ -16,7 +16,7 @@ export default function RetirementProblemSection() {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 max-w-7xl">
-        <motion.div 
+        <m.div 
           initial="hidden" 
           whileInView="visible" 
           viewport={{ once: true, margin: "-50px" }} 
@@ -29,7 +29,7 @@ export default function RetirementProblemSection() {
           <div className="lg:col-span-7 xl:col-span-8 space-y-8 md:space-y-12 text-right">
             
             {/* HEADLINE: Responsive font sizes for mobile optimization */}
-            <motion.div variants={staggerItem} className="space-y-4 md:space-y-6">
+            <m.div variants={staggerItem} className="space-y-4 md:space-y-6">
               <h2 className="font-noto-sans-hebrew font-black text-3xl sm:text-4xl md:text-5xl lg:text-7xl leading-[1.2] tracking-tight">
                 עם משכנתא הפוכה, הנכס שלכם יכול להניב לכם <br className="hidden md:block" />
                 <span className="text-orange">כסף נזיל ולהעניק לכם את הנזילות הפיננסית שאתם צריכים</span>
@@ -38,10 +38,10 @@ export default function RetirementProblemSection() {
               <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-[#1c3664]/90 leading-relaxed">
                 – לשמירה על רמת החיים, סיוע לילדים או מימון הוצאות בלתי צפויות, מבלי לוותר על הבעלות או לעבור דירה.
               </p>
-            </motion.div>
+            </m.div>
 
             {/* BIO: Clean separation for mobile with a subtle top border */}
-            <motion.div 
+            <m.div 
               variants={staggerItem}
               className="pt-8 border-t border-[#1c3664]/10 space-y-4 md:space-y-6"
             >
@@ -53,11 +53,11 @@ export default function RetirementProblemSection() {
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#1c3664]/80 font-light leading-relaxed">
                 נעים להכיר, אני אבי בוקעי, הבעלים של "אבי – הבית למשכנתאות". עם ניסיון של מעל 7 שנים ורקע כיוצא המערכת הבנקאית, אני פוגש לא מעט פנסיונרים שיושבים על "מכרה זהב" – הבית שלהם – אך חיים בצמצום.
               </p>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* 2. QUOTE SECTION: Clean mobile impact */}
-          <motion.div 
+          <m.div 
             variants={staggerItem}
             className="lg:col-span-5 xl:col-span-4 w-full"
           >
@@ -88,9 +88,9 @@ export default function RetirementProblemSection() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
-        </motion.div>
+        </m.div>
       </div>
 
       {/* REFINED BACKGROUND TEXTURE */}

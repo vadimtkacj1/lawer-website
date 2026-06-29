@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 import DecorativeShapes from "@/components/ui/DecorativeShapes";
 import GoogleMap from "@/components/GoogleMap/GoogleMap";
@@ -42,7 +42,7 @@ const FormInput = ({
       />
       <AnimatePresence>
         {showError && (
-          <motion.span
+          <m.span
             id={errorId}
             role="alert"
             initial={{ opacity: 0, y: -5 }}
@@ -51,7 +51,7 @@ const FormInput = ({
             className="absolute -bottom-5 right-1 text-red-500 text-xs font-bold"
           >
             {error}
-          </motion.span>
+          </m.span>
         )}
       </AnimatePresence>
     </div>
@@ -167,7 +167,7 @@ export default function Contact() {
       <DecorativeShapes variant="contact" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div
+        <m.div
           className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-12 items-center max-w-6xl mx-auto"
           initial="hidden"
           whileInView="visible"
@@ -175,7 +175,7 @@ export default function Contact() {
           variants={staggerContainer}
         >
           {/* Promotional Content */}
-          <motion.div
+          <m.div
             variants={staggerItem}
             className="flex flex-col items-center lg:items-start text-center lg:text-right"
           >
@@ -213,10 +213,10 @@ export default function Contact() {
                 </svg>
               </Link>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Separator */}
-          <motion.div
+          <m.div
             variants={staggerItem}
             className="flex flex-col items-center justify-center h-full"
           >
@@ -225,10 +225,10 @@ export default function Contact() {
               או
             </span>
             <div className="hidden lg:block h-32 w-[1.5px] bg-[#1c3664]/10"></div>
-          </motion.div>
+          </m.div>
 
           {/* Contacts and Form */}
-          <motion.div
+          <m.div
             variants={staggerItem}
             className="flex flex-col gap-8 items-center lg:items-end w-full overflow-hidden"
           >
@@ -277,7 +277,7 @@ export default function Contact() {
             <div className="w-full max-w-[420px] min-h-[340px] flex items-center">
               <AnimatePresence mode="wait">
                 {!isSubmitted ? (
-                  <motion.form
+                  <m.form
                     key="contact-form"
                     exit={{ opacity: 0, x: 20 }}
                     onSubmit={handleSubmit}
@@ -339,9 +339,9 @@ export default function Contact() {
                     >
                       {isSubmitting ? "שולח..." : "שלח הודעה"}
                     </button>
-                  </motion.form>
+                  </m.form>
                 ) : (
-                  <motion.div
+                  <m.div
                     key="success-message"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -369,15 +369,15 @@ export default function Contact() {
                     <p className="text-[#1c3664]/70 font-bold">
                       הפרטים התקבלו בהצלחה.
                     </p>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
 
         {/* Google Map Section */}
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
@@ -385,7 +385,7 @@ export default function Contact() {
           className="mt-16 max-w-6xl mx-auto"
         >
           <GoogleMap />
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

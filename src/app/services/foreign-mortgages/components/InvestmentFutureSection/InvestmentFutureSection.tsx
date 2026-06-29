@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 export default function InvestmentFutureSection() {
@@ -13,7 +13,7 @@ export default function InvestmentFutureSection() {
 
       {/* Main Container: RTL for Hebrew layout */}
       <div className="container relative z-10 mx-auto px-6 max-w-7xl 2xl:max-w-[95rem]">
-        <motion.div 
+        <m.div 
           initial="hidden" 
           whileInView="visible" 
           viewport={{ once: true, amount: 0.3 }} 
@@ -23,7 +23,7 @@ export default function InvestmentFutureSection() {
           
           {/* RIGHT COLUMN: Headlines and Main Text */}
           <div className="lg:col-span-7">
-            <motion.div variants={staggerItem} className="space-y-8 md:space-y-10">
+            <m.div variants={staggerItem} className="space-y-8 md:space-y-10">
               <h2 className="font-noto-sans-hebrew font-black text-5xl md:text-7xl lg:text-8xl text-white leading-[1.1]">
                 משקיעים בעתיד <br />
                 <span className="text-orange border-b-[6px] md:border-b-[10px] border-orange pb-2 inline-block">
@@ -34,12 +34,12 @@ export default function InvestmentFutureSection() {
               <p className="text-xl md:text-2xl lg:text-3xl text-white/90 font-light leading-relaxed max-w-4xl">
                 אל תתנו למרחק הפיזי למנוע מכם לבצע עסקה חכמה בארץ. בין אם אתם בניו יורק, לונדון או פריז – אני כאן בחולון כדי לדאוג לאינטרסים שלכם מול הבנקים הישראליים ולדאוג שתקבלו את התנאים הטובים ביותר.
               </p>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* LEFT COLUMN: Featured Quote with Orange Sidebar */}
           <div className="lg:col-span-5">
-            <motion.div 
+            <m.div 
               variants={staggerItem}
               className="relative pr-8 md:pr-12 border-r-[6px] md:border-r-[8px] border-orange"
             >
@@ -49,10 +49,10 @@ export default function InvestmentFutureSection() {
               
               {/* Optional: Small orange dot at the bottom of the line for a finished look */}
               <div className="absolute -right-[11px] md:-right-[13px] bottom-0 w-4 h-4 bg-orange rounded-full border-4 border-[#1c3664]" />
-            </motion.div>
+            </m.div>
           </div>
 
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

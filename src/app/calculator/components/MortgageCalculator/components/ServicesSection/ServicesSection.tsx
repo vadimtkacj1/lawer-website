@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Link from "next/link";
 import { fadeInUpFast, viewportOptions } from "@/lib/animations";
 import BuildingIcon from "@/components/icons/BuildingIcon";
@@ -15,7 +15,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <motion.div
+    <m.div
       className="w-full max-w-7xl px-4 md:px-6"
       initial="hidden"
       whileInView="visible"
@@ -63,7 +63,7 @@ export default function ServicesSection() {
           חזרה לדף הבית
         </Link>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 

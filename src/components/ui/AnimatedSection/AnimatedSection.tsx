@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
 import { ReactNode } from "react";
 import { fadeInUp, viewportOptions } from "@/lib/animations";
 import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
@@ -52,7 +52,7 @@ export default function AnimatedSection({
     : variants;
 
   return (
-    <motion.div
+    <m.div
       initial="hidden"
       whileInView="visible"
       viewport={optimizedViewport}
@@ -60,6 +60,6 @@ export default function AnimatedSection({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

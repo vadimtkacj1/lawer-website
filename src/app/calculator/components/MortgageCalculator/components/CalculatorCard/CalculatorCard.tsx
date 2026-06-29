@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Calculator } from "lucide-react";
 import { sendGAEvent } from "@next/third-parties/google";
 import { fadeInUpFast, viewportOptions } from "@/lib/animations";
@@ -54,7 +54,7 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
   }, [apartmentPrice, equity, mortgageAmount, selectedTerm, monthlyPayment, onDataChange]);
 
   return (
-    <motion.div
+    <m.div
       key="mortgage-calculator-card"
       className="bg-white/95 backdrop-blur-3xl rounded-[2.5rem] border-2 border-blue-dk/10 shadow-[0_25px_80px_-15px_rgba(0,0,0,0.2)] p-6 md:p-8 md:order-2"
       initial="hidden"
@@ -236,6 +236,6 @@ export default function CalculatorCard({ onDataChange }: CalculatorCardProps) {
           box-shadow: 0 4px 10px rgba(242, 103, 34, 0.4);
         }
       `}</style>
-    </motion.div>
+    </m.div>
   );
 }

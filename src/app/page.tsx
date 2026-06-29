@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Hero from "@/app/components/Hero";
 import HomeLazySections from "@/app/components/HomeLazySections";
+import PopularGuides from "@/app/components/PopularGuides";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -217,6 +218,7 @@ export default function HomePage() {
       <main id="main-content" tabIndex={-1}>
         <Hero />
         <HomeLazySections />
+        <PopularGuides />
       </main>
       <Footer />
     </>

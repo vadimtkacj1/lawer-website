@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 export default function TransparencyCTA() {
@@ -8,7 +8,7 @@ export default function TransparencyCTA() {
     // רקע קרם לכל הסקשן
     <section className="py-24 lg:py-40 bg-[#FAF7F2] overflow-hidden text-right font-noto-sans-hebrew">
       <div className="container mx-auto px-6 max-w-7xl">
-        <motion.div 
+        <m.div 
           initial="hidden" 
           whileInView="visible" 
           viewport={{ once: true }} 
@@ -18,7 +18,7 @@ export default function TransparencyCTA() {
           
           {/* --- עמודת תוכן: שקיפות --- */}
           <div className="lg:col-span-7 order-2 lg:order-1">
-            <motion.div variants={staggerItem} className="relative">
+            <m.div variants={staggerItem} className="relative">
               <h2 className="text-4xl md:text-7xl font-black text-[#1c3664] leading-[1.1] mb-10">
                 רגע של שקיפות: <br />
                 <span className="text-[#F1662A]">מתי זה לא מתאים?</span>
@@ -35,11 +35,11 @@ export default function TransparencyCTA() {
                   בדיוק בשביל זה אני כאן – כדי לבדוק את כל האפשרויות, להציג לכם את התמונה המלאה, ולתכנן את העסקה כך שתשרת אתכם בצורה הטובה ביותר.
                 </p>
               </div>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* --- עמודת CTA: ללא רקע (Background-less) --- */}
-          <motion.div 
+          <m.div 
             variants={staggerItem}
             className="lg:col-span-5 order-1 lg:order-2"
           >
@@ -62,9 +62,9 @@ export default function TransparencyCTA() {
                 <span className="text-[#1c3664]/60 font-medium text-lg">אבי - הבית למשכנתאות</span>
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

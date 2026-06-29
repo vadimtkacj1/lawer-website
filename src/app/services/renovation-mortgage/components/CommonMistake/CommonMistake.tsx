@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const optimizedViewport = {
@@ -59,7 +59,7 @@ export default function CommonMistake() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
+        <m.div
           className="max-w-6xl mx-auto"
           initial="hidden"
           whileInView="visible"
@@ -67,20 +67,20 @@ export default function CommonMistake() {
           variants={staggerContainer}
         >
           {/* Header Section from Image */}
-          <motion.div variants={staggerItem} className="text-center mb-16">
+          <m.div variants={staggerItem} className="text-center mb-16">
             <h2 className="font-noto-sans-hebrew font-black text-4xl md:text-6xl text-white mb-6">
               הלוואה בנקאית רגילה מול משכנתא לשיפוץ הבית
             </h2>
             <p className="font-noto-sans-hebrew text-xl md:text-2xl text-white/90 max-w-5xl mx-auto leading-relaxed">
               כשאתם לוקחים הלוואה בנקאית רגילה לשיפוץ, הבנק בדרך כלל ידרוש מכם להחזיר אותה תוך 5 עד 7 שנים. התוצאה? החזר חודשי מטורף שחונק את העו"ש, ובריבית גבוהה יחסית.
             </p>
-          </motion.div>
+          </m.div>
 
           {/* Divider Line */}
-          <motion.div variants={staggerItem} className="w-full max-w-4xl mx-auto h-px bg-white/10 mb-16" />
+          <m.div variants={staggerItem} className="w-full max-w-4xl mx-auto h-px bg-white/10 mb-16" />
 
           {/* Solution Section from Image */}
-          <motion.div variants={staggerItem} className="text-center mb-20">
+          <m.div variants={staggerItem} className="text-center mb-20">
             <h3 className="text-orange font-bold text-3xl md:text-4xl mb-6">
               הפתרון של משכנתא לשיפוץ:
             </h3>
@@ -91,12 +91,12 @@ export default function CommonMistake() {
               </a>
               {" "}(או לקחת חדשה אם אין). לקיחת משכנתא לשיפוץ בית מציעה יתרונות אדירים:
             </p>
-          </motion.div>
+          </m.div>
 
           {/* Advantages Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {advantages.map((advantage, index) => (
-              <motion.div
+              <m.div
                 key={index}
                 variants={staggerItem}
                 className="flex flex-col items-center text-center group"
@@ -111,10 +111,10 @@ export default function CommonMistake() {
                 <p className="font-noto-sans-hebrew text-lg text-white/60 leading-relaxed max-w-xs">
                   {advantage.description}
                 </p>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

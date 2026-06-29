@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { fadeInUpFast, scaleIn, staggerContainer, staggerItem, viewportOptions } from "@/lib/animations";
 import DecorativeShapes from "@/components/ui/DecorativeShapes";
 import Link from "next/link";
@@ -76,7 +76,7 @@ export default function ServicesHero() {
           <div className="w-full max-w-2xl text-right">
             <div className="flex flex-col items-end w-full">
               
-              <motion.h1
+              <m.h1
                 className="font-noto-sans-hebrew font-black leading-[1.1] mb-3 sm:mb-4 md:mb-3 lg:mb-2
                            text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl
                            text-white lg:text-blue-dk
@@ -94,13 +94,13 @@ export default function ServicesHero() {
                 <span className="bg-blue-dk text-white px-3 py-1 sm:px-4 sm:py-1.5 md:px-5 md:py-2 lg:px-6 lg:py-2.5 rounded-md inline-block">
                   המומחיות של יוצא מערכת הבנקאות אצלכם בכיס
                 </span>
-              </motion.h1>
+              </m.h1>
             </div>
           </div>
         </div>
 
         {/* 2. Блок с экспертом (Desktop) */}
-        <motion.div
+        <m.div
           className="hidden lg:block w-1/2 relative"
           initial="hidden"
           animate="visible"
@@ -128,7 +128,7 @@ export default function ServicesHero() {
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-cream/10 via-transparent to-transparent pointer-events-none" />
-        </motion.div>
+        </m.div>
       </div>
 
     </section>
@@ -137,7 +137,7 @@ export default function ServicesHero() {
     <LazyMount rootMargin="500px 0px">
       <section className="relative bg-cream z-10 py-12 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
+            <m.div
               className="max-w-4xl mx-auto"
               initial="hidden"
               whileInView="visible"
@@ -145,7 +145,7 @@ export default function ServicesHero() {
               variants={staggerContainer}
             >
               {/* Introduction */}
-              <motion.div
+              <m.div
                 className="mb-12 lg:mb-16 text-right"
                 variants={staggerItem}
               >
@@ -155,10 +155,10 @@ export default function ServicesHero() {
                 <p className="text-lg lg:text-xl text-blue-dk/90 leading-relaxed mb-6">
                   נעים להכיר, אני אבי בוקעי, הבעלים של "אבי - הבית למשכנתאות". עם ניסיון של מעל 7 שנים, תואר ראשון במנהל עסקים (התמחות בנדל"ן ותשתיות) ורקע כיוצא המערכת הבנקאית, אני כאן כדי להפוך את הבירוקרטיה המורכבת לחיסכון של עשרות ואף מאות אלפי שקלים.
                 </p>
-              </motion.div>
+              </m.div>
 
               {/* Why Section */}
-              <motion.div
+              <m.div
                 className="mb-12 lg:mb-16 text-right"
                 variants={staggerItem}
               >
@@ -171,10 +171,10 @@ export default function ServicesHero() {
                 <p className="text-lg lg:text-xl text-blue-dk/90 leading-relaxed">
                   כיוצא בנק דיסקונט, אני מכיר את <span className="font-black text-orange">"האותיות הקטנות"</span> – יודע על אילו ריביות להתמקח, איפה ללחוץ, ואיך להגיש תיק שיקבל אישור גם במקרים מורכבים.
                 </p>
-              </motion.div>
+              </m.div>
 
               {/* Services */}
-              <motion.div
+              <m.div
                 className="mb-12 lg:mb-16"
                 variants={staggerItem}
               >
@@ -187,7 +187,7 @@ export default function ServicesHero() {
                 
                 <div className="space-y-8">
                   {services.map((service, index) => (
-                    <motion.div
+                    <m.div
                       key={index}
                       className="bg-white/80 md:bg-white/70 rounded-2xl p-6 lg:p-8 shadow-lg border border-blue-dk/10"
                       variants={staggerItem}
@@ -198,13 +198,13 @@ export default function ServicesHero() {
                       <p className="text-base lg:text-lg text-blue-dk/80 leading-relaxed text-right">
                         {service.description}
                       </p>
-                    </motion.div>
+                    </m.div>
                   ))}
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* FAQs */}
-              <motion.div
+              <m.div
                 className="mb-12 lg:mb-16"
                 variants={staggerItem}
               >
@@ -213,7 +213,7 @@ export default function ServicesHero() {
                 </h2>
                 <div className="space-y-6">
                   {faqs.map((faq, index) => (
-                    <motion.div
+                    <m.div
                       key={index}
                       className="bg-white/80 md:bg-white/70 rounded-2xl p-6 lg:p-8 shadow-lg border border-blue-dk/10"
                       variants={staggerItem}
@@ -224,13 +224,13 @@ export default function ServicesHero() {
                       <p className="text-base lg:text-lg text-blue-dk/80 leading-relaxed text-right">
                         {faq.answer}
                       </p>
-                    </motion.div>
+                    </m.div>
                   ))}
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* CTA Section */}
-              <motion.div
+              <m.div
                 className="text-center lg:text-right bg-gradient-to-r from-orange/10 via-orange/5 to-transparent rounded-3xl p-8 lg:p-12"
                 variants={staggerItem}
               >
@@ -252,8 +252,8 @@ export default function ServicesHero() {
                     <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                   </svg>
                 </Link>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
           </div>
       </section>
     </LazyMount>

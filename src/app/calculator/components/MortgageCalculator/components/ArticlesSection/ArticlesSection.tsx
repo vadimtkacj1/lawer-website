@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Link from "next/link";
 import { fadeInUpFast, viewportOptions } from "@/lib/animations";
 import HomeIcon from "@/components/icons/HomeIcon";
@@ -53,7 +53,7 @@ const articles = [
 
 export default function ArticlesSection() {
   return (
-    <motion.div
+    <m.div
       className="w-full max-w-7xl px-4 md:px-6"
       initial="hidden"
       whileInView="visible"
@@ -90,7 +90,7 @@ export default function ArticlesSection() {
           </Link>
         ))}
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 

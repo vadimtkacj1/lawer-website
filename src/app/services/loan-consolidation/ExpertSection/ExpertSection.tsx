@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer } from "@/lib/animations";
 
 export default function ExpertSection() {
@@ -17,7 +17,7 @@ export default function ExpertSection() {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 max-w-7xl 3xl:max-w-[110rem] text-right" dir="rtl">
-        <motion.div 
+        <m.div 
           initial="hidden" 
           whileInView="visible" 
           viewport={{ once: true }} 
@@ -57,7 +57,7 @@ export default function ExpertSection() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

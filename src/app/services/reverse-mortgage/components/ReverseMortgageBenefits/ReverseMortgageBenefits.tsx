@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const whyUsBenefits = [
@@ -22,7 +22,7 @@ export default function ReverseMortgageBenefits() {
   return (
     <section className="py-24 lg:py-44 bg-[#FAF7F2] overflow-hidden" dir="rtl">
       <div className="container mx-auto px-6 max-w-7xl 3xl:max-w-[110rem] text-right">
-        <motion.div 
+        <m.div 
           initial="hidden" 
           whileInView="visible" 
           viewport={{ once: true }} 
@@ -46,7 +46,7 @@ export default function ReverseMortgageBenefits() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
             {whyUsBenefits.map((benefit, i) => (
-              <motion.div key={i} variants={staggerItem} className="flex flex-col items-start group">
+              <m.div key={i} variants={staggerItem} className="flex flex-col items-start group">
                 
                 {/* מספרים כתומים גדולים בשקיפות */}
                 <span className="text-7xl lg:text-9xl font-black text-[#F1662A]/20 mb-6 group-hover:text-[#F1662A]/40 transition-colors duration-500 select-none">
@@ -62,10 +62,10 @@ export default function ReverseMortgageBenefits() {
                     {benefit.d}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

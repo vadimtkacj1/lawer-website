@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Coins, CalendarDays, HandCoins } from "lucide-react";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
@@ -26,14 +26,14 @@ export default function AviAdvantageReverse() {
   return (
     <section className="relative py-20 md:py-32 bg-[#1c3664] overflow-hidden" dir="rtl">
       <div className="container relative z-10 mx-auto px-6 max-w-7xl text-right">
-        <motion.div 
+        <m.div 
           initial="hidden" 
           whileInView="visible" 
           viewport={{ once: true }} 
           variants={staggerContainer}
         >
           {/* Header Section */}
-          <motion.div variants={staggerItem} className="max-w-4xl mb-20">
+          <m.div variants={staggerItem} className="max-w-4xl mb-20">
             <h2 className="font-noto-sans-hebrew font-black text-4xl md:text-6xl text-white leading-tight mb-8">
               כסף לכל מטרה – <br />
               <span className="text-orange">אתם מחליטים</span>
@@ -41,12 +41,12 @@ export default function AviAdvantageReverse() {
             <p className="text-xl md:text-2xl text-white/90 font-light max-w-3xl">
               רוצים לשפץ את הבית, לעזור לילדים לקנות דירה, לסגור חובות ישנים או אפילו לטוס לטיול מסביב לעולם? הכסף הוא שלכם ואתם מחליטים איך להשתמש בו.
             </p>
-          </motion.div>
+          </m.div>
 
           {/* Grid Section */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
             {moneyOptions.map((item, i) => (
-              <motion.div 
+              <m.div 
                 key={i} 
                 variants={staggerItem} 
                 className="group flex flex-col items-start"
@@ -65,17 +65,17 @@ export default function AviAdvantageReverse() {
                     {item.d}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
           {/* Footer Text */}
-          <motion.div variants={staggerItem} className="max-w-3xl">
+          <m.div variants={staggerItem} className="max-w-3xl">
             <p className="text-xl md:text-2xl text-orange font-medium">
               כך אתם נהנים מנזילות פיננסית מלאה, בלי להתחייב לתשלומים חודשיים, ובשליטה מלאה על הכסף שלכם.
             </p>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
 
       {/* Decorative Grid Background */}

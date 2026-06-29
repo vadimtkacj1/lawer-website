@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   Phone,
   Users,
@@ -41,13 +41,13 @@ export default function HowItWorks() {
           <rect width="100%" height="100%" fill="url(#grid)" />
           {!shouldReduceAnimations && (
             <>
-              <motion.circle
+              <m.circle
                 key="how-it-works-circle-1"
                 cx="10%" cy="20%" r="15" fill="#f26722" fillOpacity="0.03"
                 animate={{ scale: [1, 1.2, 1], x: [0, 50, 0] }}
                 transition={{ duration: 20, repeat: Infinity }}
               />
-              <motion.circle
+              <m.circle
                 key="how-it-works-circle-2"
                 cx="90%" cy="80%" r="20" fill="#1c3664" fillOpacity="0.02"
                 animate={{ scale: [1, 1.1, 1], y: [0, -40, 0] }}
@@ -59,7 +59,7 @@ export default function HowItWorks() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.h2
+        <m.h2
           key="how-it-works-heading"
           className="text-center text-4xl md:text-6xl font-black text-blue-dk mb-20"
           initial="hidden"
@@ -68,9 +68,9 @@ export default function HowItWorks() {
           variants={fadeInUpFast}
         >
           איך זה עובד?
-        </motion.h2>
+        </m.h2>
 
-        <motion.div
+        <m.div
           key="how-it-works-steps-container"
           className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-12 lg:gap-0 relative"
           initial="hidden"
@@ -81,7 +81,7 @@ export default function HowItWorks() {
           {steps.map((step, index) => (
             <div key={step.id} className="relative flex flex-col items-center flex-1 w-full group">
 
-              <motion.div
+              <m.div
                 key={`how-it-works-step-${step.id}`}
                 variants={staggerItem}
                 className="flex flex-col items-center w-full relative"
@@ -100,7 +100,7 @@ export default function HowItWorks() {
                 <h3 className="mt-2 md:mt-3 text-blue-dk font-bold text-center text-lg md:text-xl max-w-[180px] leading-tight transition-colors duration-300 group-hover:text-orange relative z-10">
                   {step.title}
                 </h3>
-              </motion.div>
+              </m.div>
 
               {/* CURVED ARROWS */}
               {index !== steps.length - 1 && (
@@ -139,7 +139,7 @@ export default function HowItWorks() {
               )}
             </div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

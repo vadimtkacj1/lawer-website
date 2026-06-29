@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const services = [
@@ -53,8 +53,8 @@ export default function HolonServicesSection() {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 max-w-7xl 3xl:max-w-[110rem] text-right">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
-          <motion.div variants={staggerItem} className="mb-12 md:mb-20 max-w-5xl">
+        <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+          <m.div variants={staggerItem} className="mb-12 md:mb-20 max-w-5xl">
             <h2 className="font-noto-sans-hebrew font-black text-3xl md:text-6xl lg:text-7xl text-[#1c3664] leading-tight mb-6">
               שירותי המשכנתא שלנו{" "}
               <span className="text-orange border-b-4 md:border-b-8 border-orange pb-2 inline-block">
@@ -64,11 +64,11 @@ export default function HolonServicesSection() {
             <p className="text-lg md:text-2xl text-[#1c3664]/90 font-medium leading-relaxed">
               {`כיועץ משכנתאות מומלץ בעל תואר אקדמי בנדל"ן וניסיון עשיר מבפנים, "אבי - הבית למשכנתאות" מעניק מעטפת פיננסית מלאה לכל צורך:`}
             </p>
-          </motion.div>
+          </m.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-20 gap-y-12 md:gap-y-20 items-start">
             {services.map((item, i) => (
-              <motion.div key={i} variants={staggerItem} className="relative pt-8 md:pt-14">
+              <m.div key={i} variants={staggerItem} className="relative pt-8 md:pt-14">
                 <span className="absolute top-0 right-0 font-black text-[5rem] md:text-[8rem] lg:text-[10rem] text-orange opacity-[0.18] z-0 select-none leading-none">
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -80,10 +80,10 @@ export default function HolonServicesSection() {
                     {item.d}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

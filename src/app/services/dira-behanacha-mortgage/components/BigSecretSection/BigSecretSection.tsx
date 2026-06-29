@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 export default function BigSecretSection() {
@@ -19,18 +19,18 @@ export default function BigSecretSection() {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 max-w-7xl text-right">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+        <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
           
-          <motion.div variants={staggerItem} className="mb-14 md:mb-20">
+          <m.div variants={staggerItem} className="mb-14 md:mb-20">
             <h2 className="font-noto-sans-hebrew font-black text-3xl md:text-6xl lg:text-7xl text-[#1c3664] leading-tight mb-8">
               הסוד הגדול:
             </h2>
             <h3 className="font-noto-sans-hebrew font-bold text-2xl md:text-4xl lg:text-5xl text-orange leading-tight">
                הבנק רואה דירה למשתכן כ"שווה יותר"
             </h3>
-          </motion.div>
+          </m.div>
 
-          <motion.div 
+          <m.div 
             variants={staggerItem}
             className="space-y-8 md:space-y-12 max-w-6xl"
           >
@@ -38,7 +38,7 @@ export default function BigSecretSection() {
              זה היתרון הכי גדול של התוכנית, והרבה זוכים לא מבינים אותו עד הסוף. במשכנתא רגילה, הבנק נותן מימון לפי המחיר בחוזה. בתוכניות דיור למשתכן או "דירה בהנחה", הבנק רשאי לתת לכם מימון לפי שווי השוק האמיתי של הדירה (לפי הערכת שמאי), ולא לפי המחיר המוזל ששילמתם בפועל (בכפוף למגבלות רגולציה מסוימות).
             </p>
 
-            <motion.div 
+            <m.div 
               variants={staggerItem}
               className="border-r-4 md:border-r-8 border-orange pr-6 md:pr-12 py-6 md:py-8 bg-white/50 rounded-lg"
             >
@@ -48,18 +48,18 @@ export default function BigSecretSection() {
               <p className="text-lg md:text-2xl text-[#1c3664] font-medium leading-relaxed">
                 זה מאפשר לכם להביא <span className="font-black text-orange">הון עצמי נמוך משמעותית</span> מהבית. בעוד שבשוק החופשי זוג צריך להביא 25% מהבית, ב"דירה בהנחה" ובפרויקטים של מחיר למשתכן ניתן לעיתים להגיע למצב שבו אתם מביאים סכום התחלתי קטן מאוד (למשל 100,000 ש"ח או 10%), ואת כל השאר הבנק מממן.
               </p>
-            </motion.div>
+            </m.div>
 
-            <motion.div 
+            <m.div 
               variants={staggerItem}
               className="bg-blue-dk/5 border-r-4 border-blue-dk pr-6 py-6 rounded-lg"
             >
               <p className="text-base md:text-xl text-[#1c3664]/90 font-medium leading-relaxed italic">
                 <span className="font-black not-italic text-orange">הערה חשובה:</span> כדי לנצל את הטבה הזו, צריך לדעת איך להגיש את התיק לבנק ואיך "לדבר" עם השמאות. כאן הידע שלי כמי שמגיע מתחום הנדל"ן נותן לכם יתרון עצום.
               </p>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+            </m.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { fadeInUpFast, staggerContainer } from "@/lib/animations";
 
 export default function CommercialWhySection() {
@@ -18,7 +18,7 @@ export default function CommercialWhySection() {
       </div>
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
@@ -26,20 +26,20 @@ export default function CommercialWhySection() {
           className="max-w-6xl mx-auto"
         >
           {/* 1. TITLE SECTION */}
-          <motion.div className="text-center mb-24 lg:mb-40" variants={fadeInUpFast}>
+          <m.div className="text-center mb-24 lg:mb-40" variants={fadeInUpFast}>
             <h2 className="text-5xl lg:text-8xl font-noto-sans-hebrew font-black text-blue-dk leading-tight">
               למה דווקא <span className="text-orange">אבי</span>?
             </h2>
             
             {/* BOLD ORANGE LINE */}
             <div className="mt-10 w-32 h-2.5 bg-orange mx-auto rounded-full shadow-sm" />
-          </motion.div>
+          </m.div>
 
           {/* 2. TWO-COLUMN CONTENT */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32" dir="rtl">
             
             {/* Item 01 */}
-            <motion.div 
+            <m.div 
               className="flex flex-col items-start text-right"
               variants={fadeInUpFast}
             >
@@ -54,10 +54,10 @@ export default function CommercialWhySection() {
                 יועץ המשכנתאות בבנק מחויב לאינטרסים של המערכת. אני מחויב אך ורק לכם. 
                 זה ההבדל המהותי שחוסך לכם <span className="text-blue-dk font-black text-2xl lg:text-4xl">עשרות אלפי שקלים</span> לאורך תקופת ההלוואה.
               </p>
-            </motion.div>
+            </m.div>
 
             {/* Item 02 */}
-            <motion.div 
+            <m.div 
               className="flex flex-col items-start text-right"
               variants={fadeInUpFast}
             >
@@ -72,10 +72,10 @@ export default function CommercialWhySection() {
                 כיוצא <span className="text-blue-dk font-black text-2xl lg:text-4xl">בנק דיסקונט</span>, אני מכיר את המערכת מהצד השני. 
                 אני יודע בדיוק איפה המרווחים של הבנק נמצאים, איפה אפשר ללחוץ ואיך להשיג אישור גם בתיקים המורכבים ביותר.
               </p>
-            </motion.div>
+            </m.div>
 
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

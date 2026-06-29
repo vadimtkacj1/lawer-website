@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const advantages = [
@@ -18,7 +18,7 @@ export default function MortgageAdvantages() {
   return (
     <section className="py-24 lg:py-44 bg-[#FAF7F2] overflow-hidden text-right font-noto-sans-hebrew" dir="rtl">
       <div className="container mx-auto px-6 max-w-7xl 3xl:max-w-[110rem]">
-        <motion.div 
+        <m.div 
           initial="hidden" 
           whileInView="visible" 
           viewport={{ once: true }} 
@@ -34,7 +34,7 @@ export default function MortgageAdvantages() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-32">
             {advantages.map((advantage, i) => (
-              <motion.div key={i} variants={staggerItem} className="flex flex-col items-start group relative">
+              <m.div key={i} variants={staggerItem} className="flex flex-col items-start group relative">
                 
                 {/* מספרים גדולים בכתום שקוף ברקע - יישור לימין התחלה */}
                 <div className="text-7xl lg:text-9xl font-black text-[#F1662A]/20 mb-6 group-hover:text-[#F1662A]/40 transition-colors duration-500 select-none">
@@ -50,10 +50,10 @@ export default function MortgageAdvantages() {
                     {advantage.d}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

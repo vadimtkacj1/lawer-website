@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const recyclingSigns = [
@@ -38,9 +38,9 @@ export default function AllServicesSection() {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 max-w-7xl 3xl:max-w-[110rem] text-right" dir="rtl">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+        <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
           
-          <motion.div variants={staggerItem} className="mb-12 md:mb-24 max-w-4xl ml-auto">
+          <m.div variants={staggerItem} className="mb-12 md:mb-24 max-w-4xl ml-auto">
             <h2 className="font-noto-sans-hebrew font-black text-3xl md:text-6xl lg:text-7xl 3xl:text-8xl text-[#1c3664] leading-tight mb-6">
               מתי כדאי לעשות <br />
               <span className="text-orange border-b-4 md:border-b-8 border-orange pb-2">מחזור משכנתא?</span>
@@ -52,12 +52,12 @@ export default function AllServicesSection() {
             <h3 className="font-noto-sans-hebrew font-bold text-xl md:text-3xl text-[#1c3664]">
               סימנים שאתם חייבים לבדוק כדאיות מחזור משכנתא:
             </h3>
-          </motion.div>
+          </m.div>
 
           {/* 2. SIGNS GRID */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-20 gap-y-12 md:gap-y-24 items-start">
             {recyclingSigns.map((sign, i) => (
-              <motion.div key={i} variants={staggerItem} className="relative pt-12 md:pt-20 lg:pt-28">
+              <m.div key={i} variants={staggerItem} className="relative pt-12 md:pt-20 lg:pt-28">
                 
                 {/* BACKGROUND NUMBERS */}
                 <span className="absolute top-0 right-0 font-black text-[6rem] md:text-[10rem] lg:text-[14rem] 3xl:text-[20rem] text-orange opacity-[0.20] z-0 select-none leading-none">
@@ -74,11 +74,11 @@ export default function AllServicesSection() {
                     </p>
                   )}
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

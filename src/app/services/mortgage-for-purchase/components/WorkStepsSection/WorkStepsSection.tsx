@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const steps = [
@@ -26,7 +26,7 @@ export default function WorkStepsSection() {
   return (
     <section className="py-20 lg:py-40 bg-[#FAF7F2] overflow-hidden" dir="rtl">
       <div className="container mx-auto px-6 max-w-7xl 3xl:max-w-[110rem] text-right">
-        <motion.div 
+        <m.div 
           initial="hidden" 
           whileInView="visible" 
           viewport={{ once: true }} 
@@ -41,7 +41,7 @@ export default function WorkStepsSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
             {steps.map((step, i) => (
-              <motion.div key={i} variants={staggerItem} className="relative group flex flex-col items-start">
+              <m.div key={i} variants={staggerItem} className="relative group flex flex-col items-start">
                 <div className="text-6xl lg:text-8xl font-black text-[#F1662A]/20 mb-6 group-hover:text-[#F1662A]/40 transition-colors duration-500 select-none">
                   0{i + 1}
                 </div>
@@ -54,10 +54,10 @@ export default function WorkStepsSection() {
                     {step.d}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

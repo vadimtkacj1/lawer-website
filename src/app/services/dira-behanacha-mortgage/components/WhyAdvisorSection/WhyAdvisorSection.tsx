@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const advantages = [
@@ -25,18 +25,18 @@ export default function WhyAdvisorSection() {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 max-w-7xl text-right">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+        <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
           
-          <motion.div variants={staggerItem} className="mb-14 md:mb-20">
+          <m.div variants={staggerItem} className="mb-14 md:mb-20">
             <h2 className="font-noto-sans-hebrew font-black text-3xl md:text-6xl lg:text-7xl text-[#1c3664] leading-tight">
               למה לקחת יועץ משכנתאות פרטי<br />
               <span className="text-orange border-b-2 md:border-b-8 border-orange pb-2 inline-block mt-2">
                 אם "זכיתי במחיר קבוע"?
               </span>
             </h2>
-          </motion.div>
+          </m.div>
 
-          <motion.div 
+          <m.div 
             variants={staggerItem}
             className="space-y-8 md:space-y-12 max-w-6xl"
           >
@@ -50,18 +50,18 @@ export default function WhyAdvisorSection() {
 
             <div className="space-y-6">
               {advantages.map((item, i) => (
-                <motion.div key={i} variants={staggerItem} className="flex items-start gap-4">
+                <m.div key={i} variants={staggerItem} className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-orange flex items-center justify-center">
                     <span className="text-white font-black text-lg md:text-xl">{i + 1}</span>
                   </div>
                   <p className="text-lg md:text-2xl text-[#1c3664] font-medium leading-relaxed pt-1 md:pt-2">
                     {item}
                   </p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );

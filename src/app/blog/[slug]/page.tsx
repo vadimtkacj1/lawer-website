@@ -196,12 +196,16 @@ export default async function ArticlePage({
                 {article.excerpt}
               </p>
               <div className="flex flex-wrap items-center gap-4 text-sm text-blue-dk/60 font-semibold border-y border-blue-dk/10 py-3">
-                <span className="flex items-center gap-1.5">
+                <Link
+                  href="/about"
+                  className="flex items-center gap-1.5 hover:text-orange transition-colors"
+                  title="אבי בוקעי — יועץ משכנתאות, בנקאי לשעבר"
+                >
                   <span className="w-8 h-8 rounded-full bg-blue-dk text-white flex items-center justify-center text-xs font-black">
                     אב
                   </span>
                   מאת אבי בוקעי
-                </span>
+                </Link>
                 <span className="flex items-center gap-1.5">
                   <CalendarIcon className="w-4 h-4" />
                   {formatHebrewDate(article.datePublished)}

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
 
 export default function CityBackgroundSVG() {
@@ -180,7 +180,7 @@ export default function CityBackgroundSVG() {
 
       {/* Animated dots/particles - Disabled on mobile for performance */}
       {!isMobile && [...Array(30)].map((_, i) => (
-        <motion.circle
+        <m.circle
           key={`dot-${i}`}
           cx={100 + (i * 50) % 1500}
           cy={50 + ((i * 137) % 800)}

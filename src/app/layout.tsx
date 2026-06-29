@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./styles/mobile.css";
-import { MotionConfig } from "framer-motion";
+import MotionProvider from "@/components/ui/MotionProvider";
 import ClientEffects from "@/components/ui/ClientEffects";
 import localFont from "next/font/local";
 import Script from "next/script";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import DeferredAnalytics from "@/components/analytics/DeferredAnalytics";
 import AnalyticsEvents from "@/components/analytics/AnalyticsEvents";
 
 // Load local Noto Sans Hebrew variable font
@@ -121,7 +121,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           דלג לתוכן הראשי
         </a>
-        <GoogleAnalytics gaId="G-6SXKQPB2B8" />
+        <DeferredAnalytics gaId="G-6SXKQPB2B8" />
         <AnalyticsEvents />
         {/* EqualWeb Accessibility Widget - loaded with lazy strategy for better performance */}
         <Script
@@ -173,10 +173,10 @@ export default function RootLayout({
             `,
           }}
         />
-        <MotionConfig reducedMotion="user">
+        <MotionProvider>
           <ClientEffects />
           {children}
-        </MotionConfig>
+        </MotionProvider>
       </body>
     </html>
   );

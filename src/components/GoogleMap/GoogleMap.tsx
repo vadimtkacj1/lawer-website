@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerItem } from "@/lib/animations";
 
 interface GoogleMapProps {
@@ -21,7 +21,7 @@ export default function GoogleMap({ className = "" }: GoogleMapProps) {
     : `https://maps.google.com/maps?q=${lat},${lng}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
 
   return (
-    <motion.div variants={staggerItem} className={`w-full ${className}`}>
+    <m.div variants={staggerItem} className={`w-full ${className}`}>
       <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] rounded-2xl overflow-hidden shadow-xl">
         {loaded ? (
           <iframe
@@ -73,6 +73,6 @@ export default function GoogleMap({ className = "" }: GoogleMapProps) {
           </div>
         )}
       </div>
-    </motion.div>
+    </m.div>
   );
 }

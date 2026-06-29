@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { m, useScroll, useTransform, useSpring } from "framer-motion";
 /* וודא שהווריאנטים קיימים בקובץ האנימציות שלך */
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
@@ -64,35 +64,35 @@ export default function DifferencesSection() {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 max-w-7xl 3xl:max-w-[110rem]">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
           className="text-right mb-20 md:mb-40 space-y-8"
         >
-          <motion.h2 
+          <m.h2 
             variants={staggerItem} 
             className="font-noto-sans-hebrew font-black text-4xl md:text-6xl lg:text-8xl text-white leading-tight"
           >
             מה שונה במשכנתא <br />
             <span className="text-orange underline decoration-white/10 underline-offset-8">לתושבי חוץ?</span>
-          </motion.h2>
+          </m.h2>
           
-          <motion.p 
+          <m.p 
             variants={staggerItem}
             className="font-noto-sans-hebrew text-xl md:text-3xl text-white/80 font-light max-w-4xl ml-auto leading-relaxed"
           >
             חשוב לשים את הדברים על השולחן: משכנתא לתושב חוץ היא לא עוד משכנתא רגילה, ומדובר במשחק אחר לגמרי שדורש מומחיות ספציפית.
-          </motion.p>
-        </motion.div>
+          </m.p>
+        </m.div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 3xl:gap-32">
           {diffs.map((item, i) => {
             const isLeft = i % 2 === 0;
             return (
-              <motion.div
+              <m.div
                 key={i}
                 style={{ y: isLeft ? smoothYLeft : smoothYRight }}
                 className="relative group"
@@ -114,7 +114,7 @@ export default function DifferencesSection() {
 
                     <div className="absolute top-8 left-8 w-3 h-3 border border-orange/40 rounded-full" />
                 </div>
-              </motion.div>
+              </m.div>
             );
           })}
         </div>

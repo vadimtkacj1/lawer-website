@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo, memo } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
 
 /**
@@ -152,7 +152,7 @@ const MarqueeRow = ({
 
   return (
     <div className="flex w-full overflow-hidden" style={{ direction: 'ltr' }}>
-      <motion.div
+      <m.div
         key={`testimonials-marquee-${direction}-${duration}`}
         className="flex gap-6 md:gap-8 py-4"
         initial={{ x: direction === "left" ? "0%" : "-50%" }}
@@ -169,7 +169,7 @@ const MarqueeRow = ({
         {doubleItems.map((item, i) => (
           <TestimonialCard key={`testimonial-card-${direction}-${i}`} item={item} />
         ))}
-      </motion.div>
+      </m.div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { fadeInUpFast } from "@/lib/animations";
 
 /**
@@ -67,7 +67,7 @@ export default function Quote() {
 
       {/* --- MAIN CONTENT CARD --- */}
       <div className="container mx-auto px-6 sm:px-8 relative z-10">
-        <motion.div
+        <m.div
           key="quote-container"
           className="max-w-4xl mx-auto"
           initial="hidden"
@@ -75,7 +75,7 @@ export default function Quote() {
           viewport={optimizedViewport}
           variants={fadeInUpFast}
         >
-          <motion.div
+          <m.div
             key="quote-card" 
             /* Premium Dark Shadow:
                - Neutral shadow for a professional, clean aesthetic.
@@ -114,8 +114,8 @@ export default function Quote() {
             <div className="absolute bottom-0 left-0 w-full flex justify-center">
               <div className="w-32 sm:w-64 h-2 bg-gradient-to-r from-transparent via-orange/40 to-transparent opacity-40 group-hover:opacity-100 group-hover:w-full transition-all duration-1000"></div>
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );

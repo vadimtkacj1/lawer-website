@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 // Define PropertyType as a union type
 type PropertyType = "apartment" | "house" | "villa" | "commercial" | "land";
@@ -62,7 +62,7 @@ export default function HotPropositions({
 
   return (
     <div className="flex w-full overflow-hidden" style={{ direction: "ltr" }}>
-      <motion.div
+      <m.div
         key={`hot-propositions-marquee-${direction}-${duration}`}
         className="flex gap-6 md:gap-8 py-4"
         initial={{ x: direction === "left" ? "0%" : "-33.33%" }}
@@ -78,7 +78,7 @@ export default function HotPropositions({
             <PropertyCard {...item} index={i} />
           </div>
         ))}
-      </motion.div>
+      </m.div>
     </div>
   );
 }

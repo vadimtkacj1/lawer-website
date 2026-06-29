@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { fadeInUpFast, viewportOptions } from "@/lib/animations";
 
 export default function SEOIntroduction() {
   return (
-    <motion.div
+    <m.div
       className="w-full max-w-5xl px-4 md:px-6 text-center"
       initial="hidden"
       whileInView="visible"
@@ -25,7 +25,7 @@ export default function SEOIntroduction() {
         </p>
         
       </p>
-    </motion.div>
+    </m.div>
   );
 }
 

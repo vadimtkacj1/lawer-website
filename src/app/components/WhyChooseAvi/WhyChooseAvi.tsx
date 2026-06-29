@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { fadeInUpFast, staggerContainer, staggerItem } from "@/lib/animations";
 import ShieldIcon from "@/components/icons/ShieldIcon";
 import AwardIcon from "@/components/icons/AwardIcon";
@@ -57,7 +57,7 @@ export default function WhyChooseAvi() {
 
       <div className="container mx-auto px-6 sm:px-8 relative z-10" dir="rtl">
         {/* Header */}
-        <motion.div
+        <m.div
           className="text-center mb-12 lg:mb-16"
           initial="hidden"
           whileInView="visible"
@@ -69,10 +69,10 @@ export default function WhyChooseAvi() {
             <span className="text-orange">אבי - הבית למשכנתאות</span>
             ?
           </h2>
-        </motion.div>
+        </m.div>
 
         {/* Reasons Grid */}
-        <motion.div
+        <m.div
           className="max-w-7xl mx-auto"
           initial="hidden"
           whileInView="visible"
@@ -81,7 +81,7 @@ export default function WhyChooseAvi() {
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
             {reasons.map((reason, index) => (
-              <motion.div
+              <m.div
                 key={index}
                 variants={staggerItem}
                 className="group relative"
@@ -107,13 +107,13 @@ export default function WhyChooseAvi() {
                     {reason.description}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Bottom decorative element */}
-        <motion.div
+        <m.div
           className="mt-16 flex justify-center"
           initial="hidden"
           whileInView="visible"
@@ -121,7 +121,7 @@ export default function WhyChooseAvi() {
           variants={fadeInUpFast}
         >
           <div className="w-32 h-1 bg-gradient-to-r from-transparent via-orange to-transparent"></div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

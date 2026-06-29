@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 import { ArrowLeftRight, CalendarClock, Percent, AlertCircle } from "lucide-react";
 
@@ -13,7 +13,7 @@ export default function InsiderAdvantage() {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 max-w-7xl">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -22,15 +22,15 @@ export default function InsiderAdvantage() {
         >
           {/* Header & Problem Intro */}
           <div className="max-w-5xl">
-            <motion.h2 
+            <m.h2 
               variants={staggerItem}
               className="font-noto-sans-hebrew font-black text-5xl md:text-7xl text-white leading-tight mb-10"
             >
               מה זה בעצם <br />
               <span className="text-orange">"איחוד הלוואות"?</span>
-            </motion.h2>
+            </m.h2>
             
-            <motion.div variants={staggerItem} className="space-y-6">
+            <m.div variants={staggerItem} className="space-y-6">
               <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed">
                 רוב הישראלים מחזיקים במה שאני מגדיר כ<span className="font-bold text-white">"הלוואות לא יעילות"</span>. 
                 הבעיה היא לא עצם לקיחת הכסף, אלא איך לקחתם אותו: מדובר בהלוואות שמאופיינות בריביות גבוהות מאוד, 
@@ -42,13 +42,13 @@ export default function InsiderAdvantage() {
                   ההחזר החודשי מזנק וחונק את העו"ש – גם אם המשכורות שלכם יפות.
                 </p>
               </div>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* Solution Grid (Transparent Cards) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 border-t border-white/10 pt-16">
             {/* The Strategy */}
-            <motion.div variants={staggerItem} className="space-y-8">
+            <m.div variants={staggerItem} className="space-y-8">
               <div className="flex items-center gap-4">
                 <div className="p-2 bg-orange/10 rounded-lg">
                   <ArrowLeftRight className="text-orange w-8 h-8" />
@@ -59,10 +59,10 @@ export default function InsiderAdvantage() {
                 בתהליך של איחוד הלוואות, אנחנו לוקחים את כל ההלוואות הקטנות והמעיקות האלו, ומכניסים אותן לתוך המשכנתא של הבית. 
                 <span className="text-orange font-bold mr-2">למה זה גאוני?</span>
               </p>
-            </motion.div>
+            </m.div>
 
             {/* Practical Benefits */}
-            <motion.div variants={staggerItem} className="grid grid-cols-1 gap-8">
+            <m.div variants={staggerItem} className="grid grid-cols-1 gap-8">
               <div className="flex gap-6 border border-white/10 p-6 rounded-2xl hover:border-orange/30 transition-colors">
                 <CalendarClock className="text-orange shrink-0 w-10 h-10" />
                 <div>
@@ -78,11 +78,11 @@ export default function InsiderAdvantage() {
                   <p className="text-white/60 text-lg">הריבית על משכנתא זולה משמעותית מריבית של הלוואה בנקאית רגילה או הלוואה מחברת אשראי.</p>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* Final Result Statement */}
-          <motion.div 
+          <m.div 
             variants={staggerItem}
             className="pt-16 border-t border-white/10"
           >
@@ -97,8 +97,8 @@ export default function InsiderAdvantage() {
                 מתוכננת ואחראית יותר.
               </p>
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );

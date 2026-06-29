@@ -1,69 +1,52 @@
 "use client";
 
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode } from "react";
 
 type LazyMountProps = {
   children: ReactNode;
   /**
-   * How early to start loading before the element enters the viewport.
-   * Example: "400px 0px"
+   * @deprecated Kept for API compatibility. No longer gates rendering.
+   * Previously controlled the IntersectionObserver trigger distance.
    */
   rootMargin?: string;
   /**
-   * Optional placeholder to keep layout stable.
+   * @deprecated Kept for API compatibility. No longer rendered.
+   * Content is now present in the server HTML, so no placeholder is needed.
    */
   placeholder?: ReactNode;
+  /**
+   * Intrinsic size hint for `content-visibility: auto`, used to keep the
+   * scrollbar stable while the section is still offscreen. The `auto` keyword
+   * lets the browser remember the real size after the first render.
+   */
+  intrinsicSize?: string;
 };
 
+/**
+ * Renders its children directly in the server-rendered HTML so the content is
+ * crawlable and indexable by search engines and AI crawlers (which do not
+ * scroll), while still skipping layout/paint work for offscreen sections via
+ * CSS `content-visibility: auto`.
+ *
+ * This replaces the previous IntersectionObserver mount-gating, which only set
+ * `mounted = true` after a real user scrolled the element into view. Because
+ * SSR (and Googlebot's initial fetch) ran with `mounted = false`, the actual
+ * section content never appeared in the HTML — the homepage shipped only empty
+ * placeholders, hiding body text, internal links, the visible FAQ and the
+ * testimonials that back the review schema from search engines.
+ */
 export default function LazyMount({
   children,
-  rootMargin = "400px 0px",
-  placeholder = null,
+  intrinsicSize = "auto 600px",
 }: LazyMountProps) {
-  const hostRef = useRef<HTMLDivElement | null>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    if (mounted) return;
-    const el = hostRef.current;
-    if (!el) return;
-
-    // No IO support (very old browsers) — just mount.
-    if (typeof IntersectionObserver === "undefined") {
-      setMounted(true);
-      return;
-    }
-
-    // On mobile, load components closer to viewport for better performance
-    const isMobile = typeof window !== 'undefined' && (
-      'ontouchstart' in window ||
-      window.navigator.maxTouchPoints > 0 ||
-      window.innerWidth <= 768
-    );
-
-    // Reduce rootMargin on mobile to load only when closer to viewport
-    // On desktop, we can load earlier (default rootMargin)
-    // On mobile, we want to be more conservative to save bandwidth/CPU
-    const optimizedRootMargin = isMobile ? "200px 0px" : rootMargin;
-
-    const obs = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setMounted(true);
-            obs.disconnect();
-            break;
-          }
-        }
-      },
-      { root: null, rootMargin: optimizedRootMargin, threshold: 0.01 }
-    );
-
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [mounted, rootMargin]);
-
-  return <div ref={hostRef}>{mounted ? children : placeholder}</div>;
+  return (
+    <div
+      style={{
+        contentVisibility: "auto",
+        containIntrinsicSize: intrinsicSize,
+      }}
+    >
+      {children}
+    </div>
+  );
 }
-
-

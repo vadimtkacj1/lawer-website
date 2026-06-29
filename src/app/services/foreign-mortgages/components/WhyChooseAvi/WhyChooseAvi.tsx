@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const whyAviContent = [
@@ -36,7 +36,7 @@ export default function WhyChooseAvi() {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 max-w-7xl 2xl:max-w-[95rem] 3xl:max-w-[110rem] text-right">
-        <motion.div 
+        <m.div 
           initial="hidden" 
           whileInView="visible" 
           viewport={{ once: true, amount: 0.2 }} 
@@ -44,7 +44,7 @@ export default function WhyChooseAvi() {
         >
           
           {/* Section Header */}
-          <motion.div variants={staggerItem} className="mb-16 lg:mb-24">
+          <m.div variants={staggerItem} className="mb-16 lg:mb-24">
             <h2 className="font-noto-sans-hebrew font-black text-4xl md:text-6xl lg:text-7xl 3xl:text-8xl text-[#1c3664] leading-[1.1]">
               למה לקחת את "אבי - הבית למשכנתאות" <br />
               <span className="text-orange border-b-[8px] 3xl:border-b-[12px] border-orange pb-3 inline-block">כנציג שלכם בישראל?</span>
@@ -52,12 +52,12 @@ export default function WhyChooseAvi() {
             <p className="mt-8 text-lg md:text-2xl lg:text-3xl text-[#1c3664] font-medium max-w-5xl ml-auto leading-relaxed italic">
               "כשאתם בחו"ל, אתם לא יכולים להרשות לעצמכם טעויות או עיכובים שיפילו את העסקה."
             </p>
-          </motion.div>
+          </m.div>
 
           {/* 2. ADVANTAGES GRID */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 3xl:gap-24 items-start">
             {whyAviContent.map((step, i) => (
-              <motion.div key={i} variants={staggerItem} className="relative pt-16 lg:pt-24">
+              <m.div key={i} variants={staggerItem} className="relative pt-16 lg:pt-24">
                 
                 {/* ORANGE NUMBERS */}
                 <span className="absolute top-0 left-0 font-black text-[8rem] lg:text-[11rem] 3xl:text-[15rem] text-orange opacity-[0.20] z-0 select-none leading-none">
@@ -76,19 +76,19 @@ export default function WhyChooseAvi() {
 
                 {/* Technical Anchor */}
                 <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#1c3664]/20" />
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
           {/* Closing Hook */}
-          <motion.div variants={staggerItem} className="mt-20 lg:mt-28 pt-10 border-t border-[#1c3664]/10">
+          <m.div variants={staggerItem} className="mt-20 lg:mt-28 pt-10 border-t border-[#1c3664]/10">
              <p className="font-noto-sans-hebrew text-xl md:text-3xl lg:text-4xl 3xl:text-6xl text-[#1c3664] font-medium max-w-6xl ml-auto leading-tight italic">
               "לא משנה איפה הדירה שאתם קונים – <br className="hidden 3xl:block" />
               <span className="text-orange not-italic font-bold">המימון והתנאים המצוינים שאשיג עבורכם נשארים זהים."</span>
              </p>
-          </motion.div>
+          </m.div>
 
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Link from "next/link";
 import {
   Calculator, Coins, Building2, Banknote, ArrowLeft
@@ -52,7 +52,7 @@ export default function MortgageSliderCalculator() {
 
       {/* --- CALCULATOR CTA CARD --- */}
       <div className="container mx-auto px-4 relative z-10 flex justify-center">
-        <motion.div
+        <m.div
           key="mortgage-calculator-card"
           className="w-full max-w-xl bg-white/95 backdrop-blur-3xl rounded-[3.5rem] p-12 md:p-14 lg:p-16 border border-blue-dk/5 shadow-[0_40px_100px_-15px_rgba(0,0,0,0.12)]"
           initial="hidden"
@@ -78,7 +78,7 @@ export default function MortgageSliderCalculator() {
               </Link>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
 
     </section>

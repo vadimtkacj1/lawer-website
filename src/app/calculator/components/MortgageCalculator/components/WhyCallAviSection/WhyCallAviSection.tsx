@@ -1,14 +1,14 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { PhoneCall, Briefcase, TrendingUp, Building2, CheckCircle } from "lucide-react";
 import { fadeInUpFast, viewportOptions } from "@/lib/animations";
 
 export default function WhyCallAviSection() {
   return (
     <div className="w-full px-4 md:px-6">
-      <motion.div
+      <m.div
         className="w-full max-w-4xl mx-auto bg-[#f26722] rounded-3xl p-8 md:p-12 text-white shadow-2xl"
         initial="hidden"
         whileInView="visible"
@@ -83,7 +83,7 @@ export default function WhyCallAviSection() {
             זמינים בימים א׳-ה׳ 9:00-20:00 | ללא התחייבות
           </p>
         </div>
-      </motion.div>
+      </m.div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { fadeInUpFast, viewportOptions } from "@/lib/animations";
 
 const faqItems = [
@@ -35,7 +35,7 @@ export default function FAQSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <motion.div
+    <m.div
       className="w-full"
       initial="hidden"
       whileInView="visible"
@@ -97,7 +97,7 @@ export default function FAQSection() {
           </div>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 

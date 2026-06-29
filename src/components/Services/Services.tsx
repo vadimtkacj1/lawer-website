@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   fadeInUpFast,
   staggerContainer,
@@ -148,7 +148,7 @@ export default function Services() {
     }
 
     return (
-      <motion.div
+      <m.div
         key={`service-${service.href}`}
         variants={staggerItem}
         className={`${commonClasses} ${responsiveClasses} md:rounded-none`}
@@ -157,7 +157,7 @@ export default function Services() {
         {index !== services.length - 1 && (
           <div className="hidden 2xl:block absolute left-0 top-1/2 -translate-y-1/2 w-[1px] h-[40%] bg-blue-dk/10" />
         )}
-      </motion.div>
+      </m.div>
     );
   };
 
@@ -187,7 +187,7 @@ export default function Services() {
       <DecorativeShapes variant="services" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.h2
+        <m.h2
           key="services-heading"
           className="section-title text-center text-3xl md:text-5xl lg:text-6xl mb-10 md:mb-16 font-noto-sans-hebrew"
           initial="hidden"
@@ -196,10 +196,10 @@ export default function Services() {
           variants={fadeInUpFast}
         >
           השירותים שלנו
-        </motion.h2>
+        </m.h2>
 
         <div className="max-w-[1400px] 2xl:max-w-[1800px] 3xl:max-w-[2200px] mx-auto">
-          <motion.nav
+          <m.nav
             key="services-nav"
             className="flex flex-wrap justify-center gap-3 md:gap-0 md:bg-white md:shadow-xl md:rounded-3xl md:border border-blue-dk/10 overflow-hidden"
             initial="hidden"
@@ -208,7 +208,7 @@ export default function Services() {
             variants={staggerContainer}
           >
             {services.map((s, i) => renderServiceCard(s, i, true))}
-          </motion.nav>
+          </m.nav>
         </div>
       </div>
     </section>

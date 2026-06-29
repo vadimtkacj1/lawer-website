@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { fadeInUpFast, viewportOptions } from "@/lib/animations";
 
 export default function SEOArticleSection() {
   return (
-    <motion.div
+    <m.div
       className="w-full max-w-4xl px-4 md:px-6"
       initial="hidden"
       whileInView="visible"
@@ -55,7 +55,7 @@ export default function SEOArticleSection() {
           </p>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 

@@ -1,12 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export default function LegalDecorations() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Книга 1 - верхний левый угол */}
-      <motion.div
+      <m.div
         className="absolute top-10 left-[5%] w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-orange/3"
         animate={{
           y: [0, -5, 0],
@@ -21,10 +21,10 @@ export default function LegalDecorations() {
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 2v16h12V4H6zm2 2h8v2H8V6zm0 4h8v2H8v-2zm0 4h5v2H8v-2z"/>
         </svg>
-      </motion.div>
+      </m.div>
 
       {/* Документ с печатью - правый верх */}
-      <motion.div
+      <m.div
         className="absolute top-20 right-[8%] w-14 h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 text-blue-dk/3"
         animate={{
           y: [0, 6, 0],
@@ -45,10 +45,10 @@ export default function LegalDecorations() {
           <rect x="8" y="14" width="6" height="1" opacity="0.6"/>
           <rect x="8" y="16" width="7" height="1" opacity="0.6"/>
         </svg>
-      </motion.div>
+      </m.div>
 
       {/* Печать/Штамп - левый низ */}
-      <motion.div
+      <m.div
         className="absolute bottom-24 left-[10%] w-14 h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 text-orange/3"
         animate={{
           scale: [1, 1.02, 1],
@@ -67,10 +67,10 @@ export default function LegalDecorations() {
           <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="1.2" opacity="0.7"/>
           <text x="12" y="13" fontSize="4" textAnchor="middle" fill="currentColor" opacity="0.5">✓</text>
         </svg>
-      </motion.div>
+      </m.div>
 
       {/* Книга 2 - правый низ */}
-      <motion.div
+      <m.div
         className="absolute bottom-32 right-[12%] w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 text-blue-dk/3"
         animate={{
           y: [0, -4, 0],
@@ -90,10 +90,10 @@ export default function LegalDecorations() {
           <rect x="9" y="11" width="9" height="1" opacity="0.5"/>
           <rect x="9" y="13" width="6" height="1" opacity="0.5"/>
         </svg>
-      </motion.div>
+      </m.div>
 
       {/* Контракт/Соглашение - центр слева */}
-      <motion.div
+      <m.div
         className="absolute top-1/2 left-[3%] w-12 h-12 md:w-14 md:h-14 text-orange/3"
         animate={{
           y: [0, 5, 0],
@@ -112,10 +112,10 @@ export default function LegalDecorations() {
           {/* Подпись */}
           <path d="M8 18.5c0 0 2-1 4-1s4 1 4 1" stroke="currentColor" strokeWidth="0.8" fill="none" opacity="0.7"/>
         </svg>
-      </motion.div>
+      </m.div>
 
       {/* Молоток судьи - правый центр */}
-      <motion.div
+      <m.div
         className="hidden lg:block absolute top-1/3 right-[5%] w-12 h-12 lg:w-14 lg:h-14 text-blue-dk/3"
         animate={{
           rotate: [-1, 1, -1],
@@ -132,10 +132,10 @@ export default function LegalDecorations() {
           <path d="M12 2l-2 2h4l-2-2zM9 5v3h6V5H9zm-1 4v2h8V9H8zm1 3v8h2v-8h-2zm3 0v8h2v-8h-2z"/>
           <rect x="6" y="20" width="12" height="2" rx="1"/>
         </svg>
-      </motion.div>
+      </m.div>
 
       {/* Весы правосудия - левый верх (только на больших экранах) */}
-      <motion.div
+      <m.div
         className="hidden lg:block absolute top-16 left-[15%] w-14 h-14 lg:w-16 lg:h-16 text-orange/3"
         animate={{
           rotate: [-0.5, 0.5, -0.5],
@@ -156,7 +156,7 @@ export default function LegalDecorations() {
           <line x1="4" y1="13" x2="10" y2="13" stroke="currentColor" strokeWidth="1"/>
           <line x1="14" y1="13" x2="22" y2="13" stroke="currentColor" strokeWidth="1"/>
         </svg>
-      </motion.div>
+      </m.div>
     </div>
   );
 }

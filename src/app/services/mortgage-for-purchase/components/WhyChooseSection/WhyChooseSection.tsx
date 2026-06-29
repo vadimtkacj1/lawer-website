@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const reasons = [
@@ -34,20 +34,20 @@ export default function WhyChooseSection() {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 max-w-7xl text-right">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+        <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
           
-          <motion.div variants={staggerItem} className="mb-14 md:mb-20">
+          <m.div variants={staggerItem} className="mb-14 md:mb-20">
             <h2 className="font-noto-sans-hebrew font-black text-3xl md:text-6xl lg:text-7xl text-[#1c3664] leading-tight">
               למה לבחור דווקא בי <br />
               <span className="text-orange border-b-2 md:border-b-8 border-orange pb-2 inline-block mt-2">
                 לליווי הרכישה?
               </span>
             </h2>
-          </motion.div>
+          </m.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {reasons.map((item, i) => (
-              <motion.div key={i} variants={staggerItem} className="relative pt-10 md:pt-20">
+              <m.div key={i} variants={staggerItem} className="relative pt-10 md:pt-20">
                 <span className="absolute top-0 right-0 font-black text-5xl md:text-[10rem] lg:text-[14rem] text-orange opacity-[0.15] z-0 leading-none">
                   0{i + 1}
                 </span>
@@ -60,10 +60,10 @@ export default function WhyChooseSection() {
                     {item.d}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

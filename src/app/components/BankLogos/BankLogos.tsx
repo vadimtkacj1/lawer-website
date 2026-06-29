@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import InfiniteMarquee from "@/components/ui/InfiniteMarquee";
 import { fadeInUpFast, viewportOptions } from "@/lib/animations";
 
@@ -22,7 +22,7 @@ export default function BankLogos() {
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-blue-dk/10" />
 
       <div className="container mx-auto px-4">
-        <motion.div
+        <m.div
           key="bank-logos-marquee"
           className="relative w-full"
           initial={{ opacity: 0, y: 15 }}
@@ -40,7 +40,7 @@ export default function BankLogos() {
               preserveColors={true}
             />
           </div>
-        </motion.div>
+        </m.div>
       </div>
 
       {/* Decorative bottom border */}

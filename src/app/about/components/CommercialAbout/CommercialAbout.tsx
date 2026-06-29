@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { fadeInUpFast, fadeInLeft, staggerContainer } from "@/lib/animations";
 
 const optimizedViewport = {
@@ -54,7 +54,7 @@ export default function CommercialAbout() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
+        <m.div
           className="max-w-6xl mx-auto"
           initial="hidden"
           whileInView="visible"
@@ -65,7 +65,7 @@ export default function CommercialAbout() {
           <div className="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-16">
             
             {/* Content Section (Right side in RTL) */}
-            <motion.div
+            <m.div
               className="flex-1 text-center lg:text-right"
               variants={fadeInUpFast}
               dir="rtl"
@@ -79,10 +79,10 @@ export default function CommercialAbout() {
                   נעים להכיר, אני אבי בוקעי, הבעלים של <span className="font-black text-orange">"אבי - הבית למשכנתאות"</span>. עם ניסיון של מעל 7 שנים, תואר ראשון במנהל עסקים (התמחות בנדל"ן ותשתיות) ורקע כיוצא המערכת הבנקאית, אני כאן כדי להפוך את הבירוקרטיה המורכבת לחיסכון של עשרות ואף מאות אלפי שקלים.
                 </p>
               </div>
-            </motion.div>
+            </m.div>
 
             {/* Image Section (Left side in RTL) */}
-            <motion.div
+            <m.div
               className="flex-1 w-full max-w-[500px] lg:max-w-none"
               variants={fadeInLeft}
             >
@@ -99,10 +99,10 @@ export default function CommercialAbout() {
                   className="w-full aspect-[5/6] object-cover rounded-3xl relative z-10"
                 />
               </div>
-            </motion.div>
+            </m.div>
 
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

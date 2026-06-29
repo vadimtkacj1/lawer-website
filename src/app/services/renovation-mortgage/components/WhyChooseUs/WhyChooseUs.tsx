@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const optimizedViewport = {
@@ -63,14 +63,14 @@ export default function WhyChooseUs() {
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={optimizedViewport}
           variants={staggerContainer}
         >
           {/* Section Header */}
-          <motion.div variants={staggerItem} className="text-center mb-20 lg:mb-28">
+          <m.div variants={staggerItem} className="text-center mb-20 lg:mb-28">
             <h2 className="font-noto-sans-hebrew font-black text-4xl md:text-5xl lg:text-6xl text-blue-dk mb-8 leading-tight">
               למה לבצע את התהליך עם <span className="text-orange">אבי</span>?
             </h2>
@@ -79,12 +79,12 @@ export default function WhyChooseUs() {
               שיפוץ הוא פרויקט מלחיץ – אבק, רעש, קבלנים. <br className="hidden md:block" />
               אתם לא צריכים גם כאב ראש מהבנק. בשביל זה אני כאן.
             </p>
-          </motion.div>
+          </m.div>
 
           {/* Grid עם התאמה ל-RTL */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-0 lg:divide-x lg:divide-x-reverse lg:divide-blue-dk/10">
             {reasons.map((reason, index) => (
-              <motion.div
+              <m.div
                 key={index}
                 variants={staggerItem}
                 className="px-8 lg:px-12 py-10 transition-all duration-300 group hover:translate-y-[-4px]"
@@ -101,10 +101,10 @@ export default function WhyChooseUs() {
                     {reason.description}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

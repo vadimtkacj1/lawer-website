@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useSpring, useTransform, MotionValue } from "framer-motion";
+import { m, useScroll, useSpring, useTransform, MotionValue } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 /**
@@ -77,7 +77,7 @@ const ServiceCard = ({ service, index, scrollYProgress }: { service: typeof serv
   );
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -86,7 +86,7 @@ const ServiceCard = ({ service, index, scrollYProgress }: { service: typeof serv
         isEven ? "lg:flex-row" : "lg:flex-row-reverse"
       }`}
     >
-      <motion.div 
+      <m.div 
         style={{ backgroundColor: dotColor }}
         className="absolute hidden lg:block left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full border-4 border-[#f9f7f4] z-30 shadow-sm transition-colors duration-300"
       />
@@ -108,7 +108,7 @@ const ServiceCard = ({ service, index, scrollYProgress }: { service: typeof serv
           {service.description}
         </p>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 
@@ -130,21 +130,21 @@ export default function CommercialServicesSection() {
     <section ref={containerRef} className="relative bg-[#f9f7f4] py-10 md:py-24 lg:py-40 overflow-hidden text-right" dir="rtl">
       
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div 
+        <m.div 
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
           className="mb-12 md:mb-24 lg:mb-40 text-center"
         >
-          <motion.h2 variants={staggerItem} className="text-3xl md:text-5xl lg:text-7xl font-noto-sans-hebrew font-black text-blue-dk mb-4 md:mb-8 leading-tight">
+          <m.h2 variants={staggerItem} className="text-3xl md:text-5xl lg:text-7xl font-noto-sans-hebrew font-black text-blue-dk mb-4 md:mb-8 leading-tight">
             השירותים שלנו: <br />
             <span className="text-orange">דיוק פיננסי</span> וליווי משפטי
-          </motion.h2>
-          <motion.div variants={staggerItem} className="w-16 md:w-24 h-1.5 bg-orange mx-auto rounded-full" />
-        </motion.div>
+          </m.h2>
+          <m.div variants={staggerItem} className="w-16 md:w-24 h-1.5 bg-orange mx-auto rounded-full" />
+        </m.div>
 
         <div className="relative max-w-6xl mx-auto">
           <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-blue-dk/5 hidden lg:block -translate-x-1/2" />
           
-          <motion.div 
+          <m.div 
             style={{ scaleY, originY: 0 }}
             className="absolute left-1/2 top-0 bottom-0 w-[3px] bg-orange hidden lg:block -translate-x-1/2 z-20 shadow-[0_0_10px_rgba(242,101,34,0.3)]"
           />

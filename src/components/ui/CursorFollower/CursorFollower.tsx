@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { m, useMotionValue, useSpring } from "framer-motion";
 
 export default function CursorFollower() {
   const [isHovering, setIsHovering] = useState(false);
@@ -82,7 +82,7 @@ export default function CursorFollower() {
   return (
     <>
       {/* Outer large circle - follows with smooth lag */}
-      <motion.div
+      <m.div
         className="pointer-events-none fixed top-0 left-0 z-40"
         style={{
           x: outerX,
@@ -91,7 +91,7 @@ export default function CursorFollower() {
           translateY: "-50%",
         }}
       >
-        <motion.div
+        <m.div
           className="rounded-full"
           animate={{
             width: isHovering ? 60 : 50,
@@ -105,10 +105,10 @@ export default function CursorFollower() {
             stiffness: 250,
           }}
         />
-      </motion.div>
+      </m.div>
 
       {/* Inner small dot - follows cursor instantly */}
-      <motion.div
+      <m.div
         className="pointer-events-none fixed top-0 left-0 z-50"
         style={{
           x: innerX,
@@ -117,7 +117,7 @@ export default function CursorFollower() {
           translateY: "-50%",
         }}
       >
-        <motion.div
+        <m.div
           className="rounded-full"
           animate={{
             width: isHovering ? 10 : 8,
@@ -130,7 +130,7 @@ export default function CursorFollower() {
             stiffness: 350,
           }}
         />
-      </motion.div>
+      </m.div>
     </>
   );
 }

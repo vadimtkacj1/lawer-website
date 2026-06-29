@@ -11,14 +11,24 @@ export default function Hero() {
     
     <div className="relative w-full h-[60vh] md:h-full">
       
+      {/* Static poster as the LCP element — 16.5KB, preloaded, paints immediately.
+          The video plays on top once ready, so the heavy <video> no longer gates LCP. */}
+      <img
+        src="/images/expert-poster.webp"
+        alt=""
+        aria-hidden="true"
+        fetchPriority="high"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover object-top lg:object-center z-0 pointer-events-none select-none"
+      />
+
       <video
         autoPlay
         loop
         muted
         playsInline
         preload="metadata"
-        poster="/images/expert-poster.webp"
-        className="w-full h-full object-cover scale-[1.05] sm:scale-100 lg:scale-100 object-top lg:object-center transition-transform duration-700"
+        className="relative z-[1] hidden md:block w-full h-full object-cover scale-[1.05] sm:scale-100 lg:scale-100 object-top lg:object-center transition-transform duration-700"
         style={{
           transformOrigin: 'top center',
           transform: 'translate3d(0, 0, 0)',

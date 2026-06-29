@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 
 interface FormInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error: string;
@@ -22,14 +22,14 @@ export default function FormInput({ error, touched, ...props }: FormInputProps) 
       <div className="min-h-[1.25rem] mt-1 text-right">
         <AnimatePresence>
           {error && touched && (
-            <motion.span
+            <m.span
               initial={{ opacity: 0, y: -4 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
               className="block text-red-500 text-xs font-bold"
             >
               {error}
-            </motion.span>
+            </m.span>
           )}
         </AnimatePresence>
       </div>

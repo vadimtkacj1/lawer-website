@@ -1,20 +1,20 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 export default function TrapSection() {
   return (
     <section dir="rtl" className="relative py-16 md:py-24 lg:py-32 bg-[#1c3664] overflow-hidden">
       <div className="container relative z-10 mx-auto px-6 max-w-7xl 2xl:max-w-[95rem] text-right">
-        <motion.div 
+        <m.div 
           initial="hidden" 
           whileInView="visible" 
           viewport={{ once: true, amount: 0.2 }} 
           variants={staggerContainer} 
           className="space-y-8 md:space-y-12"
         >
-          <motion.h2 
+          <m.h2 
             variants={staggerItem}
             className="font-noto-sans-hebrew font-black text-3xl md:text-5xl lg:text-6xl text-white leading-[1.2]"
           >
@@ -22,17 +22,17 @@ export default function TrapSection() {
             <span className="text-orange border-b-4 md:border-b-8 border-orange pb-2 inline-block mt-2">
               "מדד תשומות הבנייה" והכפל התזרימי
             </span>
-          </motion.h2>
+          </m.h2>
           
-          <motion.p 
+          <m.p 
             variants={staggerItem}
             className="text-lg md:text-2xl lg:text-3xl text-white/90 font-light leading-relaxed max-w-6xl"
           >
             האתגר הגדול ביותר ברכישת דירה למשתכן הוא שלרוב הדירה תהיה מוכנה רק בעוד 3, 4 או 5 שנים. בזמן הזה אתם חשופים לשתי סכנות:
-          </motion.p>
+          </m.p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-6xl">
-            <motion.div 
+            <m.div 
               variants={staggerItem}
               className="border-r-4 md:border-r-6 border-orange pr-6 md:pr-8 py-6"
             >
@@ -42,9 +42,9 @@ export default function TrapSection() {
               <p className="text-base md:text-xl text-white/90 font-light leading-relaxed">
                 אתם משלמים גם שכירות על הדירה הנוכחית וגם מתחילים לשלם החזרים על המשכנתא.
               </p>
-            </motion.div>
+            </m.div>
 
-            <motion.div 
+            <m.div 
               variants={staggerItem}
               className="border-r-4 md:border-r-6 border-orange pr-6 md:pr-8 py-6"
             >
@@ -54,10 +54,10 @@ export default function TrapSection() {
               <p className="text-base md:text-xl text-white/90 font-light leading-relaxed">
                 החוב שלכם לקבלן צמוד למדד. אם המדד עולה, המחיר של הדירה עולה, ואתם מפסידים כסף.
               </p>
-            </motion.div>
+            </m.div>
           </div>
 
-          <motion.div 
+          <m.div 
             variants={staggerItem}
             className="mt-12"
           >
@@ -87,8 +87,8 @@ export default function TrapSection() {
                 </p>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );

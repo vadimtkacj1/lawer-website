@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import { fadeInUpFast, viewportOptions } from "@/lib/animations";
 import type { CalculatorData } from "../../types";
@@ -137,7 +137,7 @@ export default function ContactForm({ calculatorData }: ContactFormProps) {
   };
 
   return (
-    <motion.div
+    <m.div
       className="bg-white/95 backdrop-blur-3xl rounded-[2.5rem] border-2 border-blue-dk/10 shadow-[0_25px_80px_-15px_rgba(0,0,0,0.2)] p-5 md:p-6 flex flex-col md:order-1 h-fit"
       initial="hidden"
       whileInView="visible"
@@ -147,7 +147,7 @@ export default function ContactForm({ calculatorData }: ContactFormProps) {
     >
       <AnimatePresence mode="wait">
         {!isSubmitted ? (
-          <motion.div
+          <m.div
             key="form"
             exit={{ opacity: 0 }}
           >
@@ -196,9 +196,9 @@ export default function ContactForm({ calculatorData }: ContactFormProps) {
                 <span>ללא התחייבות • מענה תוך 24 שעות</span>
               </div>
             </form>
-          </motion.div>
+          </m.div>
         ) : (
-          <motion.div
+          <m.div
             key="success"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -213,10 +213,10 @@ export default function ContactForm({ calculatorData }: ContactFormProps) {
             <p className="text-blue-dk/70 font-bold">
               הפרטים התקבלו. נחזור אליכם בהקדם
             </p>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </m.div>
   );
 }
 
