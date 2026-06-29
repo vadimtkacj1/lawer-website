@@ -118,7 +118,7 @@ export default function Contact() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, source: "homepage" }),
       });
       if (response.ok) {
         sendGAEvent("event", "generate_lead", { form_location: "homepage_contact" });
