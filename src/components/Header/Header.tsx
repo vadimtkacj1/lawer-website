@@ -116,6 +116,7 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
                   height={110}
                   className="h-[48px] w-auto xs:h-[55px] sm:h-[62px] md:h-[68px] lg:h-[72px]"
                   priority
+                  unoptimized
                 />
               </Link>
 

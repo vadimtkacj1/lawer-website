@@ -103,8 +103,7 @@ export default function RootLayout({
       <head>
         {/* PWA Manifest */}
         <link rel="manifest" href="/manifest.json" />
-        {/* Preload critical above-fold assets */}
-        <link rel="preload" href="/images/logo.svg" as="image" type="image/svg+xml" />
+        {/* Preload critical above-fold assets (logo is preloaded automatically by next/image priority) */}
         <link rel="preload" href="/images/expert-poster.webp" as="image" fetchPriority="high" />
         {/* Preconnect to GA/GTM — loaded on every page */}
         <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
