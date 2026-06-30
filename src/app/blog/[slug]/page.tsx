@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Breadcrumbs from "@/components/SEO/Breadcrumbs";
@@ -216,18 +215,6 @@ export default async function ArticlePage({
                 </span>
               </div>
             </header>
-
-            {/* Hero image */}
-            <div className="relative aspect-[16/9] rounded-2xl overflow-hidden mb-8 sm:mb-10 shadow-md bg-white-card">
-              <Image
-                src={article.image}
-                alt={article.imageAlt}
-                fill
-                sizes="(max-width: 768px) 100vw, 768px"
-                className="object-cover"
-                priority
-              />
-            </div>
 
             {/* Body */}
             <ArticleBody content={article.content} />

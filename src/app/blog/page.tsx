@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Breadcrumbs from "@/components/SEO/Breadcrumbs";
 import Link from "next/link";
-import Image from "next/image";
 import { articles } from "./data";
 import ArticleCard from "./components/ArticleCard";
 
@@ -125,8 +124,8 @@ export default function BlogIndexPage() {
 
           {/* Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-10 sm:mt-14">
-            {rest.map((article, i) => (
-              <ArticleCard key={article.slug} article={article} priority={i < 2} />
+            {rest.map((article) => (
+              <ArticleCard key={article.slug} article={article} />
             ))}
           </div>
 
@@ -159,36 +158,24 @@ function FeaturedCard({ article }: { article: import("./data").Article }) {
   return (
     <Link
       href={`/blog/${article.slug}`}
-      className="group grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden bg-white-card border border-blue-dk/10 shadow-md hover:shadow-2xl transition-shadow duration-300"
+      className="group block rounded-3xl bg-white-card border border-blue-dk/10 shadow-md hover:shadow-2xl transition-shadow duration-300 p-7 sm:p-10 lg:p-12"
     >
-      <div className="relative aspect-[16/10] lg:aspect-auto lg:min-h-[340px] overflow-hidden bg-cream">
-        <Image
-          src={article.image}
-          alt={article.imageAlt}
-          fill
-          sizes="(max-width: 1024px) 100vw, 50vw"
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-          priority
-        />
-        <span className="absolute top-4 right-4 bg-orange text-white text-xs font-bold px-3 py-1 rounded-full shadow">
-          הכי חדש · {article.category}
-        </span>
-      </div>
-      <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-blue-dk leading-tight mb-3 group-hover:text-orange transition-colors">
-          {article.title}
-        </h2>
-        <p className="text-base sm:text-lg text-blue-dk/75 font-medium leading-8 mb-5">
-          {article.excerpt}
-        </p>
-        <span className="inline-flex items-center gap-2 text-orange font-bold text-lg group-hover:gap-3 transition-all">
-          לקריאת המאמר המלא
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12" />
-            <polyline points="12 19 5 12 12 5" />
-          </svg>
-        </span>
-      </div>
+      <span className="inline-block bg-orange text-white text-xs font-bold px-3 py-1 rounded-full shadow mb-4">
+        הכי חדש · {article.category}
+      </span>
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-blue-dk leading-tight mb-3 group-hover:text-orange transition-colors max-w-3xl">
+        {article.title}
+      </h2>
+      <p className="text-base sm:text-lg text-blue-dk/75 font-medium leading-8 mb-5 max-w-3xl">
+        {article.excerpt}
+      </p>
+      <span className="inline-flex items-center gap-2 text-orange font-bold text-lg group-hover:gap-3 transition-all">
+        לקריאת המאמר המלא
+        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12" />
+          <polyline points="12 19 5 12 12 5" />
+        </svg>
+      </span>
     </Link>
   );
 }
