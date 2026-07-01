@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Article } from "../data";
 
 const ArrowIcon = ({ className }: { className?: string }) => (
@@ -22,6 +23,15 @@ export default function ArticleCard({ article }: { article: Article }) {
         href={`/blog/${article.slug}`}
         className="flex flex-col h-full rounded-2xl overflow-hidden bg-white-card border border-blue-dk/10 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
       >
+        <div className="relative aspect-[1200/630] w-full overflow-hidden bg-blue-dk/5">
+          <Image
+            src={article.image}
+            alt={article.imageAlt}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
         <div className="flex flex-col flex-grow p-5 sm:p-6">
           <span className="self-start bg-orange/10 text-orange text-xs font-bold px-3 py-1 rounded-full mb-3">
             {article.category}

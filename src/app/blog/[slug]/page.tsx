@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Breadcrumbs from "@/components/SEO/Breadcrumbs";
 import { getArticleBySlug, getAllSlugs, getRelatedArticles } from "../data";
@@ -215,6 +216,18 @@ export default async function ArticlePage({
                 </span>
               </div>
             </header>
+
+            {/* Cover image */}
+            <div className="relative aspect-[1200/630] w-full overflow-hidden rounded-2xl sm:rounded-3xl shadow-lg mb-8 sm:mb-10">
+              <Image
+                src={article.image}
+                alt={article.imageAlt}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+              />
+            </div>
 
             {/* Body */}
             <ArticleBody content={article.content} />
