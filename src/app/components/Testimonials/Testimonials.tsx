@@ -99,15 +99,12 @@ const StarIcon = ({ className }: { className: string }) => (
   </svg>
 );
 
-// Layered elevation instead of one flat drop shadow: two inset highlights give the
-// card a lit top edge, three tinted shadows sit it on the cream canvas. Tint is the
-// brand navy (#1c3664 = 28,54,100), so no colour leaves the existing palette.
+// Edge definition only — no drop shadow. The cards sit in two tight rows, so
+// any cast shadow pooled in the gaps and read as grey mush against the cream.
+// A lit top edge plus a hairline ring gives the card its form on its own.
 const CARD_ELEVATION = [
   "inset 0 1px 0 rgba(255, 255, 255, 0.22)",
   "inset 0 0 0 1px rgba(255, 255, 255, 0.10)",
-  "0 1px 2px rgba(28, 54, 100, 0.18)",
-  "0 10px 24px -10px rgba(28, 54, 100, 0.30)",
-  "0 28px 60px -24px rgba(28, 54, 100, 0.38)",
 ].join(", ");
 
 /**
