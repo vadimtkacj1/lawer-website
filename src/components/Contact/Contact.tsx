@@ -176,7 +176,7 @@ export default function Contact() {
           className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-12 items-center max-w-6xl mx-auto"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, margin: "0px 0px 200px 0px" }}
           variants={staggerContainer}
         >
           {/* Promotional Content */}
@@ -399,7 +399,7 @@ export default function Contact() {
         <m.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, margin: "0px 0px 200px 0px" }}
           variants={staggerContainer}
           className="mt-16 max-w-6xl mx-auto"
         >

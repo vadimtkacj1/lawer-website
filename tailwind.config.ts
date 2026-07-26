@@ -30,6 +30,21 @@ const config: Config = {
       fontFamily: {
         "noto-sans-hebrew": ["var(--font-noto-sans-hebrew)", "sans-serif"],
       },
+      // Elevation tinted with the brand navy (#1c3664 = 28,54,100) instead of
+      // Tailwind's default black. Black shadows go muddy on the cream canvas.
+      // Layered and low-opacity per Monarch/Titan: depth without heaviness.
+      boxShadow: {
+        button: "0 1px 2px rgba(28, 54, 100, 0.08)",
+        card: "0 1px 2px rgba(28, 54, 100, 0.04), 0 10px 15px -3px rgba(28, 54, 100, 0.08), 0 4px 6px -4px rgba(28, 54, 100, 0.06)",
+        "card-lg":
+          "0 1px 2px rgba(28, 54, 100, 0.05), 0 18px 30px -8px rgba(28, 54, 100, 0.12), 0 8px 12px -6px rgba(28, 54, 100, 0.08)",
+        nav: "0 1px 0 rgba(28, 54, 100, 0.08), 0 6px 20px -12px rgba(28, 54, 100, 0.25)",
+      },
+      spacing: {
+        // Section rhythm: Monarch runs 64px between sections, Titan 80px.
+        section: "4rem",
+        "section-lg": "5rem",
+      },
       container: {
         center: true,
         padding: {
@@ -56,11 +71,23 @@ const config: Config = {
       },
       animation: {
         "banks-scroll": "banksScroll 40s linear infinite",
+        "marquee-back": "marqueeBack 200s linear infinite",
+        "marquee-forth": "marqueeForth 210s linear infinite",
       },
       keyframes: {
         banksScroll: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-33.333%)" },
+        },
+        // The track holds two identical copies of the list, so -50% lands
+        // exactly on the start of the second copy and the loop is seamless.
+        marqueeBack: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        marqueeForth: {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" },
         },
       },
     },

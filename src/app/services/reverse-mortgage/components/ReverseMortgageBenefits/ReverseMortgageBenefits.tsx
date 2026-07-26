@@ -25,7 +25,7 @@ export default function ReverseMortgageBenefits() {
         <m.div 
           initial="hidden" 
           whileInView="visible" 
-          viewport={{ once: true }} 
+          viewport={{ once: true, margin: "0px 0px 200px 0px" }} 
           variants={staggerContainer}
         >
           {/* תיקון כותרת: הגדלת leading למניעת חפיפה וסידור שבירה במובייל */}

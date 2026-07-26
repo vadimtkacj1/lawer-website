@@ -16,7 +16,7 @@ export default function InsiderAdvantage() {
         <m.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "0px 0px 200px 0px" }}
           variants={staggerContainer}
           className="space-y-24"
         >

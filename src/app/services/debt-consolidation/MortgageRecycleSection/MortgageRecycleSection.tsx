@@ -11,7 +11,7 @@ export default function MortgageRecycleSection() {
       className="relative py-12 md:py-32 lg:py-40 bg-cream overflow-hidden"
     >
       <div className="container relative z-10 mx-auto px-6 max-w-7xl text-right">
-        <m.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={staggerContainer}>
+        <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px 0px 200px 0px" }} variants={staggerContainer}>
           
           <m.div variants={staggerItem} className="mb-12 md:mb-24">
             <h2 className="font-noto-sans-hebrew font-black text-xl md:text-6xl lg:text-8xl text-[#1c3664] leading-tight">

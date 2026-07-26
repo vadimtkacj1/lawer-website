@@ -38,7 +38,7 @@ export default function AllServicesSection() {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 max-w-7xl 3xl:max-w-[110rem] text-right" dir="rtl">
-        <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+        <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px 0px 200px 0px" }} variants={staggerContainer}>
           
           <m.div variants={staggerItem} className="mb-12 md:mb-24 max-w-4xl ml-auto">
             <h2 className="font-noto-sans-hebrew font-black text-3xl md:text-6xl lg:text-7xl 3xl:text-8xl text-[#1c3664] leading-tight mb-6">

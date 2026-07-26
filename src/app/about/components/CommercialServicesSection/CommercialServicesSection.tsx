@@ -80,7 +80,7 @@ const ServiceCard = ({ service, index, scrollYProgress }: { service: typeof serv
     <m.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "0px 0px 200px 0px" }}
       transition={{ duration: 0.5 }}
       className={`relative flex flex-col items-center gap-2 md:gap-12 lg:gap-24 ${
         isEven ? "lg:flex-row" : "lg:flex-row-reverse"
@@ -131,7 +131,7 @@ export default function CommercialServicesSection() {
       
       <div className="container mx-auto px-6 relative z-10">
         <m.div 
-          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
+          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px 0px 200px 0px" }} variants={staggerContainer}
           className="mb-12 md:mb-24 lg:mb-40 text-center"
         >
           <m.h2 variants={staggerItem} className="text-3xl md:text-5xl lg:text-7xl font-noto-sans-hebrew font-black text-blue-dk mb-4 md:mb-8 leading-tight">

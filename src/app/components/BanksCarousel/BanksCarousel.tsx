@@ -23,7 +23,7 @@ export default function BanksCarousel() {
           initial="hidden"
           whileInView="visible"
           // amount: 0.2 гарантирует запуск на маленьких экранах
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, margin: "0px 0px 200px 0px" }}
           variants={staggerContainer}
           className="mb-8 md:mb-12 lg:mb-16 text-center"
         >

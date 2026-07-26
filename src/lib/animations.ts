@@ -1,21 +1,26 @@
 import { Variants } from "framer-motion";
 
-// Viewport defaults — once:true so elements animate in only once
+// Viewport defaults — once:true so elements animate in only once.
+//
+// `margin` maps to IntersectionObserver's rootMargin, so a POSITIVE bottom
+// value grows the root downwards and the reveal starts while the element is
+// still below the fold. The previous values did the opposite: `amount: 0.2`
+// waited until a fifth of the block was on screen, and the negative margins
+// shrank the root so it fired even later. Either way the top of the section
+// was already visible at opacity 0 — read by the user as a blink on scroll.
 export const viewportOptions = {
   once: true,
-  amount: 0.2,
+  margin: "0px 0px 200px 0px",
 };
 
 export const viewportEarly = {
   once: true,
-  margin: "-40px",
-  amount: 0.15,
+  margin: "0px 0px 300px 0px",
 };
 
 export const viewportDelayed = {
   once: true,
-  margin: "-150px",
-  amount: 0.4,
+  margin: "0px 0px 80px 0px",
 };
 
 export const fadeInUp: Variants = {

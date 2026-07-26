@@ -26,7 +26,7 @@ export default function HolonProcessSection() {
   return (
     <section className="py-20 lg:py-40 bg-[#FAF7F2] overflow-hidden" dir="rtl">
       <div className="container mx-auto px-6 max-w-7xl 3xl:max-w-[110rem] text-right">
-        <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+        <m.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px 0px 200px 0px" }} variants={staggerContainer}>
           <div className="mb-16 md:mb-20 flex flex-col items-start">
             <h2 className="font-noto-sans-hebrew font-black text-3xl md:text-6xl lg:text-7xl text-[#1c3664] mb-4 leading-[1.15]">
               איך עובד תהליך ייעוץ המשכנתאות איתנו?

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const MenuIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
@@ -60,6 +61,7 @@ interface HeaderProps {
 }
 
 export default function Header({ alwaysWithBackground = false }: HeaderProps) {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDesktopDropdown, setActiveDesktopDropdown] = useState<string | null>(null);
@@ -100,8 +102,8 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
       <header
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300
                     ${isScrolled || isMobileMenuOpen || alwaysWithBackground
-                      ? "py-3 sm:py-4 bg-cream shadow-md"
-                      : "py-4 sm:py-6 bg-transparent"
+                      ? "py-3 sm:py-4 bg-cream border-b border-blue-dk/10 shadow-nav"
+                      : "py-4 sm:py-6 bg-transparent border-b border-transparent"
                     }`}
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-8">
@@ -124,6 +126,17 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
                 {navLinks.map((link) => {
                   const isActive = link.hasDropdown && activeDesktopDropdown === link.dropdownType;
                   const dropdownLinks = link.dropdownType === "services" ? servicesLinks : serviceAreasLinks;
+                  const isCurrent =
+                    link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+
+                  // Navigation is deliberately quiet: the accent belongs to the
+                  // CTA, so the current page is marked with weight and a rule
+                  // rather than colour.
+                  const navLinkClass = `relative flex items-center gap-1.5 px-3 py-1.5 text-[15px] xl:text-base transition-colors duration-200 outline-none
+                    after:absolute after:bottom-0 after:right-3 after:left-3 after:h-0.5 after:rounded-full after:bg-blue-dk after:transition-opacity
+                    ${isCurrent || isActive
+                      ? "text-blue-dk font-bold after:opacity-100"
+                      : "text-blue-dk/70 font-semibold hover:text-blue-dk after:opacity-0 hover:after:opacity-40"}`;
 
                   return (
                     <li
@@ -143,17 +156,18 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
                           href={link.href}
                           aria-haspopup="true"
                           aria-expanded={isActive}
-                          className={`flex items-center gap-1.5 px-3 py-1.5 text-blue-dk font-bold text-lg xl:text-xl transition-all duration-300 hover:text-orange outline-none
-                            ${isActive ? "text-orange" : ""}`}
+                          aria-current={isCurrent ? "page" : undefined}
+                          className={navLinkClass}
                         >
                           {link.label}
-                          <ChevronIcon className={`w-3.5 h-3.5 transition-transform duration-300 ${isActive ? "rotate-180" : ""}`} />
+                          <ChevronIcon className={`w-3 h-3 transition-transform duration-300 ${isActive ? "rotate-180" : ""}`} />
                         </Link>
                       ) : (
                         <Link
                           href={link.href}
                           onClick={(e) => handleNavClick(e, link.href)}
-                          className="flex items-center gap-1.5 px-3 py-1.5 text-blue-dk font-bold text-lg xl:text-xl transition-all duration-300 hover:text-orange outline-none"
+                          aria-current={isCurrent ? "page" : undefined}
+                          className={navLinkClass}
                         >
                           {link.label}
                         </Link>
@@ -162,19 +176,20 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
                       {link.hasDropdown && (
                         <div
                           aria-hidden={!isActive}
-                          className={`absolute top-full right-0 mt-0 w-72 bg-cream rounded-xl overflow-hidden transition-all duration-300 origin-top shadow-xl
+                          className={`absolute top-full right-0 mt-2 w-72 bg-white rounded-2xl overflow-hidden transition-all duration-300 origin-top shadow-card-lg ring-1 ring-blue-dk/10
                             ${isActive ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}
                         >
-                          <div className="py-1.5 flex flex-col">
+                          <div className="py-2 flex flex-col">
                             {dropdownLinks.map((item) => (
                               <Link
                                 key={item.href}
                                 href={item.href}
                                 tabIndex={isActive ? undefined : -1}
-                                className="px-5 py-2 text-base font-semibold text-blue-dk hover:bg-orange/5 hover:text-orange transition-all duration-200 text-right flex items-center justify-between group outline-none"
+                                aria-current={pathname === item.href ? "page" : undefined}
+                                className="px-5 py-2.5 text-[15px] font-medium text-blue-dk/80 hover:bg-blue-dk/[0.04] hover:text-blue-dk aria-[current=page]:text-blue-dk aria-[current=page]:font-bold transition-colors duration-200 text-right flex items-center justify-between group outline-none"
                               >
                                 {item.label}
-                                <div className="w-1 h-1 rounded-full bg-orange opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true"></div>
+                                <div className="w-1 h-1 rounded-full bg-blue-dk opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true"></div>
                               </Link>
                             ))}
                           </div>
@@ -188,7 +203,7 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
 
             <div className="flex items-center">
               <button
-                className="lg:hidden relative p-0 border-none bg-transparent outline-none focus:ring-0 text-blue-dk hover:text-orange transition-colors"
+                className="lg:hidden relative p-0 border-none bg-transparent outline-none focus:ring-0 text-blue-dk hover:text-blue-dk/70 transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label={isMobileMenuOpen ? "סגור תפריט" : "פתח תפריט"}
                 aria-expanded={isMobileMenuOpen}
@@ -201,7 +216,7 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
                 <a 
                   href="#contact"
                   onClick={(e) => handleNavClick(e, "#contact")}
-                  className="flex items-center gap-2 text-sm px-6 py-2.5 transition-all hover:bg-blue-dk/90 active:scale-95 text-white bg-blue-dk rounded-full font-bold"
+                  className="flex items-center gap-2 text-sm px-6 py-2.5 transition-all hover:bg-orange-hover active:scale-95 text-white bg-orange rounded-full font-bold shadow-button"
                 >
                   <PhoneIcon className="w-4 h-4" />
                   <span>צור קשר</span>
@@ -247,7 +262,7 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
                         onClick={toggleOpen}
                         aria-expanded={isOpen}
                         aria-controls={`mobile-submenu-${link.dropdownType}`}
-                        className="w-full flex items-center justify-start gap-2 text-blue-dk font-semibold text-lg hover:text-orange transition-colors bg-transparent border-none outline-none text-right"
+                        className="w-full flex items-center justify-start gap-2 text-blue-dk font-semibold text-lg hover:text-blue-dk/70 transition-colors bg-transparent border-none outline-none text-right"
                       >
                         <span>{link.label}</span>
                         <ChevronIcon className={`w-4 h-4 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
@@ -264,7 +279,7 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
                             href={subLink.href}
                             onClick={() => setIsMobileMenuOpen(false)}
                             tabIndex={isOpen ? undefined : -1}
-                            className="block text-blue-dk/80 font-medium text-base hover:text-orange transition-colors text-right w-full"
+                            className="block text-blue-dk/70 font-medium text-base hover:text-blue-dk transition-colors text-right w-full"
                           >
                             {subLink.label}
                           </Link>
@@ -274,7 +289,7 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
                   ) : (
                     <Link
                       href={link.href}
-                      className="text-blue-dk font-semibold text-lg hover:text-orange transition-colors block text-right w-full"
+                      className="text-blue-dk font-semibold text-lg hover:text-blue-dk/70 transition-colors block text-right w-full"
                       onClick={(e) => handleNavClick(e, link.href)}
                     >
                       {link.label}
@@ -289,7 +304,7 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, "#contact")}
-              className="bg-blue-dk text-white flex items-center justify-center gap-2 px-6 py-3 text-base rounded-full font-semibold hover:bg-blue-dk/90 active:scale-95 transition-all w-full"
+              className="bg-orange text-white flex items-center justify-center gap-2 px-6 py-3 text-base rounded-full font-bold hover:bg-orange-hover active:scale-95 transition-all w-full shadow-button"
             >
               <PhoneIcon className="w-5 h-5" />
               <span>צור קשר</span>

@@ -16,7 +16,7 @@ export default function InvestmentFutureSection() {
         <m.div 
           initial="hidden" 
           whileInView="visible" 
-          viewport={{ once: true, amount: 0.3 }} 
+          viewport={{ once: true, margin: "0px 0px 200px 0px" }} 
           variants={staggerContainer}
           className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center"
         >

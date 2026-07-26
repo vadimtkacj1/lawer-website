@@ -13,7 +13,7 @@ export default function AviAdvantageClosing() {
         <m.div 
           initial="hidden" 
           whileInView="visible" 
-          viewport={{ once: true, amount: 0.2 }} 
+          viewport={{ once: true, margin: "0px 0px 200px 0px" }} 
           variants={staggerContainer}
         >
           <m.div variants={staggerItem} className="mb-12 md:mb-20">

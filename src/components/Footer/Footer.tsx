@@ -39,25 +39,25 @@ export default function Footer() {
       <div className="container mx-auto px-3 sm:px-4 md:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-start">
           {/* About */}
-          <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
-            <div className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">
+          <div className="flex flex-col items-start text-right">
+            <div className="text-white font-bold text-sm uppercase tracking-[0.08em] mb-4">
               אבי - הבית למשכנתאות
             </div>
-            <p className="text-white/70 text-sm sm:text-base md:text-lg font-semibold leading-relaxed max-w-sm">
+            <p className="text-white/70 text-sm sm:text-[15px] font-normal leading-relaxed max-w-sm">
               ליווי מקצועי ואובייקטיבי בתהליך לקיחת המשכנתא. אנחנו עובדים
               בשבילכם, לא בשביל הבנק, כדי להבטיח את התנאים המשתלמים ביותר.
             </p>
           </div>
 
           {/* Services */}
-          <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
-            <div className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">שירותים</div>
+          <div className="flex flex-col items-start text-right">
+            <div className="text-white font-bold text-sm uppercase tracking-[0.08em] mb-4">שירותים</div>
             <nav aria-label="שירותים" className="flex flex-col space-y-1.5 sm:space-y-2 w-full">
               {serviceLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
+                  className="text-white/70 text-sm sm:text-[15px] font-normal hover:text-white transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -66,18 +66,18 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center">
-            <div className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">צרו קשר</div>
-            <address className="not-italic space-y-1.5 sm:space-y-2 text-white/70 text-sm sm:text-base md:text-lg font-semibold w-full">
-              <p className="flex items-center gap-2 justify-center sm:justify-start lg:justify-center">
+          <div className="flex flex-col items-start text-right">
+            <div className="text-white font-bold text-sm uppercase tracking-[0.08em] mb-4">צרו קשר</div>
+            <address className="not-italic space-y-1.5 sm:space-y-2 text-white/70 text-sm sm:text-[15px] font-normal w-full">
+              <p className="flex items-center gap-2 justify-start">
                 <LocationIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 יהושע חנקין 83, חולון
               </p>
             </address>
 
             {/* Working Hours */}
-            <div className="mt-4 sm:mt-5 md:mt-6 space-y-1 text-white/70 text-sm sm:text-base md:text-lg font-semibold w-full">
-              <div className="text-orange font-black text-sm sm:text-base md:text-lg mb-2">שעות פעילות</div>
+            <div className="mt-6 space-y-1 text-white/70 text-sm sm:text-[15px] font-normal w-full">
+              <div className="text-white font-bold text-sm uppercase tracking-[0.08em] mb-2">שעות פעילות</div>
               <p>ראשון - חמישי: 9:00 - 20:00</p>
               <p>שישי: סגור</p>
               <p>שבת: סגור</p>
@@ -106,24 +106,24 @@ export default function Footer() {
           </div>
 
           {/* Legal Links */}
-          <div className="flex flex-col items-center sm:items-start lg:items-center text-center sm:text-right lg:text-center sm:col-span-2 lg:col-span-1">
-            <div className="text-orange font-black text-base sm:text-lg md:text-xl mb-2 sm:mb-3 md:mb-4">מידע משפטי</div>
+          <div className="flex flex-col items-start text-right sm:col-span-2 lg:col-span-1">
+            <div className="text-white font-bold text-sm uppercase tracking-[0.08em] mb-4">מידע משפטי</div>
             <nav aria-label="מידע משפטי" className="flex flex-col space-y-1.5 sm:space-y-2 w-full">
               <Link
                 href="/accessibility"
-                className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
+                className="text-white/70 text-sm sm:text-[15px] font-normal hover:text-white transition-colors"
               >
                 הצהרת נגישות
               </Link>
               <Link
                 href="/privacy"
-                className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
+                className="text-white/70 text-sm sm:text-[15px] font-normal hover:text-white transition-colors"
               >
                 מדיניות פרטיות
               </Link>
               <Link
                 href="/terms"
-                className="text-white/70 text-sm sm:text-base md:text-lg font-semibold hover:text-white transition-colors"
+                className="text-white/70 text-sm sm:text-[15px] font-normal hover:text-white transition-colors"
               >
                 תנאי שימוש
               </Link>
@@ -133,7 +133,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-white/20 mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-7 md:pt-8 text-center">
-          <p className="text-white/70 text-xs sm:text-sm md:text-base lg:text-lg font-semibold px-2">
+          <p className="text-white/60 text-xs sm:text-sm font-normal px-2">
             © {new Date().getFullYear()} אבי - הבית למשכנתאות. כל הזכויות
             שמורות. תכנון נכון שחוסך לכם כסף.
           </p>

@@ -11,7 +11,7 @@ export default function TransparencyCTA() {
         <m.div 
           initial="hidden" 
           whileInView="visible" 
-          viewport={{ once: true }} 
+          viewport={{ once: true, margin: "0px 0px 200px 0px" }} 
           variants={staggerContainer}
           className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start"
         >

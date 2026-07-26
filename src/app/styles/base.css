@@ -33,7 +33,8 @@
 
   /* Optimize image loading */
   img {
-    content-visibility: auto;
+    /* content-visibility deliberately omitted: it makes the browser drop and
+       re-paint images as they cross the viewport edge, seen as blinking. */
   }
 
 

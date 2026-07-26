@@ -112,11 +112,11 @@
     transform: none !important;
   }
 
-  /* Reduce image quality on mobile for faster loading */
+  /* Do NOT force backface-visibility on images: it promotes every image to its
+     own GPU layer, and once mobile GPU memory runs out the browser evicts those
+     layers mid-scroll, which reads as images blinking. */
   img {
     image-rendering: auto;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
   }
 
 

@@ -17,7 +17,7 @@ export default function HowItWorks() {
         <m.div 
           initial="hidden" 
           whileInView="visible" 
-          viewport={{ once: true }} 
+          viewport={{ once: true, margin: "0px 0px 200px 0px" }} 
           variants={staggerContainer}
         >
           {/* תיקון כותרת: הוספת leading למניעת חפיפת טקסט וסידור שבירה במובייל */}

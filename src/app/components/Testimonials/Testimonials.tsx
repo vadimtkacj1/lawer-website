@@ -1,8 +1,6 @@
 "use client";
 
-import React, { useMemo, memo } from "react";
-import { m } from "framer-motion";
-import { usePerformanceSettings } from "@/lib/usePerformanceSettings";
+import { useMemo, memo } from "react";
 
 /**
  * Static data for testimonials.
@@ -95,92 +93,113 @@ const testimonials = [
   },
 ];
 
+const StarIcon = ({ className }: { className: string }) => (
+  <svg className={className} viewBox="0 0 20 20" aria-hidden="true">
+    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+  </svg>
+);
+
+// Layered elevation instead of one flat drop shadow: two inset highlights give the
+// card a lit top edge, three tinted shadows sit it on the cream canvas. Tint is the
+// brand navy (#1c3664 = 28,54,100), so no colour leaves the existing palette.
+const CARD_ELEVATION = [
+  "inset 0 1px 0 rgba(255, 255, 255, 0.22)",
+  "inset 0 0 0 1px rgba(255, 255, 255, 0.10)",
+  "0 1px 2px rgba(28, 54, 100, 0.18)",
+  "0 10px 24px -10px rgba(28, 54, 100, 0.30)",
+  "0 28px 60px -24px rgba(28, 54, 100, 0.38)",
+].join(", ");
+
 /**
  * Individual Testimonial Card Component.
  */
-const TestimonialCard = ({ item }: { item: typeof testimonials[0] }) => (
-  <div
-    className="flex flex-col justify-center w-[320px] md:w-[500px] min-h-[220px] md:min-h-[280px] p-6 md:p-10 bg-gradient-to-bl from-[#1c3664] via-[#2a54a1] to-[#5da2ff] rounded-3xl text-right shrink-0"
-    style={{
-      boxShadow: '0 15px 40px -12px rgba(28, 54, 100, 0.25)',
-      border: '1px solid rgba(255, 255, 255, 0.1)'
-    }}
-    dir="rtl"
-  >
-    {/* Star Ratings */}
-    <div className="flex justify-start gap-1 mb-4 md:mb-6">
-      {[...Array(item.rating)].map((_, i) => (
-        <svg key={i} className="w-4 h-4 md:w-6 md:h-6 fill-[#f26722]" viewBox="0 0 20 20">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-      ))}
-    </div>
-
-    {/* Testimonial Text */}
-    <p className="text-white text-base md:text-xl font-medium leading-relaxed mb-4 md:mb-6">
-      &ldquo;{item.text}&rdquo;
-    </p>
-
-    {/* Name */}
-    {item.name && (
-      <div className="mt-auto pt-4 border-t border-white/20">
-        <p className="text-white text-sm md:text-base font-semibold">
-          {item.name}
-        </p>
-      </div>
-    )}
-  </div>
-);
-
-/**
- * Marquee Row Component utilizing Framer Motion for high-performance looping.
- */
-const MarqueeRow = ({ 
-  items, 
-  direction = "left", 
-  duration = 60,
-  isMobile = false 
-}: { 
-  items: typeof testimonials, 
-  direction?: "left" | "right", 
-  duration?: number,
-  isMobile?: boolean 
-}) => {
-  // 2x duplication — one full copy animates off-screen and loops seamlessly.
-  // We animate from 0% to -50% (left) or -50% to 0% (right).
-  const doubleItems = useMemo(() => [...items, ...items], [items]);
-
-  // Same edge mask as InfiniteMarquee: without it the cards are chopped
-  // mid-word against the viewport edge instead of fading out.
-  const edgeFade = 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)';
+const TestimonialCard = ({ item }: { item: typeof testimonials[0] }) => {
+  // Every entry is authored as "Name – service", so the two halves can carry
+  // different typographic weight instead of running together on one line.
+  const [author, service] = item.name.split(" – ");
 
   return (
-    <div
-      className="flex w-full overflow-hidden"
-      style={{
-        direction: 'ltr',
-        maskImage: edgeFade,
-        WebkitMaskImage: edgeFade,
-      }}
+    <figure
+      className="relative flex flex-col w-[320px] md:w-[500px] min-h-[240px] md:min-h-[300px] shrink-0 mr-6 md:mr-8 p-6 md:p-10 rounded-3xl overflow-hidden bg-gradient-to-bl from-[#1c3664] via-[#2a54a1] to-[#5da2ff]"
+      style={{ boxShadow: CARD_ELEVATION }}
+      dir="rtl"
     >
-      <m.div
-        key={`testimonials-marquee-${direction}-${duration}`}
-        className="flex gap-6 md:gap-8 py-4"
-        initial={{ x: direction === "left" ? "0%" : "-50%" }}
-        animate={{ x: direction === "left" ? "-50%" : "0%" }}
-        transition={{
-          duration: isMobile ? duration * 1.8 : duration, // Much slower on mobile for better performance
-          ease: "linear",
-          repeat: Infinity,
-        }}
-        // FIX: 'whileHover' on mobile triggers a permanent pause upon the first touch.
-        // We disable it for mobile users.
-        whileHover={!isMobile ? { animationPlayState: "paused" } : {}}
+      {/* Oversized quote mark — the card reads as a quote before a word is read.
+          Parked on the left because the stars already own the top-right in RTL. */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute top-1 left-5 text-[7rem] leading-[0.8] font-black text-white/[0.09]"
+      >
+        &rdquo;
+      </span>
+
+      <div
+        className="flex gap-1 mb-4 md:mb-6"
+        role="img"
+        aria-label={`דירוג ${item.rating} מתוך 5 כוכבים`}
+      >
+        {[...Array(item.rating)].map((_, i) => (
+          <StarIcon key={i} className="w-4 h-4 md:w-5 md:h-5 fill-[#f26722]" />
+        ))}
+      </div>
+
+      {/* The gradient runs light toward the bottom-left corner; a navy text shadow
+          keeps the white copy crisp where it passes over #5da2ff. */}
+      <blockquote className="relative text-white text-base md:text-lg font-medium leading-[1.75] text-pretty [text-shadow:_0_1px_2px_rgba(28,54,100,0.45)]">
+        {item.text}
+      </blockquote>
+
+      {item.name && (
+        <figcaption className="relative mt-auto pt-5 md:pt-7">
+          <div className="h-px w-full bg-white/20 mb-4" />
+          <p className="text-white font-bold text-sm md:text-base leading-snug">
+            {author}
+          </p>
+          {service && (
+            <p className="text-white/70 font-medium text-xs md:text-sm leading-snug mt-1">
+              {service}
+            </p>
+          )}
+        </figcaption>
+      )}
+    </figure>
+  );
+};
+
+/**
+ * Marquee Row Component. Driven by a CSS keyframe rather than Framer Motion:
+ * the transform is composited off the main thread, and `animation-play-state`
+ * gives a hover pause that actually works — the previous Framer `whileHover`
+ * set a CSS animation property on an element that had no CSS animation, so
+ * the row never paused. Card gaps live on the cards as margin-inline so the
+ * -50% keyframe lands exactly on the second copy.
+ */
+const MarqueeRow = ({
+  items,
+  direction = "left",
+}: {
+  items: typeof testimonials;
+  direction?: "left" | "right";
+}) => {
+  const doubleItems = useMemo(() => [...items, ...items], [items]);
+
+  // No edge mask here on purpose: the cards carry a strong gradient, and any
+  // fade at the viewport edge washed them out into the cream background.
+  // They simply run off the edge instead.
+  return (
+    <div
+      className="flex w-full overflow-hidden py-4 motion-reduce:overflow-x-auto"
+      style={{ direction: 'ltr' }}
+    >
+      <div
+        className={`flex w-max will-change-transform hover:[animation-play-state:paused] motion-reduce:animate-none ${
+          direction === "left" ? "animate-marquee-back" : "animate-marquee-forth"
+        }`}
       >
         {doubleItems.map((item, i) => (
           <TestimonialCard key={`testimonial-card-${direction}-${i}`} item={item} />
         ))}
-      </m.div>
+      </div>
     </div>
   );
 };
@@ -191,34 +210,49 @@ const MarqueeRow = ({
  * Main Testimonials Section with a Cream background (#f9f7f4).
  */
 function TestimonialsSection() {
-  const { isMobile } = usePerformanceSettings();
-  
   // Creating a reversed array for the second row to create visual contrast
   const reversedTestimonials = useMemo(() => [...testimonials].reverse(), []);
 
   return (
-    <section id="testimonials" className="py-16 md:py-24 bg-[#f9f7f4] overflow-hidden">
-      <div className="container mx-auto px-4 mb-10 md:mb-16 text-center">
-        <h2 className="text-4xl md:text-6xl font-black text-[#1c3664]">
-לקוחות ממליצים        </h2>
+    <section
+      id="testimonials"
+      aria-labelledby="testimonials-heading"
+      className="py-16 md:py-24 bg-[#f9f7f4] overflow-hidden"
+    >
+      <div className="container mx-auto px-4 mb-10 md:mb-14 text-center">
+        <h2
+          id="testimonials-heading"
+          className="text-3xl md:text-5xl lg:text-6xl font-noto-sans-hebrew font-black text-blue-dk leading-tight tracking-[-0.02em] text-balance"
+        >
+          לקוחות <span className="text-orange">ממליצים</span>
+        </h2>
+
+        <p className="mt-4 md:mt-6 mx-auto max-w-2xl text-base md:text-lg text-blue-dk/70 leading-relaxed text-pretty">
+          רכישה, מחזור ואיחוד הלוואות — מה שלקוחות מספרים אחרי שהתהליך נסגר.
+        </p>
+
+        {/* Visible counterpart to the AggregateRating in the page's JSON-LD:
+            the rating a crawler reads is now the rating a visitor can see. */}
+        <div className="mt-6 md:mt-8 inline-flex items-center gap-3 rounded-full bg-white px-5 py-2.5 ring-1 ring-blue-dk/10 shadow-[0_2px_10px_rgba(28,54,100,0.08)]">
+          <span className="flex gap-0.5" aria-hidden="true">
+            {[...Array(5)].map((_, i) => (
+              <StarIcon key={i} className="w-4 h-4 fill-[#f26722]" />
+            ))}
+          </span>
+          <span className="font-bold text-sm md:text-base text-blue-dk">5.0</span>
+          <span className="h-4 w-px bg-blue-dk/15" aria-hidden="true" />
+          <span className="font-medium text-sm md:text-base text-blue-dk/70">
+            {testimonials.length} המלצות מלקוחות
+          </span>
+        </div>
       </div>
 
       <div className="flex flex-col gap-2 md:gap-4">
         {/* Row 1: Scrolling Left */}
-        <MarqueeRow
-          items={testimonials}
-          direction="left"
-          duration={200}
-          isMobile={isMobile}
-        />
+        <MarqueeRow items={testimonials} direction="left" />
 
         {/* Row 2: Scrolling Right */}
-        <MarqueeRow
-          items={reversedTestimonials}
-          direction="right"
-          duration={205}
-          isMobile={isMobile}
-        />
+        <MarqueeRow items={reversedTestimonials} direction="right" />
       </div>
     </section>
   );

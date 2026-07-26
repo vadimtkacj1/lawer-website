@@ -62,12 +62,14 @@
      edge, which shows up as visible flashing while scrolling on mobile.
      Off-screen work is already avoided via native lazy loading. */
 
-  /* Skip layout/paint for off-screen sections (see LazyMount). Overridden for
-     touch devices further down — there it causes visible flashing. */
-  .lazy-section {
-    content-visibility: auto;
-    contain-intrinsic-size: var(--lazy-section-size, auto 600px);
-  }
+  /* NOTE: `content-visibility: auto` is deliberately NOT applied to
+     `.lazy-section` either. Skipping an off-screen section means its subtree
+     is unrendered, so the IntersectionObserver behind framer-motion's
+     `whileInView` cannot fire until the section is already partly on screen —
+     the user sees a blank band that then fades in. The stale
+     `contain-intrinsic-size` estimate also shifts scroll position when the
+     real height replaces it. `contain` on `section` below keeps most of the
+     paint saving without either artefact. */
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-noto-sans-hebrew font-black tracking-tight;
@@ -266,14 +268,6 @@
   /* Do NOT force backface-visibility on images here: it promotes every image
      to its own GPU layer, and once mobile GPU memory runs out the browser
      evicts those layers mid-scroll, which reads as images blinking. */
-
-  /* Off-screen section skipping is a desktop-only optimisation. On mobile the
-     re-layout when a skipped section re-enters the viewport is visible as a
-     blank flash / scroll jump, so render sections normally. */
-  .lazy-section {
-    content-visibility: visible !important;
-    contain-intrinsic-size: none !important;
-  }
 
   /* Simplify shadows on mobile - except essential ones */
   button:not(.hero-cta-button),
