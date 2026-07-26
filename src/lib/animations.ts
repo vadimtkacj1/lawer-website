@@ -1,13 +1,29 @@
 import { Variants } from "framer-motion";
 
-// Viewport defaults — once:true so elements animate in only once.
-//
-// `margin` maps to IntersectionObserver's rootMargin, so a POSITIVE bottom
-// value grows the root downwards and the reveal starts while the element is
-// still below the fold. The previous values did the opposite: `amount: 0.2`
-// waited until a fifth of the block was on screen, and the negative margins
-// shrank the root so it fired even later. Either way the top of the section
-// was already visible at opacity 0 — read by the user as a blink on scroll.
+/**
+ * Scroll-reveal motion.
+ *
+ * These variants deliberately never start at `opacity: 0`.
+ *
+ * A reveal that fades from transparent can only avoid being seen mid-fade if it
+ * finishes before the element reaches the viewport. At a normal scroll speed
+ * (~3000px/s measured) a 400-500ms fade cannot: the element is on screen for
+ * hundreds of milliseconds while still translucent, which reads as content
+ * blinking in. Widening the IntersectionObserver margin does not fix it either
+ * — the pre-roll needed is so large the animation would play entirely offscreen.
+ *
+ * So the motion is carried by a short upward translate instead. Text is painted
+ * at full strength from the first frame, and the only thing that animates is
+ * position, which cannot produce a blank band no matter how fast the user
+ * scrolls.
+ */
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+const SLIDE = { duration: 0.3, ease: EASE };
+
+// `margin` maps to IntersectionObserver's rootMargin: a positive bottom value
+// grows the root downwards so the slide starts just before the element rises
+// into view.
 export const viewportOptions = {
   once: true,
   margin: "0px 0px 200px 0px",
@@ -24,78 +40,58 @@ export const viewportDelayed = {
 };
 
 export const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
-  },
+  hidden: { opacity: 1, y: 18 },
+  visible: { opacity: 1, y: 0, transition: SLIDE },
 };
 
 export const fadeInUpFast: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  },
+  hidden: { opacity: 1, y: 12 },
+  visible: { opacity: 1, y: 0, transition: SLIDE },
 };
 
 // Fade-only variants (no x translation — kept for API compatibility)
 export const fadeInRight: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  },
+  hidden: { opacity: 1, y: 12 },
+  visible: { opacity: 1, y: 0, transition: SLIDE },
 };
 
 export const fadeInLeft: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  },
+  hidden: { opacity: 1, y: 12 },
+  visible: { opacity: 1, y: 0, transition: SLIDE },
 };
 
 export const fadeIn: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
-  },
+  hidden: { opacity: 1 },
+  visible: { opacity: 1, transition: { duration: 0 } },
 };
 
 export const scaleIn: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  },
+  hidden: { opacity: 1, y: 12 },
+  visible: { opacity: 1, y: 0, transition: SLIDE },
 };
 
+// Stagger is kept short. The previous 0.08s step plus a 0.5s child fade meant a
+// six-item grid took over a second to finish arriving, and every item below the
+// first was visibly translucent for most of it.
 export const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+    transition: { staggerChildren: 0.04, delayChildren: 0 },
   },
 };
 
 export const staggerContainerFast: Variants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.08 },
+    transition: { staggerChildren: 0.04, delayChildren: 0 },
   },
 };
 
 export const staggerItem: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  },
+  hidden: { opacity: 1, y: 12 },
+  visible: { opacity: 1, y: 0, transition: SLIDE },
 };
 
 // Kept for API compatibility — no actual parallax applied

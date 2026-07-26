@@ -25,8 +25,8 @@ export default function BankLogos() {
         <m.div
           key="bank-logos-marquee"
           className="relative w-full"
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 12 }}
+          whileInView={{ y: 0 }}
           // "once: true" ensures better performance on mobile devices
           viewport={{ ...viewportOptions, once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}

@@ -78,10 +78,10 @@ const ServiceCard = ({ service, index, scrollYProgress }: { service: typeof serv
 
   return (
     <m.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 18 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, margin: "0px 0px 200px 0px" }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.3 }}
       className={`relative flex flex-col items-center gap-2 md:gap-12 lg:gap-24 ${
         isEven ? "lg:flex-row" : "lg:flex-row-reverse"
       }`}
