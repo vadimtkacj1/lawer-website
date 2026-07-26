@@ -63,10 +63,13 @@ export default function ExpertBio() {
                     key={idx}
                     variants={fadeInUpFast}
                     style={{ marginRight: item.offset }}
-                    className="flex items-center bg-white/95 backdrop-blur-md p-3  rounded-xl shadow-lg w-auto"
+                    className="flex items-start gap-2 bg-white/95 backdrop-blur-md p-3 rounded-xl shadow-lg max-w-[300px]"
                   >
-                    <BadgeCheck className="w-5 h-5 text-[#F1662A] flex-shrink-0" />
-                    <span className="text-[#0f3244] font-bold text-sm md:text-base whitespace-nowrap">{item.text}</span>
+                    <BadgeCheck className="w-5 h-5 mt-0.5 text-[#F1662A] flex-shrink-0" />
+                    {/* No `whitespace-nowrap`: the longest credential is ~50 chars, so it
+                        overflowed past the photo and got clipped by the section's
+                        overflow-hidden, leaving what looked like an empty white bar. */}
+                    <span className="text-[#0f3244] font-bold text-sm md:text-base leading-snug text-balance">{item.text}</span>
                   </m.div>
                 ))}
               </m.div>

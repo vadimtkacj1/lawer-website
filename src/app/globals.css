@@ -57,17 +57,17 @@
     }
   }
 
-  /* Optimize image loading */
-  img {
-    content-visibility: auto;
-  }
-  
-  /* Optimize video loading */
-  video {
-    content-visibility: auto;
-  }
+  /* NOTE: `content-visibility: auto` is deliberately NOT applied to img/video.
+     It makes the browser drop and re-paint media as it crosses the viewport
+     edge, which shows up as visible flashing while scrolling on mobile.
+     Off-screen work is already avoided via native lazy loading. */
 
-
+  /* Skip layout/paint for off-screen sections (see LazyMount). Overridden for
+     touch devices further down — there it causes visible flashing. */
+  .lazy-section {
+    content-visibility: auto;
+    contain-intrinsic-size: var(--lazy-section-size, auto 600px);
+  }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-noto-sans-hebrew font-black tracking-tight;
@@ -243,9 +243,11 @@
   *:not([class*="accessibility"]):not([id*="accessibility"]):not(.fixed) {
     will-change: auto !important;
   }
-  /* Simplify transitions on mobile - EXCEPT widgets */
-  *:not([class*="accessibility"]):not([id*="accessibility"]):not(.fixed) {
-    transition-duration: 0.1s !important;
+  /* Shorten transitions on mobile, but ONLY for elements that opted into a
+     transition. Applying transition-duration to `*` makes every element
+     animate `all` on any style change, so unrelated repaints flash. */
+  [class*="transition"]:not([class*="accessibility"]):not([id*="accessibility"]):not(.fixed) {
+    transition-duration: 0.15s !important;
   }
   /* Disable ALL framer motion animations on mobile for performance */
   [data-framer-motion],
@@ -261,11 +263,16 @@
     transform: none !important;
   }
 
-  /* Reduce image quality on mobile for faster loading */
-  img {
-    image-rendering: auto;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+  /* Do NOT force backface-visibility on images here: it promotes every image
+     to its own GPU layer, and once mobile GPU memory runs out the browser
+     evicts those layers mid-scroll, which reads as images blinking. */
+
+  /* Off-screen section skipping is a desktop-only optimisation. On mobile the
+     re-layout when a skipped section re-enters the viewport is visible as a
+     blank flash / scroll jump, so render sections normally. */
+  .lazy-section {
+    content-visibility: visible !important;
+    contain-intrinsic-size: none !important;
   }
 
   /* Simplify shadows on mobile - except essential ones */

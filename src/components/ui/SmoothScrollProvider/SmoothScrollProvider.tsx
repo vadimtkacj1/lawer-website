@@ -5,7 +5,6 @@ import { useEffect } from "react";
 export default function SmoothScrollProvider() {
   useEffect(() => {
     let rafId: number | null = null;
-    let isScrolling = false;
 
     // Enhanced smooth scroll with performance optimizations
     const handleClick = (e: MouseEvent) => {
@@ -54,49 +53,30 @@ export default function SmoothScrollProvider() {
                 rafId = requestAnimationFrame(animateScroll);
               } else {
                 rafId = null;
-                isScrolling = false;
               }
             };
 
-            isScrolling = true;
             rafId = requestAnimationFrame(animateScroll);
           }
         }
       }
     };
 
-    // Optimize scroll performance with passive listener
-    const optimizeScroll = () => {
-      // Add will-change on scroll start
-      if (!isScrolling) {
-        document.documentElement.style.willChange = 'scroll-position';
-      }
-    };
-
-    const resetOptimization = () => {
-      // Remove will-change after scroll ends
-      if (!isScrolling) {
-        document.documentElement.style.willChange = 'auto';
-      }
-    };
-
-    let scrollTimeout: NodeJS.Timeout;
-    const handleScroll = () => {
-      optimizeScroll();
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(resetOptimization, 150);
-    };
+    // NOTE: there used to be a scroll listener here that toggled
+    // `document.documentElement.style.willChange` between 'scroll-position' and
+    // 'auto'. Writing an inline style on <html> on every scroll event dirties
+    // the root and forces a style recalculation of the whole document each
+    // time, which is exactly the kind of mid-scroll repaint that flickers on
+    // mobile. `will-change: scroll-position` on the root buys nothing, so the
+    // listener is gone entirely.
 
     document.addEventListener('click', handleClick);
-    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       document.removeEventListener('click', handleClick);
-      window.removeEventListener('scroll', handleScroll);
       if (rafId !== null) {
         cancelAnimationFrame(rafId);
       }
-      clearTimeout(scrollTimeout);
     };
   }, []);
 

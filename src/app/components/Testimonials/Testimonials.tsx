@@ -150,8 +150,19 @@ const MarqueeRow = ({
   // We animate from 0% to -50% (left) or -50% to 0% (right).
   const doubleItems = useMemo(() => [...items, ...items], [items]);
 
+  // Same edge mask as InfiniteMarquee: without it the cards are chopped
+  // mid-word against the viewport edge instead of fading out.
+  const edgeFade = 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)';
+
   return (
-    <div className="flex w-full overflow-hidden" style={{ direction: 'ltr' }}>
+    <div
+      className="flex w-full overflow-hidden"
+      style={{
+        direction: 'ltr',
+        maskImage: edgeFade,
+        WebkitMaskImage: edgeFade,
+      }}
+    >
       <m.div
         key={`testimonials-marquee-${direction}-${duration}`}
         className="flex gap-6 md:gap-8 py-4"

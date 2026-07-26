@@ -65,6 +65,7 @@ export default function Contact() {
   const [errors, setErrors] = useState({ name: "", phone: "" });
   const [touched, setTouched] = useState({ name: false, phone: false });
   const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [termsError, setTermsError] = useState(false);
 
   // Валидация
   const validateName = (name: string) => {
@@ -110,8 +111,12 @@ export default function Contact() {
     if (nameErr || phoneErr || !agreedToTerms) {
       setErrors({ name: nameErr, phone: phoneErr });
       setTouched({ name: true, phone: true });
+      // Missing consent used to fail silently: the button was rendered disabled
+      // and the click did nothing. Surface it as a normal validation error.
+      setTermsError(!agreedToTerms);
       return;
     }
+    setTermsError(false);
 
     setIsSubmitting(true);
     try {
@@ -313,28 +318,42 @@ export default function Contact() {
                       onBlur={() => handleBlur("phone")}
                     />
 
-                    <label className="flex items-start gap-3 text-right cursor-pointer -mt-3">
-                      <input
-                        type="checkbox"
-                        checked={agreedToTerms}
-                        onChange={(e) => setAgreedToTerms(e.target.checked)}
-                        className="mt-1 w-4 h-4 rounded border-2 border-[#1c3664]/30 text-[#1c3664] focus:ring-2 focus:ring-[#1c3664]/20 cursor-pointer shrink-0"
-                      />
-                      <span className="text-xs sm:text-sm text-[#1c3664]/80 font-medium">
-                        הנכם מאשרים את{" "}
-                        <Link href="/privacy" className="text-[#1c3664] font-bold hover:text-orange transition-colors underline">
-                          מדיניות פרטיות
-                        </Link>
-                        {" "}ו
-                        <Link href="/terms" className="text-[#1c3664] font-bold hover:text-orange transition-colors underline">
-                          תנאי שימוש
-                        </Link>
-                      </span>
-                    </label>
+                    <div className="-mt-3">
+                      <label className="flex items-start gap-3 text-right cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={agreedToTerms}
+                          onChange={(e) => {
+                            setAgreedToTerms(e.target.checked);
+                            if (e.target.checked) setTermsError(false);
+                          }}
+                          aria-invalid={termsError}
+                          aria-describedby={termsError ? "contact-terms-error" : undefined}
+                          className={`mt-1 w-4 h-4 rounded border-2 text-[#1c3664] focus:ring-2 focus:ring-[#1c3664]/20 cursor-pointer shrink-0 ${
+                            termsError ? "border-red-500" : "border-[#1c3664]/30"
+                          }`}
+                        />
+                        <span className="text-xs sm:text-sm text-[#1c3664]/80 font-medium">
+                          הנכם מאשרים את{" "}
+                          <Link href="/privacy" className="text-[#1c3664] font-bold hover:text-orange transition-colors underline">
+                            מדיניות פרטיות
+                          </Link>
+                          {" "}ו
+                          <Link href="/terms" className="text-[#1c3664] font-bold hover:text-orange transition-colors underline">
+                            תנאי שימוש
+                          </Link>
+                        </span>
+                      </label>
+                      {termsError && (
+                        <p id="contact-terms-error" role="alert" className="mt-1.5 text-red-500 text-xs font-bold text-right">
+                          יש לאשר את מדיניות הפרטיות ותנאי השימוש
+                        </p>
+                      )}
+                    </div>
 
                     <button
                       type="submit"
-                      disabled={isSubmitting || !agreedToTerms}
+                      disabled={isSubmitting}
                       className="w-full mt-2 py-3 text-lg sm:text-xl font-bold bg-[#1c3664] text-white rounded-2xl hover:bg-[#152a4d] transition-all shadow-xl active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? "שולח..." : "שלח הודעה"}

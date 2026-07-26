@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 
 type LazyMountProps = {
   children: ReactNode;
@@ -22,6 +22,8 @@ type LazyMountProps = {
   intrinsicSize?: string;
 };
 
+type LazySectionStyle = CSSProperties & { "--lazy-section-size"?: string };
+
 /**
  * Renders its children directly in the server-rendered HTML so the content is
  * crawlable and indexable by search engines and AI crawlers (which do not
@@ -34,6 +36,11 @@ type LazyMountProps = {
  * section content never appeared in the HTML — the homepage shipped only empty
  * placeholders, hiding body text, internal links, the visible FAQ and the
  * testimonials that back the review schema from search engines.
+ *
+ * The skipping itself lives in the `.lazy-section` class rather than in an
+ * inline style, so it can be turned off for touch devices — on mobile the
+ * re-layout of a skipped section entering the viewport is visible as a blank
+ * flash and a scroll jump.
  */
 export default function LazyMount({
   children,
@@ -41,10 +48,8 @@ export default function LazyMount({
 }: LazyMountProps) {
   return (
     <div
-      style={{
-        contentVisibility: "auto",
-        containIntrinsicSize: intrinsicSize,
-      }}
+      className="lazy-section"
+      style={{ "--lazy-section-size": intrinsicSize } as LazySectionStyle}
     >
       {children}
     </div>

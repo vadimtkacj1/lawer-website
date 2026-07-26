@@ -35,17 +35,25 @@ export default function GoogleMap({ className = "" }: GoogleMapProps) {
             title="מיקום המשרד - יהושע חנקין 83, חולון"
           />
         ) : (
+          /* Deliberate click-to-load placeholder (keeps the Google iframe off the
+             initial page load). Styled as an obvious affordance — at low contrast
+             it read as a map that had failed to load. */
           <button
             onClick={() => setLoaded(true)}
-            className="w-full h-full bg-[#e8e4df] flex flex-col items-center justify-center gap-3 hover:bg-[#dedad5] transition-colors cursor-pointer"
+            className="group w-full h-full bg-[#efecea] flex flex-col items-center justify-center gap-4 hover:bg-[#e6e2df] transition-colors cursor-pointer"
             aria-label="טען מפה - יהושע חנקין 83 חולון"
+            dir="rtl"
           >
-            <svg className="w-10 h-10 text-[#1c3664]/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            <svg className="w-11 h-11 text-[#1c3664]" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
             </svg>
-            <span className="text-[#1c3664] font-bold text-base">יהושע חנקין 83, חולון</span>
-            <span className="text-[#1c3664]/50 text-sm">לחץ לטעינת המפה</span>
+            <span className="text-[#1c3664] font-bold text-lg">יהושע חנקין 83, חולון</span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#1c3664]/25 bg-white px-5 py-2 text-sm font-bold text-[#1c3664] shadow-sm transition-colors group-hover:border-[#1c3664]/50">
+              הצגת המפה
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11 19l-7-7 7-7" />
+              </svg>
+            </span>
           </button>
         )}
 
