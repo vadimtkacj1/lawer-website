@@ -119,6 +119,46 @@
     image-rendering: auto;
   }
 
+  /* GPU texture budget — the reason whole sections, images, the carousel and the
+     header all flicker at once on a phone. A continuously transform-animated
+     element is held by the compositor as one texture the size of the WHOLE
+     element, not just its visible part. The testimonial tracks are ~6000px wide,
+     which at devicePixelRatio 3 is roughly 80MB of texture each. Two of those
+     plus the document layer exhausts the budget, so the compositor evicts and
+     re-rasterises textures mid-scroll — seen as blinking.
+     On touch the marquee therefore stops animating and becomes a normal swipe
+     strip: no animation, no permanent layer, only visible tiles rasterised. */
+  .marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+  .marquee-viewport {
+    overflow-x: auto !important;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  .marquee-viewport::-webkit-scrollbar {
+    display: none;
+  }
+  .marquee-track > * {
+    scroll-snap-align: center;
+  }
+  .marquee-dup {
+    display: none;
+  }
+
+  /* backdrop-filter is the single most expensive effect on mobile: each element
+     using it gets its own composited layer and re-blurs the backdrop every
+     frame. These elements all sit on a near-opaque background already, so
+     dropping the blur costs nothing visually. */
+  [class*="backdrop-blur"] {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
 
   /* Better touch targets for links */
   a {

@@ -110,14 +110,14 @@ const CARD_ELEVATION = [
 /**
  * Individual Testimonial Card Component.
  */
-const TestimonialCard = ({ item }: { item: typeof testimonials[0] }) => {
+const TestimonialCard = ({ item, className = "" }: { item: typeof testimonials[0]; className?: string }) => {
   // Every entry is authored as "Name – service", so the two halves can carry
   // different typographic weight instead of running together on one line.
   const [author, service] = item.name.split(" – ");
 
   return (
     <figure
-      className="relative flex flex-col w-[320px] md:w-[500px] min-h-[240px] md:min-h-[300px] shrink-0 mr-6 md:mr-8 p-6 md:p-10 rounded-3xl overflow-hidden bg-gradient-to-bl from-[#1c3664] via-[#2a54a1] to-[#5da2ff]"
+      className={`relative flex flex-col w-[320px] md:w-[500px] min-h-[240px] md:min-h-[300px] shrink-0 mr-6 md:mr-8 p-6 md:p-10 rounded-3xl overflow-hidden bg-gradient-to-bl from-[#1c3664] via-[#2a54a1] to-[#5da2ff] ${className}`}
       style={{ boxShadow: CARD_ELEVATION }}
       dir="rtl"
     >
@@ -185,16 +185,29 @@ const MarqueeRow = ({
   // They simply run off the edge instead.
   return (
     <div
-      className="flex w-full overflow-hidden py-4 motion-reduce:overflow-x-auto"
+      className="marquee-viewport flex w-full overflow-hidden py-4 motion-reduce:overflow-x-auto"
       style={{ direction: 'ltr' }}
     >
+      {/* No `will-change: transform` here. The track is thousands of pixels
+          wide, and pinning it as a permanently-promoted compositor layer costs
+          tens of megabytes of GPU texture per row — under memory pressure the
+          browser evicts and re-rasterises it, which is visible as blinking
+          while scrolling. The animation composites fine without the hint. */}
       <div
-        className={`flex w-max will-change-transform hover:[animation-play-state:paused] motion-reduce:animate-none ${
+        className={`marquee-track flex w-max hover:[animation-play-state:paused] motion-reduce:animate-none ${
           direction === "left" ? "animate-marquee-back" : "animate-marquee-forth"
         }`}
       >
         {doubleItems.map((item, i) => (
-          <TestimonialCard key={`testimonial-card-${direction}-${i}`} item={item} />
+          <TestimonialCard
+            key={`testimonial-card-${direction}-${i}`}
+            item={item}
+            // The second copy exists only so the -50% keyframe can loop
+            // seamlessly. On touch the animation is off and the row is swiped
+            // instead, so the duplicate is dead weight — and hiding it halves
+            // the width of the layer the compositor has to hold.
+            className={i >= items.length ? "marquee-dup" : ""}
+          />
         ))}
       </div>
     </div>
@@ -207,8 +220,14 @@ const MarqueeRow = ({
  * Main Testimonials Section with a Cream background (#f9f7f4).
  */
 function TestimonialsSection() {
-  // Creating a reversed array for the second row to create visual contrast
-  const reversedTestimonials = useMemo(() => [...testimonials].reverse(), []);
+  // Split across the two rows rather than showing the same 17 twice. Halving
+  // the cards per row halves the width of each animated track, which is what
+  // the compositor has to hold as a texture — the full list produced an
+  // 18000px-wide layer per row.
+  const [rowOne, rowTwo] = useMemo(() => {
+    const half = Math.ceil(testimonials.length / 2);
+    return [testimonials.slice(0, half), testimonials.slice(half)];
+  }, []);
 
   return (
     <section
@@ -246,10 +265,10 @@ function TestimonialsSection() {
 
       <div className="flex flex-col gap-2 md:gap-4">
         {/* Row 1: Scrolling Left */}
-        <MarqueeRow items={testimonials} direction="left" />
+        <MarqueeRow items={rowOne} direction="left" />
 
         {/* Row 2: Scrolling Right */}
-        <MarqueeRow items={reversedTestimonials} direction="right" />
+        <MarqueeRow items={rowTwo} direction="right" />
       </div>
     </section>
   );
