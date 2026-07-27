@@ -379,8 +379,9 @@ body.menu-open .whatsapp-fab {
 }
 
 /* ---------------------------------------------------------------------------
-   Aiterra credit in the footer: an iridescent gradient that slides across the
-   wordmark. The tile is 200% wide and background-repeat is left at `repeat`,
+   Aiterra credit in the footer: a blue sheen that slides across the wordmark —
+   the brand blues with a white highlight travelling through them, no other
+   hues. The tile is 200% wide and background-repeat is left at `repeat`,
    so animating the position by exactly 200% lands on the next identical tile —
    the loop has no visible seam. Painted area is one short word, so the
    per-frame repaint cost is negligible even on the low-end phones this site
@@ -407,14 +408,16 @@ body.menu-open .whatsapp-fab {
   .aiterra-brand {
     background-image: linear-gradient(
       90deg,
-      #f26722 0%,
-      #ffc46b 14%,
-      #ffffff 28%,
-      #7dd3fc 42%,
-      #a78bfa 56%,
-      #ffffff 72%,
-      #ffc46b 86%,
-      #f26722 100%
+      #60a5fa 0%,
+      #93c5fd 12%,
+      #e0f2fe 22%,
+      #ffffff 30%,
+      #bae6fd 40%,
+      #38bdf8 52%,
+      #7dd3fc 64%,
+      #ffffff 76%,
+      #93c5fd 88%,
+      #60a5fa 100%
     );
     background-size: 200% 100%;
     -webkit-background-clip: text;

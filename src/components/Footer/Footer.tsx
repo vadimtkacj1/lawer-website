@@ -140,22 +140,19 @@ export default function Footer() {
           {/* Build credit. Laid out as flex items rather than one bidi string:
               a bare "|" between a Hebrew run and a Latin run gets reordered by
               the bidi algorithm and lands in the wrong place. */}
-          <p className="text-white/50 text-xs sm:text-sm mt-3 sm:mt-4 flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
-            <span>
-              נבנה על ידי{" "}
-              <a
-                href="https://aiterra.co.il/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="aiterra-brand underline decoration-white/20 underline-offset-2 hover:decoration-orange transition-colors"
-              >
-                Aiterra
-              </a>
-            </span>
+          <p className="text-white/50 text-xs sm:text-sm mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+            <a
+              href="https://aiterra.co.il/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="aiterra-brand underline decoration-white/20 underline-offset-2 hover:decoration-orange transition-colors"
+            >
+              Aiterra
+            </a>
             <span aria-hidden="true" className="text-white/25">
               |
             </span>
-            <span className="text-white/60">בניית אתרים ופתרונות דיגיטליים לעסקים</span>
+            <span className="text-white/60">בניית אתרים ופרסום</span>
           </p>
         </div>
       </div>
