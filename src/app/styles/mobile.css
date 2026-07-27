@@ -93,8 +93,13 @@
     will-change: auto !important;
   }
 
-  /* Simplify transitions on mobile - except widgets */
-  *:not([class*="accessibility"]):not([id*="accessibility"]):not(.fixed) {
+  /* Shorten transitions on mobile, but ONLY for elements that opted into a
+     transition. `transition-property` defaults to `all`, so setting a duration
+     on `*` makes every element animate every property for 150ms on any style
+     change — during a scroll that is continuous, unrelated repainting, seen as
+     flickering. (globals.css already carries the corrected rule; this file is
+     loaded after it, so the broken version here was the one that won.) */
+  [class*="transition"]:not([class*="accessibility"]):not([id*="accessibility"]):not(.fixed) {
     transition-duration: 0.15s !important;
   }
 
