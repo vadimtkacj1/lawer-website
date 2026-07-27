@@ -56,12 +56,15 @@ export default function ServicesHero() {
 
       {/* --- Mobile View --- */}
       <div className="lg:hidden absolute inset-0">
+        {/* Same src + same sizes as the desktop copy below: `priority` emits a preload
+            regardless of the CSS that hides one of the two, so keeping them identical
+            means one preload URL and one download per visitor instead of two. */}
         <Image
-          src="/images/expert-jpeg.webp"
+          src="/images/expert-hero.webp"
           alt="אבי - יועץ משכנתאות מומחה"
           fill
           priority
-          sizes="100vw"
+          sizes="(max-width: 1023px) 100vw, 50vw"
           className="object-cover object-center"
         />
         {/* More opaque gradient for better text visibility on mobile */}
@@ -118,11 +121,11 @@ export default function ServicesHero() {
             }}
           >
             <Image
-              src="/images/expert.jpeg"
+              src="/images/expert-hero.webp"
               alt="אבי - יועץ משכנתאות מומחה"
               fill
               priority
-              sizes="50vw"
+              sizes="(max-width: 1023px) 100vw, 50vw"
               className="object-cover"
               style={{ objectPosition: 'center 5%' }}
             />

@@ -9,7 +9,7 @@ export default function WhatsAppWidget() {
 "
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed z-[9999]
+      className="whatsapp-fab fixed z-[9999]
                  w-14 h-14 lg:w-16 lg:h-16 rounded-2xl bg-[#25d366]
                  flex items-center justify-center shadow-lg shadow-[#25d366]/30
                  transition-[transform,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-xl active:scale-95"

@@ -99,6 +99,11 @@ export default function RootLayout({
     <html
       lang="he"
       dir="rtl"
+      // The mobile stylesheet sets `scroll-behavior: smooth` on <html>. Next.js only
+      // neutralises that during a route transition when this attribute is present —
+      // without it `scrollTop = 0` animates, gets cut short by the router's follow-up
+      // scrollIntoView()/focus(), and the new page opens mid-document.
+      data-scroll-behavior="smooth"
     >
       <head>
         {/* PWA Manifest */}

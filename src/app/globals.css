@@ -306,6 +306,15 @@
   }
 }
 
+/* The floating WhatsApp button is fixed at z-[9999], bottom-right — which in RTL
+   is the edge the mobile drawer slides out from. It therefore sat on top of the
+   drawer and took the taps meant for the menu links (and the CTA) beneath it,
+   sending the user to WhatsApp instead. It has nothing to do while the menu is
+   open, so it steps aside. */
+body.menu-open .whatsapp-fab {
+  display: none;
+}
+
 .hyper-link {
   color: rgb(240, 138, 22) !important;
   cursor: pointer;

@@ -1,35 +1,15 @@
 "use client";
 
-import { m, Variants } from "framer-motion";
+import { m } from "framer-motion";
+import { staggerContainer, staggerItem, viewportOptions } from "@/lib/animations";
 
-// הגדרת הטיפוסים פותרת את שגיאת ה-TypeScript
-const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const staggerItem: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.8, 
-      ease: "easeOut" // כעת הטיפוס מזוהה כהלכה
-    } 
-  },
-};
-
-const optimizedViewport = {
-  once: true,
-  margin: "0px 0px -50px 0px",
-  amount: 0.1,
-};
+// This section used to define its own variants that faded from `opacity: 0`
+// over 0.8s with a 0.2s stagger, behind a viewport margin of "-50px" (the
+// observer fired only once the element was already 50px inside the viewport).
+// At normal scroll speed that guarantees the content is on screen while still
+// transparent — the blink. It now uses the shared variants, which carry the
+// motion with a short translate at full opacity and pre-roll the trigger.
+const optimizedViewport = viewportOptions;
 
 export default function RenovationIntro() {
   return (

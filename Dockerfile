@@ -37,6 +37,12 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
+# Pre-create the image-optimizer cache dir *before* the volume is mounted, so the
+# named volume in docker-compose inherits nextjs ownership. Without this, Docker
+# creates the mountpoint as root and the optimizer silently fails to cache,
+# re-encoding every image on every request.
+RUN mkdir -p /app/.next/cache/images
+
 # Set correct permissions
 RUN chown -R nextjs:nodejs /app
 

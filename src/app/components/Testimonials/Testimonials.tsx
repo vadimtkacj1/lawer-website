@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, memo } from "react";
+import { useMemo, memo, useRef } from "react";
+import { useMarqueeAutoScroll } from "@/lib/useMarqueeAutoScroll";
 
 /**
  * Static data for testimonials.
@@ -110,16 +111,23 @@ const CARD_ELEVATION = [
 /**
  * Individual Testimonial Card Component.
  */
-const TestimonialCard = ({ item, className = "" }: { item: typeof testimonials[0]; className?: string }) => {
+const TestimonialCard = ({
+  item,
+  ariaHidden = false,
+}: {
+  item: typeof testimonials[0];
+  ariaHidden?: boolean;
+}) => {
   // Every entry is authored as "Name – service", so the two halves can carry
   // different typographic weight instead of running together on one line.
   const [author, service] = item.name.split(" – ");
 
   return (
     <figure
-      className={`relative flex flex-col w-[320px] md:w-[500px] min-h-[240px] md:min-h-[300px] shrink-0 mr-6 md:mr-8 p-6 md:p-10 rounded-3xl overflow-hidden bg-gradient-to-bl from-[#1c3664] via-[#2a54a1] to-[#5da2ff] ${className}`}
+      className="relative flex flex-col w-[320px] md:w-[500px] min-h-[240px] md:min-h-[300px] shrink-0 mr-6 md:mr-8 p-6 md:p-10 rounded-3xl overflow-hidden bg-gradient-to-bl from-[#1c3664] via-[#2a54a1] to-[#5da2ff]"
       style={{ boxShadow: CARD_ELEVATION }}
       dir="rtl"
+      aria-hidden={ariaHidden || undefined}
     >
       {/* Oversized quote mark — the card reads as a quote before a word is read.
           Parked on the left because the stars already own the top-right in RTL. */}
@@ -170,6 +178,10 @@ const TestimonialCard = ({ item, className = "" }: { item: typeof testimonials[0
  * set a CSS animation property on an element that had no CSS animation, so
  * the row never paused. Card gaps live on the cards as margin-inline so the
  * -50% keyframe lands exactly on the second copy.
+ *
+ * On touch that keyframe is off (it cost more GPU texture than a phone has —
+ * see mobile.css) and the row is a real scroll container instead, nudged along
+ * by `useMarqueeAutoScroll` and swipeable at any point.
  */
 const MarqueeRow = ({
   items,
@@ -179,12 +191,16 @@ const MarqueeRow = ({
   direction?: "left" | "right";
 }) => {
   const doubleItems = useMemo(() => [...items, ...items], [items]);
+  const viewportRef = useRef<HTMLDivElement>(null);
+
+  useMarqueeAutoScroll(viewportRef, direction);
 
   // No edge mask here on purpose: the cards carry a strong gradient, and any
   // fade at the viewport edge washed them out into the cream background.
   // They simply run off the edge instead.
   return (
     <div
+      ref={viewportRef}
       className="marquee-viewport flex w-full overflow-hidden py-4 motion-reduce:overflow-x-auto"
       style={{ direction: 'ltr' }}
     >
@@ -199,14 +215,14 @@ const MarqueeRow = ({
         }`}
       >
         {doubleItems.map((item, i) => (
+          // The second copy is what makes both loops seamless: the -50%
+          // keyframe on desktop, and the wrap-by-one-copy-width that
+          // useMarqueeAutoScroll performs on touch. It is a visual repeat, so
+          // it is hidden from assistive tech rather than read out twice.
           <TestimonialCard
             key={`testimonial-card-${direction}-${i}`}
             item={item}
-            // The second copy exists only so the -50% keyframe can loop
-            // seamlessly. On touch the animation is off and the row is swiped
-            // instead, so the duplicate is dead weight — and hiding it halves
-            // the width of the layer the compositor has to hold.
-            className={i >= items.length ? "marquee-dup" : ""}
+            ariaHidden={i >= items.length}
           />
         ))}
       </div>

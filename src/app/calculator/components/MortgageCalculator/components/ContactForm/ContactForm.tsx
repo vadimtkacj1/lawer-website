@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 import { fadeInUpFast, viewportOptions } from "@/lib/animations";
 import type { CalculatorData } from "../../types";
 import FormInput from "./FormInput";
@@ -18,6 +19,8 @@ export default function ContactForm({ calculatorData }: ContactFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState({ name: "", phone: "" });
   const [touched, setTouched] = useState({ name: false, phone: false });
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [termsError, setTermsError] = useState(false);
 
   const validateName = (name: string) => {
     if (!name.trim()) return "שם מלא הוא שדה חובה";
@@ -106,11 +109,13 @@ export default function ContactForm({ calculatorData }: ContactFormProps) {
     const nameErr = validateName(formData.name);
     const phoneErr = validatePhone(formData.phone);
 
-    if (nameErr || phoneErr) {
+    if (nameErr || phoneErr || !agreedToTerms) {
       setErrors({ name: nameErr, phone: phoneErr });
       setTouched({ name: true, phone: true });
+      setTermsError(!agreedToTerms);
       return;
     }
+    setTermsError(false);
 
     setIsSubmitting(true);
     try {
@@ -128,6 +133,7 @@ export default function ContactForm({ calculatorData }: ContactFormProps) {
         setIsSubmitted(true);
         setFormData({ name: "", phone: "" });
         setTouched({ name: false, phone: false });
+        setAgreedToTerms(false);
       }
     } catch (error) {
       console.error("Submission error:", error);
@@ -182,6 +188,39 @@ export default function ContactForm({ calculatorData }: ContactFormProps) {
                 onPaste={handlePhonePaste}
                 dir="ltr"
               />
+
+              <div className="-mt-2">
+                <label className="flex items-start gap-2 text-right cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={agreedToTerms}
+                    onChange={(e) => {
+                      setAgreedToTerms(e.target.checked);
+                      if (e.target.checked) setTermsError(false);
+                    }}
+                    aria-invalid={termsError}
+                    aria-describedby={termsError ? "calculator-terms-error" : undefined}
+                    className={`mt-0.5 w-4 h-4 rounded border-2 text-blue-dk focus:ring-2 focus:ring-orange/30 cursor-pointer shrink-0 ${
+                      termsError ? "border-red-500" : "border-blue-dk/30"
+                    }`}
+                  />
+                  <span className="text-xs text-blue-dk/80 font-bold">
+                    הנכם מאשרים את{" "}
+                    <Link href="/privacy" className="text-blue-dk font-black hover:text-orange transition-colors underline">
+                      מדיניות פרטיות
+                    </Link>
+                    {" "}ו
+                    <Link href="/terms" className="text-blue-dk font-black hover:text-orange transition-colors underline">
+                      תנאי שימוש
+                    </Link>
+                  </span>
+                </label>
+                {termsError && (
+                  <p id="calculator-terms-error" role="alert" className="mt-1.5 text-red-500 text-xs font-bold text-right">
+                    יש לאשר את מדיניות הפרטיות ותנאי השימוש
+                  </p>
+                )}
+              </div>
 
               <button
                 type="submit"

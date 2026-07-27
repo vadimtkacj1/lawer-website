@@ -18,6 +18,12 @@ services:
       - PORT=80
     networks:
       - app-network
+    volumes:
+      # Persist optimized images across redeploys. Without this every deploy wipes
+      # the cache and the first visitor pays the full re-encode for every image.
+      # Only the images subdir — mounting all of .next/cache would carry stale
+      # ISR/fetch data into a new build.
+      - next-image-cache:/app/.next/cache/images
     healthcheck:
       # Node is always in the image; wget/curl are not (Alpine) — avoids false "unhealthy"
       test:
@@ -31,6 +37,9 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+
+volumes:
+  next-image-cache:
 
 networks:
   app-network:

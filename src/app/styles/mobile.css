@@ -133,26 +133,25 @@
      which at devicePixelRatio 3 is roughly 80MB of texture each. Two of those
      plus the document layer exhausts the budget, so the compositor evicts and
      re-rasterises textures mid-scroll — seen as blinking.
-     On touch the marquee therefore stops animating and becomes a normal swipe
-     strip: no animation, no permanent layer, only visible tiles rasterised. */
+     On touch the marquee therefore drops the transform animation and becomes a
+     real scroll container: only the visible tiles are rasterised. It still
+     moves — `useMarqueeAutoScroll` advances scrollLeft frame by frame — and it
+     can be swiped at any point, which the transform version never allowed.
+     No scroll snapping here: proximity snapping fights a scroll position that
+     is being written every frame and produces a visible tug. */
   .marquee-track {
     animation: none !important;
     transform: none !important;
   }
   .marquee-viewport {
     overflow-x: auto !important;
-    scroll-snap-type: x proximity;
+    scroll-behavior: auto !important;
+    overscroll-behavior-x: contain;
     scrollbar-width: none;
     -webkit-mask-image: none !important;
     mask-image: none !important;
   }
   .marquee-viewport::-webkit-scrollbar {
-    display: none;
-  }
-  .marquee-track > * {
-    scroll-snap-align: center;
-  }
-  .marquee-dup {
     display: none;
   }
 

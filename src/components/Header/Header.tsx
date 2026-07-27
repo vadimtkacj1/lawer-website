@@ -99,7 +99,20 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    // The floating WhatsApp button is z-[9999] — above the drawer — and in RTL it
+    // sits on the same edge the drawer opens from, so it swallowed taps on the
+    // menu links underneath it. `body.menu-open` hides it while the drawer is up.
+    document.body.classList.toggle("menu-open", isMobileMenuOpen);
+    return () => {
+      document.body.classList.remove("menu-open");
+    };
   }, [isMobileMenuOpen]);
+
+  // Navigating with the drawer open used to leave it open on the next page (and
+  // the body scroll-locked), because App Router keeps the header mounted.
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("#")) {
@@ -262,12 +275,17 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
       <div
         id="mobile-menu"
         inert={!isMobileMenuOpen || undefined}
-        className={`lg:hidden fixed top-0 right-0 bottom-0 w-[75vw] max-w-[300px] bg-cream shadow-2xl z-[90] flex flex-col transition-transform duration-300 ease-in-out transform ${
+        className={`lg:hidden fixed top-0 right-0 bottom-0 w-[75vw] max-w-[300px] bg-cream shadow-2xl z-[90] flex flex-col pt-[100px] transition-transform duration-300 ease-in-out transform ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
         dir="rtl"
       >
-        <nav aria-label="ניווט ראשי (נייד)" className="px-6 pt-[100px] pb-8 flex flex-col overflow-y-auto w-full h-full">
+        {/* The 100px top offset belongs to the drawer, not to the scrolling area.
+            While it was padding *inside* the scroller, menu items scrolled up
+            underneath the header (z-[100], above this drawer) — they looked
+            hidden but still took the tap, and the top-right of that band is the
+            close button, so tapping a link there just shut the menu. */}
+        <nav aria-label="ניווט ראשי (נייד)" className="px-6 pb-8 flex flex-col overflow-y-auto overscroll-contain w-full flex-1 min-h-0">
           <ul className="flex flex-col gap-5 w-full">
             {navLinks.map((link) => {
               const isServicesDropdown = link.dropdownType === "services";
