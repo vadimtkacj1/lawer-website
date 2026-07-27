@@ -69,9 +69,32 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
   const [isMobileServiceAreasOpen, setIsMobileServiceAreasOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 50);
+    // Read layout at most once per frame, and only touch React state when the
+    // threshold is actually crossed. The previous version read window.scrollY
+    // inside the scroll event itself, on every event — on a phone that fires
+    // far more often than once a frame, and each read forces the browser to
+    // flush pending layout.
+    let frame = 0;
+    let last = window.scrollY > 50;
+    setIsScrolled(last);
+
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const next = window.scrollY > 50;
+        if (next !== last) {
+          last = next;
+          setIsScrolled(next);
+        }
+      });
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, []);
 
   useEffect(() => {
