@@ -64,9 +64,11 @@
 
 /* Mobile performance optimizations - disable heavy animations on touch devices */
 @media (hover: none) and (pointer: coarse) {
-  /* Optimize scrolling */
+  /* `-webkit-overflow-scrolling: touch` is deliberately NOT set here. It has
+     been a no-op since iOS 13 (momentum scrolling is the default), but it still
+     forces the document into its own hardware-accelerated scrolling layer,
+     which makes elements flicker and drop out during momentum scroll. */
   html {
-    -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
   }
 
@@ -140,7 +142,6 @@
   .marquee-viewport {
     overflow-x: auto !important;
     scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -webkit-mask-image: none !important;
     mask-image: none !important;
@@ -187,16 +188,23 @@
 
 /* iOS specific fixes */
 @supports (-webkit-touch-callout: none) {
-  /* Fix iOS Safari 100vh issue */
-  .min-h-\[100dvh\] {
-    min-height: -webkit-fill-available;
-  }
-
   /* Prevent iOS zoom on input focus */
   input,
   select,
   textarea {
     font-size: 16px !important;
+  }
+}
+
+/* Legacy iOS only. `-webkit-fill-available` re-resolves every time Safari's
+   toolbar collapses or expands, so on a scrolling page the hero's height keeps
+   changing and everything below it reflows mid-scroll — the whole page appears
+   to flicker. `100dvh` is the modern fix for exactly that and is stable during
+   toolbar animation, so it must win wherever it is supported. This fallback is
+   now scoped to browsers that genuinely lack dvh (iOS below 15.4). */
+@supports (-webkit-touch-callout: none) and (not (height: 100dvh)) {
+  .min-h-\[100dvh\] {
+    min-height: -webkit-fill-available;
   }
 }
 

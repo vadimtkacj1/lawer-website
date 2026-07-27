@@ -31,9 +31,12 @@
     outline: none;
   }
 
+  /* No `-webkit-overflow-scrolling: touch` on the root. It has been a no-op
+     since iOS 13 (momentum scrolling is the default), but it still promotes the
+     document to its own hardware-accelerated scrolling layer, and elements
+     inside that layer flicker or drop out during momentum scroll on iOS. */
   html {
     direction: rtl;
-    -webkit-overflow-scrolling: touch;
     overflow-y: scroll;
     scroll-padding-top: var(--header-height);
     -webkit-font-smoothing: antialiased;
