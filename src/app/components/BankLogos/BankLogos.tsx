@@ -2,7 +2,7 @@
 
 import { m } from "framer-motion";
 import InfiniteMarquee from "@/components/ui/InfiniteMarquee";
-import { fadeInUpFast, viewportOptions } from "@/lib/animations";
+import { fadeInUpFast, slideTransition, viewportOptions } from "@/lib/animations";
 
 const banks = [
   { src: "/images/bank1.png", width: 1200, height: 510, alt: "Bank 1" },
@@ -25,11 +25,11 @@ export default function BankLogos() {
         <m.div
           key="bank-logos-marquee"
           className="relative w-full"
-          initial={{ y: 12 }}
+          initial={{ y: 8 }}
           whileInView={{ y: 0 }}
           // "once: true" ensures better performance on mobile devices
           viewport={{ ...viewportOptions, once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={slideTransition}
         >
           <div className="py-2 md:py-4">
             <InfiniteMarquee

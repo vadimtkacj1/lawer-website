@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { m, useScroll, useSpring, useTransform, MotionValue } from "framer-motion";
-import { staggerContainer, staggerItem } from "@/lib/animations";
+import { slideTransition, staggerContainer, staggerItem } from "@/lib/animations";
 
 /**
  * --- Artistic Line Art Components ---
@@ -78,10 +78,10 @@ const ServiceCard = ({ service, index, scrollYProgress }: { service: typeof serv
 
   return (
     <m.div
-      initial={{ y: 18 }}
+      initial={{ y: 10 }}
       whileInView={{ y: 0 }}
       viewport={{ once: true, margin: "0px 0px 200px 0px" }}
-      transition={{ duration: 0.3 }}
+      transition={slideTransition}
       className={`relative flex flex-col items-center gap-2 md:gap-12 lg:gap-24 ${
         isEven ? "lg:flex-row" : "lg:flex-row-reverse"
       }`}

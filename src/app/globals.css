@@ -4,26 +4,77 @@
 
 /* Custom base styles */
 @layer base {
-  /* Skip-to-content link: visually hidden until focused (keyboard/AT users) */
+  /* Skip-to-content link: stays in the accessibility tree, but is clipped to a
+     1px box instead of being pushed off-screen with a transform. The touch
+     stylesheets reset `transform` on a lot of elements, and a stray or
+     programmatic focus pinned the translated version on screen — the link then
+     sat visibly over the page on mobile. Clipping cannot be undone by any
+     transform rule. */
   .skip-link {
-    position: absolute;
+    position: fixed;
     top: 0.5rem;
     right: 0.5rem;
     z-index: 200;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
     background-color: #1c3664;
     color: #ffffff;
-    padding: 0.75rem 1.25rem;
     border-radius: 0.5rem;
     font-weight: 700;
     box-shadow: 0 4px 16px rgb(0 0 0 / 25%);
-    transform: translateY(-150%);
-    transition: transform 0.2s ease;
   }
 
-  .skip-link:focus {
-    transform: translateY(0);
+  /* Reveal for real keyboard navigation only. `:focus-visible` (not `:focus`)
+     so a touch or a programmatic focus never shows it. */
+  .skip-link:focus-visible {
+    width: auto;
+    height: auto;
+    padding: 0.75rem 1.25rem;
+    overflow: visible;
+    clip-path: none;
+    opacity: 1;
+    pointer-events: auto;
     outline: 3px solid #F1662A;
     outline-offset: 2px;
+  }
+
+  /* Browsers without :focus-visible fall back to :focus */
+  @supports not selector(:focus-visible) {
+    .skip-link:focus {
+      width: auto;
+      height: auto;
+      padding: 0.75rem 1.25rem;
+      overflow: visible;
+      clip-path: none;
+      opacity: 1;
+      pointer-events: auto;
+      outline: 3px solid #F1662A;
+      outline-offset: 2px;
+    }
+  }
+
+  /* Touch devices have no visible keyboard focus ring to accompany it, so the
+     link never renders there — it stays readable by screen readers. */
+  @media (hover: none) and (pointer: coarse) {
+    .skip-link,
+    .skip-link:focus,
+    .skip-link:focus-visible {
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      opacity: 0;
+      pointer-events: none;
+      outline: none;
+      box-shadow: none;
+    }
   }
 
   /* Visible focus ring for the programmatic main target */
@@ -325,4 +376,57 @@ body.menu-open .whatsapp-fab {
   color: rgb(49, 87, 255) !important;
   text-decoration: underline;
 
+}
+
+/* ---------------------------------------------------------------------------
+   Aiterra credit in the footer: an iridescent gradient that slides across the
+   wordmark. The tile is 200% wide and background-repeat is left at `repeat`,
+   so animating the position by exactly 200% lands on the next identical tile —
+   the loop has no visible seam. Painted area is one short word, so the
+   per-frame repaint cost is negligible even on the low-end phones this site
+   targets.
+--------------------------------------------------------------------------- */
+@keyframes aiterra-sheen {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 200% 50%;
+  }
+}
+
+.aiterra-brand {
+  /* Fallback for the rare engine without background-clip:text — plain white,
+     never invisible text. */
+  color: #ffffff;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .aiterra-brand {
+    background-image: linear-gradient(
+      90deg,
+      #f26722 0%,
+      #ffc46b 14%,
+      #ffffff 28%,
+      #7dd3fc 42%,
+      #a78bfa 56%,
+      #ffffff 72%,
+      #ffc46b 86%,
+      #f26722 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: aiterra-sheen 5s linear infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aiterra-brand {
+    animation: none;
+  }
 }
