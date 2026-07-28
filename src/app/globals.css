@@ -82,6 +82,44 @@
     outline: none;
   }
 
+  /* ---------------------------------------------------------------------------
+     Site-wide keyboard focus ring. `:focus-visible` only, so it shows for real
+     keyboard / assistive-tech navigation and never on mouse or touch. Reuses
+     the brand orange already used by the skip-link — no new colour enters the
+     palette. Element/role selectors (specificity 0,1,1) intentionally outrank
+     Tailwind's `.outline-none` utility (0,1,0), so controls that reset the
+     outline still get a ring when tabbed to; nothing sets `outline !important`
+     in a layer, so this always wins. `.skip-link` / `.aiterra-brand` keep their
+     own treatment via higher-specificity class selectors. The outline follows
+     each control's own border-radius, so rounded buttons/inputs stay rounded.
+  --------------------------------------------------------------------------- */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  summary:focus-visible,
+  [role="button"]:focus-visible,
+  [role="link"]:focus-visible {
+    outline: 3px solid #F1662A;
+    outline-offset: 2px;
+  }
+
+  /* Browsers without :focus-visible support fall back to :focus. */
+  @supports not selector(:focus-visible) {
+    a:focus,
+    button:focus,
+    input:focus,
+    textarea:focus,
+    select:focus,
+    summary:focus,
+    [role="button"]:focus,
+    [role="link"]:focus {
+      outline: 3px solid #F1662A;
+      outline-offset: 2px;
+    }
+  }
+
   /* No `-webkit-overflow-scrolling: touch` on the root. It has been a no-op
      since iOS 13 (momentum scrolling is the default), but it still promotes the
      document to its own hardware-accelerated scrolling layer, and elements

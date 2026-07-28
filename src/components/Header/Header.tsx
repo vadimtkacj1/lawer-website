@@ -278,7 +278,7 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
 
             <div className="flex items-center">
               <button
-                className="lg:hidden relative p-0 border-none bg-transparent outline-none focus:ring-0 text-blue-dk hover:text-blue-dk/70 transition-colors"
+                className="lg:hidden relative p-0 border-none bg-transparent rounded-md text-blue-dk hover:text-blue-dk/70 transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label={isMobileMenuOpen ? "סגור תפריט" : "פתח תפריט"}
                 aria-expanded={isMobileMenuOpen}
