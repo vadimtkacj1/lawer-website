@@ -407,10 +407,24 @@ body.menu-open .whatsapp-fab {
   text-decoration: none;
 }
 
+/* No underline on hover: under gradient text it reads as a smudge and it also
+   runs beneath the mark. The line sits slightly recessed instead and comes up
+   to full strength on hover, which is affordance enough for a standalone credit
+   (it is not an inline link inside a paragraph). */
+.aiterra-brand {
+  opacity: 0.88;
+  transition: opacity 0.2s ease;
+}
+
 .aiterra-brand:hover {
-  text-decoration: underline;
-  text-decoration-color: rgb(255 255 255 / 30%);
-  text-underline-offset: 4px;
+  opacity: 1;
+}
+
+.aiterra-brand:focus-visible {
+  opacity: 1;
+  outline: 2px solid #f1662a;
+  outline-offset: 4px;
+  border-radius: 0.25rem;
 }
 
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {

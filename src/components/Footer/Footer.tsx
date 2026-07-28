@@ -137,27 +137,29 @@ export default function Footer() {
             © {new Date().getFullYear()} אבי - הבית למשכנתאות. כל הזכויות
             שמורות. תכנון נכון שחוסך לכם כסף.
           </p>
-          {/* Build credit. Laid out as flex items rather than one bidi string:
-              a bare "|" between a Hebrew run and a Latin run gets reordered by
-              the bidi algorithm and lands in the wrong place. */}
-          {/* dir="ltr" so the mark sits on the physical left of the line: in the
+          {/* Build credit, set off from the copyright by its own hairline rule
+              and sitting lower than the rest of the block.
+              dir="ltr" so the mark sits on the physical left of the line: in the
               RTL footer a plain flex row would start it on the right. Each part
               is its own flex item, so the bidi algorithm never reorders the
               separator between the Latin and Hebrew runs. */}
-          <p className="mt-6 sm:mt-8 flex justify-center text-xs sm:text-sm">
-            <a
-              href="https://aiterra.co.il/"
-              target="_blank"
-              rel="noopener noreferrer"
-              dir="ltr"
-              className="aiterra-brand inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1"
-            >
-              <span className="aiterra-mark" aria-hidden="true" />
-              <span>Aiterra</span>
-              <span aria-hidden="true">|</span>
-              <span dir="rtl">בניית אתרים ופרסום</span>
-            </a>
-          </p>
+          <div className="mt-10 sm:mt-12 md:mt-14 flex flex-col items-center gap-6 sm:gap-7">
+            <span aria-hidden="true" className="block h-px w-16 bg-white/15" />
+            <p className="flex justify-center text-xs sm:text-sm">
+              <a
+                href="https://aiterra.co.il/"
+                target="_blank"
+                rel="noopener noreferrer"
+                dir="ltr"
+                className="aiterra-brand inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1"
+              >
+                <span className="aiterra-mark" aria-hidden="true" />
+                <span>Aiterra</span>
+                <span aria-hidden="true">|</span>
+                <span dir="rtl">בניית אתרים ופרסום</span>
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

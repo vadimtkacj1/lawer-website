@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -68,6 +68,37 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const [isMobileServiceAreasOpen, setIsMobileServiceAreasOpen] = useState(false);
 
+  // Closing the desktop dropdown is delayed: the pointer travelling from the
+  // nav item to the panel can clip a corner for a frame or two, and closing on
+  // that first `mouseleave` made the menu impossible to reach.
+  const dropdownCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearDropdownCloseTimer = () => {
+    if (dropdownCloseTimer.current) {
+      clearTimeout(dropdownCloseTimer.current);
+      dropdownCloseTimer.current = null;
+    }
+  };
+
+  const openDesktopDropdown = useCallback((type: string | null) => {
+    clearDropdownCloseTimer();
+    setActiveDesktopDropdown(type);
+  }, []);
+
+  const closeDesktopDropdown = useCallback((delay = 0) => {
+    clearDropdownCloseTimer();
+    if (delay === 0) {
+      setActiveDesktopDropdown(null);
+      return;
+    }
+    dropdownCloseTimer.current = setTimeout(() => {
+      dropdownCloseTimer.current = null;
+      setActiveDesktopDropdown(null);
+    }, delay);
+  }, []);
+
+  useEffect(() => clearDropdownCloseTimer, []);
+
   useEffect(() => {
     // Read layout at most once per frame, and only touch React state when the
     // threshold is actually crossed. The previous version read window.scrollY
@@ -122,12 +153,12 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
 
       if (targetElement) {
         setIsMobileMenuOpen(false);
-        setActiveDesktopDropdown(null);
+        closeDesktopDropdown();
         const offsetPosition = targetElement.getBoundingClientRect().top + window.scrollY - 100;
         window.scrollTo({ top: offsetPosition, behavior: "smooth" });
       } else {
         setIsMobileMenuOpen(false);
-        setActiveDesktopDropdown(null);
+        closeDesktopDropdown();
         window.location.href = `/${href}`;
       }
     }
@@ -178,12 +209,12 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
                     <li
                       key={link.href}
                       className="relative"
-                      onMouseEnter={() => link.hasDropdown && setActiveDesktopDropdown(link.dropdownType || null)}
-                      onMouseLeave={() => link.hasDropdown && setActiveDesktopDropdown(null)}
-                      onFocus={() => link.hasDropdown && setActiveDesktopDropdown(link.dropdownType || null)}
+                      onMouseEnter={() => link.hasDropdown && openDesktopDropdown(link.dropdownType || null)}
+                      onMouseLeave={() => link.hasDropdown && closeDesktopDropdown(180)}
+                      onFocus={() => link.hasDropdown && openDesktopDropdown(link.dropdownType || null)}
                       onBlur={(e) => {
                         if (link.hasDropdown && !e.currentTarget.contains(e.relatedTarget as Node)) {
-                          setActiveDesktopDropdown(null);
+                          closeDesktopDropdown();
                         }
                       }}
                     >
@@ -209,13 +240,21 @@ export default function Header({ alwaysWithBackground = false }: HeaderProps) {
                         </Link>
                       )}
 
+                      {/* The offset below the nav item is padding on this
+                          wrapper, not a margin on the card. A margin left an
+                          8px dead strip that belonged to neither element, so
+                          the pointer moving down to the panel triggered
+                          `mouseleave` on the item and the menu shut before it
+                          could be reached. The padding keeps the hover area
+                          continuous; it is transparent and, while closed,
+                          `pointer-events-none`, so it blocks nothing. */}
                       {link.hasDropdown && (
                         <div
                           aria-hidden={!isActive}
-                          className={`absolute top-full right-0 mt-2 w-72 bg-white rounded-2xl overflow-hidden transition-all duration-300 origin-top shadow-card-lg ring-1 ring-blue-dk/10
+                          className={`absolute top-full right-0 pt-2 w-72 transition-all duration-300 origin-top
                             ${isActive ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}
                         >
-                          <div className="py-2 flex flex-col">
+                          <div className="py-2 flex flex-col bg-white rounded-2xl overflow-hidden shadow-card-lg ring-1 ring-blue-dk/10">
                             {dropdownLinks.map((item) => (
                               <Link
                                 key={item.href}
