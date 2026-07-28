@@ -379,13 +379,15 @@ body.menu-open .whatsapp-fab {
 }
 
 /* ---------------------------------------------------------------------------
-   Aiterra credit in the footer: a blue sheen that slides across the wordmark —
-   the brand blues with a white highlight travelling through them, no other
-   hues. The tile is 200% wide and background-repeat is left at `repeat`,
-   so animating the position by exactly 200% lands on the next identical tile —
-   the loop has no visible seam. Painted area is one short word, so the
-   per-frame repaint cost is negligible even on the low-end phones this site
-   targets.
+   Aiterra credit in the footer: the mark plus the whole line of text is one
+   link, and one blue sheen travels across all of it — brand blues with a white
+   highlight running through them, no other hues. The tile is 200% wide and
+   background-repeat is left at `repeat`, so animating the position by exactly
+   200% lands on the next identical tile — the loop has no visible seam.
+   `background-clip: text` on the link clips its background to the text of every
+   descendant, so the children must not carry their own colour. Painted area is
+   one short line, so the per-frame repaint cost is negligible even on the
+   low-end phones this site targets.
 --------------------------------------------------------------------------- */
 @keyframes aiterra-sheen {
   from {
@@ -400,8 +402,15 @@ body.menu-open .whatsapp-fab {
   /* Fallback for the rare engine without background-clip:text — plain white,
      never invisible text. */
   color: #ffffff;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.aiterra-brand:hover {
+  text-decoration: underline;
+  text-decoration-color: rgb(255 255 255 / 30%);
+  text-underline-offset: 4px;
 }
 
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
@@ -428,8 +437,42 @@ body.menu-open .whatsapp-fab {
   }
 }
 
+/* The mark is the logo silhouette punched out of the same animated gradient, so
+   it shimmers in step with the text. Gated on mask support: without it the
+   element would paint as a plain gradient square, so it is simply not shown. */
+.aiterra-mark {
+  display: none;
+}
+
+@supports (
+  (-webkit-mask-image: url("/images/aiterra-logo.svg")) or
+    (mask-image: url("/images/aiterra-logo.svg"))
+) {
+  .aiterra-mark {
+    display: block;
+    flex: none;
+    /* The glyph fills ~74% of its viewBox, so the box is oversized on purpose
+       to leave the mark optically the same height as the capitals. */
+    width: 1.8em;
+    height: 1.8em;
+    background-color: #ffffff;
+    background-image: inherit;
+    background-size: 200% 100%;
+    animation: aiterra-sheen 5s linear infinite;
+    -webkit-mask-image: url("/images/aiterra-logo.svg");
+    mask-image: url("/images/aiterra-logo.svg");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .aiterra-brand {
+  .aiterra-brand,
+  .aiterra-mark {
     animation: none;
   }
 }

@@ -140,19 +140,23 @@ export default function Footer() {
           {/* Build credit. Laid out as flex items rather than one bidi string:
               a bare "|" between a Hebrew run and a Latin run gets reordered by
               the bidi algorithm and lands in the wrong place. */}
-          <p className="text-white/50 text-xs sm:text-sm mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+          {/* dir="ltr" so the mark sits on the physical left of the line: in the
+              RTL footer a plain flex row would start it on the right. Each part
+              is its own flex item, so the bidi algorithm never reorders the
+              separator between the Latin and Hebrew runs. */}
+          <p className="mt-6 sm:mt-8 flex justify-center text-xs sm:text-sm">
             <a
               href="https://aiterra.co.il/"
               target="_blank"
               rel="noopener noreferrer"
-              className="aiterra-brand underline decoration-white/20 underline-offset-2 hover:decoration-orange transition-colors"
+              dir="ltr"
+              className="aiterra-brand inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1"
             >
-              Aiterra
+              <span className="aiterra-mark" aria-hidden="true" />
+              <span>Aiterra</span>
+              <span aria-hidden="true">|</span>
+              <span dir="rtl">בניית אתרים ופרסום</span>
             </a>
-            <span aria-hidden="true" className="text-white/25">
-              |
-            </span>
-            <span className="text-white/60">בניית אתרים ופרסום</span>
           </p>
         </div>
       </div>
